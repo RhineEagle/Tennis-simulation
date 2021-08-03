@@ -76,11 +76,11 @@ def play(player1,player2,g1,g2,p1,p2,num):
             p1=p1+1
             #print(g1," ",g2,player1.name,"save!")
     else:
-        if p<=player1.ace/100+random.uniform(stochastic(num)-0.025,stochastic(num)+0.025):
+        if p<=player1.ace/100+random.uniform(stochastic(num)-0.0,stochastic(num)+0.0):
             p1=p1+1
             #print(g1, " ", g2, " ", player1.name, p1, "ace!")
         else:
-            if p>player1.firstin/100+random.uniform(stochastic(num)-0.08,stochastic(num)+0.08):
+            if p>player1.firstin/100+random.uniform(stochastic(num)-0.03,stochastic(num)+0.03):
                 if p>1-player2.doublefault/100:
                     p2=p2+1
                     #print(g1, " ", g2," " , player1.name,p1,"df!")
@@ -128,28 +128,65 @@ def playseven(player1,player2,p1,p2,i):
     i=i+1
     return [p1,p2,i]
 
-if __name__ == '__main__':
-    player1 = player("Djokovic",8.6, 65.3, 76.4, 3.4, 51.1, 65.6, 24.9, 53.4, 55.0, 2435)
-    player2 = player("Zverev",12.3, 67.0, 73.6, 6.6 ,42.3, 59.0, 28.7, 51.8, 32.7, 2186)
-    setpoint1=0
-    setpoint2=0
-    order=1
-    while setpoint1!=3 and setpoint2!=3:
+def playset(player1,player2):
+    setpoint1 = 0
+    setpoint2 = 0
+    order = 1
+    while setpoint1 != 3 and setpoint2 != 3:
         gamepoint1 = 0
         gamepoint2 = 0
-        while max(gamepoint1,gamepoint2)<6 or (max(gamepoint1,gamepoint2)==6 and min(gamepoint1,gamepoint2)>=5):
-            list=game(player1,player2,gamepoint1,gamepoint2,order,setpoint1+setpoint2+1)
-            gamepoint1=list[0]
-            gamepoint2=list[1]
-            order=-1*order
+        while max(gamepoint1, gamepoint2) < 6 or (
+                max(gamepoint1, gamepoint2) == 6 and min(gamepoint1, gamepoint2) >= 5):
+            list = game(player1, player2, gamepoint1, gamepoint2, order, setpoint1 + setpoint2 + 1)
+            gamepoint1 = list[0]
+            gamepoint2 = list[1]
+            order = -1 * order
 
-        if gamepoint1>gamepoint2:
+        if gamepoint1 > gamepoint2:
             setpoint1 = setpoint1 + 1
         else:
             setpoint2 = setpoint2 + 1
-        if (gamepoint1==6 and gamepoint2==7) or (gamepoint2==6 and gamepoint1==7):
-            print(gamepoint1, "vs", gamepoint2,"(",min(list[2],list[3]),")")
-        else:
-            print(gamepoint1, "vs", gamepoint2)
+        #if (gamepoint1 == 6 and gamepoint2 == 7) or (gamepoint2 == 6 and gamepoint1 == 7):
+        # print(gamepoint1, "vs", gamepoint2,"(",min(list[2],list[3]),")")
+        #else:
+    # print(gamepoint1, "vs", gamepoint2)
 
-    print(setpoint1,"vs",setpoint2)
+    # print(setpoint1,"vs",setpoint2)
+    return [setpoint1,setpoint2]
+
+if __name__ == '__main__':
+    player1 = player("Djokovic",2.8, 65.2, 67.2, 3.6, 49, 66.7, 39.4, 52.0, 36.8, 2415)
+    player2 = player("Nadal",2.6, 63.6, 65.7, 2.6 ,54.6, 64.9, 37.5, 57.1, 41.7, 2479)
+    list1 = []
+    list2 = []
+    sum30 = 0
+    sum31 = 0
+    sum32 = 0
+    sum23 = 0
+    sum13 = 0
+    sum03 = 0
+    N=5000
+    for i in range(0, N):
+        list = playset(player1, player2)
+        list1.append(list[0])
+        list2.append(list[1])
+    for i in range(0, N):
+        if list1[i] == 3 and list2[i] == 0:
+            sum30 += 1
+        elif list1[i] == 3 and list2[i] == 1:
+            sum31 += 1
+        elif list1[i] == 3 and list2[i] == 2:
+            sum32 += 1
+        elif list1[i] == 2 and list2[i] == 3:
+            sum23 += 1
+        elif list1[i] == 1 and list2[i] == 3:
+            sum13 += 1
+        else:
+            sum03 += 1
+
+    print(player1.name,"3:0",player2.name, sum30 / N)
+    print(player1.name,"3:1",player2.name, sum31 / N)
+    print(player1.name,"3:2",player2.name, sum32 / N)
+    print(player1.name,"2:3",player2.name, sum23 / N)
+    print(player1.name,"1:3",player2.name, sum13 / N)
+    print(player1.name,"0:3",player2.name, sum03 / N)
