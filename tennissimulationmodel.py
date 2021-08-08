@@ -6,7 +6,7 @@ import xlrd
 import time
 
 def getplayerinfo(playername):
-    file = "UTS_palyerinfo.xls"
+    file = "UTS_playerinfo.xls"
     workbook = xlrd.open_workbook(file)
     pat=re.compile(playername)
     Table = workbook.sheet_by_name("sheet1")
