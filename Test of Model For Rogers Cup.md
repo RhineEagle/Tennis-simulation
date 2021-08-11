@@ -28,7 +28,7 @@ Duckworth vs Fritz    31.2% vs 68.8%     17.6% vs 82.4%         3.2            1
 
 Harris vs Schnur        75.5% vs 24.5%    15.8% vs 84.2%			1.3            3.75 	    	:two::zero:(+++)
 
-Millman vs Berankis   58.5% vs 41.5%      53% vs 47% (*)       1.72           2.1   			 :two::zero:(+++)
+Millman vs Berankis   58.5% vs 41.5%      53% vs 47% (*)       1.72           2.1   		    :two::zero:(+++)
 
 Paul vs Pospisil          42.1% vs 57.9%     41.5% vs 58.5%         2.0            1.8			   :two::one:(---)
 
@@ -40,7 +40,7 @@ Kyrgios vs Opelka      64.9% vs 35.1%     46.3% vs 53.7%        1.57          2.
 
 Paire vs Mcdonald       37.2% vs 62.8%    9.6% vs 90.4%          2.75         1.44				:two::zero:(---)
 
-Norrie vs Khachanov    46.4% vs 53.6%   54.9% vs 45.1%(*)     2.0           1.8				 :one::two:(+++)​
+Norrie vs Khachanov    46.4% vs 53.6%   54.9% vs 45.1%(*)     2.0           1.8				 :one::two:(+-+)​
 
 Nishioka vs Tiafoe       41.4% vs 58.6%	26.4% vs 73.6% 		 3.0           1.4			     :zero::two:(+++)
 
@@ -50,7 +50,7 @@ Kecmanovic vs Nishikori 30.2% vs 69.8%  41.5% vs 57.5%(*)    3.2           1.36	
 
 Isner vs Fokina             55.8% vs 44.2%    84.2% vs 15.8%        1.66         2.2			    :two::zero:(+++)
 
-Brooksby vs Basilashvili 42.1% vs 57.9%   60.4% vs 39.6%        1.44         2.75              :one::two:(+--)
+Brooksby vs Basilashvili 42.1% vs 57.9%   60.4% vs 39.6%        1.44         2.75             :one::two:(+--)
 
 #### round 2
 
@@ -58,11 +58,13 @@ Medvedev vs Bublik      83.6% vs 16.4%      81% vs 19%          1.2           4.
 
 Tsitsipas vs Humbert      70.7% vs 29.3%     52.6% vs 47.4%      1.36         3.2				 :two::one:(+++)
 
-Dimitrov vs Opelka        59.0% vs 41.0%     38.8% vs 61.2%(*)  2.2          1.66
+Dimitrov vs Opelka        59.0% vs 41.0%     38.8% vs 61.2%(*)  2.2          1.66             :zero::two:(-++)
 
 Ruud vs Cilic                53.6% vs 46.4%     53.7% vs 46.3%      1.72         2.1              :two::one:(+++)
 
 ### Day 3
+
+#### round 2
 
 Rublev vs Fognini         68.7% vs 31.3%     92.7% vs 7.3% 		1.28         3.75
 
@@ -86,7 +88,7 @@ Tiafoe vs Shapovalov     34.8% vs 65.2%       23.5% vs 76.5%      3.4          1
 
 Monfils vs Millman       60.0% vs 40.0%       19.6% vs 80.4%      2.3          1.61
 
-
+Schwartzman vs Paire    73.2% vs 26.8%       79.5% vs 10.5%      
 
 ## Appendix
 
