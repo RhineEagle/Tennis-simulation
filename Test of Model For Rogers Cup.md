@@ -6,6 +6,8 @@ The Rogers Cup (ATP 1000) will start this night (GMT-8 23:00). We now use this m
 
 ​     match                   	 UTS                   model                        365bet                      result
 
+#### round 1
+
 Ramos vs Cilic      	33%  vs  67%      27.8% vs 72.2%           3.40         1.33              :one::two:(+++)
 
 ​																12% 16% 30% 42%      5.5   7   3.75   1.83
@@ -32,34 +34,76 @@ Paul vs Pospisil          42.1% vs 57.9%     41.5% vs 58.5%         2.0         
 
 Kyrgios vs Opelka      64.9% vs 35.1%     46.3% vs 53.7%        1.57          2.37             :one::two:(-+-)
 
-
-
 ### Day 2
 
 ​     match                   	 UTS                   model                        365bet                      result
 
-Paire vs Mcdonald       37.2% vs 62.8%   9.6% vs 90.4%           2.75         1.44
+Paire vs Mcdonald       37.2% vs 62.8%    9.6% vs 90.4%          2.75         1.44				:two::zero:(---)
 
-Norrie vs Khachanov    46.4% vs 53.6%   54.9% vs 45.1%(*)     2.0           1.8
+Norrie vs Khachanov    46.4% vs 53.6%   54.9% vs 45.1%(*)     2.0           1.8				 :one::two:(+++)​
 
-Nishioka vs Tiafoe       41.4% vs 58.6%	26.4% vs 73.6% 		 3.0           1.4
+Nishioka vs Tiafoe       41.4% vs 58.6%	26.4% vs 73.6% 		 3.0           1.4			     :zero::two:(+++)
 
-Lajovic vs Ruusuvuori  47.6% vs 52.4%    49.3% vs 50.7%        3.0           1.4
+Lajovic vs Ruusuvuori  47.6% vs 52.4%    49.3% vs 50.7%(/)     3.0           1.4				  :two::one:(-/-)
 
-Kecmanovic vs Nishikori 30.2% vs 69.8%  41.5% vs 57.5%(*)    3.2           1.36
+Kecmanovic vs Nishikori 30.2% vs 69.8%  41.5% vs 57.5%(*)    3.2           1.36		   	:zero::two:(+++)
 
-Isner vs Fokina             55.8% vs 44.2%    84.2% vs 15.8%        1.66         2.2
+Isner vs Fokina             55.8% vs 44.2%    84.2% vs 15.8%        1.66         2.2			    :two::zero:(+++)
 
-Brooksby vs Basilashvili 42.1% vs 57.9%   60.4% vs 39.6%        1.44         2.75
+Brooksby vs Basilashvili 42.1% vs 57.9%   60.4% vs 39.6%        1.44         2.75              :one::two:(+--)
 
-Medvedev vs Bublik      83.6% vs 16.4%    81% vs 19%
+#### round 2
 
-Tsitsipas vs Humbert      70.7% vs 29.3%     52.6% vs 47.4%      1.36         3.2
+Medvedev vs Bublik      83.6% vs 16.4%      81% vs 19%          1.2           4.5              :two::one:(+++)   
+
+Tsitsipas vs Humbert      70.7% vs 29.3%     52.6% vs 47.4%      1.36         3.2				 :two::one:(+++)
+
+Dimitrov vs Opelka        59.0% vs 41.0%     38.8% vs 61.2%(*)  2.2          1.66
+
+Ruud vs Cilic                53.6% vs 46.4%     53.7% vs 46.3%      1.72         2.1              :two::one:(+++)
+
+### Day 3
 
 Rublev vs Fognini         68.7% vs 31.3%     92.7% vs 7.3% 		1.28         3.75
 
 Sinner vs Duckworth      78.1% vs 21.9%    56.1% vs 43.9%      1.2           4.5
 
-Ruud vs Cilic                53.6% vs 46.4%    31.1% vs 68.9%     
+Harris vs Lopez             65.1% vs 34.9%    60.4% vs 39.6%
 
-​     
+Isner vs Garin               60.2% vs 39.8%     58.8% vs 41.2%      1.5           2.62
+
+Lajovic vs Aliassime      34.7% vs 65.3%     34.3% vs 65.7%      4.00         1.25
+
+Karatsev vs Khachanov  42.4% vs 57.6%      64.4% vs 35.6%      2.5          1.53
+
+De Minaur vs Basilashvili 62.7% vs 37.3%    49.6% vs 50.4%(/)   1.57        2.37
+
+Paul vs Agut					28.7% vs 71.3%      49.6% vs 50.4%      2.62         1.5
+
+Nishikori vs Hurkacz     49.0% vs 51.0%       39.8% vs 60.2%      1.9  (-0.5)  1.9
+
+Tiafoe vs Shapovalov     34.8% vs 65.2%       23.5% vs 76.5%      3.4          1.33
+
+Monfils vs Millman       60.0% vs 40.0%       19.6% vs 80.4%      2.3          1.61
+
+
+
+## Appendix
+
+The relationship between odds and probability
+
+1.10=81%   1.12=80%   1.14=79%   1.15=78%   1.16=77%   1.17=76%   1.20=74-75%
+
+1.22=73%   1.25=71-72%   1.28=70%   1.30=69%   1.33=67-68%   1.36=65-66%
+
+1.40=63-64%   1.45=61-62%   1.5=60%   1.53=59%   1.55=58%   1.57=57%   1.60=56%
+
+1.62=55%   1.65=54%   1.70=53%   1.72=52%   1.75=51%   1.80=50%   1.85=48-49%
+
+1.90=46-47%   2.00=44-45%    2.10=42-43   2.20=41%   2.25=40%   2.30=39%   2.35=38%
+
+2.40=37%   2.50=36%   2.60=35%   2.65=34%   2.70=33%   2.80=32%   2.90=30-31%
+
+3.00=29%   3.20=28%   3.30=27%   3.40=26%   3.60=25%   3.70=24%   3.90=23%
+
+4.00=22%   4.20=21%   4.50=22%   4.70=19%   5.00=18%   5.30=17%   5.50=16%
