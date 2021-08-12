@@ -46,7 +46,7 @@ Nishioka vs Tiafoe       41.4% vs 58.6%	26.4% vs 73.6% 		 3.0           1.4			  
 
 Lajovic vs Ruusuvuori  47.6% vs 52.4%    49.3% vs 50.7%(/)     3.0           1.4				  :two::one:(-/-)
 
-Kecmanovic vs Nishikori 30.2% vs 69.8%  41.5% vs 57.5%(*)    3.2           1.36		   	:zero::two:(+++)
+Kecmanovic vs Nishikori 30.2% vs 69.8%  41.5% vs 57.5%        3.2           1.36		   	:zero::two:(+++)
 
 Isner vs Fokina             55.8% vs 44.2%    84.2% vs 15.8%        1.66         2.2			    :two::zero:(+++)
 
@@ -64,31 +64,51 @@ Ruud vs Cilic                53.6% vs 46.4%     53.7% vs 46.3%      1.72        
 
 ### Day 3
 
-#### round 2
+Rublev vs Fognini         68.7% vs 31.3%     92.7% vs 7.3% 		1.28         3.75             :two::zero:(+++)
 
-Rublev vs Fognini         68.7% vs 31.3%     92.7% vs 7.3% 		1.28         3.75
+Sinner vs Duckworth      78.1% vs 21.9%    56.1% vs 43.9%(*)   1.2           4.5              :zero::two:(---)
 
-Sinner vs Duckworth      78.1% vs 21.9%    56.1% vs 43.9%      1.2           4.5
+Harris vs Lopez             65.1% vs 34.9%    60.4% vs 39.6%       1.3           3.5              :two::zero:(+++)
 
-Harris vs Lopez             65.1% vs 34.9%    60.4% vs 39.6%
+Isner vs Garin               60.2% vs 39.8%     58.8% vs 41.2%      1.5           2.62             :two::zero:(+++)
 
-Isner vs Garin               60.2% vs 39.8%     58.8% vs 41.2%      1.5           2.62
+Lajovic vs Aliassime      34.7% vs 65.3%     51% vs 49%(*)       4.00         1.25              :two::zero:(-+-)
 
-Lajovic vs Aliassime      34.7% vs 65.3%     34.3% vs 65.7%      4.00         1.25
+Karatsev vs Khachanov  42.4% vs 57.6%      64.4% vs 35.6%      2.5          1.53              :zero::two:(+-+)
 
-Karatsev vs Khachanov  42.4% vs 57.6%      64.4% vs 35.6%      2.5          1.53
+De Minaur vs Basilashvili 62.7% vs 37.3%    49.6% vs 50.4%     1.57        2.37              ​ :zero::two:(-+-)
 
-De Minaur vs Basilashvili 62.7% vs 37.3%    49.6% vs 50.4%(/)   1.57        2.37
+Paul vs Agut					28.7% vs 71.3%      49.6% vs 50.4%      2.62         1.5               :zero::two:(+++)
 
-Paul vs Agut					28.7% vs 71.3%      49.6% vs 50.4%      2.62         1.5
+Nishikori vs Hurkacz     49.0% vs 51.0%       39.8% vs 60.2%      1.9  (-0.5)  1.9               W/O
 
-Nishikori vs Hurkacz     49.0% vs 51.0%       39.8% vs 60.2%      1.9  (-0.5)  1.9
+Tiafoe vs Shapovalov     34.8% vs 65.2%       23.5% vs 76.5%      3.4          1.33             :two::zero:(---)​
 
-Tiafoe vs Shapovalov     34.8% vs 65.2%       23.5% vs 76.5%      3.4          1.33
+Monfils vs Millman       60.0% vs 40.0%       19.6% vs 80.4%      2.3          1.61             :two::one:(+--)
 
-Monfils vs Millman       60.0% vs 40.0%       19.6% vs 80.4%      2.3          1.61
+Schwartzman vs Paire    73.2% vs 26.8%       79.5% vs 10.5%      1.3           3.5              :two::zero:(+++)
 
-Schwartzman vs Paire    73.2% vs 26.8%       79.5% vs 10.5%      
+### Day 4
+
+#### round 3
+
+​     match                   	          UTS                     model                 365bet                      result
+
+Medvedev vs Duckworth     87.9% vs 12.1%      89.9% vs 10.1%      1.1       7
+
+Basilashvili vs Hurkacz       35.6% vs 64.4%      40.8% vs 59.2%      2.3      1.61
+
+Rublev vs Isner                  64.3% vs 35.7%      82.3% vs 17.7%     1.53     2.5
+
+Monfils vs Tiafoe               49.2% vs 50.8%      40.1% vs 59.9%     
+
+Ruud vs Lajovic                 65.9% vs 34.1%      77.4% vs 22.6%     1.4      3.0
+
+Khachanov vs Tsitsipas        29.3% vs 70.7%      44.9% vs 55.1%(*) 3.2      1.36
+
+Schwartzman vs Agut          46.7% vs 53.3%      45.3% vs 54.7%
+
+Opelka vs Harris                 50.3% vs 49.7%      44.8% vs 55.2%    1.9 (+0.5) 1.9
 
 ## Appendix
 
