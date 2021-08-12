@@ -43,7 +43,7 @@ def get_elo(playerid,surface):
 
 def getstats(playerid,surface,opponent,type):
     baseurl1="https://www.ultimatetennisstatistics.com/matchesStats?playerId="
-    baseurl2="&season=&fromDate=20-06-2020&toDate=07-08-2021&level="
+    baseurl2="&season=&fromDate=08-02-2021&toDate=&level="
     baseurl3="&bestOf=&surface="
     baseurl4="&indoor=&speed=&round=&result=&opponent="
     baseurl5="&tournamentId=&tournamentEventId=&outcome=&score=&countryId=&bigWin=false&searchPhrase="
@@ -129,7 +129,7 @@ def game(player1,player2,g1,g2,order,num):
 
 def play(player1,player2,g1,g2,p1,p2,num):
     p=random.random()
-    weigh=(player1.elo-1500)/(player1.elo+player2.elo-3000)
+    weigh=(player1.elo-1600)/(player1.elo+player2.elo-3200)
     if (p2==3 and p1<=2) or (p2>=4 and p2-p1==1):
         #prob=player1.breaksave*(100-player2.breakconvert)/(player1.breaksave*(100-player2.breakconvert)+(100-player1.breaksave)*player2.breakconvert)
         prob = player1.breaksave/100*weigh+(1-player2.breakconvert/100)*(1-weigh)
@@ -225,25 +225,26 @@ def print_obj(obj):
 
 if __name__ == '__main__':
 
-    type="AB"
-    playername1="Mcdonald"
-    playername2="Sinner"
+    type1=""
+    type2 = ""
+    playername1="Opelka"
+    playername2="Muirhead Harris"
     surface = "H"
-    opponent1 = "TOP_100"
-    opponent2 = "TOP_100"
+    opponent1 = "TOP_50"
+    opponent2 = "TOP_50"
 
     playerid1 = str(int(getplayerinfo(playername1)))
     playerid2 = str(int(getplayerinfo(playername2)))
     if playerid2=="-1" or playerid1=="-1":
         exit(1)
-    stats1=getstats(playerid1,surface,opponent1,type)
+    stats1=getstats(playerid1,surface,opponent1,type1)
     print("Information 1 has been collected")
     time.sleep(2)
     player1 = player(playername1, stats1[0], stats1[2], stats1[3], stats1[1], stats1[4], stats1[5], stats1[10], stats1[11],
                      stats1[12], int(get_elo(playerid1,surface)))
     print_obj(player1)
     time.sleep(2)
-    stats2=getstats(playerid2,surface,opponent2,type)
+    stats2=getstats(playerid2,surface,opponent2,type2)
     print("Information 2 has been collected")
     time.sleep(2)
     player2 = player(playername2, stats2[0], stats2[2], stats2[3], stats2[1], stats2[4], stats2[5], stats2[10], stats2[11],
