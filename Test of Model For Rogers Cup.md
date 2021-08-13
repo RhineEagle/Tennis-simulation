@@ -94,21 +94,35 @@ Schwartzman vs Paire    73.2% vs 26.8%       79.5% vs 10.5%      1.3           3
 
 ​     match                   	          UTS                     model                 365bet                      result
 
-Medvedev vs Duckworth     87.9% vs 12.1%      89.9% vs 10.1%      1.1       7
+Medvedev vs Duckworth     87.9% vs 12.1%      89.9% vs 10.1%      1.1       7					:two::zero:(+++)
 
-Basilashvili vs Hurkacz       35.6% vs 64.4%      40.8% vs 59.2%      2.3      1.61
+Basilashvili vs Hurkacz       35.6% vs 64.4%      40.8% vs 59.2%      2.3      1.61             ​ :one::two:(+++)
 
-Rublev vs Isner                  64.3% vs 35.7%      82.3% vs 17.7%     1.53     2.5
+Rublev vs Isner                  64.3% vs 35.7%      82.3% vs 17.7%     1.53     2.5				  :zero::two:(---)​
 
-Monfils vs Tiafoe               49.2% vs 50.8%      40.1% vs 59.9%     
+Monfils vs Tiafoe               53.3% vs 46.7%      45.5% vs 54.5%     2.75     1.44              :two::zero:(+--)
 
-Ruud vs Lajovic                 65.9% vs 34.1%      77.4% vs 22.6%     1.4      3.0
+Ruud vs Lajovic                 65.9% vs 34.1%      77.4% vs 22.6%     1.4       3.0               :two::zero:(+++)
 
-Khachanov vs Tsitsipas        29.3% vs 70.7%      44.9% vs 55.1%(*) 3.2      1.36
+Khachanov vs Tsitsipas        29.3% vs 70.7%      44.9% vs 55.1%(*) 3.2      1.36              :zero::two:(+++)​
 
-Schwartzman vs Agut          46.7% vs 53.3%      45.3% vs 54.7%
+Schwartzman vs Agut          46.7% vs 53.3%      45.3% vs 54.7%      2        1.8               :zero::two:(+++)
 
-Opelka vs Harris                 50.3% vs 49.7%      44.8% vs 55.2%    1.9 (+0.5) 1.9
+Opelka vs Harris                 50.3% vs 49.7%      44.8% vs 55.2%    1.9 (+0.5) 1.9            :two::one:(+--)
+
+### Day 5
+
+#### Quarter Final
+
+ match                   	          UTS                     model                 365bet                      result
+
+Medvedev vs Hurkacz    73.4% vs 26.6%      56.3% vs 43.7%
+
+Isner vs Monfils			  54.6% vs 45.4%      65.9% vs 34.1%
+
+Ruud vs Tsitsipas           28.0% vs 72.0%      32.5% vs 67.5%(*)
+
+Agut vs Opelka			   61.7% vs 38.3%      59.3% vs 40.7% 
 
 ## Appendix
 
