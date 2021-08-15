@@ -1,12 +1,12 @@
-# The Test of the Model for Rogers Cup
+# Test of the Model for Rogers Cup
 
 The Rogers Cup (ATP 1000) will start this night (GMT-8 23:00). We now use this model to check its validity. We will give the probability from both our model and the website of Ultimate Tennis Statistics and the 365bet.
 
 ### Day 1
 
-​     match                   	 UTS                   model                        365bet                      result
-
 #### round 1
+
+​     match                   	 UTS                   model                        365bet                      result
 
 Ramos vs Cilic      	33%  vs  67%      27.8% vs 72.2%           3.40         1.33              :one::two:(+++)
 
@@ -112,17 +112,31 @@ Opelka vs Harris                 50.3% vs 49.7%      44.8% vs 55.2%    1.9 (+0.5
 
 ### Day 5
 
-#### Quarter Final
+#### Quarter-Final
 
- match                   	          UTS                     model                 365bet                      result
+ match                   	          UTS                     model                   365bet                      result
 
-Medvedev vs Hurkacz    73.4% vs 26.6%      56.3% vs 43.7%
+Medvedev vs Hurkacz    73.4% vs 26.6%      56.3% vs 43.7%        1.25      4.00              :two::one:(+++)
 
-Isner vs Monfils			  54.6% vs 45.4%      65.9% vs 34.1%
+Isner vs Monfils			  54.6% vs 45.4%      65.9% vs 34.1%        1.50      2.62				:two::zero:(+++)​
 
-Ruud vs Tsitsipas           28.0% vs 72.0%      32.5% vs 67.5%(*)
+Ruud vs Tsitsipas           28.0% vs 72.0%      32.5% vs 67.5%(*)    4.33      1.22				:zero::two:(+++)
 
-Agut vs Opelka			   61.7% vs 38.3%      59.3% vs 40.7% 
+Agut vs Opelka			   61.7% vs 38.3%      59.3% vs 40.7%        1.66      2.20              :zero::two:(---)
+
+### Day 6
+
+#### Semi-Final
+
+Medvedev vs Isner         74.7% vs 25.3%     61.9% vs 38.1%(*)         1.32      3.45           :two::zero:(+++)​     
+
+Tsitsipas vs Opelka         77.2% vs 22.8%     51.4% vs 48.6%(/)         1.2        4.5             :one::two:(-/-)
+
+### Day 7
+
+#### Final
+
+Medvedev vs Opelka       77.4% vs 22.6%     59.3% vs 40.7%            1.16       5.0   
 
 ## Appendix
 
