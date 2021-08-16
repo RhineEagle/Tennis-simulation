@@ -136,7 +136,11 @@ Tsitsipas vs Opelka         77.2% vs 22.8%     51.4% vs 48.6%(/)         1.2    
 
 #### Final
 
-Medvedev vs Opelka       77.4% vs 22.6%     59.3% vs 40.7%            1.16       5.0   
+Medvedev vs Opelka       77.4% vs 22.6%     59.3% vs 40.7%            1.16       5.0             :two::zero:(+++)
+
+### Conclusion
+
+The model uses  the statistics from athletes' formal performance with the idea that it is a unbiased estimation. While during practical use, we realize that the performance of an athlete may have great violence and even different from each set. In that case, we will try to polish up this model by introducing variance factor and grouping level in the future.  
 
 ## Appendix
 
