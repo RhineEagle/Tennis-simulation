@@ -14,7 +14,7 @@ Odds:  2.44   1.58
 
 Decision: W/L   Paire win the game with 72.4% vs 21.6%
 
-Result:  Paire :two:::one: Kecmanovic   +1.44  (--)
+Result:  Paire :two:::one: Kecmanovic   +1.44  (+--)
 
 
 
@@ -28,7 +28,7 @@ Odds:   1.3    3.5
 
 Decision: No participation.
 
-Result: Pella :two:::zero: Goffin     /   (--)
+Result: Pella :two:::zero: Goffin     /   (/--)
 
 
 
@@ -42,7 +42,7 @@ Odds:  2.1     1.72
 
 Decision: Basilashvili win with 64.2% to 35.8%   Basilashvili win at least one set(1.3)   1
 
-Result: Fognini :two:::zero: Basilashvili   -1  (+-)
+Result: Fognini :two:::zero: Basilashvili   -1  (-+-)
 
 
 
@@ -56,7 +56,7 @@ Odds:  1.14  5.5
 
 Decision: Sinner win with 53.5% to 47.5%
 
-Result: Sinner :two:::zero: Delbonis  +0.14​  (++)
+Result: Sinner :two:::zero: Delbonis  +0.14​  (+++)
 
 
 
@@ -68,7 +68,7 @@ Odds:  2.18   1.71
 
 Decision: Koepfer win with 69.6% to 30.4%
 
-Result: Koepfer :two:::one: Struff    +1.18  (--)
+Result: Koepfer :two:::one: Struff    +1.18  (+--)
 
 
 
@@ -82,7 +82,7 @@ Odds:  2.3    1.61
 
 Decision: Fucsovic win with 60.1% to 39.9% 
 
-Result: Fucsovic :zero:::two: Aliassime​   -1  (-+)
+Result: Fucsovic :zero:::two: Aliassime​   -1  (--+)
 
 
 
@@ -96,7 +96,7 @@ Odds: 1.4     3.0
 
 Decision: Ramos win with 62.8% to 37.2%      0.4
 
-Result: Fritz :one:::two: Ramos      +0.8  (--)
+Result: Fritz :one:::two: Ramos      +0.8  (+--)
 
 
 
@@ -108,7 +108,7 @@ Odds:  3   1.4
 
 Decision: Harris win with 87.7% to 12.3%    2:0(2.0)      2
 
-Result: Nishioka :zero:::two: Harris    +1.4  (++)
+Result: Nishioka :zero:::two: Harris    +1.4  (+++)
 
 
 
@@ -120,7 +120,7 @@ Odds: 2.37   1.57
 
 Decision: Schwartzman win with 70.6% vs 29.4% 
 
-Result:  Schwartzman :two:::zero: Evans       +0.57  (++)
+Result:  Schwartzman :two:::zero: Evans       +0.57  (+++)
 
 
 
@@ -132,7 +132,7 @@ Odds: 2.2   1.66
 
 Decision: De Miunar win with 78% to 22%
 
-Result: Krajinovic :one:::two: De Minaur​       +0.66（++）
+Result: Krajinovic :one:::two: De Minaur​       +0.66（+++）
 
 
 
@@ -144,7 +144,7 @@ Odds: 1.7   2.1
 
 Decision: Gasquet win with 74.9% to 25.1%
 
-Result: Gasquet :zero:::two: Murray     -1（+-）
+Result: Gasquet :zero:::two: Murray     -1（-+-）
 
 
 
@@ -156,7 +156,7 @@ Odds: 2.3   1.61
 
 Decision: Khachanov win with  66.2% to 33.8%       Khachanov -1.5 sets (1.8)   2
 
-Result: Anderson :zero:::two: Khachanov     +1.41(++)
+Result: Anderson :zero:::two: Khachanov     +1.41(+++)
 
 
 
@@ -168,7 +168,7 @@ Odds: 1.71    2.16
 
 Decision : No participation.
 
-Result: Nakashima :zero:::two: Mcdonald      /（--）
+Result: Nakashima :zero:::two: Mcdonald      /（/--）
 
 
 
@@ -182,7 +182,7 @@ Odds:  1.57    2.37
 
 Decision: Bublik win with 62.6% to 37.4%     Bublik win -2.5 (1.9)    Bublik win at least one set (1.25)    3
 
-Result:
+Result: Bublik :two:::one: Giron      -0.18   (+++)
 
 
 
@@ -194,9 +194,9 @@ UTS:  45.7% vs 54.3%
 
 Odds:  2.62    1.5
 
-Decision: Agut win with 69.7% to 30.3%   Agut win -2.5 (1.8)     2/1
+Decision: Agut win with 69.7% to 30.3%   Agut win -2.5 (1.8)     2
 
-Result:
+Result: Dimitrov :two:::zero: Agut    -2 (---)
 
 
 
@@ -210,7 +210,7 @@ Odds:  1.36   3.2
 
 Decision: Hurkacz win with 68.2% to 31.8%    2:0 (1.9)   Hurkacz win -3.5 (1.8)
 
-Result:
+Result: Hurkacz :two:::one: Fokina     +0.16  (+++)
 
 
 
@@ -222,7 +222,7 @@ Odds:  1.25   4
 
 Decision: Korda win with 67.5% to 32.5%
 
-Result:
+Result: Korda :two:::zero: Djere    +0.25(+++)
 
 
 
@@ -236,7 +236,7 @@ Odds: 1.8    2.0
 
 Decision: Cilic win with 76.9% vs 23.1%  Cilic win +0.5 (1.83)
 
-Result:
+Result: Karatsev :zero:::two: Cilic    +1.83 (+--)
 
 
 
@@ -248,7 +248,7 @@ Odds: 1.9   1.9
 
 Decision: No participation.
 
-Result:
+Result: Isner :two:::one: Norrie     /  (/+/)
 
 
 
@@ -262,7 +262,7 @@ Odds:  2.2   1.66
 
 Decision: Sonego win with 60.5% to 39.5%
 
-Result:
+Result: Sonego :two:::zero: Alcaraz     +1.2  (+--)
 
 
 
@@ -274,7 +274,7 @@ Odds: 1.44    2.75
 
 Decision: Opelka win with 72.2% to 27.8%   Opelka win -2.5 (1.8)
 
-Result:
+Result: Opelka :two:::one: Moutet    -0.56 (+++)
 
 
 
@@ -288,7 +288,7 @@ Odds:  2.2  1.66
 
 Decision: No participation.
 
-Result:
+Result: Lajovic :zero:::two: Monfils      /  (/++)
 
 
 
@@ -300,7 +300,7 @@ Odds:  2.5   1.53
 
 Decision: Humbert win with 61% to 39%
 
-Result:
+Result:  Tiafoe :two:::zero: Humbert    -1 (---)
 
 
 
@@ -316,7 +316,7 @@ Odds:  1.16     5
 
 Decision: Berrettini win with 93.7% to 6.3% 
 
-Result: 
+Result: Berrettini :two:::one: Ramos     +0.16(+++)
 
 
 
@@ -330,7 +330,7 @@ Odds: 2.2   1.66
 
 Decision: Paul win at least one set (1.28)     the model shows: Paul win with 50.4% to 49.6% (I don't recommend)
 
-Result:
+Result:          +0.28 (/)
 
 
 
@@ -340,7 +340,7 @@ UTS: 29.3% vs 70.7%
 
 Odds: 3.5   1.3
 
-Decision: Fognini win with 55.7% vs 44.3%
+Decision: Fognini win with 55.7% to 44.3%
 
 Result:
 
@@ -368,7 +368,81 @@ UTS: 81.1% vs 18.9%
 
 Odds:  4.33     1.22
 
-Decision: Zverev win with 62.3% to 37.7%    2:0 (1.61)   2/1
+Decision: Zverev win with 62.3% to 37.7%    2:0 (1.61)     3
 
 Result: 
+
+
+
+### Day 3
+
+Medvedev vs Mcdonald
+
+UTS: 88.5% vs 11.5%
+
+Odds:  1.1       7
+
+Decision: Medvedev win with 93.8% to 6.2%        2:0 (1.3)    two sets (1.22)   3
+
+Result:
+
+
+
+Koepfer vs Busta
+
+UTS: 23.5% vs 76.5%
+
+Odds:  3.75   1.28
+
+Decision: Busta win with 60% to 40%
+
+Result:
+
+
+
+Bublik vs Dimitrov
+
+UTS: 44% vs 56%
+
+Odds:  2     1.8
+
+Decision: Bublik win with 52.8% to 47.2%
+
+Result:
+
+
+
+Hurkacz vs Murray
+
+UTS: 53.5% vs 46.5%
+
+Odds:  1.36    3.2
+
+Decision: Hurkacz win with 73.6% to 26.4%    sum of sets less than 21.5 (2.0)   2
+
+Result:
+
+
+
+Khachanov vs Aliassime
+
+UTS:  59.2% vs 40.8%
+
+Odds: 1.57  2.37
+
+Decision: Khachanov win with 75.1% to 24.9%    2:0 (2.37)   3
+
+Result:
+
+
+
+Tsitsipas vs Korda
+
+UTS:  77.1% vs 22.9%
+
+Odds:  1.3      3.5
+
+Decision: Tsitsipas win with 76.7% to 23.3%      2:0 (1.8)   3
+
+Result:
 
