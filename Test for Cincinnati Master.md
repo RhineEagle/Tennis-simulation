@@ -172,6 +172,12 @@ Result: Nakashima :zero:::two: Mcdonald      /（/--）
 
 
 
+UTS:  -1.42  (-6)
+
+pure Odds: -4.01  (-7)
+
+Decision: +4.6  (-3, 3/)
+
 ### Day 2
 
 Bublik vs Giron
@@ -262,7 +268,7 @@ Odds:  2.2   1.66
 
 Decision: Sonego win with 60.5% to 39.5%
 
-Result: Sonego :two:::zero: Alcaraz     +1.2  (+--)
+Result: Sonego :two:::zero: Alcaraz     +1.2  (++-)
 
 
 
@@ -330,19 +336,7 @@ Odds: 2.2   1.66
 
 Decision: Paul win at least one set (1.28)     the model shows: Paul win with 50.4% to 49.6% (I don't recommend)
 
-Result:          +0.28 (/)
-
-
-
-Pella vs Fognini
-
-UTS: 29.3% vs 70.7%
-
-Odds: 3.5   1.3
-
-Decision: Fognini win with 55.7% to 44.3%
-
-Result:
+Result: Garin :one:::two: Paul         +0.28 (/-+)
 
 
 
@@ -356,23 +350,15 @@ Odds:  4    1.25
 
 Decision: No participation.
 
-Result:
+Result: Paire :two:::one: Shapovalov    /(/--)
 
 
 
-Harris vs Zverev
+UTS:  -0.46  (-5)
 
-Abstract: Zverev won Olympics on 1st Aug. Whether he can focus isn't certain. Both of them are stable.
+pure Odds: -1.04  (-5, 1/)
 
-UTS: 81.1% vs 18.9%
-
-Odds:  4.33     1.22
-
-Decision: Zverev win with 62.3% to 37.7%    2:0 (1.61)     3
-
-Result: 
-
-
+Decision: +0.14 (-3, 4/)
 
 ### Day 3
 
@@ -384,7 +370,21 @@ Odds:  1.1       7
 
 Decision: Medvedev win with 93.8% to 6.2%        2:0 (1.3)    two sets (1.22)   3
 
-Result:
+Result: Medvedev :two:::zero: Mcdonald    +0.62 (+++)
+
+
+
+Harris vs Zverev
+
+Abstract: Zverev won Olympics on 1st Aug. Whether he can focus isn't certain. Both of them are stable.
+
+UTS: 18.9% vs 81.1%
+
+Odds:  4.33     1.22
+
+Decision: Zverev win with 62.3% to 37.7%    2:0 (1.61)     3
+
+Result: Harris :zero:::two: Zverev     +1.05 (+++)
 
 
 
@@ -396,7 +396,19 @@ Odds:  3.75   1.28
 
 Decision: Busta win with 60% to 40%
 
-Result:
+Result: Koepfer :zero:::two: Busta    +0.28(+++) 
+
+
+
+Pella vs Fognini
+
+UTS: 29.3% vs 70.7%
+
+Odds: 3.5   1.3
+
+Decision: Fognini win with 55.7% to 44.3%
+
+Result: Pella :two:::zero: Fognini     -1(---)
 
 
 
@@ -408,7 +420,7 @@ Odds:  2     1.8
 
 Decision: Bublik win with 52.8% to 47.2%
 
-Result:
+Result: Bublik :zero:::two: Dimitrov    -1 (-++)
 
 
 
@@ -418,9 +430,9 @@ UTS: 53.5% vs 46.5%
 
 Odds:  1.36    3.2
 
-Decision: Hurkacz win with 73.6% to 26.4%    sum of sets less than 21.5 (2.0)   2
+Decision: Hurkacz win with 73.6% to 26.4%    less than 21.5 games
 
-Result:
+Result: Hurkacz :two:::zero: Murray     -0.64 (+++)
 
 
 
@@ -430,9 +442,35 @@ UTS:  59.2% vs 40.8%
 
 Odds: 1.57  2.37
 
-Decision: Khachanov win with 75.1% to 24.9%    2:0 (2.37)   3
+Decision: Khachanov win with 75.1% to 24.9%    2:0 (2.37)   2
 
-Result:
+Result: Aliassime :two:::one: Khachanov     -2 (---)
+
+
+
+Rublev vs Cilic
+
+Abstract: Rublev didn't behave well in the last two tournament.
+
+UTS: 71.8% vs 28.2%
+
+Odds: 1.3    3.5
+
+Decision: Rublev win with 60% to 40%. 
+
+Result: Rublev :two:::one: Cilic    +0.3 (+++)
+
+
+
+Tiafoe vs Schwartzman
+
+UTS:  40.5% vs 59.5%
+
+Odds:  2.0    1.8
+
+Decision: Schwartzman win with 58.8% to 41.2%
+
+Result: Tiafoe :one:::two: Schwartzman       +0.8 (+++)
 
 
 
@@ -443,6 +481,160 @@ UTS:  77.1% vs 22.9%
 Odds:  1.3      3.5
 
 Decision: Tsitsipas win with 76.7% to 23.3%      2:0 (1.8)   3
+
+Result:  Tsitsipas :two:::zero: Korda         +1.4 (+++)
+
+
+
+Sinner vs Isner
+
+UTS:  48.7% vs 51.3%
+
+Odds: 1.57    2.37
+
+Decision:  Isner win with 74.5% to 25.5%    Isner at least win one set (1.57)
+
+Result: Isner :two:::one: Sinner         +1.94 (++-)
+
+
+
+Monfils vs De Minaur
+
+UTS:  50% vs 50%
+
+Odds:  2.0  1.8
+
+Decision: Monfils win with 99% to 1%      Monfis win +0.5 (1.83)
+
+Result: Monfils :two:::zero: De Minaur       +1.83 (+/-)
+
+
+
+Ruud vs Opelka
+
+UTS: 51.3% vs 48.3%
+
+Odds:  1.8     2
+
+Decision: three sets (2.37)  more than 23.5 games (1.83)   model shows that Ruud win with 50.5% to 49.5% ( I don't recommend)
+
+Result: Ruud :two:::one: Opelka       +2.2 (/++)
+
+
+
+Sonego vs Paul
+
+UTS: 57% vs 43%
+
+Odds: 2.0    1.80
+
+Decision: Paul win with 59.2% to 40.8%
+
+Result: Sonego :two:::zero: Paul           -1 (-+-)
+
+
+
+UTS:  +4.33   (-2, 1/)
+
+pure Odds:  -1.04  (-5)
+
+Decision: +4.78   (-4, 1/)
+
+### Day 4
+
+#### round 3
+
+Medvedev vs Dimitrov
+
+UTS:  80.2% vs 19.8%
+
+Odds:  1.14     5.5
+
+Decision: Medvedev win with 82.4% to 17.6%     less than 20.5 games (1.83)
+
+Result:
+
+
+
+Hurkacz vs Busta
+
+UTS:  41.5% vs 58.5%
+
+Odds:  1.72   2.1
+
+Decision: Hurkacz win with 85.7% to 14.3% 
+
+Result:
+
+
+
+Rublev vs Monfils
+
+UTS:  67.6% vs 32.4%
+
+Odds:
+
+Decision:
+
+Result:
+
+
+
+Isner vs Paire
+
+UTS:  75.5% vs 24.5%
+
+Odds:
+
+Decision:
+
+Result:
+
+
+
+Ruud vs Schwartzman
+
+UTS:  49.2% vs 50.8%
+
+Odds:
+
+Decision:
+
+Result:
+
+
+
+Pella vs Zverev
+
+UTS:  10.8% vs 89.2%
+
+Odds:
+
+Decision:
+
+Result:
+
+
+
+Berrettini vs Aliassime
+
+UTS:  69.7% vs 30.3%
+
+Odds:  1.57     2.37
+
+Decision: Berrettini win with 66.1% to 33.9%     Berrettini win -1.5 (1.72)
+
+Result:
+
+
+
+Sonego vs Tsitsipas
+
+UTS:
+
+Odds:
+
+Decision:
 
 Result:
 
