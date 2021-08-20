@@ -552,7 +552,7 @@ Odds:  1.14     5.5
 
 Decision: Medvedev win with 82.4% to 17.6%     less than 20.5 games (1.83)
 
-Result:
+Result: Medvedev :two:::zero: Dimitrov      +0.97 (+++)
 
 
 
@@ -564,7 +564,7 @@ Odds:  1.72   2.1
 
 Decision: Hurkacz win with 85.7% to 14.3% 
 
-Result:
+Result: Hurkacz :zero:::two: Busta    -1 (-+-)
 
 
 
@@ -572,11 +572,11 @@ Rublev vs Monfils
 
 UTS:  67.6% vs 32.4%
 
-Odds:
+Odds:  1.36   3.2
 
-Decision:
+Decision:  Rublev win with 61.7% to 38.3%
 
-Result:
+Result: Rublev :two:::zero: Monfils    +0.36 (+++)
 
 
 
@@ -584,11 +584,11 @@ Isner vs Paire
 
 UTS:  75.5% vs 24.5%
 
-Odds:
+Odds:  1.36    3.2
 
-Decision:
+Decision: Isner win with 65.3% to 34.7%      Isner at least win one set (1.14)
 
-Result:
+Result: Isner :one:::two: Paire    -0.86 (---)
 
 
 
@@ -596,11 +596,11 @@ Ruud vs Schwartzman
 
 UTS:  49.2% vs 50.8%
 
-Odds:
+Odds:  1.72     2.1
 
-Decision:
+Decision:  Ruud at least win one set (1.3)   Model shows Schwartzman win with 54.7% to 45.3% (I don't recommend)
 
-Result:
+Result: Ruud :two:::zero: Schwartzman  +0.3 (/-+)
 
 
 
@@ -608,11 +608,11 @@ Pella vs Zverev
 
 UTS:  10.8% vs 89.2%
 
-Odds:
+Odds:   9      1.071
 
-Decision:
+Decision: Zverev win with 85.9% to 14.1%    2:0 (1.25)   two sets (1.18)  less than 19.5 games (1.8)
 
-Result:
+Result: Pella :zero:::two: Zverev    +1.3 (+++)
 
 
 
@@ -624,17 +624,24 @@ Odds:  1.57     2.37
 
 Decision: Berrettini win with 66.1% to 33.9%     Berrettini win -1.5 (1.72)
 
-Result:
+Result: 
 
 
 
 Sonego vs Tsitsipas
 
-UTS:
+UTS:  18.5% vs 81.5%
 
-Odds:
+Odds: 4.33   1.22
 
-Decision:
+Decision: Tsitsipas win with 74.8% to 25.2%    2:0 (1.61)  
 
-Result:
+Result: Tsitsipas :two:::one: Sonego       -0.78 (+++)
 
+
+
+UTS: -1.11 (-3)
+
+pure Odds: -1.49 (-3)
+
+Decision: -1.71 (-3, 1/)
