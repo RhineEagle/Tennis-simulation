@@ -624,7 +624,7 @@ Odds:  1.57     2.37
 
 Decision: Berrettini win with 66.1% to 33.9%     Berrettini win -1.5 (1.72)
 
-Result: 
+Result:  Berrettini :zero:::two: Aliassime    -1 (---)
 
 
 
@@ -645,3 +645,87 @@ UTS: -1.11 (-3)
 pure Odds: -1.49 (-3)
 
 Decision: -1.71 (-3, 1/)
+
+### Day 5
+
+#### Quarter-Final
+
+Medvedev vs Busta
+
+UTS: 69% vs 31%
+
+Odds:  1.25      4
+
+Decision: Medvedev win with 61.9% to 38.1% 
+
+Result: Medvedev :two:::zero: Busta      +0.25 (+++)
+
+
+
+Rublev vs Paire
+
+UTS: 83.7% vs 16.3%
+
+Odds:  1.16     5
+
+Decision: Rublev win with 66.6% to 33.4%     
+
+Result: Rublev :two:::one: Paire       +0.16 (+++)
+
+
+
+Zverev vs Ruud
+
+UTS: 74.3% vs 25.7%
+
+Odds：1.28    3.75
+
+Decision：Zverev win with 85.7% to 14.3%     2:0 (1.8)
+
+Result：Zverev :two:::zero: Ruud     +1.08 (+++)
+
+
+
+Aliassime vs Tsitsipas
+
+UTS: 24.1% vs 75.9%
+
+Odds：3.2        1.36
+
+Decision：Tsitsipas win with 83.7% to 16.3%    less than 22.5 games (1.8)
+
+Result: Aliassime :one:::two: Tsitsipas     -0.64 (+++)
+
+
+
+UTS:        +1.05
+
+pure Odds:   +1.05
+
+Decision:  +0.85
+
+### Day 6
+
+#### Semi-Final
+
+Medvedev vs Rublev
+
+UTS:  68.7% vs 31.3%
+
+Odds:  1.22     4.33
+
+Decision: Medvedev win with 81.2% to 18.8%    2:0 (1.61)    two sets (1.36)
+
+Result:
+
+
+
+Zverev vs Tsitsipas
+
+UTS:  51.4% vs 48.6%
+
+Odds:  1.66     2.20
+
+Decision: Zverev win with 63% to 37%  win -1.5(1.83)   win at least one set(1.28)   less than 2.5 DF(2.0)
+
+Result:
