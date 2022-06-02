@@ -6,10 +6,6 @@
 
   ATTENTION: The statistics of the player should be related with the surface, level of the opponent and includes: ACE, Double Fault, 1st serve in, 1st serve won, 2nd serve won, Break points save, 1st return won, 2nd return won, Break points convert, Elo of the surface. You can use more terms to improve it .
 
-<<<<<<< HEAD
-  We have introduced variance method into this model. 
-=======
   We have introduced variance method into this model. It is more reasonable.
->>>>>>> 00e4718 (new description)
 
   With some samples to test, the results is generally convinced. We hope to make more large improvement in the future.  
