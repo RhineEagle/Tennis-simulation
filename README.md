@@ -1,5 +1,17 @@
 # Tennis Simulation model
 
+### 2.1 version
+
+According to the problems we met in inserting data into SQL Server including missing by using http://ultimatetennisstatistics.com and http://sofascore.com/Tennis . We turn our sight to http://rank-tennis.com . Except for some error of Grand Slam in 2021, this website can provide sufficient data. Now we have aborted http://sofascore.com/Tennis for its difficulty in selecting data quickly.
+
+We also polish up the code and the SQL structure in order to improve efficiency of forecasting matches consecutively.
+
+**Files include:**
+
+- match_result.py   simulate the match result for input players' name.
+- match_info.py   record match result and statistics for input tournament information
+- rank-tennis.py   record statistics of match which is lack in UTS from rank-tennis
+
 ### 2.0  version
 
 We have applied SQL into our model. SQL can store the data and easily used into calculation without frequently crawling data from the web. The model itself doesn't have too much changes. We will introduce Dirichlet procession in the next version. We use SQL Server in the code.

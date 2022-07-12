@@ -3,9 +3,11 @@ import pandas as pd
 import random
 import numpy as np
 import copy
+import os
+from tqdm import trange
 
 class player(object):
-    def __init__(self,name,ace,fin,fser,df,sser,bs,fret,sret,bc,elo):
+    def __init__(self,name,ace,fin,fser,df,sser,bs,aace,fret,sret,bc,elo):
         self.name=name
         self.ace=ace
         self.firstin=fin
@@ -13,6 +15,7 @@ class player(object):
         self.doublefault=df
         self.secondserve=sser
         self.breaksave=bs
+        self.aace = aace
         self.firstreturn=fret
         self.secondreturn=sret
         self.breakconvert=bc
@@ -69,10 +72,10 @@ def game(player1,player2,g1,g2,order,num):
 
 def play(player1,player2,g1,g2,p1,p2,num):
     p=random.random()
-    weigh=(player1.elo-1600)/(player1.elo+player2.elo-3200)
+    weigh=player1.elo/(player1.elo+player2.elo)
     if (p2==3 and p1<=2) or (p2>=4 and p2-p1==1):
         #prob=player1.breaksave*(100-player2.breakconvert)/(player1.breaksave*(100-player2.breakconvert)+(100-player1.breaksave)*player2.breakconvert)
-        prob = player1.breaksave/100*weigh+(1-player2.breakconvert/100)*(1-weigh)
+        prob = max(player1.breaksave/100,1-player2.breakconvert/100)*weigh+min(player1.breaksave/100,1-player2.breakconvert/100)*(1-weigh)
         if p>prob:
             p2=p2+1
             #print(g1, " ", g2," " , player2.name,p1,"break!")
@@ -80,7 +83,13 @@ def play(player1,player2,g1,g2,p1,p2,num):
             p1=p1+1
             #print(g1," ",g2,player1.name,"save!")
     else:
-        if p<=player1.ace/100+random.uniform(stochastic(num)-0.01,stochastic(num)+0.01):
+        real_ace = weigh * max(player1.ace / 100, player2.aace / 100) + (1 - weigh) * min(player1.ace / 100,
+                                                                                          player2.aace / 100)
+        if real_ace > 2.5 * player1.ace / 100 or real_ace-player1.ace/100>=0.035:
+            real_ace = min(2.5 * player1.ace / 100, player1.ace/100+0.035)
+        if real_ace <= 0.7 * player1.ace / 100 or real_ace-player1.ace/100<=-0.045:
+            real_ace = max(0.7 * player1.ace / 100, player1.ace/100-0.045)
+        if p<=real_ace+random.uniform(stochastic(num)-0.01,stochastic(num)+0.01):
         #if p <= player1.ace / 100:
             p1=p1+1
             #print(g1, " ", g2, " ", player1.name, p1, "ace!")
@@ -93,7 +102,7 @@ def play(player1,player2,g1,g2,p1,p2,num):
                 else:
                     pr2=random.random()
                     #prob=player1.secondserve*(100-player2.secondreturn)/(player1.secondserve*(100-player2.secondreturn)+(100-player1.secondserve)*player2.secondreturn)
-                    prob=player1.secondserve/100*weigh+(1-player2.secondreturn/100)*(1-weigh)+random.uniform(stochastic(num)-0.02,stochastic(num)+0.02)
+                    prob=max(player1.secondserve/100,1-player2.secondreturn/100)*weigh+min(player1.secondserve/100,1-player2.secondreturn/100)*(1-weigh)+random.uniform(stochastic(num)-0.02,stochastic(num)+0.02)
                     #prob = player1.secondserve / 100 * weigh + (1 - player2.secondreturn / 100) * (1 - weigh)
                     #print(player1.name,prob)
                     if pr2>prob:
@@ -103,7 +112,7 @@ def play(player1,player2,g1,g2,p1,p2,num):
             else:
                 pr1=random.random()
                 #prob=player1.firstserve*(100-player1.firstreturn)/(player1.firstserve*(100-player2.firstreturn)+(100-player1.firstserve)*player2.firstreturn)
-                prob=player1.firstserve/100*weigh+(1-player2.firstreturn/100)*(1-weigh)+random.uniform(stochastic(num)-0.02,stochastic(num)+0.02)
+                prob=max(player1.firstserve/100,1-player2.firstreturn/100)*weigh+min(player1.firstserve/100,1-player2.firstreturn/100)*(1-weigh)+random.uniform(stochastic(num)-0.02,stochastic(num)+0.02)
                 #prob = player1.firstserve / 100 * weigh + (1 - player2.firstreturn / 100) * (1 - weigh)
                 if pr1>prob:
                     p2=p2+1
@@ -112,9 +121,14 @@ def play(player1,player2,g1,g2,p1,p2,num):
     return [p1,p2,g1,g2]
 
 def playseven(player1,player2,p1,p2,i):
-    weigh = (player1.elo - 1600) / (player1.elo + player2.elo - 3200)
+    weigh = player1.elo / (player1.elo + player2.elo)
     p=random.random()
-    if p <= player1.ace / 100:
+    real_ace=0.5*max(player1.ace/100,player2.aace/100)+0.5*min(player1.ace/100,player2.aace/100)
+    if real_ace > 2.5 * player1.ace / 100 or real_ace - player1.ace / 100 >= 0.035:
+        real_ace = min(2.5 * player1.ace / 100, player1.ace / 100 + 0.035)
+    if real_ace <= 0.7 * player1.ace / 100 or real_ace - player1.ace / 100 <= -0.045:
+        real_ace = max(0.7 * player1.ace / 100, player1.ace / 100 - 0.045)
+    if p <= real_ace:
         p1 = p1 + 1
     else:
         if p > player1.firstin/100:
@@ -122,14 +136,14 @@ def playseven(player1,player2,p1,p2,i):
                 p2 = p2 + 1
             else:
                 pr2 = random.random()
-                prob = player1.secondserve / 100 * weigh + (1-player2.secondreturn/100) * (1 - weigh)
+                prob = max(player1.secondserve / 100,1-player2.secondreturn/100) * weigh + min(player1.secondserve / 100,1-player2.secondreturn/100) * (1 - weigh)
                 if pr2 > prob:
                     p2 = p2 + 1
                 else:
                     p1 = p1 + 1
         else:
             pr1 = random.random()
-            prob=player1.firstserve/100*weigh+(1-player2.firstreturn/100)*(1-weigh)
+            prob=max(player1.firstserve/100,1-player2.firstreturn/100)*weigh+min(player1.firstserve/100,1-player2.firstreturn/100)*(1-weigh)
             if pr1 > prob:
                 p2 = p2 + 1
             else:
@@ -189,16 +203,26 @@ def playset(player1,player2,var1,var2,setmode):
     return [setpoint1,setpoint2,lengame]
 
 def print_obj(obj):
-    print (['%s:%s' % item for item in obj.__dict__.items()])
+    num=0
+    str=[]
+    for item in obj.__dict__.items():
+        if num==0:
+            str.append('%s:%s' % item)
+        else:
+            str.append('%s:%.3f' % item)
+        num=num+1
+        if num==11:
+            break
+    print (str)
 
 def match(playername1,playername2,playerid1,playerid2,stats1,stats2,var1,var2,elo1,elo2,setmode,N):
     if playerid2 == "-1" or playerid1 == "-1":
         exit(1)
 
-    player1 = player(playername1, stats1[0], stats1[2], stats1[3], stats1[1], stats1[4], stats1[5], stats1[8],
+    player1 = player(playername1, stats1[0], stats1[2], stats1[3], stats1[1], stats1[4], stats1[5], stats1[6], stats1[8],
                      stats1[9], stats1[10], elo1)
     print_obj(player1)
-    player2 = player(playername2, stats2[0], stats2[2], stats2[3], stats2[1], stats2[4], stats2[5], stats2[8],
+    player2 = player(playername2, stats2[0], stats2[2], stats2[3], stats2[1], stats2[4], stats2[5], stats2[6], stats2[8],
                      stats2[9],
                      stats2[10], elo2)
     print_obj(player2)
@@ -206,8 +230,8 @@ def match(playername1,playername2,playerid1,playerid2,stats1,stats2,var1,var2,el
     list1 = []
     list2 = []
     list3 = []
-    print("start to simulate...")
-    for i in range(0, N):
+    print("start to simulate... please wait for a while")
+    for _ in trange(0, N):
         list = playset(player1, player2, var1, var2, setmode)
         list1.append(list[0])
         list2.append(list[1])
@@ -218,7 +242,7 @@ def match(playername1,playername2,playerid1,playerid2,stats1,stats2,var1,var2,el
         sum21 = 0
         sum12 = 0
         sum02 = 0
-        for i in range(0, N):
+        for i in range(N):
             if list1[i] == 2 and list2[i] == 0:
                 sum20 += 1
             elif list1[i] == 2 and list2[i] == 1:
@@ -228,10 +252,7 @@ def match(playername1,playername2,playerid1,playerid2,stats1,stats2,var1,var2,el
             else:
                 sum02 += 1
 
-        print(player1.name, "2:0", player2.name, sum20 / N)
-        print(player1.name, "2:1", player2.name, sum21 / N)
-        print(player1.name, "1:2", player2.name, sum12 / N)
-        print(player1.name, "0:2", player2.name, sum02 / N)
+        return np.array([sum20, sum21, sum12, sum02])
 
     else:
         sum30 = 0
@@ -241,7 +262,7 @@ def match(playername1,playername2,playerid1,playerid2,stats1,stats2,var1,var2,el
         sum13 = 0
         sum03 = 0
 
-        for i in range(0, N):
+        for i in range(N):
             if list1[i] == 3 and list2[i] == 0:
                 sum30 += 1
             elif list1[i] == 3 and list2[i] == 1:
@@ -255,65 +276,148 @@ def match(playername1,playername2,playerid1,playerid2,stats1,stats2,var1,var2,el
             else:
                 sum03 += 1
 
-        print(player1.name,"3:0",player2.name, sum30 / N)
-        print(player1.name,"3:1",player2.name, sum31 / N)
-        print(player1.name,"3:2",player2.name, sum32 / N)
-        print(player1.name,"2:3",player2.name, sum23 / N)
-        print(player1.name,"1:3",player2.name, sum13 / N)
-        print(player1.name,"0:3",player2.name, sum03 / N)
+        return np.array([sum30,sum31,sum32,sum23,sum13,sum03])
 
-    lenlist=pd.DataFrame(list3)
-    lenlist[1]=1
-    len=lenlist.groupby(0).count()/N
-    print(len)
+    # lenlist=pd.DataFrame(list3)
+    # lenlist[1]=1
+    # len=lenlist.groupby(0).count()/N
+    # print(len)
+
+def printresult(player1,player2,list,N):
+    if len(list)==4:
+        print(player1, "2:0", player2, list[0] / N)
+        print(player1, "2:1", player2, list[1] / N)
+        print(player1, "1:2", player2, list[2] / N)
+        print(player1, "0:2", player2, list[3] / N)
+    else:
+        print(player1, "3:0", player2, list[0] / N)
+        print(player1, "3:1", player2, list[1] / N)
+        print(player1, "3:2", player2, list[2] / N)
+        print(player1, "2:3", player2, list[3] / N)
+        print(player1, "1:3", player2, list[4] / N)
+        print(player1, "0:3", player2, list[5] / N)
 
 
-name1="Rune"
-name2="Ruud"
-elo1=1975
-elo2=2153
-seq1=0
-seq2=0
+def simulation(name1,name2,elo1,elo2,speed1,speed2,type,N,s1,s2,time1,time2,setmode):
+    connect = pymssql.connect(server='LAPTOP-BBQ77BE4', user='sa', password='123456', database='tennis')
+    cursor = connect.cursor()
+    lan1 = "select top 1 ID from player where Name Like '%" + name1 + "%'"
+    cursor.execute(lan1)
+    id1 = cursor.fetchone()[0]
+    lan2 = "select top 1 ID from player where Name Like '%" + name2 + "%'"
+    cursor.execute(lan2)
+    id2 = cursor.fetchone()[0]
 
-connect = pymssql.connect(server='LAPTOP-BBQ77BE4', user='sa', password='123456', database='tennis')
-cursor = connect.cursor()
-cursor.execute("select top 1 ID from player where Name Like '%Rune%'")
-id1=cursor.fetchone()[0]
-cursor.execute("select top 1 ID from player where Name Like '%Ruud%'")
-id2=cursor.fetchone()[0]
+    if s1=='t':
+        cursor.execute("select * from dbo.player_statistics(%s,%s,%s,%s)", (id1, type, time1, time2))
+    else:
+        cursor.execute("select * from dbo.player_fastcourt_statistics(%s,%s,%s,%s,%s)",(id1,speed1,speed2,time1,time2))
+    mean_stat1 = cursor.fetchone()
 
-cursor.execute("select * from dbo.player_statistics(%s,%s,%s)",(id1,'Clay',seq1))
-mean_stat1=cursor.fetchone()
-cursor.execute("select * from dbo.player_statistics(%s,%s,%s)",(id2,'Clay',seq2))
-mean_stat2=cursor.fetchone()
+    if s2 == 't':
+        cursor.execute("select * from dbo.player_statistics(%s,%s,%s,%s)", (id2, type, time1, time2))
+    else:
+        cursor.execute("select * from dbo.player_fastcourt_statistics(%s,%s,%s,%s,%s)",(id2,speed1,speed2,time1,time2))
+    mean_stat2 = cursor.fetchone()
 
-cursor.execute("select * from dbo.player_statistics_single(%s,%s,%s)",(id1,'Clay',seq1))
-row=cursor.fetchone()
-stats_1=[]
-while row:
-    stats_1.append(row)
-    row=cursor.fetchone()
-temp_1 = np.zeros((len(stats_1), 11), dtype=float)
-for i in range(len(stats_1)):
-    for j in range(11):
-        temp_1[i][j]=stats_1[i][j]
-cursor.execute("select * from dbo.player_statistics_single(%s,%s,%s)",(id2,'Clay',seq2))
-row=cursor.fetchone()
-stats_2=[]
-while row:
-    stats_2.append(row)
-    row=cursor.fetchone()
-temp_2 = np.zeros((len(stats_2), 11), dtype=float)
-for i in range(len(stats_2)):
-    for j in range(11):
-        temp_2[i][j]=stats_2[i][j]
-sigma_1=[]
-for i in range(11):
-    sigma_1.append(pd.DataFrame(temp_1[:, i]).std(ddof=0))
-sigma_2=[]
-for i in range(11):
-    sigma_2.append(pd.DataFrame(temp_2[:, i]).std(ddof=0))
-# print(sigma_1,sigma_2)
+    if s1 == 't':
+        cursor.execute("select * from dbo.player_statistics_single(%s,%s,%s,%s)", (id1, type, time1, time2))
+    else:
+        cursor.execute("select * from dbo.player_fastcourt_single(%s,%s,%s,%s,%s)",(id1,speed1,speed2,time1,time2))
+    row = cursor.fetchone()
+    stats_1 = []
+    while row:
+        stats_1.append(row)
+        row = cursor.fetchone()
+    temp_1 = np.zeros((len(stats_1), 11), dtype=float)
+    for i in range(len(stats_1)):
+        for j in range(11):
+            temp_1[i][j] = stats_1[i][j]
 
-match(name1,name2,id1,id2,mean_stat1,mean_stat2,sigma_1,sigma_2,elo1,elo2,3,10000)
-connect.close()
+    if s2 == 't':
+        cursor.execute("select * from dbo.player_statistics_single(%s,%s,%s,%s)", (id2, type, time1, time2))
+    else:
+        cursor.execute("select * from dbo.player_fastcourt_single(%s,%s,%s,%s,%s)",(id2,speed1,speed2,time1,time2))
+    row = cursor.fetchone()
+    stats_2 = []
+    while row:
+        stats_2.append(row)
+        row = cursor.fetchone()
+    temp_2 = np.zeros((len(stats_2), 11), dtype=float)
+    for i in range(len(stats_2)):
+        for j in range(11):
+            temp_2[i][j] = stats_2[i][j]
+
+    print(len(stats_1), len(stats_2))
+    if (len(stats_1)<=5 and len(stats_2)>=7) or (len(stats_2)<=5 and len(stats_1)>=7):
+        flag=-1
+    elif len(stats_1)<3 or len(stats_2)<3:
+        if s1=='t' or (s1!='t' and (len(stats_1)==1 or len(stats_2)==1)):
+            connect.close()
+            return -2, []
+        else:
+            flag=0
+    else:
+        flag=0
+
+    sigma_1 = []
+    for i in range(11):
+        sigma_1.append(pd.DataFrame(temp_1[:, i]).std(ddof=0))
+    sigma_2 = []
+    for i in range(11):
+        sigma_2.append(pd.DataFrame(temp_2[:, i]).std(ddof=0))
+    # print(sigma_1,sigma_2)
+
+    resultlist=match(name1, name2, id1, id2, mean_stat1, mean_stat2, sigma_1, sigma_2, elo1, elo2, setmode, N)
+    connect.close()
+    return flag,resultlist
+
+def courtspeed(speed):
+    if speed=='FAST':
+        return 80,100
+    elif speed=='Fast':
+        return 65,85
+    elif speed=='Medium Fast':
+        return 50,65
+    elif speed=='Medium Slow':
+        return 35,50
+    elif speed=='Slow':
+        return 0,40
+    else:
+        return 0,100
+
+def start():
+    name1 = input("Input player's name: ")
+    name2 = input("Input player's name: ")
+    elo1 = 2000
+    elo2 = 2000
+    type = ''
+    setmode=2
+    s = input('Player1 use what type of statistics: type/speed ? ')
+    if s == 't':
+        type = input('Input court type: Grass/Hard/Clay ')
+    time1 = input('Use statistics starting from when ? ')
+    time2 = input('Use statistics ending in when ? ')
+    speed = input('Input court speed: FAST/Fast/Medium Fast/Medium Slow/Slow ')
+    speed1,speed2 = courtspeed(speed)
+    N = int(input('How many times to simulate ? '))
+    flag, resultlist = simulation(name1, name2, elo1, elo2, speed1, speed2, type, N, s, s,time1, time2, setmode)
+    if flag==-1:
+        flag, resultlist_add = simulation(name1, name2, elo1, elo2, speed1, speed2, type, N, 's', 's', time1, time2,setmode)
+        resultlist = resultlist+resultlist_add
+        printresult(name1,name2,resultlist,2*N)
+    elif flag==-2:
+        flag, resultlist = simulation(name1, name2, elo1, elo2, speed1, speed2, type, N, 's', 's', time1, time2,setmode)
+        if flag==-2:
+            print("Satistics less than limitation. ")
+        else:
+            printresult(name1,name2,resultlist,N)
+    else:
+        printresult(name1,name2,resultlist,N)
+
+if __name__ == '__main__':
+    q='N'
+    while q!='q':
+        start()
+        q = input('quit by entering q ')
+        i = os.system("cls")

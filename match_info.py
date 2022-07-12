@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 import time
 import pymssql
 import json
+import xlrd
 
 # find player_id
 def getplayerinfo(playername, cursor):
@@ -13,6 +14,22 @@ def getplayerinfo(playername, cursor):
     if row != None:
         id = row[0]
     return id
+
+def getplayerrankinfo(playername):
+    file = "Rank_tennis.xls"
+    workbook = xlrd.open_workbook(file)
+    pat=re.compile(playername)
+    Table = workbook.sheet_by_name("Sheet1")
+    length = Table.nrows
+    id=None
+    CName=None
+    for i in range(length):
+        row = Table.row_values(i)
+        if pat.search(row[0])!=None:
+            id=row[2]
+            CName=row[1]
+            break
+    return CName,id
 
 # collect some infamous player
 def getabnormalplayer(playerlist,cursor):
@@ -68,11 +85,12 @@ def getabnormalplayer(playerlist,cursor):
                 rank = re.findall(pat, item.find("td").text)[0]
                 break
 
+        Cname, Rid = getplayerrankinfo(playername)
         # insert new information
-        cursor.execute("INSERT Player Values(%s,%s,%s,%s,%s,%s,%s)",(id,playername,height,age,1,rank,country))
+        cursor.execute("INSERT Player Values(%s,%s,%s,%s,%s,%s,%s,%s)",(id,playername,height,age,rank,country,Rid,Cname))
         print("Successfully insert "+playername)
         id_list.append(id)
-        connect.commit()
+        #connect.commit()
 
     return id_list
 
@@ -149,10 +167,10 @@ def get_info(matchid1,matchid2,tournament_id,cursor):
         match_stat.insert(0, tournament_id)
         match_stat.insert(1, matchid2-i+1)
         print(player1 + " vs " + player2 + " been selected")
-        time.sleep(1)
+        time.sleep(0.5)
 
         cursor.execute("INSERT Match_stats VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)", tuple(match_stat))
-        connect.commit()
+        #connect.commit()
 
     return abnormal_player, match_id_list, local
 
@@ -201,9 +219,9 @@ def process(data1,data2,cursor):
     return stats
 
 # get match result
-def get_result(player,tournament_id,tournament_name,match):
+def get_result(player,tournament_id,tournament_name,match,KO,year):
     for playerid in player:
-        url = "https://www.ultimatetennisstatistics.com/matchesTable?playerId=" + str(int(playerid)) + "&current=1&rowCount=100&sort%5Bdate%5D=desc&searchPhrase=&season=&fromDate=&toDate=&level=&bestOf=&surface=&indoor=&speed=&round=&result=&opponent=&tournamentId=&tournamentEventId=&outcome=&score=&countryId=&bigWin=false&_="
+        url = "https://www.ultimatetennisstatistics.com/matchesTable?playerId=" + str(int(playerid)) + "&current=1&rowCount=200&sort%5Bdate%5D=desc&searchPhrase=&season=&fromDate=&toDate=&level=&bestOf=&surface=&indoor=&speed=&round=&result=&opponent=&tournamentId=&tournamentEventId=&outcome=&score=&countryId=&bigWin=false&_="
         head = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.25 Safari/537.36 Core/1.70.3756.400 QQBrowser/10.5.4039.400",
             # "sec-ch-ua": '"Chromium";v ="92","Not A;Brand";v="99","Google Chrome";v="92"',
@@ -214,33 +232,45 @@ def get_result(player,tournament_id,tournament_name,match):
         html = response.read().decode('utf-8')
         list = json.loads(html)["rows"]
         bo = False
+        ot=0
         for item in list:
             if item["tournament"] == tournament_name:
                 if item["winner"]["id"] == int(playerid):
-                    single = [int(playerid), item["loser"]["id"], match-item["id"], item["score"],tournament_id]
+                    if match-item["id"]<=0:
+                        continue
+                    if match-item["id"]>KO:
+                        break
+                    single = [int(playerid), item["loser"]["id"], match-item["id"], item["score"],tournament_id,year]
                     if item["score"] == "W/O":
                         print(str(item["id"]) + " should be kicked out!")
                     cursor.execute(
-                        "INSERT result VALUES(%s,%s,%s,%s,%s)", tuple(single))
-                    connect.commit()
+                        "INSERT result VALUES(%s,%s,%s,%s,%s,%s)", tuple(single))
+                    print(str(match-item["id"])+" has been finished")
+                    #connect.commit()
+                else:
+                    continue
                 bo = True
             else:
                 if bo == True:
                     break
         time.sleep(0.5)
 
-
 # main
-tournament_id = 32222
-tournament = 322
-tournament_name = "Geneva"
-start_id = 186551
-end_id = 186577
-seq=31
+tournament_id = 41421
+tournament = 414
+tournament_name = "Hamburg"
+start_id = 183008
+end_id = 183034
+seq = 38
+year = 2021
+level='ATP500'
+court_type='Clay'
+speed=44
+KO=28
 
 connect = pymssql.connect(server='LAPTOP-BBQ77BE4', user='sa', password='123456', database='tennis')
 cursor = connect.cursor()
-cursor.execute("Insert Tournament Values(%s,%s,%s,%s,%s,%s,%s,%s)", (tournament, 2022, tournament_name, 'ATP250', 'Clay', tournament_id, start_id, seq))
+cursor.execute("Insert Tournament Values(%s,%s,%s,%s,%s,%s,%s,%s,%s)", (tournament, year, tournament_name, level, court_type, tournament_id, start_id, seq, speed))
 abnormal = get_info(start_id-1,end_id,tournament_id, cursor)
 if abnormal != []:
     abnormal_player = abnormal[0]
@@ -252,13 +282,13 @@ if abnormal != []:
     for i in range(len(loc)):
         if loc[i] == "l":
             cursor.execute("Update Match_stats SET p1_id=%s where match_id=%s and tournament_id=%s", (id_list[i], match_id[i], tournament_id))
-            connect.commit()
+            #connect.commit()
         if loc[i] == "r":
             cursor.execute("Update Match_stats SET p2_id=%s where match_id=%s and tournament_id=%s", (id_list[i], match_id[i], tournament_id))
-            connect.commit()
+            #connect.commit()
 
 # select players who at least won a match in the tournament
-cursor.execute("Select distinct p1_id from Match_stats where tournament_id=%s",tournament_id)
+cursor.execute("Select distinct p1_id from Match_stats where tournament_id=%s Union Select distinct p2_id from Match_stats b where tournament_id =%s and NOT EXISTS(select 1 from Match_stats a where tournament_id = %s and b.p2_id=a.p1_id)",(tournament_id, tournament_id, tournament_id))
 row=cursor.fetchone()
 player_list = []
 # actually we have updated the id_information, so what below is not necessary
@@ -266,5 +296,6 @@ while row:
     if row[0] != -2:
         player_list.append(row[0])
     row=cursor.fetchone()
-get_result(player_list, tournament, tournament_name, end_id+1)
+get_result(player_list, tournament, tournament_name, end_id+1,KO,year)
+connect.commit()
 connect.close()
