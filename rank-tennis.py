@@ -1,3 +1,4 @@
+import datetime
 import re
 import urllib.request
 import urllib.parse
@@ -5,26 +6,152 @@ from bs4 import BeautifulSoup
 import pymssql
 import time
 import xlrd
+import json
+import requests
+from xlutils.copy import copy
 
-def getplayerinfo(name1,name2,cursor):
+def getplayerinfo(name1,name2,cursor,u_name):
     lan1 = "select top 1 [C-Name],ID from Player Where [R-ID]=%s"
     lan2 = "select top 1 [C-Name],ID from Player Where [R-ID]=%s"
 
     cursor.execute(lan1,name1)
     info1 = cursor.fetchone()
     if info1==None:
-        getabnormalplayer(name1,cursor)
+        getabnormalplayer(name1,cursor,u_name[0])
         cursor.execute(lan1, name1)
         info1 = cursor.fetchone()
     cursor.execute(lan2,name2)
     info2 = cursor.fetchone()
     if info2==None:
-        getabnormalplayer(name2,cursor)
+        getabnormalplayer(name2, cursor, u_name[1])
         cursor.execute(lan2, name2)
         info2 = cursor.fetchone()
     return info1,info2
 
-def getabnormalplayer(playername,cursor):
+def execute_rank(tour,yy,cursor):
+    cursor.execute(
+        "select distinct p1_id from result where tournament_id=%s and [Year]=%s union select distinct p2_id from result where tournament_id=%s and [Year]=%s",
+        (tour // 100, yy.year, tour // 100, yy.year))
+    player_list=[]
+    row=cursor.fetchone()
+    while row:
+        player_list.append(row[0])
+        row=cursor.fetchone()
+    url = 'https://www.rank-tennis.com/en/history/official/query'
+
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36',
+        'Cookie': '__gads=ID=1fac094766b8080d-2298fba0ebcf0090:T=1642325857:RT=1642325857:S=ALNI_MaYn4VacQNXRp_wFbxGMZoK4_W1IQ; remember_web_59ba36addc2b2f9401580f014c7f58ea4e30989d=eyJpdiI6ImtkTE9zR1A0TlFtVlFpbGNFeExsdGc9PSIsInZhbHVlIjoibERVZGNNSVQwNDg3OEVhc1BVd0ZTc1JUbkRITnFWZ2h2N2F4Zk4rUUdWRnJ3blZEZXNDZTU2XC9iK3ptVW5NUTNjclY4VEViK2lDaXJrMGl4NzdNZVFwSHBYcG9kbWRBM1c4dG04ZlZ1R015YVVNYjhsbDgzWE5RWjZTeWgzZjUzQmJQb1pBU29mSXpLM1VyQzlpZnhKK0ZERkRPTEdFVkIrTG03YXlKaFBGdz0iLCJtYWMiOiI4MTYxYzJkMWVlYjBjYTllODlmYjA2ODhlY2ExNWVmYmJjYzcwNWU4YTJiZDQ2YWE2YzcyNjlkM2IzZmQzODM4In0%3D; Hm_ct_3b995bf0c6a621a743d0cf009eaf5c8a=17*1*%E5%BE%AE%E5%8D%9A!2444*1*28601!2445*1*CORICw5LDjsOZw5HDhcOYw4zDicORw4XDmMONw4fDl8ODw4fDk8OSw5fDicOWw5rDhcOYw43Dl8ORTOP; Hm_up_3b995bf0c6a621a743d0cf009eaf5c8a=%7B%22uid_%22%3A%7B%22value%22%3A%2228601%22%2C%22scope%22%3A1%7D%7D; def_sex=MS; _gid=GA1.2.763224088.1654238270; __gpi=UID=00000599e65e915f:T=1653036198:RT=1654310778:S=ALNI_MacbZDJi_SB-LlD1KJw-qDdUisK3Q; msg_read=1; Hm_lvt_3b995bf0c6a621a743d0cf009eaf5c8a=1654080160,1654238270,1654310767,1654321757; _ga=GA1.2.280913605.1642325840; Hm_lpvt_3b995bf0c6a621a743d0cf009eaf5c8a=1654324771; _ga_7GW8TTD6GW=GS1.1.1654321756.77.1.1654324773.0; _session=eyJpdiI6IkFjN1lqOFRpV0RcLytkRzlobUE3UXZRPT0iLCJ2YWx1ZSI6IllNK08wbVBcL0VcL0QxdVpSV1NTOW9lN1B4eDBQRW0zTGRUNUJHNlBLSDBTTTFBSCtvNk5icVR1MEpqXC9KTWZ2dFciLCJtYWMiOiI2YTljOTVkMzRlM2RlYmJiM2UwNDRhYzQzMGM3ZjMxNzYwM2NmYzI5OWViYjcxMDMzMjVmOTQzYjE5ZmE1ZjU5In0%3D; _gat=1'
+    }
+
+    data = {
+            'status': 'ok',
+            'sd': 's',
+            'type': 'atp',
+            'date': str(yy)
+    }
+    data = urllib.parse.urlencode(data).encode('utf-8')
+
+    request = urllib.request.Request(url=url, data=data, headers=headers)
+    response = urllib.request.urlopen(request)
+
+    # 获取响应的数据
+    html = response.read().decode('utf-8')
+    bs = BeautifulSoup(html, "html.parser")
+    content=bs.find_all('table',id='iOfficialDetailTable')[0].select("td")
+    rank_info=[]
+    abnormal=[]
+    for item in player_list:
+        cursor.execute("select top 1 Name from player where ID=%s",(item))
+        name=cursor.fetchone()[0].strip()
+        name.replace("-"," ")
+        pat=re.compile(name,re.I)
+        for i in range(0,len(content)):
+            ts=content[i].text.strip()
+            ts=ts.replace("-"," ")
+            if re.search(pat,ts):
+                rank_info.append((item,tour,content[i-2].text.strip()))
+                print((item,tour,content[i-2].text.strip()))
+                break
+            if i==len(content)-1:
+                print(str(name) +" need mannual addition.")
+                abnormal.append((item,tour,yy))
+    for item in rank_info:
+        cursor.execute("Insert participator_list Values(%s,%s,%s)",(item[0],item[1],item[2]))
+    if abnormal!=[]:
+        a_abnormal=[]
+        for item in abnormal:
+            a_abnormal=execute_ch(item,a_abnormal,cursor)
+        print(a_abnormal)
+
+def execute_ch(player,abnormal,cursor):
+    url = 'https://www.rank-tennis.com/zh/history/official/query'
+
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36',
+        'Cookie': '__gads=ID=1fac094766b8080d-2298fba0ebcf0090:T=1642325857:RT=1642325857:S=ALNI_MaYn4VacQNXRp_wFbxGMZoK4_W1IQ; remember_web_59ba36addc2b2f9401580f014c7f58ea4e30989d=eyJpdiI6ImtkTE9zR1A0TlFtVlFpbGNFeExsdGc9PSIsInZhbHVlIjoibERVZGNNSVQwNDg3OEVhc1BVd0ZTc1JUbkRITnFWZ2h2N2F4Zk4rUUdWRnJ3blZEZXNDZTU2XC9iK3ptVW5NUTNjclY4VEViK2lDaXJrMGl4NzdNZVFwSHBYcG9kbWRBM1c4dG04ZlZ1R015YVVNYjhsbDgzWE5RWjZTeWgzZjUzQmJQb1pBU29mSXpLM1VyQzlpZnhKK0ZERkRPTEdFVkIrTG03YXlKaFBGdz0iLCJtYWMiOiI4MTYxYzJkMWVlYjBjYTllODlmYjA2ODhlY2ExNWVmYmJjYzcwNWU4YTJiZDQ2YWE2YzcyNjlkM2IzZmQzODM4In0%3D; Hm_ct_3b995bf0c6a621a743d0cf009eaf5c8a=17*1*%E5%BE%AE%E5%8D%9A!2444*1*28601!2445*1*CORICw5LDjsOZw5HDhcOYw4zDicORw4XDmMONw4fDl8ODw4fDk8OSw5fDicOWw5rDhcOYw43Dl8ORTOP; Hm_up_3b995bf0c6a621a743d0cf009eaf5c8a=%7B%22uid_%22%3A%7B%22value%22%3A%2228601%22%2C%22scope%22%3A1%7D%7D; def_sex=MS; _gid=GA1.2.763224088.1654238270; __gpi=UID=00000599e65e915f:T=1653036198:RT=1654310778:S=ALNI_MacbZDJi_SB-LlD1KJw-qDdUisK3Q; msg_read=1; Hm_lvt_3b995bf0c6a621a743d0cf009eaf5c8a=1654080160,1654238270,1654310767,1654321757; _ga=GA1.2.280913605.1642325840; Hm_lpvt_3b995bf0c6a621a743d0cf009eaf5c8a=1654324771; _ga_7GW8TTD6GW=GS1.1.1654321756.77.1.1654324773.0; _session=eyJpdiI6IkFjN1lqOFRpV0RcLytkRzlobUE3UXZRPT0iLCJ2YWx1ZSI6IllNK08wbVBcL0VcL0QxdVpSV1NTOW9lN1B4eDBQRW0zTGRUNUJHNlBLSDBTTTFBSCtvNk5icVR1MEpqXC9KTWZ2dFciLCJtYWMiOiI2YTljOTVkMzRlM2RlYmJiM2UwNDRhYzQzMGM3ZjMxNzYwM2NmYzI5OWViYjcxMDMzMjVmOTQzYjE5ZmE1ZjU5In0%3D; _gat=1'
+    }
+
+    data = {
+            'status': 'ok',
+            'sd': 's',
+            'type': 'atp',
+            'date': str(player[2])
+    }
+    data = urllib.parse.urlencode(data).encode('utf-8')
+
+    request = urllib.request.Request(url=url, data=data, headers=headers)
+    response = urllib.request.urlopen(request)
+
+    # 获取响应的数据
+    html = response.read().decode('utf-8')
+    bs = BeautifulSoup(html, "html.parser")
+    content=bs.find_all('table',id='iOfficialDetailTable')[0].select("td")
+    cursor.execute("select top 1 [C-Name] from player where ID=%s",(player[0]))
+    name=cursor.fetchone()[0].strip().encode('latin1').decode('gbk')
+    pat=re.compile(name)
+    for i in range(0,len(content)):
+        ts=content[i].text.strip()
+        if re.search(pat,ts):
+            cursor.execute("Insert participator_list Values(%s,%s,%s)", (player[0], player[1], content[i-2].text.strip()))
+            print((player[0], player[1], content[i-2].text.strip()))
+            break
+        if i==len(content)-1:
+            print(str(name) +" need mannual addition.")
+            cursor.execute("Insert participator_list Values(%s,%s,%s)",
+                           (player[0], player[1], None))
+            abnormal.append((str(name), player[0], player[1], player[2]))
+    return abnormal
+
+def isContainChinese(s):
+    for c in s:
+        if ('一' <= c <= '龥'):
+            return True
+    return False
+
+def translate(word):
+    # 有道词典 api
+    url = 'https://aidemo.youdao.com/trans'
+    # 传输的参数，其中 i 为需要翻译的内容
+    key = {
+        'q': word,
+        'from': "Auto",
+        'to': "Auto"
+    }
+    # key 这个字典为发送给有道词典服务器的内容
+    response = requests.post(url, data=key)
+    # 判断服务器是否相应成功
+    if response.status_code == 200:
+        # 然后相应的结果
+        result = json.loads(response.text)
+        return result['translation'][0]
+    else:
+        print(response.status_code)
+        # 相应失败就返回空
+        return word
+
+
+def getabnormalplayer(playername,cursor,u_name):
     # use player's name to get id
     file = "Rank_tennis.xls"
     workbook = xlrd.open_workbook(file)
@@ -32,18 +159,42 @@ def getabnormalplayer(playername,cursor):
     Table = workbook.sheet_by_name("Sheet1")
     length = Table.nrows
     Name = None
+    print(u_name)
     for i in range(length):
         row = Table.row_values(i)
         if pat.search(row[2]) != None:
             Name = row[0]
             break
+    if Name==None:
+        Name=u_name
+        time.sleep(2)
+        if isContainChinese(Name):
+            Name=translate(Name)
+        newbook=copy(workbook)
+        newsheet=newbook.get_sheet(0)
+        newsheet.write(length,0,Name)
+        newsheet.write(length,1,u_name)
+        newsheet.write(length,2,playername)
+        newbook.save(file)
+
     Player=Name.replace(" ","+")
     url = "https://www.ultimatetennisstatistics.com/playerProfile?name=" + Player + "&tab=profile"
     head = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.25 Safari/537.36 Core/1.70.3756.400 QQBrowser/10.5.4039.400"
     }
     req = urllib.request.Request(url, headers=head)
-    response = urllib.request.urlopen(req)
+    try:
+        response = urllib.request.urlopen(req)
+    except:
+        cursor.execute("select max(ID) from Player")
+        id=cursor.fetchone()[0]
+        if id >=80000:
+            id=id+1
+        else:
+            id=80000
+        cursor.execute("INSERT Player Values(%s,%s,%s,%s,%s,%s,%s)", (id, Name, None, None, None, playername, u_name))
+        print("Success to artificially insert " + Name)
+        return 0
     html = response.read().decode('utf-8')
     bs = BeautifulSoup(html, "html.parser")
     info = bs.select("a[id='profilePill']", limit=1)[0]
@@ -61,7 +212,6 @@ def getabnormalplayer(playername,cursor):
     html = response.read().decode('utf-8')
     bs = BeautifulSoup(html, "html.parser")
     info1 = bs.select('table[class = "table table-condensed text-nowrap"]', limit=1)
-    info2 = bs.select('table[class = "table table-condensed text-nowrap"]', limit=2)[1]
     pat = re.compile('(\d+)\s')
     age, country, height = None, None, None
     for sample in info1:
@@ -73,18 +223,13 @@ def getabnormalplayer(playername,cursor):
                 country = item.find("span").text
             if item.find("th").text == "Height":
                 height = re.findall(pat, item.find("td").text)[0]
-    list = info2.find_all('tr')
-    rank = None
-    for item in list:
-        if item.find("th") and item.find("th").text == "Current Rank":
-            rank = re.findall(pat, item.find("td").text)[0]
-            break
 
     Cname, Rid = getplayerrankinfo(Name)
     # insert new information
-    cursor.execute("INSERT Player Values(%s,%s,%s,%s,%s,%s,%s,%s)",(id,Name,height,age,rank,country,Rid,Cname))
+    cursor.execute("INSERT Player Values(%s,%s,%s,%s,%s,%s,%s)",(id,Name,height,age,country,Rid,Cname))
     print("Successfully insert "+Name)
     #connect.commit()
+    return 0
 
 def getplayerrankinfo(playername):
     file = "Rank_tennis.xls"
@@ -102,7 +247,7 @@ def getplayerrankinfo(playername):
             break
     return CName,id
 
-def getdata(id1,id2,player1,player2,eid,matchid,year,ID1,ID2,tournament_id,mid,winner,KO):
+def getdata(id1,id2,player1,player2,eid,matchid,year,ID1,ID2,tournament_id,mid,winner,round_,KO,cursor):
     url = 'https://www.rank-tennis.com/zh/stat/query'
 
     headers = {
@@ -140,12 +285,15 @@ def getdata(id1,id2,player1,player2,eid,matchid,year,ID1,ID2,tournament_id,mid,w
 
     pat3 = re.compile("StatusFlag Statuswinner")
     pat4 = re.compile("StatusFlag Statusloser")
-    win = re.search(pat3, str(win_mark)).span()[1]
-    lose = re.search(pat4, str(win_mark)).span()[1]
-    if win > lose:
-        win_inner = 2
-    else:
-        win_inner = 1
+    try:
+        win = re.search(pat3, str(win_mark)).span()[1]
+        lose = re.search(pat4, str(win_mark)).span()[1]
+        if win > lose:
+            win_inner = 2
+        else:
+            win_inner = 1
+    except:
+        win_inner=winner
     score_mark = bs.find_all('div', id='iStatScoreDiv')[0].select("td")
     score=[]
 
@@ -165,11 +313,11 @@ def getdata(id1,id2,player1,player2,eid,matchid,year,ID1,ID2,tournament_id,mid,w
             score.append(item.text.strip())
     if score==[] or (score[0] == '0' and score[1] == '0'):
         score_str = "W/O"
-        getmatchresult(ID1,ID2,winner,mid,tournamentid,score_str,KO,cursor)
+        getmatchresult(ID1,ID2,winner,mid,tournamentid,score_str,KO,round_,cursor)
         return 0
 
     score_str=processscore(score,win_inner)
-    getmatchresult(ID1,ID2,winner,mid,tournamentid,score_str,KO,cursor)
+    getmatchresult(ID1,ID2,winner,mid,tournamentid,score_str,KO,round_,cursor)
 
     id=pinfo.index("ACE")
     p1.append(int(pinfo[id-1]))
@@ -237,13 +385,13 @@ def getdata(id1,id2,player1,player2,eid,matchid,year,ID1,ID2,tournament_id,mid,w
         "INSERT Match_stats VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
         tuple(stats))
 
-def getmatchresult(id1,id2,winner,mid,tournamentid,score_str,KO,cursor):
+def getmatchresult(id1,id2,winner,mid,tournamentid,score_str,KO,round_,cursor):
     if winner==2:
         id1,id2=id2,id1
     tourid=tournamentid//100
     year=2000+tournamentid%100
-    cursor.execute("Insert result VALUES(%s,%s,%s,%s,%s,%s)",(id1,id2,KO-mid,score_str,tourid,year))
-    print([id1,id2,KO-mid,score_str,tourid,year])
+    cursor.execute("Insert result VALUES(%s,%s,%s,%s,%s,%s,%s)",(id1,id2,KO-mid,score_str,tourid,year,round_))
+    print([id1,id2,KO-mid,score_str,tourid,year,round_])
 
 def process(data1,data2,id1,id2):
     stats = [-1 for _ in range(0,30)]
@@ -320,52 +468,69 @@ def processscore(score,winner):
         time.sleep(0.3)
     return score_str
 
-def getmatchinfo(name,matchid,mid,eid,year,tournamentid,winner):
-    info1,info2=getplayerinfo(name[0],name[1],cursor)
-
-    if getdata(name[0],name[1],info1[0],info2[0],eid,matchid,year,info1[1],info2[1],tournamentid,mid,winner,KO)==-1:
+def getmatchinfo(name,matchid,mid,eid,year,tournamentid,winner,round_,u_name,KO,cursor):
+    info1,info2=getplayerinfo(name[0],name[1],cursor,u_name)
+    if info1==-1:
+        return 1
+    elif getdata(name[0],name[1],info1[0],info2[0],eid,matchid,year,info1[1],info2[1],tournamentid,mid,winner,round_,KO,cursor)==-1:
         return -1
 
-eid='WC'
-tournamentid=54022
-year=2022
-tournament="Wimbledon"
-type="Grass"
-level="Grand Slam"
-KO=128
-seq=40
-speed=65
-status='Finish'
-constraint_stop_num=KO
 
-mode='date'
-#mode='tour'
-url="https://www.rank-tennis.com/zh/result/2022-07-10"
-#url="https://www.rank-tennis.com/zh/schedule/"+ eid +"/"+str(year)
-head={
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.25 Safari/537.36 Core/1.70.3756.400 QQBrowser/10.5.4039.400",
-    'Cookie': '__gads=ID=1fac094766b8080d-2298fba0ebcf0090:T=1642325857:RT=1642325857:S=ALNI_MaYn4VacQNXRp_wFbxGMZoK4_W1IQ; remember_web_59ba36addc2b2f9401580f014c7f58ea4e30989d=eyJpdiI6ImtkTE9zR1A0TlFtVlFpbGNFeExsdGc9PSIsInZhbHVlIjoibERVZGNNSVQwNDg3OEVhc1BVd0ZTc1JUbkRITnFWZ2h2N2F4Zk4rUUdWRnJ3blZEZXNDZTU2XC9iK3ptVW5NUTNjclY4VEViK2lDaXJrMGl4NzdNZVFwSHBYcG9kbWRBM1c4dG04ZlZ1R015YVVNYjhsbDgzWE5RWjZTeWgzZjUzQmJQb1pBU29mSXpLM1VyQzlpZnhKK0ZERkRPTEdFVkIrTG03YXlKaFBGdz0iLCJtYWMiOiI4MTYxYzJkMWVlYjBjYTllODlmYjA2ODhlY2ExNWVmYmJjYzcwNWU4YTJiZDQ2YWE2YzcyNjlkM2IzZmQzODM4In0%3D; Hm_ct_3b995bf0c6a621a743d0cf009eaf5c8a=17*1*%E5%BE%AE%E5%8D%9A!2444*1*28601!2445*1*CORICw5LDjsOZw5HDhcOYw4zDicORw4XDmMONw4fDl8ODw4fDk8OSw5fDicOWw5rDhcOYw43Dl8ORTOP; Hm_up_3b995bf0c6a621a743d0cf009eaf5c8a=%7B%22uid_%22%3A%7B%22value%22%3A%2228601%22%2C%22scope%22%3A1%7D%7D; def_sex=MS; _gid=GA1.2.763224088.1654238270; __gpi=UID=00000599e65e915f:T=1653036198:RT=1654310778:S=ALNI_MacbZDJi_SB-LlD1KJw-qDdUisK3Q; msg_read=1; Hm_lvt_3b995bf0c6a621a743d0cf009eaf5c8a=1654080160,1654238270,1654310767,1654321757; _ga=GA1.2.280913605.1642325840; Hm_lpvt_3b995bf0c6a621a743d0cf009eaf5c8a=1654324771; _ga_7GW8TTD6GW=GS1.1.1654321756.77.1.1654324773.0; _session=eyJpdiI6IkFjN1lqOFRpV0RcLytkRzlobUE3UXZRPT0iLCJ2YWx1ZSI6IllNK08wbVBcL0VcL0QxdVpSV1NTOW9lN1B4eDBQRW0zTGRUNUJHNlBLSDBTTTFBSCtvNk5icVR1MEpqXC9KTWZ2dFciLCJtYWMiOiI2YTljOTVkMzRlM2RlYmJiM2UwNDRhYzQzMGM3ZjMxNzYwM2NmYzI5OWViYjcxMDMzMjVmOTQzYjE5ZmE1ZjU5In0%3D; _gat=1'
+def select_data(mode, tourid, eid, tournamentid, year, tournament, type, level, seq, speed, status, date,
+                constraint_stop_num, Rank_Order):
+    if mode == 'date':
+        now = datetime.datetime.now()
+        delta = datetime.timedelta(days=1)
+        date_str = (now-delta).strftime('%Y-%m-%d')
+        url = "https://www.rank-tennis.com/zh/result/"+date_str
+    else:
+        url = "https://www.rank-tennis.com/zh/schedule/" + eid + "/" + str(year)
 
-}
-req=urllib.request.Request(url,headers=head)
-response=urllib.request.urlopen(req)
-html=response.read().decode('utf-8')
-bs=BeautifulSoup(html,"html.parser")
-if mode == 'date':
-    bs=bs.find_all('div',attrs={'class':'cResultTour','data-eid':eid})[0]
-a=bs.find_all('div',class_='cResultMatch')
-pat=re.compile(r'Q\d')
-pattern=re.compile("cResultPlayer(\w+)")
-patro=re.compile('match-id="(\w+)"')
+    head = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.25 Safari/537.36 Core/1.70.3756.400 QQBrowser/10.5.4039.400",
+        'Cookie': '__gads=ID=1fac094766b8080d-2298fba0ebcf0090:T=1642325857:RT=1642325857:S=ALNI_MaYn4VacQNXRp_wFbxGMZoK4_W1IQ; remember_web_59ba36addc2b2f9401580f014c7f58ea4e30989d=eyJpdiI6ImtkTE9zR1A0TlFtVlFpbGNFeExsdGc9PSIsInZhbHVlIjoibERVZGNNSVQwNDg3OEVhc1BVd0ZTc1JUbkRITnFWZ2h2N2F4Zk4rUUdWRnJ3blZEZXNDZTU2XC9iK3ptVW5NUTNjclY4VEViK2lDaXJrMGl4NzdNZVFwSHBYcG9kbWRBM1c4dG04ZlZ1R015YVVNYjhsbDgzWE5RWjZTeWgzZjUzQmJQb1pBU29mSXpLM1VyQzlpZnhKK0ZERkRPTEdFVkIrTG03YXlKaFBGdz0iLCJtYWMiOiI4MTYxYzJkMWVlYjBjYTllODlmYjA2ODhlY2ExNWVmYmJjYzcwNWU4YTJiZDQ2YWE2YzcyNjlkM2IzZmQzODM4In0%3D; Hm_ct_3b995bf0c6a621a743d0cf009eaf5c8a=17*1*%E5%BE%AE%E5%8D%9A!2444*1*28601!2445*1*CORICw5LDjsOZw5HDhcOYw4zDicORw4XDmMONw4fDl8ODw4fDk8OSw5fDicOWw5rDhcOYw43Dl8ORTOP; Hm_up_3b995bf0c6a621a743d0cf009eaf5c8a=%7B%22uid_%22%3A%7B%22value%22%3A%2228601%22%2C%22scope%22%3A1%7D%7D; def_sex=MS; _gid=GA1.2.763224088.1654238270; __gpi=UID=00000599e65e915f:T=1653036198:RT=1654310778:S=ALNI_MacbZDJi_SB-LlD1KJw-qDdUisK3Q; msg_read=1; Hm_lvt_3b995bf0c6a621a743d0cf009eaf5c8a=1654080160,1654238270,1654310767,1654321757; _ga=GA1.2.280913605.1642325840; Hm_lpvt_3b995bf0c6a621a743d0cf009eaf5c8a=1654324771; _ga_7GW8TTD6GW=GS1.1.1654321756.77.1.1654324773.0; _session=eyJpdiI6IkFjN1lqOFRpV0RcLytkRzlobUE3UXZRPT0iLCJ2YWx1ZSI6IllNK08wbVBcL0VcL0QxdVpSV1NTOW9lN1B4eDBQRW0zTGRUNUJHNlBLSDBTTTFBSCtvNk5icVR1MEpqXC9KTWZ2dFciLCJtYWMiOiI2YTljOTVkMzRlM2RlYmJiM2UwNDRhYzQzMGM3ZjMxNzYwM2NmYzI5OWViYjcxMDMzMjVmOTQzYjE5ZmE1ZjU5In0%3D; _gat=1'
 
-connect=pymssql.connect(server='LAPTOP-BBQ77BE4',user='sa', password='123456', database='tennis',charset='utf8')
-cursor=connect.cursor()
+    }
+    req = urllib.request.Request(url, headers=head)
+    response = urllib.request.urlopen(req)
+    html = response.read().decode('utf-8')
+    bs = BeautifulSoup(html, "html.parser")
+    if mode == 'date':
+        bs = bs.find_all('div', attrs={'class': 'cResultTour', 'data-eid': tourid})[0]
+    a = bs.find_all('div', class_='cResultMatch')
+    pat = re.compile(r'Q\d')
+    pattern = re.compile("cResultPlayer(\w+)")
+    patro = re.compile('match-id="(\w+)"')
+    patt = re.compile('open_stat[(-)].+, "(\D+)", "(\D+)"[(-)]')
 
-cursor.execute("Insert Tournament Values(%s,%s,%s,%s,%s,%s,%s,%s,%s)", (tournamentid//100, year, tournament, level, type, tournamentid, None, seq,speed))
+    connect = pymssql.connect(server='LAPTOP-BBQ77BE4', user='sa', password='123456', database='tennis', charset='utf8')
+    cursor = connect.cursor()
 
-num=0
-for item in a:
-    if item.select("div[class='cResultMatchGender']")[0].text=="男单" and re.match(pat,item.select("div[class='cResultMatchRound']")[0].text)==None:
+    cursor.execute("Insert Tournament Values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
+                   (tournamentid // 100, year, tournament, level, type, tournamentid, None, seq, speed, date))
+
+    nonexist = 0
+    b = []
+    if level=='Qualify':
+        for item in a:
+            if item.select("div[class='cResultMatchGender']")[0].text == "男单" and re.match(pat, item.select(
+                    "div[class='cResultMatchRound']")[0].text):
+                b.append(item)
+    else:
+        for item in a:
+            if item.select("div[class='cResultMatchGender']")[0].text == "男单" and re.match(pat, item.select(
+                    "div[class='cResultMatchRound']")[0].text)==None:
+                b.append(item)
+
+    cursor.execute("select Count(*) from result where tournament_id=%s and [Year]=%s",(tournamentid // 100, year))
+    match_have_select=int(cursor.fetchone()[0])
+    print("there are "+str(match_have_select)+" matches have been selected.")
+    print("please check the sequence!")
+    time.sleep(3)
+    KO = len(b)+match_have_select+1
+    num = 0
+
+    for item in b:
         pat3 = re.compile('cResultMatchMidTableRow"')
         pat4 = re.compile("cResultMatchMidTableRowWinner")
         win = re.search(pat4, str(item)).span()[1]
@@ -374,29 +539,62 @@ for item in a:
             winner = 2
         else:
             winner = 1
-        num=num+1
-        name=re.findall(pattern,str(item))
-        match=re.findall(patro,str(item))[0]
-        round_=item.select("div[class='cResultMatchRound']")[0].text
+        num = num + 1
+        name = re.findall(pattern, str(item))
+        match = re.findall(patro, str(item))[0]
+        u_name = re.findall(patt, str(item))[0]
+        # print(u_name)
+        round_ = item.select("div[class='cResultMatchRound']")[0].text
         print(round_)
-        if level=='Grand Slam':
-            mid=int(match[-2:])-1+2**(7-int(match[-3]))
+        if level == 'Grand Slam':
+            mid = int(match[-2:]) - 1 + 2 ** (7 - int(match[-3]))
         else:
-            mid=num
-        if getmatchinfo(name,match,mid,eid,year,tournamentid,winner)==-1:
-            if status=='Completing':
+            mid = num
+        status_code = getmatchinfo(name, match, mid, eid, year, tournamentid, winner, round_, u_name, KO, cursor)
+        if status_code == 1:
+            nonexist = nonexist + 1
+            continue
+        elif status_code == -1:
+            if status == 'Completing':
                 print("The match hasn't started.")
                 continue
             else:
-                info1,info2=getplayerinfo(name[0],name[1],cursor)
-                if winner==2:
-                    info1,info2=info2,info1
+                info1, info2 = getplayerinfo(name[0], name[1], cursor, u_name)
+                if winner == 2:
+                    info1, info2 = info2, info1
                 tourid = tournamentid // 100
-                print([info1[1],info2[1], KO - mid, 'W/O', tourid, year])
-                cursor.execute("Insert result VALUES(%s,%s,%s,%s,%s,%s)", (info1[1],info2[1], KO - mid, 'W/O', tourid, year))
+                print([info1[1], info2[1], KO - mid, 'W/O', tourid, year, round_])
+                cursor.execute("Insert result VALUES(%s,%s,%s,%s,%s,%s,%s)",
+                               (info1[1], info2[1], KO - mid, 'W/O', tourid, year, round_))
 
-        if num+1==constraint_stop_num:
+        if num + 1 == constraint_stop_num:
             break
-print("there are "+str(num)+" matches be selected.")
+    print("there are " + str(num) + " matches be selected with " + str(nonexist) + " not exist.")
+    #connect.commit()
 
-connect.commit()
+    if Rank_Order == True:
+        execute_rank(tournamentid, date, cursor)
+    connect.commit()
+
+
+if __name__=='__main__':
+    tourid='0421'
+    eid='0421'
+    tournamentid=9942122
+    year=2022
+    tournament="Rogers Cup Q"
+    type="Hard"
+    level="Qualify"
+    KO=28
+    seq=50
+    speed=69
+    status='Finish'
+    date = datetime.datetime.strptime("2022-08-06", '%Y-%m-%d')
+    constraint_stop_num=KO
+    Rank_Order = True
+    if (datetime.datetime.now()-date).days>3:
+        Rank_Order=False
+    #mode='date'
+    mode='tour'
+    select_data(mode,tourid, eid, tournamentid, year, tournament, type, level, seq, speed, status, date,
+                    constraint_stop_num, Rank_Order)
