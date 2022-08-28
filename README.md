@@ -1,5 +1,12 @@
 # Tennis Simulation model
 
+### 2.2 version
+
+We made some adjustments to the model. For example, considering that a player's service level depends on the player's own service level, the opponent's return level, and random factors on the spot, they should be taken into consideration. But the weight of these factors varies from players. Before this, we adopted the relatively simple processing method of 50% each, and now we make a simple correction. We decide to simulate games based on the correlation of the data of serving and receiving in the data of the player's ten games. Of course, there is still space for improvement in our method of applying corrections, and the results are still not satisfing.
+In addition, we have greatly expanded the database to include all ATP Tour qualifying data since 2022, which increase the predictability rate.
+
+
+
 ### 2.1 version
 
 According to the problems we met in inserting data into SQL Server including missing by using http://ultimatetennisstatistics.com and http://sofascore.com/Tennis . We turn our sight to http://rank-tennis.com . Except for some error of Grand Slam in 2021, this website can provide sufficient data. Now we have aborted http://sofascore.com/Tennis for its difficulty in selecting data quickly.
