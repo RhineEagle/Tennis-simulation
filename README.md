@@ -1,23 +1,29 @@
 # Tennis Simulation model
 
-### 2.3 version
+### 2.3
+
+**2022.11.1**
 
 In this version, we focus on increasing the efficiency, with the idea that the program automatically obtains match of the day information for prediction and automatically generates analysis reports, resulting the code tour_forecast.py.
 
-Some small adjustments have been applied, such as, we need players who use statictis from their match of tournament qulification should played at least 3 qulifications in his last 10-13 matches.
+Some small adjustments have been applied, such as, we need players who use statistics from their match of tournament qulification should played at least 3 qulifications in his last 10-13 matches.
 
 In the tournaments been predicted last serveral months, we get the accurary of from 68% to 74%, which isn't an excellent result for we can easily discover that some predictions are ridiculous. Fortunately, it is not totally a silly thing, with some dark horses can be predicted of high significance. This phenomenon spurs us to consider some improvement, such as cluster. Hope next version could get more satisfied result.
 
  
 
-### 2.2 version
+### 2.2
+
+**2022.8.8**
 
 We made some adjustments to the model. For example, considering that a player's service level depends on the player's own service level, the opponent's return level, and random factors on the spot, they should be taken into consideration. But the weight of these factors varies from players. Before this, we adopted the relatively simple processing method of 50% each, and now we make a simple correction. We decide to simulate games based on the correlation of the data of serving and receiving in the data of the player's ten games. Of course, there is still space for improvement in our method of applying corrections, and the results are still not satisfing.
 In addition, we have greatly expanded the database to include all ATP Tour qualifying data since 2022, which increase the predictability rate.
 
 
 
-### 2.1 version
+### 2.1
+
+**2022.7.12**
 
 According to the problems we met in inserting data into SQL Server including missing by using http://ultimatetennisstatistics.com and http://sofascore.com/Tennis . We turn our sight to http://rank-tennis.com . Except for some error of Grand Slam in 2021, this website can provide sufficient data. Now we have aborted http://sofascore.com/Tennis for its difficulty in selecting data quickly.
 
@@ -29,7 +35,9 @@ We also polish up the code and the SQL structure in order to improve efficiency 
 - match_info.py   record match result and statistics for input tournament information
 - rank-tennis.py   record statistics of match which is lack in UTS from rank-tennis
 
-### 2.0  version
+### 2.0
+
+**2022.6.2**
 
 We have applied SQL into our model. SQL can store the data and easily used into calculation without frequently crawling data from the web. The model itself doesn't have too much changes. We will introduce Dirichlet procession in the next version. We use SQL Server in the code.
 
@@ -43,7 +51,9 @@ Something important should be explained is that we are not support ML or DL whic
 
 
 
-### 1.0  version
+### 1.0 		
+
+**2021.8.3**
 
 This is a very low and raw model for simulation of the result of the tennis game. Just according to the technical statistics of the players, we simulate a tennis game with the rule.  The statistics of the players used for this model should be related to the level of the opponent. For consideration of the random error, we use random disturbance term, but this should be adjusted by the type of the surface and the number of the sets has been finished. The value of the random disturbance term is decided by myself.
 
