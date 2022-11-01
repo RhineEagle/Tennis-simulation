@@ -1,5 +1,15 @@
 # Tennis Simulation model
 
+### 2.3 version
+
+In this version, we focus on increasing the efficiency, with the idea that the program automatically obtains match of the day information for prediction and automatically generates analysis reports, resulting the code tour_forecast.py.
+
+Some small adjustments have been applied, such as, we need players who use statictis from their match of tournament qulification should played at least 3 qulifications in his last 10-13 matches.
+
+In the tournaments been predicted last serveral months, we get the accurary of from 68% to 74%, which isn't an excellent result for we can easily discover that some predictions are ridiculous. Fortunately, it is not totally a silly thing, with some dark horses can be predicted of high significance. This phenomenon spurs us to consider some improvement, such as cluster. Hope next version could get more satisfied result.
+
+ 
+
 ### 2.2 version
 
 We made some adjustments to the model. For example, considering that a player's service level depends on the player's own service level, the opponent's return level, and random factors on the spot, they should be taken into consideration. But the weight of these factors varies from players. Before this, we adopted the relatively simple processing method of 50% each, and now we make a simple correction. We decide to simulate games based on the correlation of the data of serving and receiving in the data of the player's ten games. Of course, there is still space for improvement in our method of applying corrections, and the results are still not satisfing.

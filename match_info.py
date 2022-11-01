@@ -1,3 +1,4 @@
+import datetime
 import re
 import urllib.request
 from bs4 import BeautifulSoup
@@ -240,11 +241,11 @@ def get_result(player,tournament_id,tournament_name,match,KO,year):
                         continue
                     if match-item["id"]>KO:
                         break
-                    single = [int(playerid), item["loser"]["id"], match-item["id"], item["score"],tournament_id,year]
+                    single = [int(playerid), item["loser"]["id"], match-item["id"], item["score"],tournament_id,year,None]
                     if item["score"] == "W/O":
                         print(str(item["id"]) + " should be kicked out!")
                     cursor.execute(
-                        "INSERT result VALUES(%s,%s,%s,%s,%s,%s)", tuple(single))
+                        "INSERT result VALUES(%s,%s,%s,%s,%s,%s,%s)", tuple(single))
                     print(str(match-item["id"])+" has been finished")
                     #connect.commit()
                 else:
@@ -256,21 +257,22 @@ def get_result(player,tournament_id,tournament_name,match,KO,year):
         time.sleep(0.5)
 
 # main
-tournament_id = 41421
-tournament = 414
-tournament_name = "Hamburg"
-start_id = 183008
-end_id = 183034
-seq = 38
+tournament_id = 888821
+tournament = 8888
+tournament_name = "ATP Cup"
+start_id = 181070
+end_id = 181099
+seq = 0
 year = 2021
-level='ATP500'
-court_type='Clay'
-speed=44
-KO=28
+level='Team Cup'
+court_type='Hard'
+date=datetime.datetime.strptime('2022-07-18', '%Y-%m-%d')
+speed=70
+KO=31
 
 connect = pymssql.connect(server='LAPTOP-BBQ77BE4', user='sa', password='123456', database='tennis')
 cursor = connect.cursor()
-cursor.execute("Insert Tournament Values(%s,%s,%s,%s,%s,%s,%s,%s,%s)", (tournament, year, tournament_name, level, court_type, tournament_id, start_id, seq, speed))
+cursor.execute("Insert Tournament Values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)", (tournament, year, tournament_name, level, court_type, tournament_id, start_id, seq, speed, date))
 abnormal = get_info(start_id-1,end_id,tournament_id, cursor)
 if abnormal != []:
     abnormal_player = abnormal[0]

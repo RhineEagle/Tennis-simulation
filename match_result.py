@@ -1,3 +1,6 @@
+import datetime
+import sys
+
 import pymssql
 import pandas as pd
 import random
@@ -36,7 +39,7 @@ def stochastic(x):
     elif x == 5:
         return 0
 
-def game(player1, player2, g1, g2, order, num):
+def game(player1, player2, g1, g2, order, num, bp1, bp2):
     p1 = 0
     p2 = 0
     if g1 == 6 and g2 == 6:
@@ -60,25 +63,29 @@ def game(player1, player2, g1, g2, order, num):
     else:
         while max(p1, p2) < 4 or abs(p1-p2) < 2:
             if (order > 0):
-                list = play(player1, player2, g1, g2, p1, p2, num)
+                list = play(player1, player2, g1, g2, p1, p2, num, bp1, bp2)
                 p1 = list[0]
                 p2 = list[1]
+                bp1 = list[4]
+                bp2 = list[5]
             else:
-                list = play(player2, player1, g2, g1, p2, p1, num)
+                list = play(player2, player1, g2, g1, p2, p1, num, bp2, bp1)
                 p2 = list[0]
                 p1 = list[1]
+                bp2 = list[4]
+                bp1 = list[5]
         if p1 > p2:
             g1 = g1+1
         else:
             g2 = g2+1
-    return [g1, g2, p1, p2]
+    return [g1, g2, p1, p2, bp1, bp2]
 
-def play(player1, player2, g1, g2, p1, p2, num):
+def play(player1, player2, g1, g2, p1, p2, num, bp1, bp2):
     p = random.random()
     weigh = player1.elo/(player1.elo+player2.elo)
     if (p2 == 3 and p1 <= 2) or (p2 >= 4 and p2-p1 == 1):
         #prob=player1.breaksave*(100-player2.breakconvert)/(player1.breaksave*(100-player2.breakconvert)+(100-player1.breaksave)*player2.breakconvert)
-        prob = max(player1.breaksave/100, 1-player2.breakconvert/100)*weigh+min(player1.breaksave/100, 1-player2.breakconvert/100)*(1-weigh)
+        prob = (max(player1.breaksave/100, 1-player2.breakconvert/100)*weigh+min(player1.breaksave/100, 1-player2.breakconvert/100)*(1-weigh))*(bp1/(bp1+3))+(3/(bp1+3))*(0.15+0.7*(player1.ace+(player1.firstin-player1.ace)*player1.firstserve/100+(1-player1.firstin/100-player1.doublefault/100)*player1.secondserve)/100)
         #print("break point for ", player2.name)
         if p > prob:
             p2 = p2+1
@@ -86,6 +93,7 @@ def play(player1, player2, g1, g2, p1, p2, num):
         else:
             p1 = p1+1
             #print(g1," ",g2,player1.name,"save!")
+        bp1 = bp1 + 1
     else:
         if p <= player1.ace/100+random.uniform(stochastic(num)-0.01, stochastic(num)+0.01):
         #if p <= player1.ace / 100:
@@ -118,7 +126,7 @@ def play(player1, player2, g1, g2, p1, p2, num):
                     p2 = p2+1
                 else:
                     p1 = p1+1
-    return [p1, p2, g1, g2]
+    return [p1, p2, g1, g2, bp1, bp2]
 
 def playseven(player1, player2, p1, p2, i):
     weigh = player1.elo / (player1.elo + player2.elo)
@@ -161,12 +169,12 @@ def ace_relationfit(p1, p2, var, mv, r, type):
     elif p1 <= list[1]:
         if r > 0:
             rand = random.random()
-            standard = r*0.15+0.5
+            standard = r*0.3
             rand_var = np.random.normal(loc=0.0,scale=var)
             if rand <= standard:
-                if p2 >= mv+2.5:
+                if p2 >= mv+2.25:
                     rand_var=abs(rand_var)
-                elif p2<=mv-2.5:
+                elif p2<=mv-2.25:
                     rand_var=-abs(rand_var)
         else:
             rand_var=np.random.normal(loc=0.0,scale=var)
@@ -174,7 +182,7 @@ def ace_relationfit(p1, p2, var, mv, r, type):
     elif p1<=list[2]:
         if r>0:
             rand=random.random()
-            standard = r * 0.17 + 0.5
+            standard = r * 0.38
             rand_var = abs(np.random.normal(loc=0.0, scale=var))
             if rand <= standard:
                 if p2 >= mv+2.5:
@@ -190,7 +198,7 @@ def ace_relationfit(p1, p2, var, mv, r, type):
         rand_var = np.random.normal(loc=0.0, scale=var)
         if r>0:
             rand=random.random()
-            standard = r * 0.2 + 0.5
+            standard = r * 0.45
             if rand <= standard:
                 if p2 > mv + 2.5:
                     rand_var = abs(rand_var)
@@ -208,7 +216,7 @@ def firserve_relationfit(p1,p2,var,mv,r):
     elif p1 <= list[1]:
         if r > 0:
             rand = random.random()
-            standard = r * 0.2 + 0.5
+            standard = r * 0.32
             rand_var = np.random.normal(loc=0.0, scale=var)
             if rand <= standard:
                 if p2 >= mv + 3.5:
@@ -232,7 +240,7 @@ def secserve_relationfit(p1,p2,var,mv,r):
     elif p1 <= list[1]:
         if r > 0:
             rand = random.random()
-            standard = r * 0.23 + 0.5
+            standard = r * 0.35
             rand_var = np.random.normal(loc=0.0, scale=var)
             if rand <= standard:
                 if p2 >= mv + 3.5:
@@ -279,6 +287,7 @@ def playset(player1,player2,var1,var2,r1,r2,mv,type,setmode):
     # print_obj(player11)
     # print_obj(player22)
     lengame = 0
+    bp1,  bp2 = 0, 0
     while setpoint1 != setmode and setpoint2 != setmode:
 
         gamepoint1 = 0
@@ -286,9 +295,11 @@ def playset(player1,player2,var1,var2,r1,r2,mv,type,setmode):
 
         while max(gamepoint1, gamepoint2) < 6 or (
                 max(gamepoint1, gamepoint2) == 6 and min(gamepoint1, gamepoint2) >= 5):
-            list = game(player11, player22, gamepoint1, gamepoint2, order, setpoint1 + setpoint2 + 1)
+            list = game(player11, player22, gamepoint1, gamepoint2, order, setpoint1 + setpoint2 + 1, bp1, bp2)
             gamepoint1 = list[0]
             gamepoint2 = list[1]
+            bp1 = list[4]
+            bp2 = list[5]
             order = -1 * order
 
         if gamepoint1 > gamepoint2:
@@ -302,7 +313,6 @@ def playset(player1,player2,var1,var2,r1,r2,mv,type,setmode):
     #         print(gamepoint1, "vs", gamepoint2)
     #
     # print(setpoint1,":",setpoint2)
-
     return [setpoint1,setpoint2,lengame]
 
 def print_obj(obj):
@@ -387,27 +397,64 @@ def match(playername1,playername2,playerid1,playerid2,stats1,stats2,var1,var2,el
     # print(len)
 
 def printresult(player1,player2,list,N):
+    result_str = player1+"  vs  "+player2+"\n\n"
     if len(list)==4:
-        print(player1, "2:0", player2, list[0] / N)
-        print(player1, "2:1", player2, list[1] / N)
-        print(player1, "1:2", player2, list[2] / N)
-        print(player1, "0:2", player2, list[3] / N)
+        temp_str = player1 + " 2:0 " + player2 + " " + str(list[0] / N)
+        print(temp_str)
+        result_str = result_str + temp_str + "\n"
+        temp_str = player1 + " 2:1 " + player2 + " " + str(list[1] / N)
+        print(temp_str)
+        result_str = result_str + temp_str + "\n"
+        temp_str = player1 + " 1:2 " + player2 + " " + str(list[2] / N)
+        print(temp_str)
+        result_str = result_str + temp_str + "\n"
+        temp_str = player1 + " 0:2 " + player2 + " " + str(list[3] / N)
+        print(temp_str)
+        result_str = result_str + temp_str + "\n"
     else:
-        print(player1, "3:0", player2, list[0] / N)
-        print(player1, "3:1", player2, list[1] / N)
-        print(player1, "3:2", player2, list[2] / N)
-        print(player1, "2:3", player2, list[3] / N)
-        print(player1, "1:3", player2, list[4] / N)
-        print(player1, "0:3", player2, list[5] / N)
-
+        temp_str = player1 + " 3:0 " + player2 + " " + str(list[0] / N)
+        print(temp_str)
+        result_str = result_str + temp_str + "\n"
+        temp_str = player1 + " 3:1 " + player2 + " " + str(list[1] / N)
+        print(temp_str)
+        result_str = result_str + temp_str + "\n"
+        temp_str = player1 + " 3:2 " + player2 + " " + str(list[2] / N)
+        print(temp_str)
+        result_str = result_str + temp_str + "\n"
+        temp_str = player1 + " 2:3 " + player2 + " " + str(list[3] / N)
+        print(temp_str)
+        result_str = result_str + temp_str + "\n"
+        temp_str = player1 + " 1:3 " + player2 + " " + str(list[4] / N)
+        print(temp_str)
+        result_str = result_str + temp_str + "\n"
+        temp_str = player1 + " 0:3 " + player2 + " " + str(list[5] / N)
+        print(temp_str)
+        result_str = result_str + temp_str + "\n"
+    return result_str
 
 def simulation(cursor,name1,name2,elo1,elo2,speed1,speed2,type,N,s1,s2,time1,time2,time3,time4,qf,setmode):
+    try:
+        point=name1.index("'")
+        name1=name1[0:point]+"'"+name1[point:len(name1)]
+    except:
+        try:
+            point = name2.index("'")
+            name2 = name2[0:point] + "'" + name2[point:len(name2)]
+        except:
+            name1=name1
+
     lan1 = "select top 1 ID from player where Name Like '%" + name1 + "%'"
     cursor.execute(lan1)
-    id1 = cursor.fetchone()[0]
+    check_1 = cursor.fetchone()
     lan2 = "select top 1 ID from player where Name Like '%" + name2 + "%'"
     cursor.execute(lan2)
-    id2 = cursor.fetchone()[0]
+    check_2 = cursor.fetchone()
+    if check_1 and check_2:
+        id1 = check_1[0]
+        id2 = check_2[0]
+    else:
+        print(name1,name2,' one is not in DB. ')
+        return -3
 
     if s1=='t':
         cursor.execute("select * from dbo.player_statistics(%s,%s,%s,%s,%s)", (id1, type, time1, time2, qf))
@@ -455,18 +502,12 @@ def simulation(cursor,name1,name2,elo1,elo2,speed1,speed2,type,N,s1,s2,time1,tim
 
     print(len(stats_1), len(stats_2))
     if (len(stats_1)<5 and len(stats_2)>=7) or (len(stats_2)<5 and len(stats_1)>=7):
-        if len(stats_1)==0 or len(stats_2)==0:
+        if len(stats_1)<3 or len(stats_2)<3:
             return -2,[]
         else:
             flag=-1
     elif len(stats_1)<3 or len(stats_2)<3:
-        if s1=='t' or (s1!='t' and (len(stats_1)==1 or len(stats_2)==1)):
-            return -2, []
-        else:
-            if len(stats_1)==0 or len(stats_2)==0:
-                return -2, []
-            else:
-                flag=0
+        return -2, []
     else:
         flag=0
 
@@ -597,59 +638,92 @@ def courtspeed(speed):
     elif speed=='Slow' or speed=='5':
         return 0,40
     else:
-        return 0,100
+        return int(speed)-10,int(speed)+10
+
+def courttype(ty):
+    if ty=='1' or ty=='g' or ty=='G':
+        return 'Grass'
+    elif ty=='h' or ty=='2' or ty=='H':
+        return 'Hard'
+    elif ty=='c' or ty=='3' or ty=='C':
+        return 'Clay'
+    elif ty=='a' or ty=='4':
+        return 'All'
+    else:
+        return ty
 
 def outputprocess(cursor, name1, name2, elo1, elo2, speed1, speed2, type, N, s, time1, time2, time3, time4, time5, time6, qf, setmode):
     flag, resultlist = simulation(cursor, name1, name2, elo1, elo2, speed1, speed2, type, N, s, s, time1, time2, time3, time4,qf,
                                   setmode)
-    if flag == -1:
+    if flag == -3:
+        result_str = "name may be wrong or not exist."
+        print("check the name. ")
+
+    elif flag == -1:
         flag, resultlist_add = simulation(cursor, name1, name2, elo1, elo2, speed1, speed2, type, N, 's', 's', time5,
                                           time2, time6, time4, qf, setmode)
         if flag == -2:
-            printresult(name1, name2, resultlist, N)
+            print("Satistics less than limitation. ")
+            result_str = name1+"  vs  "+name2+"\n\n"+"lack of data.\n"
         else:
             resultlist = resultlist + resultlist_add
-            printresult(name1, name2, resultlist, 2 * N)
+            fwval = sum(resultlist[0:int(len(resultlist) / 2)]) / (2 * N)
+            result_str = printresult(name1, name2, resultlist, 2 * N)
+            return fwval > 0.5,result_str
     elif flag == -2:
         flag, resultlist = simulation(cursor, name1, name2, elo1, elo2, speed1, speed2, type, N, 's', 's', time1, time2,
                                       time3, time4, qf,setmode)
         if flag == -2:
             print("Satistics less than limitation. ")
+            result_str = name1+"  vs  "+name2+"\n\n"+"lack of data.\n\n"
         else:
-            printresult(name1, name2, resultlist, N)
+            wval = sum(resultlist[0:int(len(resultlist) / 2)]) / N
+            result_str = printresult(name1, name2, resultlist, N)
+            return wval > 0.5,result_str
     else:
         wval = sum(resultlist[0:int(len(resultlist) / 2)]) / N
-        printresult(name1, name2, resultlist, N)
+        result_str = printresult(name1, name2, resultlist, N)
         print("start to check by speed...")
         flag, resultlist_check = simulation(cursor, name1, name2, elo1, elo2, speed1, speed2, type, N, 's', 's', time5,
                                             time2, time6, time4, qf,
                                             setmode)
         if flag == -2:
-            printresult(name1, name2, resultlist, N)
+            #printresult(name1, name2, resultlist, N)
+            return wval > 0.5,result_str
         else:
             w_val = sum(resultlist_check[0:int(len(resultlist_check) / 2)]) / N
             if (w_val - 0.5) * (wval - 0.5) < 0:
                 print("check!")
                 resultlist = resultlist + resultlist_check
-                printresult(name1, name2, resultlist, 2 * N)
+                result_str = printresult(name1, name2, resultlist, 2 * N)
+                fwval = sum(resultlist[0:int(len(resultlist) / 2)]) / (2 * N)
+                return fwval > 0.5,result_str
             else:
                 print("have confidence.")
+                return wval > 0.5,result_str
+
+    return -1,result_str
 
 
-def start():
-    name1 = input("Input player's name: ")
-    name2 = input("Input player's name: ")
+def start(name1,name2,ty,speed,setmode,de_seq,end_seq,qf):
     elo1 = 20
     elo2 = 20
-    qf = 0
-    setmode = 2
     s = 't'
-    type = input('Input court type: Grass/Hard/Clay ')
-    speed = input('Input court speed: FAST/Fast/Medium Fast/Medium Slow/Slow ')
+    type = courttype(ty)
     speed1, speed2 = courtspeed(speed)
 
-    connect = pymssql.connect(server='LAPTOP-BBQ77BE4', user='sa', password='123456', database='tennis')
+    connect = pymssql.connect(server='LAPTOP-BBQ77BE4', user='sa', password='123456', database='atp-tennis')
     cursor = connect.cursor()
+
+    now_date = datetime.datetime.now()
+    if end_seq==None:
+        end_seq = now_date.year*100+99
+    if de_seq==None:
+        date_target = datetime.date(now_date.year-1,now_date.month,now_date.day)
+        cursor.execute("select top 1 sequence from Tournament where date>=%s order by date",date_target)
+        de_seq = (now_date.year-1)%100*100+(cursor.fetchone()[0]-1)
+
+
     cursor.execute("Exec select_match %s,%s", (name1, 0))
     row = cursor.fetchone()
     num = 0
@@ -660,6 +734,9 @@ def start():
     tour_s = []
     tour_sq = []
     tour_q = []
+    seq_pure = -1
+    seq_q = -1
+
     while row and (num < 10 or num_s < 10):
         if row[3].rstrip() == type or type == 'All':
             num_q = num_q + 1
@@ -678,7 +755,8 @@ def start():
                     if num_s == 10:
                         tour_s = (row[0], row[1])
         row=cursor.fetchone()
-    if num == 10:
+
+    if num >= 10:
         print(tour_pure[1], tour_q[1])
         cursor.execute("select top 1 sequence from Tournament where Name=%s and [year]=%s",(tour_pure[0],tour_pure[1]))
         seq_pure=cursor.fetchone()[0]
@@ -690,6 +768,29 @@ def start():
         cursor.execute("select top 1 sequence from Tournament where Name=%s and [year]=%s", (tour_q[0], tour_q[1]))
         seq_q = cursor.fetchone()[0]
         print("type", name1, seq_q)
+
+    if seq_pure==-1:
+        t1 = de_seq
+    elif tour_pure[1]==2021:
+        if seq_pure<=de_seq%100:
+            t1 = de_seq
+        else:
+            t1 = tour_pure[1]%100*100+seq_pure
+    else:
+        t1 = tour_pure[1]%100*100+seq_pure
+
+    if seq_q==-1:
+        t5 = de_seq
+    elif tour_q[1]==2021:
+        if seq_q<=de_seq%100:
+            t5 = de_seq
+        else:
+            t5 = tour_q[1]%100*100+seq_q
+    else:
+        t5 = tour_q[1]%100*100+seq_q
+
+    seq_pure = -1
+    seq_q = -1
     if num_s >= 10:
         print(tour_s[1], tour_sq[1])
         cursor.execute("select top 1 sequence from Tournament where Name=%s and [year]=%s",
@@ -704,8 +805,28 @@ def start():
         seq_q = cursor.fetchone()[0]
         print("speed", name1, seq_q)
 
+    if seq_pure==-1:
+        t3 = de_seq
+    elif tour_s[1]==2021:
+        if seq_pure<=de_seq%100:
+            t3 = de_seq
+        else:
+            t3 = tour_s[1]%100*100+seq_pure
+    else:
+        t3 = tour_s[1]%100*100+seq_pure
+
+    if seq_q==-1:
+        t7 = de_seq
+    elif tour_sq[1]==2021:
+        if seq_q<=de_seq%100:
+            t7 = de_seq
+        else:
+            t7 = tour_sq[1]%100*100+seq_q
+    else:
+        t7 = tour_sq[1]%100*100+seq_q
+
     flag_1 = 0
-    if num != num_q:
+    if num + 3 <= num_q:
         flag_1 = 1
 
     cursor.execute("Exec select_match %s,%s", (name2, 0))
@@ -718,6 +839,9 @@ def start():
     tour_s = []
     tour_sq = []
     tour_q = []
+    seq_pure = -1
+    seq_q = -1
+
     while row and (num < 10 or num_s < 10):
         if row[3].rstrip() == type or type == 'All':
             num_q = num_q + 1
@@ -736,7 +860,7 @@ def start():
                     if num_s == 10:
                         tour_s = (row[0], row[1])
         row = cursor.fetchone()
-    if num == 10:
+    if num >= 10:
         print(tour_pure[1], tour_q[1])
         cursor.execute("select top 1 sequence from Tournament where Name=%s and [year]=%s",
                        (tour_pure[0], tour_pure[1]))
@@ -750,6 +874,28 @@ def start():
         seq_q = cursor.fetchone()[0]
         print("type", name2, seq_q)
 
+    if seq_pure==-1:
+        t2 = de_seq
+    elif tour_pure[1]==2021:
+        if seq_pure<=de_seq%100:
+            t2 = de_seq
+        else:
+            t2 = tour_pure[1]%100*100+seq_pure
+    else:
+        t2 = tour_pure[1]%100*100+seq_pure
+
+    if seq_q==-1:
+        t6 = de_seq
+    elif tour_q[1]==2021:
+        if seq_q<=de_seq%100:
+            t6 = de_seq
+        else:
+            t6 = tour_q[1]%100*100+seq_q
+    else:
+        t6 = tour_q[1]%100*100+seq_q
+
+    seq_pure = -1
+    seq_q = -1
     if num_s >= 10:
         print(tour_s[1], tour_sq[1])
         cursor.execute("select top 1 sequence from Tournament where Name=%s and [year]=%s",
@@ -764,41 +910,65 @@ def start():
         seq_q = cursor.fetchone()[0]
         print("speed", name2, seq_q)
 
+    if seq_pure==-1:
+        t4 = de_seq
+    elif tour_s[1]==2021:
+        if seq_pure<=de_seq%100:
+            t4 = de_seq
+        else:
+            t4 = tour_s[1]%100*100+seq_pure
+    else:
+        t4 = tour_s[1]%100*100+seq_pure
+
+    if seq_q==-1:
+        t8 = de_seq
+    elif tour_sq[1] == 2021:
+        if seq_q <= de_seq%100:
+            t8 = de_seq
+        else:
+            t8 = tour_sq[1]%100*100+seq_q
+    else:
+        t8 = tour_sq[1]%100*100+seq_q
+
     flag_2 = 0
-    if num != num_q:
+    if num + 3 <= num_q:
         flag_2 = 1
 
-    time1 = int(input('Use statistics starting from when for type simulation ? '))+200000
+    time1 = t1 + 200000
     #time2 = int(input('Use statistics ending in when ? '))+200000
-    time2 = 202299
-    time3 = int(input('Use statistics starting from when for type simulation ? ')) + 200000
+    time2 = end_seq
+    time3 = t2 + 200000
     #time4 = int(input('Use statistics ending in when ? ')) + 200000
-    time4 = 202299
-    time5 = int(input('Use statistics starting from when for speed simulation ? ')) + 200000
-    time6 = int(input('Use statistics starting from when for speed simulation ? ')) + 200000
+    time4 = end_seq
+    time5 = t3 + 200000
+    time6 = t4 + 200000
 
     #N = int(input('How many times to simulate ? '))
     N = 5000
-    outputprocess(cursor, name1, name2, elo1, elo2, speed1, speed2, type, N, s, time1, time2, time3, time4, time5, time6, qf, setmode)
+    wp,result_str = outputprocess(cursor, name1, name2, elo1, elo2, speed1, speed2, type, N, s, time1, time2, time3, time4, time5, time6, qf, setmode)
 
     if flag_1*flag_2==1:
         print("have qualify")
         qf = 1
-        time1 = int(input('Use statistics starting from when for type simulation ? ')) + 200000
+        time1 = t5 + 200000
         #time2 = int(input('Use statistics ending in when ? ')) + 200000
-        time3 = int(input('Use statistics starting from when for type simulation ? ')) + 200000
+        time3 = t6 + 200000
         #time4 = int(input('Use statistics ending in when ? ')) + 200000
-        time5 = int(input('Use statistics starting from when for speed simulation ? ')) + 200000
-        time6 = int(input('Use statistics starting from when for speed simulation ? ')) + 200000
+        time5 = t7 + 200000
+        time6 = t8 + 200000
 
-        outputprocess(cursor, name1, name2, elo1, elo2, speed1, speed2, type, N, s, time1, time2, time3, time4, time5, time6, qf,
+        wp,result_str = outputprocess(cursor, name1, name2, elo1, elo2, speed1, speed2, type, N, s, time1, time2, time3, time4, time5, time6, qf,
                       setmode)
     connect.close()
-
+    return wp, result_str
 
 if __name__ == '__main__':
     q='N'
+    ty = input('Input court type: Grass/Hard/Clay ')
+    speed = input('Input court speed: FAST/Fast/Medium Fast/Medium Slow/Slow/Real speed ')
     while q!='q':
-        start()
+        name1 = input("Input player's name: ")
+        name2 = input("Input player's name: ")
+        start(name1,name2,ty,speed,setmode=2,de_seq=None,end_seq=None,qf=0)
         q = input('quit by entering q ')
         i = os.system("cls")

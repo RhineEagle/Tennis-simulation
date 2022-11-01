@@ -9,6 +9,9 @@ import xlrd
 import json
 import requests
 from xlutils.copy import copy
+from retrying import retry
+import pycountry as pc
+import pytz
 
 def getplayerinfo(name1,name2,cursor,u_name):
     lan1 = "select top 1 [C-Name],ID from Player Where [R-ID]=%s"
@@ -150,6 +153,19 @@ def translate(word):
         # 相应失败就返回空
         return word
 
+def convert_GS(eid):
+    if eid=='580':
+        return 'AO'
+    elif eid=='520':
+        return 'RG'
+    elif eid=='540':
+        return 'WC'
+    elif eid=='560':
+        return 'UO'
+    else:
+        if len(eid)==3:
+            eid='0'+eid
+        return eid
 
 def getabnormalplayer(playername,cursor,u_name):
     # use player's name to get id
@@ -247,6 +263,7 @@ def getplayerrankinfo(playername):
             break
     return CName,id
 
+@retry(stop_max_attempt_number=10, wait_fixed=3000)
 def getdata(id1,id2,player1,player2,eid,matchid,year,ID1,ID2,tournament_id,mid,winner,round_,KO,cursor):
     url = 'https://www.rank-tennis.com/zh/stat/query'
 
@@ -476,7 +493,7 @@ def getmatchinfo(name,matchid,mid,eid,year,tournamentid,winner,round_,u_name,KO,
         return -1
 
 
-def select_data(mode, tourid, eid, tournamentid, year, tournament, type, level, seq, speed, status, date,
+def select_data(mode, eid, tournamentid, year, tournament, type, level, seq, speed, status, date,
                 constraint_stop_num, Rank_Order):
     if mode == 'date':
         now = datetime.datetime.now()
@@ -496,18 +513,23 @@ def select_data(mode, tourid, eid, tournamentid, year, tournament, type, level, 
     html = response.read().decode('utf-8')
     bs = BeautifulSoup(html, "html.parser")
     if mode == 'date':
-        bs = bs.find_all('div', attrs={'class': 'cResultTour', 'data-eid': tourid})[0]
+        temp = bs.find_all('div', attrs={'class': 'cResultTour'})
+        for item in temp:
+            try:
+                str(item).index('cResultTour'+eid)
+                bs = item
+                break
+            except:
+                continue
+        #bs = bs.find_all('div', attrs={'class': 'cResultTour', 'data-eid': tourid})[0]
     a = bs.find_all('div', class_='cResultMatch')
     pat = re.compile(r'Q\d')
     pattern = re.compile("cResultPlayer(\w+)")
     patro = re.compile('match-id="(\w+)"')
     patt = re.compile('open_stat[(-)].+, "(\D+)", "(\D+)"[(-)]')
 
-    connect = pymssql.connect(server='LAPTOP-BBQ77BE4', user='sa', password='123456', database='tennis', charset='utf8')
+    connect = pymssql.connect(server='LAPTOP-BBQ77BE4', user='sa', password='123456', database='atp-tennis', charset='utf8')
     cursor = connect.cursor()
-
-    cursor.execute("Insert Tournament Values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
-                   (tournamentid // 100, year, tournament, level, type, tournamentid, None, seq, speed, date))
 
     nonexist = 0
     b = []
@@ -525,29 +547,42 @@ def select_data(mode, tourid, eid, tournamentid, year, tournament, type, level, 
     cursor.execute("select Count(*) from result where tournament_id=%s and [Year]=%s",(tournamentid // 100, year))
     match_have_select=int(cursor.fetchone()[0])
     print("there are "+str(match_have_select)+" matches have been selected.")
+
+    if match_have_select == 0:
+        speed = int(input("input the tournament speed "))
+
+    cursor.execute("Insert Tournament Values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
+                   (tournamentid // 100, year, tournament, level, type, tournamentid, None, seq, speed, date))
+
     print("please check the sequence!")
     time.sleep(3)
     KO = len(b)+match_have_select+1
     num = 0
 
     for item in b:
+        round_ = item.select("div[class='cResultMatchRound']")[0].text
+        print(round_)
         pat3 = re.compile('cResultMatchMidTableRow"')
         pat4 = re.compile("cResultMatchMidTableRowWinner")
-        win = re.search(pat4, str(item)).span()[1]
-        lose = re.search(pat3, str(item)).span()[1]
-        if win > lose:
-            winner = 2
-        else:
-            winner = 1
+        try:
+            win = re.search(pat4, str(item)).span()[1]
+            lose = re.search(pat3, str(item)).span()[1]
+            if win > lose:
+                winner = 2
+            else:
+                winner = 1
+        except:
+            num = num + 1
+            nonexist = nonexist + 1
+            print("The match hasn't started.")
+            continue
         num = num + 1
         name = re.findall(pattern, str(item))
         match = re.findall(patro, str(item))[0]
         u_name = re.findall(patt, str(item))[0]
         # print(u_name)
-        round_ = item.select("div[class='cResultMatchRound']")[0].text
-        print(round_)
         if level == 'Grand Slam':
-            mid = int(match[-2:]) - 1 + 2 ** (7 - int(match[-3]))
+            mid = KO-(128-2**(7-int(match[-3])+1)+int(match[-2:]))
         else:
             mid = num
         status_code = getmatchinfo(name, match, mid, eid, year, tournamentid, winner, round_, u_name, KO, cursor)
@@ -557,7 +592,8 @@ def select_data(mode, tourid, eid, tournamentid, year, tournament, type, level, 
         elif status_code == -1:
             if status == 'Completing':
                 print("The match hasn't started.")
-                continue
+                connect.rollback()
+                exit(1)
             else:
                 info1, info2 = getplayerinfo(name[0], name[1], cursor, u_name)
                 if winner == 2:
@@ -576,25 +612,89 @@ def select_data(mode, tourid, eid, tournamentid, year, tournament, type, level, 
         execute_rank(tournamentid, date, cursor)
     connect.commit()
 
+def istimeapp(code,day):
+    code_2 = pc.countries.get(alpha_3=code).alpha_2
+    zone = pytz.timezone(pytz.country_timezones(code_2)[0])
+    hour = datetime.datetime.now(zone).hour
+    d = datetime.datetime.now(zone).day
+    if d==day and hour>=2:
+        return True
+    else:
+        print("We are going to select at 4 o'clock")
+        print("local time ",d,hour)
+        print("your time ", day)
+        return False
 
 if __name__=='__main__':
-    tourid='0421'
-    eid='0421'
-    tournamentid=9942122
-    year=2022
-    tournament="Rogers Cup Q"
-    type="Hard"
-    level="Qualify"
-    KO=28
-    seq=50
-    speed=69
-    status='Finish'
-    date = datetime.datetime.strptime("2022-08-06", '%Y-%m-%d')
-    constraint_stop_num=KO
-    Rank_Order = True
-    if (datetime.datetime.now()-date).days>3:
-        Rank_Order=False
-    #mode='date'
-    mode='tour'
-    select_data(mode,tourid, eid, tournamentid, year, tournament, type, level, seq, speed, status, date,
-                    constraint_stop_num, Rank_Order)
+    with open("tour_list_a.txt",'r',encoding='utf-8') as f:
+        line=f.readlines()
+        f.close()
+    date_now = datetime.datetime.now()-datetime.timedelta(days=1)
+    date_now = datetime.date(date_now.year, date_now.month, date_now.day)
+    date_today = datetime.datetime.now().day
+
+    for item in line:
+        info = tuple(eval(item))
+        if info[3]!='Qualify':
+            date_start = info[7]
+            date_start = datetime.date(int(date_start[0:4]),int(date_start[5:7]),int(date_start[8:10]))
+            date_end = info[8]
+            date_end = datetime.date(int(date_end[0:4]), int(date_end[5:7]), int(date_end[8:10]))
+
+            if date_now>=date_start and date_now<=date_end:
+                flag = istimeapp(info[9],date_today)
+                if flag == False:
+                    print("Not a appropriate time.")
+                    continue
+                eid = convert_GS(str(int(info[0])//100))
+                tournamentid = int(info[0])
+                year = info[1]
+                tournament = info[2]
+                type = info[4]
+                level = info[3]
+                KO = 128
+                seq = int(info[5])-1
+                speed = None
+                status = 'Finished'
+                date = datetime.datetime.strptime(info[7], '%Y-%m-%d')
+                constraint_stop_num = KO
+                Rank_Order = True
+                if (datetime.datetime.now() - date).days > 3:
+                    Rank_Order = False
+                mode = 'date'
+                print(tournament)
+                select_data(mode, eid, tournamentid, year, tournament, type, level, seq, speed, status, date,
+                            constraint_stop_num, Rank_Order)
+            elif date_now+datetime.timedelta(days=1)<date_start:
+                break
+        else:
+            date_end = info[8]
+            date_end = datetime.date(int(date_end[0:4]), int(date_end[5:7]), int(date_end[8:10]))
+            date_start = info[7]
+            date_start = datetime.date(int(date_start[0:4]), int(date_start[5:7]), int(date_start[8:10]))
+            if date_now == date_end:
+                flag = istimeapp(info[9], date_today)
+                if flag == False:
+                    print("Not a appropriate time.")
+                    continue
+                eid = convert_GS(str((int(info[0])-99*10**(len(str(info[0]))-2)) // 100))
+                print(eid)
+                tournamentid = int(info[0])
+                year = info[1]
+                tournament = info[2]
+                type = info[4]
+                level = info[3]
+                KO = 128
+                seq = int(info[5]) - 1
+                speed = None
+                status = 'Completing'
+                date = datetime.datetime.strptime(info[7], '%Y-%m-%d')
+                constraint_stop_num = KO
+                Rank_Order = True
+                #mode = 'date'
+                mode='tour'
+                print(tournament)
+                select_data(mode, eid, tournamentid, year, tournament, type, level, seq, speed, status, date,
+                            constraint_stop_num, Rank_Order)
+            elif date_now+datetime.timedelta(days=1) < date_start:
+                break
