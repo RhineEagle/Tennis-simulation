@@ -8,7 +8,8 @@ import json
 
 
 def update_tour(eid,tour,type,file_name,info_ago):
-    now = datetime.datetime.now()-datetime.timedelta(days=0)
+
+    now = datetime.datetime.now()+datetime.timedelta(days=0)
     date_str = now.strftime('%Y-%m-%d')
     url = "https://www.rank-tennis.com/zh/result/" + date_str
 
@@ -34,7 +35,8 @@ def update_tour(eid,tour,type,file_name,info_ago):
             continue
         # bs = bs.find_all('div', attrs={'class': 'cResultTour', 'data-eid': tourid})[0]
     if tbs==[]:
-        exit(1)
+        return [], info_ago[1:]
+
     a = tbs.find_all('div', class_='cResultMatch')
     pat = re.compile(r'Q\d')
     pattern = re.compile("cResultPlayer(\w+)")
@@ -48,6 +50,7 @@ def update_tour(eid,tour,type,file_name,info_ago):
 
     id = []
     odd_list = []
+
     for item in b:
         u_name = re.findall(pattern, str(item))[0:2]
         if len(u_name)!=2:
@@ -58,7 +61,8 @@ def update_tour(eid,tour,type,file_name,info_ago):
             odd = re.findall(oddpat,str(item))[0]
         except:
             odd = ('N/A', 'N/A')
-        odd_list.append(odd)
+        odd_list.append(odd[0])
+        odd_list.append(odd[1])
     print(id)
 
 
@@ -89,7 +93,7 @@ def update_tour(eid,tour,type,file_name,info_ago):
         if temp_speed != []:
             temp_speed = temp_speed[0]
         else:
-            temp_speed = -1
+            temp_speed = tournament_speed
         if temp_speed != tournament_speed:
             if abs(temp_speed-tournament_speed)>=3:
                 tournament_speed = 0.5 * temp_speed + tournament_speed * 0.5
@@ -114,6 +118,7 @@ def update_tour(eid,tour,type,file_name,info_ago):
         else:
             if i%2==0:
                 l_mark=1
+                odd_list.pop(0)
             else:
                 if l_mark==0:
                     player_name.pop()
@@ -145,7 +150,7 @@ def update_tour(eid,tour,type,file_name,info_ago):
         print(player_name[i], ' vs ', player_name[i + 1])
         wp,result_str = match_result.start(player_name[i], player_name[i + 1], type, speed, 2, None, None, 0)
         idx = result_str.index("\n")
-        matchresult = matchresult + result_str[0:idx+1]+ "\n" +odd_renew_list[i//2][0]+"    "+odd_renew_list[i//2][1]+ "\n" + result_str[idx+1:] + "\n\n\n"
+        matchresult = matchresult + result_str[0:idx+1]+ "\n" +odd_renew_list[i]+"    "+odd_renew_list[i+1]+ "\n" + result_str[idx+1:] + "\n\n\n"
 
     with open(file_name, 'r', encoding="utf-8") as f:
         content = f.readlines()
@@ -153,7 +158,8 @@ def update_tour(eid,tour,type,file_name,info_ago):
     with open(file_name, "w", encoding="utf-8") as f:
         for item in content[:4]:
             f.write(item)
-        f.write("**"+tour+"**\n\n")
+        if matchresult != "":
+            f.write("**"+tour+"**\n\n")
         f.write(matchresult)
         for item in info_ago[1:]:
             f.write(item)
@@ -161,7 +167,6 @@ def update_tour(eid,tour,type,file_name,info_ago):
 
     with open(file_name, "r", encoding="utf-8") as f:
         con = f.readlines()[3:]
-
 
     return id,con
 
@@ -202,12 +207,13 @@ def convert_GS(eid):
 with open("tour_list_a.txt",'r',encoding='utf-8') as f:
     line=f.readlines()
     f.close()
-date_now = datetime.datetime.now()#-datetime.timedelta(days=2)
+date_now = datetime.datetime.now()+datetime.timedelta(days=0)
 date_now = datetime.date(date_now.year, date_now.month, date_now.day)
 
 type_list = []
 eid_list = []
 tournament_list = []
+ahead_check = 0
 
 for item in line:
     info = tuple(eval(item))
@@ -216,19 +222,38 @@ for item in line:
         date_start = datetime.date(int(date_start[0:4]),int(date_start[5:7]),int(date_start[8:10]))
         date_end = info[8]
         date_end = datetime.date(int(date_end[0:4]), int(date_end[5:7]), int(date_end[8:10]))
+        if tournament_list == []:
+            tar_end = date_end
+            tar_start = date_start
+        #print(tournament_list)
 
-        if date_now>=date_start and date_now<=date_end:
-            type_list.append(info[4])
-            eid_list.append(convert_GS(str(int(info[0])//100)))
-            tournament_list.append(info[2])
+        if date_now>date_end+datetime.timedelta(days=1):
+            continue
+
+        if date_now>=min(tar_start,date_start)-datetime.timedelta(days=1):
+            if date_now==min(tar_start,date_start)-datetime.timedelta(days=1) and ahead_check==0:
+                ahead_check = 1
+            elif date_now>min(tar_start,date_start)-datetime.timedelta(days=1):
+                ahead_check = 2
+
+            if abs((date_end-tar_end).days)<=1 and date_now<=max(tar_end,date_end):
+
+                type_list.append(info[4])
+                eid_list.append(convert_GS(str(int(info[0])//100)))
+                tournament_list.append(info[2])
+
+if ahead_check==1:
+    tournament_list = []
 
 file_name = ""
+if tournament_list == None:
+    exit(0)
 for item in tournament_list:
     file_name = file_name + item + " & "
 
 title = file_name[:-3]
-file_name = "C:/Users/math_conservatism/Documents/"+title+".md"
-#file_name = "D:/Git/learnskill/Forecast Result/"+title+".md"
+#file_name = "C:/Users/math_conservatism/Documents/"+title+".md"
+file_name = "D:/Git/learnskill/Forecast Result/"+title+".md"
 print(file_name)
 
 try:
@@ -253,7 +278,6 @@ try:
 except:
     with open(file_name, "w", encoding="utf-8") as f:
         f.write('# ' + title + "\n\n")
-        f.write("#### Day " + str(int(Day) + 1) + "\n\n")
-    for item in content:
-        f.write(item)
+        for item in content:
+            f.write(item)
         f.close()

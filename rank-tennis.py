@@ -263,7 +263,7 @@ def getplayerrankinfo(playername):
             break
     return CName,id
 
-@retry(stop_max_attempt_number=10, wait_fixed=3000)
+@retry(stop_max_attempt_number=3, wait_fixed=3000)
 def getdata(id1,id2,player1,player2,eid,matchid,year,ID1,ID2,tournament_id,mid,winner,round_,KO,cursor):
     url = 'https://www.rank-tennis.com/zh/stat/query'
 
@@ -275,8 +275,8 @@ def getdata(id1,id2,player1,player2,eid,matchid,year,ID1,ID2,tournament_id,mid,w
     data = {
         'id1': id1,
         'id2': id2,
-        'p1': player1,
-        'p2': player2,
+        'p1': player1.encode('latin1').decode('gbk'),
+        'p2': player2.encode('latin1').decode('gbk'),
         'eid': eid,
         'type': 'atp',
         'matchid': matchid,
@@ -512,17 +512,21 @@ def select_data(mode, eid, tournamentid, year, tournament, type, level, seq, spe
     response = urllib.request.urlopen(req)
     html = response.read().decode('utf-8')
     bs = BeautifulSoup(html, "html.parser")
+    bs_ = bs
     if mode == 'date':
         temp = bs.find_all('div', attrs={'class': 'cResultTour'})
         for item in temp:
             try:
                 str(item).index('cResultTour'+eid)
-                bs = item
+                bs_ = item
                 break
             except:
                 continue
         #bs = bs.find_all('div', attrs={'class': 'cResultTour', 'data-eid': tourid})[0]
-    a = bs.find_all('div', class_='cResultMatch')
+    if bs_ == bs:
+        return -1
+
+    a = bs_.find_all('div', class_='cResultMatch')
     pat = re.compile(r'Q\d')
     pattern = re.compile("cResultPlayer(\w+)")
     patro = re.compile('match-id="(\w+)"')
@@ -585,7 +589,10 @@ def select_data(mode, eid, tournamentid, year, tournament, type, level, seq, spe
             mid = KO-(128-2**(7-int(match[-3])+1)+int(match[-2:]))
         else:
             mid = num
-        status_code = getmatchinfo(name, match, mid, eid, year, tournamentid, winner, round_, u_name, KO, cursor)
+        try:
+            status_code = getmatchinfo(name, match, mid, eid, year, tournamentid, winner, round_, u_name, KO, cursor)
+        except:
+            status_code = 1
         if status_code == 1:
             nonexist = nonexist + 1
             continue
@@ -629,7 +636,7 @@ if __name__=='__main__':
     with open("tour_list_a.txt",'r',encoding='utf-8') as f:
         line=f.readlines()
         f.close()
-    date_now = datetime.datetime.now()-datetime.timedelta(days=1)
+    date_now = datetime.datetime.now()-datetime.timedelta(days=0)
     date_now = datetime.date(date_now.year, date_now.month, date_now.day)
     date_today = datetime.datetime.now().day
 

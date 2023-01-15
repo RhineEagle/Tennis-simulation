@@ -717,7 +717,7 @@ def start(name1,name2,ty,speed,setmode,de_seq,end_seq,qf):
 
     now_date = datetime.datetime.now()
     if end_seq==None:
-        end_seq = now_date.year*100+99
+        end_seq = (now_date.year+1)*100+99
     if de_seq==None:
         date_target = datetime.date(now_date.year-1,now_date.month,now_date.day)
         cursor.execute("select top 1 sequence from Tournament where date>=%s order by date",date_target)
@@ -771,7 +771,7 @@ def start(name1,name2,ty,speed,setmode,de_seq,end_seq,qf):
 
     if seq_pure==-1:
         t1 = de_seq
-    elif tour_pure[1]==2021:
+    elif tour_pure[1]==now_date.year-1:
         if seq_pure<=de_seq%100:
             t1 = de_seq
         else:
@@ -781,7 +781,7 @@ def start(name1,name2,ty,speed,setmode,de_seq,end_seq,qf):
 
     if seq_q==-1:
         t5 = de_seq
-    elif tour_q[1]==2021:
+    elif tour_q[1]==now_date.year-1:
         if seq_q<=de_seq%100:
             t5 = de_seq
         else:
@@ -807,7 +807,7 @@ def start(name1,name2,ty,speed,setmode,de_seq,end_seq,qf):
 
     if seq_pure==-1:
         t3 = de_seq
-    elif tour_s[1]==2021:
+    elif tour_s[1]==now_date.year-1:
         if seq_pure<=de_seq%100:
             t3 = de_seq
         else:
@@ -817,7 +817,7 @@ def start(name1,name2,ty,speed,setmode,de_seq,end_seq,qf):
 
     if seq_q==-1:
         t7 = de_seq
-    elif tour_sq[1]==2021:
+    elif tour_sq[1]==now_date.year-1:
         if seq_q<=de_seq%100:
             t7 = de_seq
         else:
@@ -876,7 +876,7 @@ def start(name1,name2,ty,speed,setmode,de_seq,end_seq,qf):
 
     if seq_pure==-1:
         t2 = de_seq
-    elif tour_pure[1]==2021:
+    elif tour_pure[1]==now_date.year-1:
         if seq_pure<=de_seq%100:
             t2 = de_seq
         else:
@@ -886,7 +886,7 @@ def start(name1,name2,ty,speed,setmode,de_seq,end_seq,qf):
 
     if seq_q==-1:
         t6 = de_seq
-    elif tour_q[1]==2021:
+    elif tour_q[1]==now_date.year-1:
         if seq_q<=de_seq%100:
             t6 = de_seq
         else:
@@ -912,7 +912,7 @@ def start(name1,name2,ty,speed,setmode,de_seq,end_seq,qf):
 
     if seq_pure==-1:
         t4 = de_seq
-    elif tour_s[1]==2021:
+    elif tour_s[1]==now_date.year-1:
         if seq_pure<=de_seq%100:
             t4 = de_seq
         else:
@@ -922,7 +922,7 @@ def start(name1,name2,ty,speed,setmode,de_seq,end_seq,qf):
 
     if seq_q==-1:
         t8 = de_seq
-    elif tour_sq[1] == 2021:
+    elif tour_sq[1] == now_date.year-1:
         if seq_q <= de_seq%100:
             t8 = de_seq
         else:
