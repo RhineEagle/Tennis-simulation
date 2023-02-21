@@ -1,10 +1,420 @@
 # Rotterdam & Delray Beach & Buenos Aires
 
+#### Day 7
+
+**Buenos Aires**
+
+Carlos Alcaraz  2:0  Cameron Norrie    ✔
+
+1.20    4.50
+
+Carlos Alcaraz 2:0 Cameron Norrie 0.305
+Carlos Alcaraz 2:1 Cameron Norrie 0.247
+Carlos Alcaraz 1:2 Cameron Norrie 0.2176
+Carlos Alcaraz 0:2 Cameron Norrie 0.2304
+
+
+
+**Delray Beach**
+
+Taylor Fritz  2:1  Miomir Kecmanovic    ✔
+
+N/A    N/A
+
+Taylor Fritz 2:0 Miomir Kecmanovic 0.371
+Taylor Fritz 2:1 Miomir Kecmanovic 0.2392
+Taylor Fritz 1:2 Miomir Kecmanovic 0.1864
+Taylor Fritz 0:2 Miomir Kecmanovic 0.2034
+
+
+
+**Rotterdam**
+
+Jannik Sinner  1:2  Daniil Medvedev    ❌
+
+2.38    1.57
+
+Jannik Sinner 2:0 Daniil Medvedev 0.3408
+Jannik Sinner 2:1 Daniil Medvedev 0.241
+Jannik Sinner 1:2 Daniil Medvedev 0.1996
+Jannik Sinner 0:2 Daniil Medvedev 0.2186
+
+
+
+
+#### Day 6
+
+**Buenos Aires**
+
+Juan Pablo Varillas  0:2  Cameron Norrie    ✔
+
+2.75    1.44
+
+Juan Pablo Varillas 2:0 Cameron Norrie 0.251
+Juan Pablo Varillas 2:1 Cameron Norrie 0.225
+Juan Pablo Varillas 1:2 Cameron Norrie 0.2252
+Juan Pablo Varillas 0:2 Cameron Norrie 0.2988
+
+
+
+Carlos Alcaraz  2:0  Bernabe Zapata Miralles    ✔
+
+1.08    8.00
+
+Carlos Alcaraz 2:0 Bernabe Zapata Miralles 0.349
+Carlos Alcaraz 2:1 Bernabe Zapata Miralles 0.247
+Carlos Alcaraz 1:2 Bernabe Zapata Miralles 0.2026
+Carlos Alcaraz 0:2 Bernabe Zapata Miralles 0.2014
+
+
+
+**Delray Beach**
+
+Miomir Kecmanovic  2:1  Radu Albot    ❌
+
+1.28    3.75
+
+Miomir Kecmanovic 2:0 Radu Albot 0.2704
+Miomir Kecmanovic 2:1 Radu Albot 0.2222
+Miomir Kecmanovic 1:2 Radu Albot 0.2322
+Miomir Kecmanovic 0:2 Radu Albot 0.2752
+
+
+
+Taylor Fritz  2:0  Mackenzie Mcdonald    ✔
+
+1.33    3.40
+
+Taylor Fritz 2:0 Mackenzie Mcdonald 0.384
+Taylor Fritz 2:1 Mackenzie Mcdonald 0.2402
+Taylor Fritz 1:2 Mackenzie Mcdonald 0.1756
+Taylor Fritz 0:2 Mackenzie Mcdonald 0.2002
+
+
+
+**Rotterdam**
+
+Daniil Medvedev  2:0  Grigor Dimitrov    ✔
+
+1.22    4.33
+
+Daniil Medvedev 2:0 Grigor Dimitrov 0.336
+Daniil Medvedev 2:1 Grigor Dimitrov 0.2298
+Daniil Medvedev 1:2 Grigor Dimitrov 0.1944
+Daniil Medvedev 0:2 Grigor Dimitrov 0.2398
+
+
+
+Jannik Sinner  2:0  Tallon Griekspoor    ✔
+
+1.14    5.50
+
+Jannik Sinner 2:0 Tallon Griekspoor 0.3692
+Jannik Sinner 2:1 Tallon Griekspoor 0.2456
+Jannik Sinner 1:2 Tallon Griekspoor 0.1908
+Jannik Sinner 0:2 Tallon Griekspoor 0.1944
+
+
+
+
+#### Day 5
+
+**Buenos Aires**
+
+Tomas Martin Etcheverry  1:2  Cameron Norrie    ✔
+
+2.50    1.53
+
+Tomas Martin Etcheverry 2:0 Cameron Norrie 0.1774
+Tomas Martin Etcheverry 2:1 Cameron Norrie 0.1712
+Tomas Martin Etcheverry 1:2 Cameron Norrie 0.2392
+Tomas Martin Etcheverry 0:2 Cameron Norrie 0.4122
+
+
+
+Juan Pablo Varillas  2:0  Lorenzo Musetti    ❗    ❌
+
+3.75    1.28
+
+Juan Pablo Varillas 2:0 Lorenzo Musetti 0.266
+Juan Pablo Varillas 2:1 Lorenzo Musetti 0.181
+Juan Pablo Varillas 1:2 Lorenzo Musetti 0.2044
+Juan Pablo Varillas 0:2 Lorenzo Musetti 0.3486
+
+
+
+Carlos Alcaraz  2:0  Dusan Lajovic    ✔
+
+1.12    6.00
+
+Carlos Alcaraz 2:0 Dusan Lajovic 0.3614
+Carlos Alcaraz 2:1 Dusan Lajovic 0.2508
+Carlos Alcaraz 1:2 Dusan Lajovic 0.1894
+Carlos Alcaraz 0:2 Dusan Lajovic 0.1984
+
+
+
+Bernabe Zapata Miralles  2:1  Francisco Cerundolo    ❗    ✔
+
+2.75    1.44
+
+Bernabe Zapata Miralles 2:0 Francisco Cerundolo 0.279
+Bernabe Zapata Miralles 2:1 Francisco Cerundolo 0.222
+Bernabe Zapata Miralles 1:2 Francisco Cerundolo 0.2152
+Bernabe Zapata Miralles 0:2 Francisco Cerundolo 0.2838
+
+
+
+**Delray Beach**
+
+Marcos Giron  0:2  Miomir Kecmanovic    ❌
+
+2.00    1.80
+
+Marcos Giron 2:0 Miomir Kecmanovic 0.31
+Marcos Giron 2:1 Miomir Kecmanovic 0.2135
+Marcos Giron 1:2 Miomir Kecmanovic 0.2057
+Marcos Giron 0:2 Miomir Kecmanovic 0.2708
+
+
+
+Radu Albot  2:0  Tommy Paul    ❗    ❌
+
+5.50    1.14
+
+Radu Albot 2:0 Tommy Paul 0.2853
+Radu Albot 2:1 Tommy Paul 0.2136
+Radu Albot 1:2 Tommy Paul 0.2139
+Radu Albot 0:2 Tommy Paul 0.2872
+
+
+
+Michael Mmoh  1:2  Mackenzie Mcdonald    ✔
+
+2.62    1.50
+
+Michael Mmoh 2:0 Mackenzie Mcdonald 0.2182
+Michael Mmoh 2:1 Mackenzie Mcdonald 0.1918
+Michael Mmoh 1:2 Mackenzie Mcdonald 0.231
+Michael Mmoh 0:2 Mackenzie Mcdonald 0.359
+
+
+
+Taylor Fritz  2:0  Adrian Mannarino    ✔
+
+1.20    4.50
+
+Taylor Fritz 2:0 Adrian Mannarino 0.2984
+Taylor Fritz 2:1 Adrian Mannarino 0.2288
+Taylor Fritz 1:2 Adrian Mannarino 0.2204
+Taylor Fritz 0:2 Adrian Mannarino 0.2524
+
+
+
+**Rotterdam**
+
+Grigor Dimitrov  2:1  Alex De Minaur    ❗    ✔
+
+2.00    1.80
+
+Grigor Dimitrov 2:0 Alex De Minaur 0.368
+Grigor Dimitrov 2:1 Alex De Minaur 0.2298
+Grigor Dimitrov 1:2 Alex De Minaur 0.1876
+Grigor Dimitrov 0:2 Alex De Minaur 0.2146
+
+
+
+Daniil Medvedev  2:0  Felix Auger-Aliassime    ✔
+
+1.61    2.30
+
+Daniil Medvedev 2:0 Felix Auger-Aliassime 0.2762
+Daniil Medvedev 2:1 Felix Auger-Aliassime 0.2376
+Daniil Medvedev 1:2 Felix Auger-Aliassime 0.2152
+Daniil Medvedev 0:2 Felix Auger-Aliassime 0.271
+
+
+
+Jannik Sinner  2:0  Stan Wawrinka    ✔
+
+1.22    4.33
+
+Jannik Sinner 2:0 Stan Wawrinka 0.436
+Jannik Sinner 2:1 Stan Wawrinka 0.2538
+Jannik Sinner 1:2 Stan Wawrinka 0.153
+Jannik Sinner 0:2 Stan Wawrinka 0.1572
+
+
+
+Gijs Brouwer  0:2  Tallon Griekspoor    ❌
+
+3.50    1.30
+
+Gijs Brouwer 2:0 Tallon Griekspoor 0.2805
+Gijs Brouwer 2:1 Tallon Griekspoor 0.2225
+Gijs Brouwer 1:2 Tallon Griekspoor 0.2222
+Gijs Brouwer 0:2 Tallon Griekspoor 0.2748
+
+
+
+
+#### Day 4
+
+**Buenos Aires**
+
+Dominic Thiem  0:2  Juan Pablo Varillas    ❗    ❌
+
+1.50    2.62
+
+Dominic Thiem 2:0 Juan Pablo Varillas 0.362
+Dominic Thiem 2:1 Juan Pablo Varillas 0.2162
+Dominic Thiem 1:2 Juan Pablo Varillas 0.185
+Dominic Thiem 0:2 Juan Pablo Varillas 0.2368
+
+
+
+Jaume Munar  0:2  Francisco Cerundolo    ✔
+
+2.20    1.67
+
+Jaume Munar 2:0 Francisco Cerundolo 0.2528
+Jaume Munar 2:1 Francisco Cerundolo 0.2068
+Jaume Munar 1:2 Francisco Cerundolo 0.2316
+Jaume Munar 0:2 Francisco Cerundolo 0.3088
+
+
+
+Pedro Cachin  0:2  Lorenzo Musetti    ❌
+
+3.40    1.33
+
+Pedro Cachin 2:0 Lorenzo Musetti 0.2872
+Pedro Cachin 2:1 Lorenzo Musetti 0.227
+Pedro Cachin 1:2 Lorenzo Musetti 0.2238
+Pedro Cachin 0:2 Lorenzo Musetti 0.262
+
+
+
+Diego Schwartzman  0:2  Bernabe Zapata Miralles    ❗    ✔
+
+1.61    2.30
+
+Diego Schwartzman 2:0 Bernabe Zapata Miralles 0.2489
+Diego Schwartzman 2:1 Bernabe Zapata Miralles 0.2108
+Diego Schwartzman 1:2 Bernabe Zapata Miralles 0.2242
+Diego Schwartzman 0:2 Bernabe Zapata Miralles 0.3161
+
+
+
+**Delray Beach**
+
+Aleksandar Vukic  0:2  Radu Albot    ❗    ❌
+
+1.73    2.10
+
+Aleksandar Vukic 2:0 Radu Albot 0.379
+Aleksandar Vukic 2:1 Radu Albot 0.2488
+Aleksandar Vukic 1:2 Radu Albot 0.1776
+Aleksandar Vukic 0:2 Radu Albot 0.1946
+
+
+
+Denis Kudla  0:2  Tommy Paul    ✔
+
+5.00    1.17
+
+Denis Kudla 2:0 Tommy Paul 0.1254
+Denis Kudla 2:1 Tommy Paul 0.1508
+Denis Kudla 1:2 Tommy Paul 0.2564
+Denis Kudla 0:2 Tommy Paul 0.4674
+
+
+
+Adrian Mannarino  2:0  J.J. Wolf    ❗    ❌
+
+2.50    1.53
+
+Adrian Mannarino 2:0 J.J. Wolf 0.2766
+Adrian Mannarino 2:1 J.J. Wolf 0.2188
+Adrian Mannarino 1:2 J.J. Wolf 0.2352
+Adrian Mannarino 0:2 J.J. Wolf 0.2694
+
+
+
+Taylor Fritz  2:0  Emilio Gomez    ✔
+
+1.07    9.00
+
+Taylor Fritz 2:0 Emilio Gomez 0.4506
+Taylor Fritz 2:1 Emilio Gomez 0.251
+Taylor Fritz 1:2 Emilio Gomez 0.1542
+Taylor Fritz 0:2 Emilio Gomez 0.1442
+
+
+
+**Rotterdam**
+
+Gregoire Barrere  0:2  Felix Auger-Aliassime    ✔
+
+4.50    1.20
+
+Gregoire Barrere 2:0 Felix Auger-Aliassime 0.2476
+Gregoire Barrere 2:1 Felix Auger-Aliassime 0.2244
+Gregoire Barrere 1:2 Felix Auger-Aliassime 0.23
+Gregoire Barrere 0:2 Felix Auger-Aliassime 0.298
+
+
+
+Daniil Medvedev  2:0  Botic Van De Zandschulp    ✔
+
+1.12    6.00
+
+Daniil Medvedev 2:0 Botic Van De Zandschulp 0.4146
+Daniil Medvedev 2:1 Botic Van De Zandschulp 0.245
+Daniil Medvedev 1:2 Botic Van De Zandschulp 0.1604
+Daniil Medvedev 0:2 Botic Van De Zandschulp 0.18
+
+
+
+Maxime Cressy  1:2  Alex De Minaur    ✔
+
+3.00    1.40
+
+Maxime Cressy 2:0 Alex De Minaur 0.2554
+Maxime Cressy 2:1 Alex De Minaur 0.2232
+Maxime Cressy 1:2 Alex De Minaur 0.2132
+Maxime Cressy 0:2 Alex De Minaur 0.3082
+
+
+
+Stefanos Tsitsipas  0:2  Jannik Sinner    ❗    ✔
+
+1.61    2.30
+
+Stefanos Tsitsipas 2:0 Jannik Sinner 0.2342
+Stefanos Tsitsipas 2:1 Jannik Sinner 0.216
+Stefanos Tsitsipas 1:2 Jannik Sinner 0.2196
+Stefanos Tsitsipas 0:2 Jannik Sinner 0.3302
+
+
+
+Holger Rune  0:1  Gijs Brouwer    ❗    ❌
+
+1.08    8.00
+
+Holger Rune 2:0 Gijs Brouwer 0.3002
+Holger Rune 2:1 Gijs Brouwer 0.2556
+Holger Rune 1:2 Gijs Brouwer 0.204
+Holger Rune 0:2 Gijs Brouwer 0.2402
+
+
+
+
 #### Day 3
 
 **Buenos Aires**
 
-Roberto Carballes Baena  vs  Tomas Martin Etcheverry
+Roberto Carballes Baena  1:2  Tomas Martin Etcheverry    ❗    ❌
 
 1.80    2.00
 
@@ -15,18 +425,18 @@ Roberto Carballes Baena 0:2 Tomas Martin Etcheverry 0.2432
 
 
 
-Facundo Diaz Acosta  vs  Cameron Norrie
+Facundo Diaz Acosta  1:2  Cameron Norrie
 
-N/A    N/A
+3.50    1.30
 
 lack of data.
 
 
 
 
-Camilo Ugo Carabelli  vs  Dusan Lajovic
+Camilo Ugo Carabelli  0:2  Dusan Lajovic    ✔
 
-N/A    N/A
+2.62    1.50
 
 Camilo Ugo Carabelli 2:0 Dusan Lajovic 0.2446
 Camilo Ugo Carabelli 2:1 Dusan Lajovic 0.1982
@@ -35,7 +445,7 @@ Camilo Ugo Carabelli 0:2 Dusan Lajovic 0.3204
 
 
 
-Carlos Alcaraz  vs  Laslo Djere
+Carlos Alcaraz  2:1  Laslo Djere    ✔
 
 1.28    3.75
 
@@ -48,7 +458,7 @@ Carlos Alcaraz 0:2 Laslo Djere 0.182
 
 **Delray Beach**
 
-Nuno Borges  vs  Miomir Kecmanovic
+Nuno Borges  0:2  Miomir Kecmanovic    ❌
 
 2.75    1.44
 
@@ -59,7 +469,7 @@ Nuno Borges 0:2 Miomir Kecmanovic 0.2392
 
 
 
-Mackenzie Mcdonald  vs  Yoshihito Nishioka
+Mackenzie Mcdonald  2:1  Yoshihito Nishioka    ❗    ✔
 
 2.30    1.61
 
@@ -70,9 +480,9 @@ Mackenzie Mcdonald 0:2 Yoshihito Nishioka 0.266
 
 
 
-Marcos Giron  vs  Matija Pecotic
+Marcos Giron  2:0  Matija Pecotic    ✔
 
-N/A    N/A
+1.14    5.50
 
 Marcos Giron 2:0 Matija Pecotic 0.3323
 Marcos Giron 2:1 Matija Pecotic 0.2101
@@ -81,7 +491,7 @@ Marcos Giron 0:2 Matija Pecotic 0.2472
 
 
 
-Denis Shapovalov  vs  Michael Mmoh
+Denis Shapovalov  1:2  Michael Mmoh    ❗    ❌
 
 1.28    3.75
 
@@ -94,7 +504,7 @@ Denis Shapovalov 0:2 Michael Mmoh 0.2214
 
 **Rotterdam**
 
-Benjamin Bonzi  vs  Jannik Sinner
+Benjamin Bonzi  1:2  Jannik Sinner    ✔
 
 5.00    1.17
 
@@ -105,7 +515,7 @@ Benjamin Bonzi 0:2 Jannik Sinner 0.4474
 
 
 
-Holger Rune  vs  Constant Lestienne
+Holger Rune  2:0  Constant Lestienne    ✔
 
 1.14    5.50
 
@@ -116,7 +526,7 @@ Holger Rune 0:2 Constant Lestienne 0.153
 
 
 
-Botic Van De Zandschulp  vs  Quentin Halys
+Botic Van De Zandschulp  2:1  Quentin Halys    ❓
 
 1.73    2.10
 
@@ -127,7 +537,7 @@ Botic Van De Zandschulp 0:2 Quentin Halys 0.2904
 
 
 
-Alex De Minaur  vs  Andrey Rublev
+Alex De Minaur  2:0  Andrey Rublev    ❗    ❓
 
 3.00    1.40
 
@@ -138,7 +548,7 @@ Alex De Minaur 0:2 Andrey Rublev 0.2763
 
 
 
-Tallon Griekspoor  vs  Alexander Zverev
+Tallon Griekspoor  2:1  Alexander Zverev    ❗    ❌
 
 3.20    1.36
 
@@ -149,7 +559,7 @@ Tallon Griekspoor 0:2 Alexander Zverev 0.307
 
 
 
-Tim Van Rijthoven  vs  Maxime Cressy
+Tim Van Rijthoven  1:2  Maxime Cressy    ✔
 
 2.50    1.53
 
@@ -160,7 +570,7 @@ Tim Van Rijthoven 0:2 Maxime Cressy 0.3036
 
 
 
-Stan Wawrinka  vs  Richard Gasquet
+Stan Wawrinka  2:0  Richard Gasquet    ❌
 
 1.67    2.20
 
@@ -171,7 +581,7 @@ Stan Wawrinka 0:2 Richard Gasquet 0.3182
 
 
 
-Hubert Hurkacz  vs  Grigor Dimitrov
+Hubert Hurkacz  0:2  Grigor Dimitrov    ❗    ✔
 
 1.80    2.00
 
