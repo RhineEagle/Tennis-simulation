@@ -7,7 +7,7 @@ import pymssql
 import json
 
 
-def update_tour(eid,tour,type,file_name,info_ago):
+def update_tour(eid,tour,type,file_name):
 
     now = datetime.datetime.now()+datetime.timedelta(days=0)
     date_str = now.strftime('%Y-%m-%d')
@@ -35,7 +35,7 @@ def update_tour(eid,tour,type,file_name,info_ago):
             continue
         # bs = bs.find_all('div', attrs={'class': 'cResultTour', 'data-eid': tourid})[0]
     if tbs==[]:
-        return [], info_ago[1:]
+        return []
 
     a = tbs.find_all('div', class_='cResultMatch')
     pat = re.compile(r'Q\d')
@@ -152,21 +152,17 @@ def update_tour(eid,tour,type,file_name,info_ago):
         idx = result_str.index("\n")
         matchresult = matchresult + result_str[0:idx+1]+ "\n" +odd_renew_list[i]+"    "+odd_renew_list[i+1]+ "\n" + result_str[idx+1:] + "\n\n\n"
 
+
     with open(file_name, 'r', encoding="utf-8") as f:
         content = f.readlines()
 
-    with open(file_name, "w", encoding="utf-8") as f:
-        for item in content[:4]:
-            f.write(item)
-        if matchresult != "":
-            f.write("**"+tour+"**\n\n")
-        f.write(matchresult)
-        for item in info_ago[1:]:
-            f.write(item)
-        f.close()
-
-    with open(file_name, "r", encoding="utf-8") as f:
-        con = f.readlines()[3:]
+    if content:
+        con = content[3]
+    else:
+        con = ""
+    if matchresult != "":
+        con = con + ("**" + tour + "**\n\n")
+    con = con + matchresult
 
     return id,con
 
@@ -253,7 +249,7 @@ for item in tournament_list:
 
 title = file_name[:-3]
 #file_name = "C:/Users/math_conservatism/Documents/"+title+".md"
-file_name = "D:/Git/learnskill/Forecast Result/"+title+".md"
+file_name = "D:/Git/learnskill/"+title+".md"
 print(file_name)
 
 try:
@@ -267,17 +263,15 @@ if content:
     pat_day = re.compile("Day (\d+)")
     Day = re.findall(pat_day, content[2])[0]
 
-with open(file_name, "w", encoding="utf-8") as f:
-    f.write('# ' + title + "\n\n")
-    f.write("#### Day " + str(int(Day) + 1) + "\n\n")
+fore_res = '# ' + title + "\n\n" + "#### Day " + str(int(Day) + 1) + "\n\n"
 
-try:
-    for i in range(0,len(tournament_list)):
-        print(tournament_list[i])
-        id, content = update_tour(eid_list[i], tournament_list[i], type_list[i], file_name, content)
-except:
-    with open(file_name, "w", encoding="utf-8") as f:
-        f.write('# ' + title + "\n\n")
-        for item in content:
-            f.write(item)
-        f.close()
+for i in range(0,len(tournament_list)):
+    print(tournament_list[i])
+    id, con = update_tour(eid_list[i], tournament_list[i], type_list[i], file_name)
+    fore_res = fore_res + con
+for item in content[1:]:
+    fore_res = fore_res + item
+with open(file_name, "w", encoding="utf-8") as f:
+    for item in fore_res:
+        f.write(item)
+    f.close()
