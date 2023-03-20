@@ -776,6 +776,8 @@ def start(name1,name2,ty,speed,setmode,de_seq,end_seq,qf):
             t1 = de_seq
         else:
             t1 = tour_pure[1]%100*100+seq_pure
+    elif tour_pure[1]<now_date.year-1:
+        t1 = de_seq
     else:
         t1 = tour_pure[1]%100*100+seq_pure
 
@@ -786,6 +788,8 @@ def start(name1,name2,ty,speed,setmode,de_seq,end_seq,qf):
             t5 = de_seq
         else:
             t5 = tour_q[1]%100*100+seq_q
+    elif tour_q[1] < now_date.year - 1:
+        t5 = de_seq
     else:
         t5 = tour_q[1]%100*100+seq_q
 
@@ -812,6 +816,8 @@ def start(name1,name2,ty,speed,setmode,de_seq,end_seq,qf):
             t3 = de_seq
         else:
             t3 = tour_s[1]%100*100+seq_pure
+    elif tour_s[1] < now_date.year - 1:
+        t3 = de_seq
     else:
         t3 = tour_s[1]%100*100+seq_pure
 
@@ -822,6 +828,8 @@ def start(name1,name2,ty,speed,setmode,de_seq,end_seq,qf):
             t7 = de_seq
         else:
             t7 = tour_sq[1]%100*100+seq_q
+    elif tour_sq[1] < now_date.year - 1:
+        t7 = de_seq
     else:
         t7 = tour_sq[1]%100*100+seq_q
 
@@ -876,7 +884,7 @@ def start(name1,name2,ty,speed,setmode,de_seq,end_seq,qf):
 
     if seq_pure==-1:
         t2 = de_seq
-    elif tour_pure[1]==now_date.year-1:
+    elif tour_pure[1]<=now_date.year-1:
         if seq_pure<=de_seq%100:
             t2 = de_seq
         else:
@@ -886,7 +894,7 @@ def start(name1,name2,ty,speed,setmode,de_seq,end_seq,qf):
 
     if seq_q==-1:
         t6 = de_seq
-    elif tour_q[1]==now_date.year-1:
+    elif tour_q[1]<=now_date.year-1:
         if seq_q<=de_seq%100:
             t6 = de_seq
         else:
@@ -912,7 +920,7 @@ def start(name1,name2,ty,speed,setmode,de_seq,end_seq,qf):
 
     if seq_pure==-1:
         t4 = de_seq
-    elif tour_s[1]==now_date.year-1:
+    elif tour_s[1]<=now_date.year-1:
         if seq_pure<=de_seq%100:
             t4 = de_seq
         else:
@@ -922,7 +930,7 @@ def start(name1,name2,ty,speed,setmode,de_seq,end_seq,qf):
 
     if seq_q==-1:
         t8 = de_seq
-    elif tour_sq[1] == now_date.year-1:
+    elif tour_sq[1] <= now_date.year-1:
         if seq_q <= de_seq%100:
             t8 = de_seq
         else:
@@ -942,6 +950,7 @@ def start(name1,name2,ty,speed,setmode,de_seq,end_seq,qf):
     time4 = end_seq
     time5 = t3 + 200000
     time6 = t4 + 200000
+    print("time",time1,time3,time5,time6)
 
     #N = int(input('How many times to simulate ? '))
     N = 5000

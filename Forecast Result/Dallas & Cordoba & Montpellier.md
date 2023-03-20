@@ -30,9 +30,9 @@ Sebastian Baez 0:2 Federico Coria 0.2162
 
 **Dallas**
 
-Wu Yi Bing  2:1  John Isner    ❌
+Wu Yi Bing  2:1  John Isner    ❗    ❌
 
-N/A    N/A
+4.00    1.25
 
 Wu Yi Bing 2:0 John Isner 0.2444
 Wu Yi Bing 2:1 John Isner 0.2022
