@@ -2,6 +2,24 @@
 
 ### 2.3
 
+**2023.4.6**
+
+The file record_result.py can automatically summarize the results of yesterday's competition and evaluate the accuracy of odds and predictions. At this point, the automation of the daily competition prediction process has been fully realized.
+
+To extend the database, the file trans_structure.py is used to adjust the data format based on the data from  [GitHub - JeffSackmann/tennis_atp: ATP Tennis Rankings, Results, and Stats](https://github.com/JeffSackmann/tennis_atp) to be suitable for our database.  We have collected technical statistics and results of all open tournaments since 2000, although some of them have missing data. Although the data we need to simulate matches is only within a year, future model research will mainly focus on modifying players' abilities, and it is not ruled out that we will use these data. 
+
+At the same time, in order to enhance the visualization effect, we will learn front-end technology to better display our results.
+
+**Files include:**
+
+- match_result.py   simulate the match result for input players' name
+- tour_forecast.py   write down the forecast results automatically
+- record_result.py   summarize yesterday's match results automatically
+- trans_structure.py   transform the data format to fit the database
+- rank-tennis.py   record statistics of match which is lack in UTS from rank-tennis
+
+
+
 **2022.11.1**
 
 In this version, we focus on increasing the efficiency, with the idea that the program automatically obtains match of the day information for prediction and automatically generates analysis reports, resulting the code tour_forecast.py.
@@ -9,6 +27,12 @@ In this version, we focus on increasing the efficiency, with the idea that the p
 Some small adjustments have been applied, such as, we need players who use statistics from their match of tournament qulification should played at least 3 qulifications in his last 10-13 matches.
 
 In the tournaments been predicted last serveral months, we get the accurary of from 68% to 74%, which isn't an excellent result for we can easily discover that some predictions are ridiculous. Fortunately, it is not totally a silly thing, with some dark horses can be predicted of high significance. This phenomenon spurs us to consider some improvement, such as cluster. Hope next version could get more satisfied result.
+
+**Files include:**
+
+- match_result.py   simulate the match result for input players' name
+- tour_forecast.py   write down the forecast results automatically
+- rank-tennis.py   record statistics of match which is lack in UTS from rank-tennis
 
  
 

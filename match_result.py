@@ -1,5 +1,6 @@
 import datetime
 import sys
+import multiprocessing
 
 import pymssql
 import pandas as pd
@@ -85,7 +86,7 @@ def play(player1, player2, g1, g2, p1, p2, num, bp1, bp2):
     weigh = player1.elo/(player1.elo+player2.elo)
     if (p2 == 3 and p1 <= 2) or (p2 >= 4 and p2-p1 == 1):
         #prob=player1.breaksave*(100-player2.breakconvert)/(player1.breaksave*(100-player2.breakconvert)+(100-player1.breaksave)*player2.breakconvert)
-        prob = (max(player1.breaksave/100, 1-player2.breakconvert/100)*weigh+min(player1.breaksave/100, 1-player2.breakconvert/100)*(1-weigh))*(bp1/(bp1+3))+(3/(bp1+3))*(0.15+0.7*(player1.ace+(player1.firstin-player1.ace)*player1.firstserve/100+(1-player1.firstin/100-player1.doublefault/100)*player1.secondserve)/100)
+        prob = (max(player1.breaksave/100, 1-player2.breakconvert/100)*weigh+min(player1.breaksave/100, 1-player2.breakconvert/100)*(1-weigh))*((bp1+2)/(bp1+3))+(1/(bp1+3))*(0.15+0.7*(player1.ace+(player1.firstin-player1.ace)*player1.firstserve/100+(1-player1.firstin/100-player1.doublefault/100)*player1.secondserve)/100)
         #print("break point for ", player2.name)
         if p > prob:
             p2 = p2+1
@@ -836,6 +837,9 @@ def start(name1,name2,ty,speed,setmode,de_seq,end_seq,qf):
     flag_1 = 0
     if num + 3 <= num_q:
         flag_1 = 1
+    c1 = num_q - num
+    pct_1 = (num_q - num)/(num_q+0.01)
+    pct_1s = (num_sq - num_s)/(num_sq+0.01)
 
     cursor.execute("Exec select_match %s,%s", (name2, 0))
     row = cursor.fetchone()
@@ -868,6 +872,7 @@ def start(name1,name2,ty,speed,setmode,de_seq,end_seq,qf):
                     if num_s == 10:
                         tour_s = (row[0], row[1])
         row = cursor.fetchone()
+
     if num >= 10:
         print(tour_pure[1], tour_q[1])
         cursor.execute("select top 1 sequence from Tournament where Name=%s and [year]=%s",
@@ -941,6 +946,9 @@ def start(name1,name2,ty,speed,setmode,de_seq,end_seq,qf):
     flag_2 = 0
     if num + 3 <= num_q:
         flag_2 = 1
+    c2 = num_q - num
+    pct_2 = (num_q - num)/(num_q + 0.01)
+    pct_2s = (num_sq-num_s)/(num_sq + 0.01)
 
     time1 = t1 + 200000
     #time2 = int(input('Use statistics ending in when ? '))+200000
@@ -951,12 +959,11 @@ def start(name1,name2,ty,speed,setmode,de_seq,end_seq,qf):
     time5 = t3 + 200000
     time6 = t4 + 200000
     print("time",time1,time3,time5,time6)
-
     #N = int(input('How many times to simulate ? '))
     N = 5000
     wp,result_str = outputprocess(cursor, name1, name2, elo1, elo2, speed1, speed2, type, N, s, time1, time2, time3, time4, time5, time6, qf, setmode)
 
-    if flag_1*flag_2==1:
+    if flag_1*flag_2==1 and (abs(pct_2-pct_1)<0.2 or abs(pct_1s-pct_2s)<0.23) and (min(c1,c2)>=5 or max(c1,c2)<=7):
         print("have qualify")
         qf = 1
         time1 = t5 + 200000

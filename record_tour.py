@@ -28,6 +28,19 @@ def process_result(score_str, sgn):
 
     return result
 
+def convert_id(eid):
+    if eid=='AO':
+        return '580'
+    elif eid=='RG':
+        return '520'
+    elif eid=='WC':
+        return '540'
+    elif eid=='UO':
+        return '560'
+    else:
+        return eid
+
+
 def update_record(eid, content):
     now = datetime.datetime.now() + datetime.timedelta(days=-1)
     date_str = now.strftime('%Y-%m-%d')
@@ -77,6 +90,8 @@ def update_record(eid, content):
     connect = pymssql.connect(server='LAPTOP-BBQ77BE4', user='sa', password='123456', database='atp-tennis',
                               charset='utf8')
     cursor = connect.cursor()
+    eid = convert_id(eid)
+    print(eid)
 
     for i in range(0, len(id), 2):
         cursor.execute("select Name, ID from Player where [R-id]=%s",id[i])
@@ -93,7 +108,7 @@ def update_record(eid, content):
         cursor.execute("select p1_id, result from result where ((p1_id=%s and p2_id=%s) or (p2_id=%s and p1_id=%s)) and tournament_id=%s and [year]=%s", (player1_id,player2_id,player1_id,player2_id,eid,2023))
         result = cursor.fetchone()
         #print(result)
-        if result == []:
+        if result == None:
             continue
 
         if result[0] == player1_id:
@@ -104,8 +119,10 @@ def update_record(eid, content):
         odd_pat = re.compile('(\d+.\d+)\s+(\d+.\d+)')
         pro_pat = re.compile('(0[.]\d+)')
 
-        if result != 'W/O':
+        if result[1] != 'W/O':
             result = process_result(result[1].strip(),winner)
+        else:
+            result = result[1]
 
         for i in range(len(content)):
             if content[i] == (player1+"  vs  "+player2+'\n'):
@@ -136,7 +153,9 @@ def update_record(eid, content):
                             re.findall(pro_pat, content[i + 8])[0]) + float(
                             re.findall(pro_pat, content[i + 9])[0])
 
-                    if (pro_1 > pro_2) == winner:
+                    if abs(pro_1-pro_2)<0.001:
+                        info_ = info_ + "    ❓"
+                    elif (pro_1 > pro_2) == winner:
                         info_ = info_ + "    ❌"
                     else:
                         info_ = info_ + "    ✔"
@@ -164,7 +183,7 @@ def convert_GS(eid):
 with open("tour_list_a.txt", 'r', encoding='utf-8') as f:
     line = f.readlines()
     f.close()
-date_now = datetime.datetime.now() + datetime.timedelta(days=0)
+date_now = datetime.datetime.now() + datetime.timedelta(days=-1)
 date_now = datetime.date(date_now.year, date_now.month, date_now.day)
 
 type_list = []
@@ -196,7 +215,11 @@ for item in line:
 
                 type_list.append(info[4])
                 eid_list.append(convert_GS(str(int(info[0])//100)))
-                tournament_list.append(info[2])
+                tour_name = info[2]
+                if info[3] == 'ATP1000':
+                    if info[2][-7:] != 'Masters':
+                        tour_name = info[2] + ' Masters'
+                tournament_list.append(tour_name)
 
 if ahead_check == 1:
     tournament_list = []
@@ -221,9 +244,3 @@ for i in range(0, len(tournament_list)):
         for item in content:
             f.write(item)
         f.close()
-# except:
-#     print("wrong")
-#     with open(file_name, "w", encoding="utf-8") as f:
-#         for item in content:
-#             f.write(item)
-#         f.close()

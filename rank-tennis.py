@@ -13,33 +13,35 @@ from retrying import retry
 import pycountry as pc
 import pytz
 
-def getplayerinfo(name1,name2,cursor,u_name):
+def getplayerinfo(name1,name2,cursor,u_name,start_date):
     lan1 = "select top 1 [C-Name],ID from Player Where [R-ID]=%s"
     lan2 = "select top 1 [C-Name],ID from Player Where [R-ID]=%s"
 
     cursor.execute(lan1,name1)
     info1 = cursor.fetchone()
     if info1==None:
-        getabnormalplayer(name1,cursor,u_name[0])
+        getabnormalplayer(name1,cursor,u_name[0],start_date)
         cursor.execute(lan1, name1)
         info1 = cursor.fetchone()
     cursor.execute(lan2,name2)
     info2 = cursor.fetchone()
     if info2==None:
-        getabnormalplayer(name2, cursor, u_name[1])
+        getabnormalplayer(name2, cursor, u_name[1],start_date)
         cursor.execute(lan2, name2)
         info2 = cursor.fetchone()
     return info1,info2
 
 def execute_rank(tour,yy,cursor):
     cursor.execute(
-        "select distinct p1_id from result where tournament_id=%s and [Year]=%s union select distinct p2_id from result where tournament_id=%s and [Year]=%s",
-        (tour // 100, yy.year, tour // 100, yy.year))
+        "select distinct p1_id from result where tournament_id=%s and [Year]=%s and NOT EXISTS (select 1 from participator_list where id=p1_id and tour_id=%s) union select distinct p2_id from result where tournament_id=%s and [Year]=%s and NOT EXISTS (select 1 from participator_list where id=p2_id and tour_id=%s)",
+        (tour // 100, yy.year, tour, tour // 100, yy.year, tour))
     player_list=[]
-    row=cursor.fetchone()
-    while row:
-        player_list.append(row[0])
-        row=cursor.fetchone()
+    row=cursor.fetchall()
+    for item in row:
+        player_list.append(item[0])
+    if player_list==[]:
+        return []
+
     url = 'https://www.rank-tennis.com/en/history/official/query'
 
     headers = {
@@ -167,7 +169,7 @@ def convert_GS(eid):
             eid='0'+eid
         return eid
 
-def getabnormalplayer(playername,cursor,u_name):
+def getabnormalplayer(playername,cursor,u_name,start_date):
     # use player's name to get id
     file = "Rank_tennis.xls"
     workbook = xlrd.open_workbook(file)
@@ -194,11 +196,26 @@ def getabnormalplayer(playername,cursor,u_name):
         newbook.save(file)
 
     Player=Name.replace(" ","+")
-    url = "https://www.ultimatetennisstatistics.com/playerProfile?name=" + Player + "&tab=profile"
-    head = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.25 Safari/537.36 Core/1.70.3756.400 QQBrowser/10.5.4039.400"
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36',
+        'Cookie': '__gads=ID=1fac094766b8080d-2298fba0ebcf0090:T=1642325857:RT=1642325857:S=ALNI_MaYn4VacQNXRp_wFbxGMZoK4_W1IQ; remember_web_59ba36addc2b2f9401580f014c7f58ea4e30989d=eyJpdiI6ImtkTE9zR1A0TlFtVlFpbGNFeExsdGc9PSIsInZhbHVlIjoibERVZGNNSVQwNDg3OEVhc1BVd0ZTc1JUbkRITnFWZ2h2N2F4Zk4rUUdWRnJ3blZEZXNDZTU2XC9iK3ptVW5NUTNjclY4VEViK2lDaXJrMGl4NzdNZVFwSHBYcG9kbWRBM1c4dG04ZlZ1R015YVVNYjhsbDgzWE5RWjZTeWgzZjUzQmJQb1pBU29mSXpLM1VyQzlpZnhKK0ZERkRPTEdFVkIrTG03YXlKaFBGdz0iLCJtYWMiOiI4MTYxYzJkMWVlYjBjYTllODlmYjA2ODhlY2ExNWVmYmJjYzcwNWU4YTJiZDQ2YWE2YzcyNjlkM2IzZmQzODM4In0%3D; Hm_ct_3b995bf0c6a621a743d0cf009eaf5c8a=17*1*%E5%BE%AE%E5%8D%9A!2444*1*28601!2445*1*CORICw5LDjsOZw5HDhcOYw4zDicORw4XDmMONw4fDl8ODw4fDk8OSw5fDicOWw5rDhcOYw43Dl8ORTOP; Hm_up_3b995bf0c6a621a743d0cf009eaf5c8a=%7B%22uid_%22%3A%7B%22value%22%3A%2228601%22%2C%22scope%22%3A1%7D%7D; def_sex=MS; _gid=GA1.2.763224088.1654238270; __gpi=UID=00000599e65e915f:T=1653036198:RT=1654310778:S=ALNI_MacbZDJi_SB-LlD1KJw-qDdUisK3Q; msg_read=1; Hm_lvt_3b995bf0c6a621a743d0cf009eaf5c8a=1654080160,1654238270,1654310767,1654321757; _ga=GA1.2.280913605.1642325840; Hm_lpvt_3b995bf0c6a621a743d0cf009eaf5c8a=1654324771; _ga_7GW8TTD6GW=GS1.1.1654321756.77.1.1654324773.0; _session=eyJpdiI6IkFjN1lqOFRpV0RcLytkRzlobUE3UXZRPT0iLCJ2YWx1ZSI6IllNK08wbVBcL0VcL0QxdVpSV1NTOW9lN1B4eDBQRW0zTGRUNUJHNlBLSDBTTTFBSCtvNk5icVR1MEpqXC9KTWZ2dFciLCJtYWMiOiI2YTljOTVkMzRlM2RlYmJiM2UwNDRhYzQzMGM3ZjMxNzYwM2NmYzI5OWViYjcxMDMzMjVmOTQzYjE5ZmE1ZjU5In0%3D; _gat=1'
     }
-    req = urllib.request.Request(url, headers=head)
+    data = 'draw=40&columns%5B0%5D%5Bdata%5D=name&columns%5B0%5D%5Bname%5D=name&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=ioc&columns%5B1%5D%5Bname%5D=ioc&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=birthday&columns%5B2%5D%5Bname%5D=birthday&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=birthplace&columns%5B3%5D%5Bname%5D=birthplace&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=true&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B4%5D%5Bdata%5D=residence&columns%5B4%5D%5Bname%5D=residence&columns%5B4%5D%5Bsearchable%5D=true&columns%5B4%5D%5Borderable%5D=true&columns%5B4%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B4%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B5%5D%5Bdata%5D=height_bri&columns%5B5%5D%5Bname%5D=height_bri&columns%5B5%5D%5Bsearchable%5D=true&columns%5B5%5D%5Borderable%5D=true&columns%5B5%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B5%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B6%5D%5Bdata%5D=height&columns%5B6%5D%5Bname%5D=height&columns%5B6%5D%5Bsearchable%5D=true&columns%5B6%5D%5Borderable%5D=true&columns%5B6%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B6%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B7%5D%5Bdata%5D=weight_bri&columns%5B7%5D%5Bname%5D=weight_bri&columns%5B7%5D%5Bsearchable%5D=true&columns%5B7%5D%5Borderable%5D=true&columns%5B7%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B7%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B8%5D%5Bdata%5D=weight&columns%5B8%5D%5Bname%5D=weight&columns%5B8%5D%5Bsearchable%5D=true&columns%5B8%5D%5Borderable%5D=true&columns%5B8%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B8%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B9%5D%5Bdata%5D=hand&columns%5B9%5D%5Bname%5D=hand&columns%5B9%5D%5Bsearchable%5D=true&columns%5B9%5D%5Borderable%5D=true&columns%5B9%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B9%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B10%5D%5Bdata%5D=proyear&columns%5B10%5D%5Bname%5D=proyear&columns%5B10%5D%5Bsearchable%5D=true&columns%5B10%5D%5Borderable%5D=true&columns%5B10%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B10%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B11%5D%5Bdata%5D=pronoun&columns%5B11%5D%5Bname%5D=pronoun&columns%5B11%5D%5Bsearchable%5D=true&columns%5B11%5D%5Borderable%5D=true&columns%5B11%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B11%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B12%5D%5Bdata%5D=website&columns%5B12%5D%5Bname%5D=website&columns%5B12%5D%5Bsearchable%5D=true&columns%5B12%5D%5Borderable%5D=true&columns%5B12%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B12%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B13%5D%5Bdata%5D=prize_c&columns%5B13%5D%5Bname%5D=prize_c&columns%5B13%5D%5Bsearchable%5D=true&columns%5B13%5D%5Borderable%5D=true&columns%5B13%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B13%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B14%5D%5Bdata%5D=prize_y&columns%5B14%5D%5Bname%5D=prize_y&columns%5B14%5D%5Bsearchable%5D=true&columns%5B14%5D%5Borderable%5D=true&columns%5B14%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B14%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B15%5D%5Bdata%5D=rank_s&columns%5B15%5D%5Bname%5D=rank_s&columns%5B15%5D%5Bsearchable%5D=true&columns%5B15%5D%5Borderable%5D=true&columns%5B15%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B15%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B16%5D%5Bdata%5D=rank_s_hi&columns%5B16%5D%5Bname%5D=rank_s_hi&columns%5B16%5D%5Bsearchable%5D=true&columns%5B16%5D%5Borderable%5D=true&columns%5B16%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B16%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B17%5D%5Bdata%5D=rank_s_hi_date&columns%5B17%5D%5Bname%5D=rank_s_hi_date&columns%5B17%5D%5Bsearchable%5D=true&columns%5B17%5D%5Borderable%5D=true&columns%5B17%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B17%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B18%5D%5Bdata%5D=title_s_c&columns%5B18%5D%5Bname%5D=title_s_c&columns%5B18%5D%5Bsearchable%5D=true&columns%5B18%5D%5Borderable%5D=true&columns%5B18%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B18%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B19%5D%5Bdata%5D=title_s_y&columns%5B19%5D%5Bname%5D=title_s_y&columns%5B19%5D%5Bsearchable%5D=true&columns%5B19%5D%5Borderable%5D=true&columns%5B19%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B19%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B20%5D%5Bdata%5D=win_s_c&columns%5B20%5D%5Bname%5D=win_s_c&columns%5B20%5D%5Bsearchable%5D=true&columns%5B20%5D%5Borderable%5D=true&columns%5B20%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B20%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B21%5D%5Bdata%5D=lose_s_c&columns%5B21%5D%5Bname%5D=lose_s_c&columns%5B21%5D%5Bsearchable%5D=true&columns%5B21%5D%5Borderable%5D=true&columns%5B21%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B21%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B22%5D%5Bdata%5D=win_s_y&columns%5B22%5D%5Bname%5D=win_s_y&columns%5B22%5D%5Bsearchable%5D=true&columns%5B22%5D%5Borderable%5D=true&columns%5B22%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B22%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B23%5D%5Bdata%5D=lose_s_y&columns%5B23%5D%5Bname%5D=lose_s_y&columns%5B23%5D%5Bsearchable%5D=true&columns%5B23%5D%5Borderable%5D=true&columns%5B23%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B23%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B24%5D%5Bdata%5D=rank_d&columns%5B24%5D%5Bname%5D=rank_d&columns%5B24%5D%5Bsearchable%5D=true&columns%5B24%5D%5Borderable%5D=true&columns%5B24%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B24%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B25%5D%5Bdata%5D=rank_d_hi&columns%5B25%5D%5Bname%5D=rank_d_hi&columns%5B25%5D%5Bsearchable%5D=true&columns%5B25%5D%5Borderable%5D=true&columns%5B25%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B25%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B26%5D%5Bdata%5D=rank_d_hi_date&columns%5B26%5D%5Bname%5D=rank_d_hi_date&columns%5B26%5D%5Bsearchable%5D=true&columns%5B26%5D%5Borderable%5D=true&columns%5B26%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B26%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B27%5D%5Bdata%5D=title_d_c&columns%5B27%5D%5Bname%5D=title_d_c&columns%5B27%5D%5Bsearchable%5D=true&columns%5B27%5D%5Borderable%5D=true&columns%5B27%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B27%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B28%5D%5Bdata%5D=title_d_y&columns%5B28%5D%5Bname%5D=title_d_y&columns%5B28%5D%5Bsearchable%5D=true&columns%5B28%5D%5Borderable%5D=true&columns%5B28%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B28%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B29%5D%5Bdata%5D=win_d_c&columns%5B29%5D%5Bname%5D=win_d_c&columns%5B29%5D%5Bsearchable%5D=true&columns%5B29%5D%5Borderable%5D=true&columns%5B29%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B29%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B30%5D%5Bdata%5D=lose_d_c&columns%5B30%5D%5Bname%5D=lose_d_c&columns%5B30%5D%5Bsearchable%5D=true&columns%5B30%5D%5Borderable%5D=true&columns%5B30%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B30%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B31%5D%5Bdata%5D=win_d_y&columns%5B31%5D%5Bname%5D=win_d_y&columns%5B31%5D%5Bsearchable%5D=true&columns%5B31%5D%5Borderable%5D=true&columns%5B31%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B31%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B32%5D%5Bdata%5D=lose_d_y&columns%5B32%5D%5Bname%5D=lose_d_y&columns%5B32%5D%5Bsearchable%5D=true&columns%5B32%5D%5Borderable%5D=true&columns%5B32%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B32%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B33%5D%5Bdata%5D=nationfull&columns%5B33%5D%5Bname%5D=nationfull&columns%5B33%5D%5Bsearchable%5D=true&columns%5B33%5D%5Borderable%5D=true&columns%5B33%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B33%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B34%5D%5Bdata%5D=name_for_search&columns%5B34%5D%5Bname%5D=name_for_search&columns%5B34%5D%5Bsearchable%5D=true&columns%5B34%5D%5Borderable%5D=true&columns%5B34%5D%5Bsearch%5D%5Bvalue%5D=' + Player + '&columns%5B34%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B35%5D%5Bdata%5D=gender&columns%5B35%5D%5Bname%5D=gender&columns%5B35%5D%5Bsearchable%5D=true&columns%5B35%5D%5Borderable%5D=true&columns%5B35%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B35%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=13&order%5B0%5D%5Bdir%5D=desc&start=0&length=50&search%5Bvalue%5D=&search%5Bregex%5D=false&device=0'
+    data = data.encode()
+    request = urllib.request.Request(url='https://www.rank-tennis.com/zh/profile/query', data=data, headers=headers)
+    response = urllib.request.urlopen(request)
+    html = response.read().decode('utf-8')
+    data = json.loads(html)['data']
+    if len(data) == 1:
+        img = data[0]['hs']
+    else:
+        for i in range(len(data)):
+            if data[i]['id'] == playername:
+                img = data[i]['hs']
+                break
+
+    url = "https://www.ultimatetennisstatistics.com/playerProfile?name=" + Player + "&tab=profile"
+    req = urllib.request.Request(url, headers=headers)
     try:
         response = urllib.request.urlopen(req)
     except:
@@ -208,7 +225,7 @@ def getabnormalplayer(playername,cursor,u_name):
             id=id+1
         else:
             id=80000
-        cursor.execute("INSERT Player Values(%s,%s,%s,%s,%s,%s,%s)", (id, Name, None, None, None, playername, u_name))
+        cursor.execute("INSERT Player Values(%s,%s,%s,%s,%s,%s,%s,%s,%s)", (id, Name, None, None, None, playername, u_name, img, start_date))
         print("Success to artificially insert " + Name)
         return 0
     html = response.read().decode('utf-8')
@@ -242,7 +259,8 @@ def getabnormalplayer(playername,cursor,u_name):
 
     Cname, Rid = getplayerrankinfo(Name)
     # insert new information
-    cursor.execute("INSERT Player Values(%s,%s,%s,%s,%s,%s,%s)",(id,Name,height,age,country,Rid,Cname))
+    #print(id, Name, height, age, country, Rid, Cname, img, start_date)
+    cursor.execute("INSERT Player Values(%s,%s,%s,%s,%s,%s,%s,%s,%s)",(id,Name,height,age,country,Rid,Cname,img,start_date))
     print("Successfully insert "+Name)
     #connect.commit()
     return 0
@@ -485,8 +503,8 @@ def processscore(score,winner):
         time.sleep(0.3)
     return score_str
 
-def getmatchinfo(name,matchid,mid,eid,year,tournamentid,winner,round_,u_name,KO,cursor):
-    info1,info2=getplayerinfo(name[0],name[1],cursor,u_name)
+def getmatchinfo(name,matchid,mid,eid,year,tournamentid,winner,round_,u_name,KO,cursor,date_start):
+    info1,info2=getplayerinfo(name[0],name[1],cursor,u_name,date_start)
     if info1==-1:
         return 1
     elif getdata(name[0],name[1],info1[0],info2[0],eid,matchid,year,info1[1],info2[1],tournamentid,mid,winner,round_,KO,cursor)==-1:
@@ -494,7 +512,7 @@ def getmatchinfo(name,matchid,mid,eid,year,tournamentid,winner,round_,u_name,KO,
 
 
 def select_data(mode, eid, tournamentid, year, tournament, type, level, seq, speed, status, date,
-                constraint_stop_num, Rank_Order):
+                constraint_stop_num):
     if mode == 'date':
         now = datetime.datetime.now()
         delta = datetime.timedelta(days=1)
@@ -523,7 +541,7 @@ def select_data(mode, eid, tournamentid, year, tournament, type, level, seq, spe
             except:
                 continue
         #bs = bs.find_all('div', attrs={'class': 'cResultTour', 'data-eid': tourid})[0]
-    if bs_ == bs:
+    if bs_ == bs and mode == 'date':
         return -1
 
     a = bs_.find_all('div', class_='cResultMatch')
@@ -548,12 +566,33 @@ def select_data(mode, eid, tournamentid, year, tournament, type, level, seq, spe
                     "div[class='cResultMatchRound']")[0].text)==None:
                 b.append(item)
 
-    cursor.execute("select Count(*) from result where tournament_id=%s and [Year]=%s",(tournamentid // 100, year))
-    match_have_select=int(cursor.fetchone()[0])
+    cursor.execute("select max(match_id) from result where tournament_id=%s and [Year]=%s",(tournamentid // 100, year))
+    max_id = cursor.fetchone()[0]
+    if max_id == None:
+        match_have_select = 0
+    else:
+        match_have_select=int(max_id)
+
     print("there are "+str(match_have_select)+" matches have been selected.")
 
     if match_have_select == 0:
-        speed = int(input("input the tournament speed "))
+        if level == 'Qualify':
+            cursor.execute("select speed,[year] from Tournament where Tournament=%s order by [year] desc", str(eid-99*10**(len(eid)-2)))
+        else:
+            cursor.execute("select speed,[year] from Tournament where Tournament=%s order by [year] desc", eid)
+        tour_info = cursor.fetchall()
+        count = 0
+        if not tour_info:
+            speed = int(input("input the tournament speed "))
+        else:
+            sum = 0
+            for item in tour_info:
+                if count >= 3 or abs(item[0] - sum / count)>=10:
+                    break
+                else:
+                    sum = sum + item[0]
+                    count = count + 1
+            speed = sum / count
 
     cursor.execute("Insert Tournament Values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
                    (tournamentid // 100, year, tournament, level, type, tournamentid, None, seq, speed, date))
@@ -590,7 +629,7 @@ def select_data(mode, eid, tournamentid, year, tournament, type, level, seq, spe
         else:
             mid = num
         try:
-            status_code = getmatchinfo(name, match, mid, eid, year, tournamentid, winner, round_, u_name, KO, cursor)
+            status_code = getmatchinfo(name, match, mid, eid, year, tournamentid, winner, round_, u_name, KO, cursor, date)
         except:
             status_code = 1
         if status_code == 1:
@@ -602,7 +641,7 @@ def select_data(mode, eid, tournamentid, year, tournament, type, level, seq, spe
                 connect.rollback()
                 exit(1)
             else:
-                info1, info2 = getplayerinfo(name[0], name[1], cursor, u_name)
+                info1, info2 = getplayerinfo(name[0], name[1], cursor, u_name, date)
                 if winner == 2:
                     info1, info2 = info2, info1
                 tourid = tournamentid // 100
@@ -615,8 +654,7 @@ def select_data(mode, eid, tournamentid, year, tournament, type, level, seq, spe
     print("there are " + str(num) + " matches be selected with " + str(nonexist) + " not exist.")
     #connect.commit()
 
-    if Rank_Order == True:
-        execute_rank(tournamentid, date, cursor)
+    execute_rank(tournamentid, date, cursor)
     connect.commit()
 
 def istimeapp(code,day):
@@ -636,7 +674,7 @@ if __name__=='__main__':
     with open("tour_list_a.txt",'r',encoding='utf-8') as f:
         line=f.readlines()
         f.close()
-    date_now = datetime.datetime.now()-datetime.timedelta(days=0)
+    date_now = datetime.datetime.now()-datetime.timedelta(days=1)
     date_now = datetime.date(date_now.year, date_now.month, date_now.day)
     date_today = datetime.datetime.now().day
 
@@ -650,9 +688,9 @@ if __name__=='__main__':
 
             if date_now>=date_start and date_now<=date_end:
                 flag = istimeapp(info[9],date_today)
-                if flag == False:
-                    print("Not a appropriate time.")
-                    continue
+                # if flag == False:
+                #     print("Not a appropriate time.")
+                #     continue
                 eid = convert_GS(str(int(info[0])//100))
                 tournamentid = int(info[0])
                 year = info[1]
@@ -665,13 +703,10 @@ if __name__=='__main__':
                 status = 'Finished'
                 date = datetime.datetime.strptime(info[7], '%Y-%m-%d')
                 constraint_stop_num = KO
-                Rank_Order = True
-                if (datetime.datetime.now() - date).days > 3:
-                    Rank_Order = False
                 mode = 'date'
                 print(tournament)
                 select_data(mode, eid, tournamentid, year, tournament, type, level, seq, speed, status, date,
-                            constraint_stop_num, Rank_Order)
+                            constraint_stop_num)
             elif date_now+datetime.timedelta(days=1)<date_start:
                 break
         else:
@@ -681,9 +716,9 @@ if __name__=='__main__':
             date_start = datetime.date(int(date_start[0:4]), int(date_start[5:7]), int(date_start[8:10]))
             if date_now == date_end:
                 flag = istimeapp(info[9], date_today)
-                if flag == False:
-                    print("Not a appropriate time.")
-                    continue
+                # if flag == False:
+                #     print("Not a appropriate time.")
+                #     continue
                 eid = convert_GS(str((int(info[0])-99*10**(len(str(info[0]))-2)) // 100))
                 print(eid)
                 tournamentid = int(info[0])
@@ -697,11 +732,10 @@ if __name__=='__main__':
                 status = 'Completing'
                 date = datetime.datetime.strptime(info[7], '%Y-%m-%d')
                 constraint_stop_num = KO
-                Rank_Order = True
                 #mode = 'date'
-                mode='tour'
+                mode = 'tour'
                 print(tournament)
-                select_data(mode, eid, tournamentid, year, tournament, type, level, seq, speed, status, date,
-                            constraint_stop_num, Rank_Order)
+                select_data(mode, eid, tournamentid, year, tournament, type, level, seq, speed, status, date_now,
+                            constraint_stop_num)
             elif date_now+datetime.timedelta(days=1) < date_start:
                 break
