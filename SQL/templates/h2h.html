@@ -1,0 +1,238 @@
+{# 继承bootstrap中的base.html #}
+{% extends "homepage.html" %}
+{# 块修改标题 #}
+{% block title %}H2H{% endblock %}
+
+{# 块导航栏 #}
+
+
+{# css块 #}
+{% block styles %}
+    {{super()}}
+<style>
+    .PlayerInfo{position:absolute; left: 20px; top: 50px; right: 20px;}
+    .Player1Win{float:left; position: absolute; right: 0px; top: -140px; font-size: 75pt; color: pink; font-family: SimHei}
+    .Player1Name{float:left; position: absolute; right: 970px; top: 180px; font-size: 20pt; font-family: Times New Roman;}
+    .Player2Name{float:right; position: absolute; left: 965px; top: 180px; font-size: 20pt; font-family: Times New Roman;}
+    .Player2Win{float:center; position: absolute; left: 0px; top: -140px; font-size: 75pt; color: gold; font-family: SimHei}
+    .matchres{ width:60%; position: absolute; left: 250px; top: 0px;}
+</style>
+{% endblock %}
+
+{# JavaScript块 #}
+{% block scripts %}
+    {{super()}}
+<script src="./static/Chart.js-2.9.4/dist/chart.js"></script>
+<script>
+window.onload = function()
+{
+    var tblEle = document.getElementById("tbl");
+    var len = tblEle.tBodies[0].rows.length;
+    var w1 = 0;
+    var w2 = 0;
+    var pat=new RegExp('{{ name[0] }} d. {{ name[1] }}'.trim());
+
+    for(var i=0;i<len;i++)
+    {
+        if(tblEle.tBodies[0].rows[i].cells[5].innerHTML.trim() == 'W/O')
+        {
+            tblEle.tBodies[0].rows[i].style.backgroundColor="LightGray";
+            continue;
+        }
+        else if(pat.test(tblEle.tBodies[0].rows[i].cells[4].innerHTML.trim()) == true)
+        {
+            tblEle.tBodies[0].rows[i].style.backgroundColor="pink";
+            w1 = w1 + 1;
+        }
+        else
+        {
+            tblEle.tBodies[0].rows[i].style.backgroundColor="gold";
+            w2 = w2 + 1;
+        }
+    }
+    document.getElementById("P1Win").innerHTML = w1;
+    document.getElementById("P2Win").innerHTML = w2;
+
+    var ctx = document.getElementById("myChart");
+    var myChart = new Chart(ctx, {
+        type: "doughnut",
+        data: {
+            labels: ['{{ name[0] }}', '{{ name[1] }}'],
+            datasets: [{
+                data: [w1+0.0001,w2+0.0001],
+                backgroundColor: [
+                    'pink',
+                    'gold',
+                ],
+                borderColor: [
+                    'pink',
+                    'gold',
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            legend: {
+                display: false
+            },
+            cutoutPercentage: 65,
+            rotation: 0.5 * Math.PI
+        }
+    });
+}
+</script>
+
+<script>
+    function check()
+    {
+        var con1 = document.querySelector(".player1").value;
+        var con2 = document.querySelector(".player2").value;
+
+        if (con1==con2 || con1 == '' || con2 == '')
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+    </script>
+
+    <script>
+    var box = document.getElementById('P1');
+    var box = box.innerText.trim();
+    var cat = box.length;
+    if(cat >= 22)
+    {
+    document.getElementById("P1").style.fontSize=15+'pt';
+    }
+    else{
+        if(cat >= 18)
+        {
+        document.getElementById("P1").style.fontSize=18+'pt';
+        }
+        else{
+        document.getElementById("P1").style.fontSize=20+'pt';
+        }
+    }
+
+    var box = document.getElementById('P2');
+    var box = box.innerText.trim();
+    var cat = box.length;
+    if(cat >= 22)
+    {
+    document.getElementById("P2").style.fontSize=15+'pt';
+    }
+    else{
+        if(cat >= 18)
+        {
+        document.getElementById("P2").style.fontSize=18+'pt';
+        }
+        else{
+        document.getElementById("P2").style.fontSize=20+'pt';
+        }
+    }
+    </script>
+
+    <script>
+    </script>
+{% endblock %}
+
+{# 块内容 #}
+{% block content %}
+<body>
+<img src="./static/123.jpg" style="opacity:0.35; width:100%; height:100%; position: fixed; top: 50px;" >
+    <div class="PlayerInfo">
+        <img src={{ img[0] }} style="width: 220px; height: 220px; position: absolute; left: 290px; top: 30px;">
+        <div class="Player1Name" id="P1">
+            <div class="Player1Win" id="P1Win"></div>
+            <b>{{ name[0] }}</b>
+            <br>
+            <img src={{ country[0] }} style="width: 40px; position: absolute; top:60px; right:10px; border-style:solid; border-width: 0.5px;">
+        </div>
+        <img src="./static/VS-02.svg" style = "width:110px; height: 110px; position: absolute; left: 44.6%; top: 95px;">
+        <img src={{ img[1] }} style="width: 220px; height: 220px; position: absolute; left: 700px; top: 30px;">
+        <div class="Player2Name" id="P2">
+            <div class="Player2Win" id="P2Win"></div>
+            <b>{{ name[1] }}</b>
+            <br>
+            <img src={{ country[1] }} style="width: 40px; position: absolute; top:60px; left:10px; border-style:solid; border-width: 0.5px;">
+        </div>
+        <div style="width:33%; height:33%; position: absolute; left: 402px; top: 45px;">
+            <canvas id="myChart" style="opacity:0.7;"></canvas>
+        </div>
+    </div>
+    <div class="SelectPlayer">
+        <form action="/h2h" method="post" onsubmit="return check()" id="content">
+            <input class="player1" type="text" name="player1" autocomplete="on" style="position: absolute; left: 26.1%; top: 323px;" list="data" placeholder="name (only English)">
+                    <datalist id="data">
+                    {% for p in playerlist %}
+                          <option>{{ p }}</option>
+                    {% endfor %}
+                    </datalist>
+            <input type="image" src="./static/gun.jpg" class="button" name="sub" value="H2H" style="position: absolute; left: 46.4%; top: 300px; height:80px; width:67px;">
+            <input class="player2" type="text" name="player2" autocomplete="on" style="position: absolute; right: 28%; top: 323px;" list="data" placeholder="name (only English)">
+            <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#Advance" style="position: absolute; left:990px; top:352px; width:60px; height:35px">
+                Adv.
+                <i class="fa fa-chevron-down"></i>
+            </button>
+            <div id="Advance" class="collapse">
+                <div class="col-md-2">
+                    <label class="input-group-addon" style="position: absolute; left: 317px; top: 285px; width:60px; height:28px">
+                        Court:
+                    </label>
+                    <select class="form-control" name="court_type" data-toggle="tooltip" style="position: absolute; left: 377px; top: 285px; width:150px; height:28px">
+                        <option>All</option>
+                        <option>Hard</option>
+                        <option>Clay</option>
+                        <option>Grass</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <label class="input-group-addon" style="position: absolute; left: 515px; top: 285px; width:60px; height:30px">
+                        Level:
+                    </label>
+                    <select class="form-control" name="Level_type" data-toggle="tooltip" style="position: absolute; left: 575px; top: 285px; width:150px; height:30px">
+                        <option>All</option>
+                        <option>Only Main Draw</option>
+                        <option>Only Final</option>
+                        <option>Grand Slam</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div style="text-align:center; font-family: Times New Roman; position:absolute; top:400px; width:1290px;">
+        <table class="matchres" border="1" cellspacing="1" id="tbl">
+            <thead>
+                <tr>
+                    <td> Year </td><td>Tour</td><td>Court</td><td>Round</td><td>Result</td><td>Score</td>
+                </tr>
+            </thead>
+            <tbody>
+            {% for item in data %}
+                <tr>
+                        <td> {{ item[1] }} </td>
+                        <td> {{ item[0] }} </td>
+                        <td> {{ item[2] }} </td>
+                        <td> {{ item[3] }} </td>
+                        {% if item[7] == None %}
+                        <td> {{ item[4] }} d. {{ item[5] }} ({{ item[8] }}) </td>
+                        {% else %}
+                        {%  if item[8] == None  %}
+                        <td>({{ item[7] }}) {{ item[4] }} d. {{ item[5] }} </td>
+                        {% else %}
+                        <td>({{ item[7] }}) {{ item[4] }} d. {{ item[5] }} ({{ item[8] }}) </td>
+                        {% endif %}
+                        {% endif %}
+                        <td> {{ item[6] }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</body>
+{% endblock %}
