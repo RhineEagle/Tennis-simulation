@@ -1,96 +1,354 @@
 # Houston & Marrakech & Estoril
 
-#### Day 4
+#### Day 7
 
 
 **Houston**
 
-John Isner  vs  Gijs Brouwer
+Frances Tiafoe  2:0  Gijs Brouwer    ❌
 
-1.53    2.50
+1.30    3.50
 
-John Isner 2:0 Gijs Brouwer 0.152
-John Isner 2:1 Gijs Brouwer 0.1551
-John Isner 1:2 Gijs Brouwer 0.2617
-John Isner 0:2 Gijs Brouwer 0.4312
-
-
-
-Frances Tiafoe  vs  Steve Johnson
-
-1.17    5.00
-
-Frances Tiafoe 2:0 Steve Johnson 0.3038
-Frances Tiafoe 2:1 Steve Johnson 0.2101
-Frances Tiafoe 1:2 Steve Johnson 0.2095
-Frances Tiafoe 0:2 Steve Johnson 0.2766
+Frances Tiafoe 2:0 Gijs Brouwer 0.1378
+Frances Tiafoe 2:1 Gijs Brouwer 0.1424
+Frances Tiafoe 1:2 Gijs Brouwer 0.2554
+Frances Tiafoe 0:2 Gijs Brouwer 0.4644
 
 
 
-Cristian Garin  vs  Zizou Bergs
+Frances Tiafoe  2:0  Tomas Martin Etcheverry    ❌
 
-1.28    3.75
+N/A    N/A
 
-lack of data.
-
-
-
-
-Yannick Hanfmann  vs  Tommy Paul
-
-2.50    1.53
-
-Yannick Hanfmann 2:0 Tommy Paul 0.4302
-Yannick Hanfmann 2:1 Tommy Paul 0.2782
-Yannick Hanfmann 1:2 Tommy Paul 0.1558
-Yannick Hanfmann 0:2 Tommy Paul 0.1358
+Frances Tiafoe 2:0 Tomas Martin Etcheverry 0.2721
+Frances Tiafoe 2:1 Tomas Martin Etcheverry 0.2096
+Frances Tiafoe 1:2 Tomas Martin Etcheverry 0.2304
+Frances Tiafoe 0:2 Tomas Martin Etcheverry 0.2879
 
 
 
-Marcos Giron  vs  Tomas Machac
+Tomas Martin Etcheverry  2:0  Yannick Hanfmann    ❌
 
-2.00    1.80
+1.91    1.91
 
-lack of data.
-
-
-
-
-Max Purcell  vs  Daniel Altmaier
-
-3.20    1.36
-
-lack of data.
-
-
-
-
-Denis Kudla  vs  J.J. Wolf
-
-3.20    1.36
-
-Denis Kudla 2:0 J.J. Wolf 0.3146
-Denis Kudla 2:1 J.J. Wolf 0.2256
-Denis Kudla 1:2 J.J. Wolf 0.2138
-Denis Kudla 0:2 J.J. Wolf 0.246
-
-
-
-Daniel Elahi Galan  vs  Jason Kubler
-
-2.00    1.80
-
-Daniel Elahi Galan 2:0 Jason Kubler 0.3056
-Daniel Elahi Galan 2:1 Jason Kubler 0.2282
-Daniel Elahi Galan 1:2 Jason Kubler 0.2176
-Daniel Elahi Galan 0:2 Jason Kubler 0.2486
+Tomas Martin Etcheverry 2:0 Yannick Hanfmann 0.27
+Tomas Martin Etcheverry 2:1 Yannick Hanfmann 0.2256
+Tomas Martin Etcheverry 1:2 Yannick Hanfmann 0.2278
+Tomas Martin Etcheverry 0:2 Yannick Hanfmann 0.2766
 
 
 
 
 **Marrakech**
 
-Elias Ymer  vs  Tallon Griekspoor
+Alexandre Muller  1:2  Roberto Carballes Baena    ❌
+
+2.20    1.67
+
+Alexandre Muller 2:0 Roberto Carballes Baena 0.4008
+Alexandre Muller 2:1 Roberto Carballes Baena 0.2345
+Alexandre Muller 1:2 Roberto Carballes Baena 0.1717
+Alexandre Muller 0:2 Roberto Carballes Baena 0.193
+
+
+
+
+**Estoril**
+
+Casper Ruud  2:0  Miomir Kecmanovic    ❌
+
+1.44    2.75
+
+Casper Ruud 2:0 Miomir Kecmanovic 0.2752
+Casper Ruud 2:1 Miomir Kecmanovic 0.2081
+Casper Ruud 1:2 Miomir Kecmanovic 0.2225
+Casper Ruud 0:2 Miomir Kecmanovic 0.2942
+
+
+
+
+#### Day 6
+
+
+**Houston**
+
+John Isner  0:2  Gijs Brouwer    ❗    ✔
+
+1.57    2.38
+
+John Isner 2:0 Gijs Brouwer 0.1458
+John Isner 2:1 Gijs Brouwer 0.1535
+John Isner 1:2 Gijs Brouwer 0.2744
+John Isner 0:2 Gijs Brouwer 0.4263
+
+
+
+Frances Tiafoe  2:0  Steve Johnson    ✔
+
+1.17    5.00
+
+Frances Tiafoe 2:0 Steve Johnson 0.3049
+Frances Tiafoe 2:1 Steve Johnson 0.2362
+Frances Tiafoe 1:2 Steve Johnson 0.208
+Frances Tiafoe 0:2 Steve Johnson 0.2509
+
+
+
+Yannick Hanfmann  2:0  Tommy Paul    ❗    ✔
+
+2.50    1.53
+
+Yannick Hanfmann 2:0 Tommy Paul 0.425
+Yannick Hanfmann 2:1 Tommy Paul 0.2794
+Yannick Hanfmann 1:2 Tommy Paul 0.1586
+Yannick Hanfmann 0:2 Tommy Paul 0.137
+
+
+
+Frances Tiafoe  2:0  Jason Kubler
+
+N/A    N/A
+
+lack of data.
+
+
+
+Tomas Machac  0:2  Yannick Hanfmann
+
+N/A    N/A
+
+lack of data.
+
+
+
+
+Denis Kudla  0:2  J.J. Wolf    ❌
+
+3.00    1.40
+
+Denis Kudla 2:0 J.J. Wolf 0.308
+Denis Kudla 2:1 J.J. Wolf 0.218
+Denis Kudla 1:2 J.J. Wolf 0.2104
+Denis Kudla 0:2 J.J. Wolf 0.2636
+
+
+
+Cristian Garin  2:0  Zizou Bergs
+
+1.20    4.50
+
+lack of data.
+
+
+
+
+Marcos Giron  0:2  Tomas Machac    ✔
+
+2.20    1.67
+
+Marcos Giron 2:0 Tomas Machac 0.0525
+Marcos Giron 2:1 Tomas Machac 0.0658
+Marcos Giron 1:2 Tomas Machac 0.2318
+Marcos Giron 0:2 Tomas Machac 0.6499
+
+
+
+Gijs Brouwer  2:0  J.J. Wolf    ❗    ✔
+
+2.00    1.80
+
+Gijs Brouwer 2:0 J.J. Wolf 0.5006
+Gijs Brouwer 2:1 J.J. Wolf 0.2312
+Gijs Brouwer 1:2 J.J. Wolf 0.1326
+Gijs Brouwer 0:2 J.J. Wolf 0.1356
+
+
+
+Daniel Elahi Galan  0:2  Jason Kubler
+
+2.00    1.80
+
+lack of data.
+
+
+
+Tomas Martin Etcheverry  2:0  Max Purcell
+
+1.36    3.20
+
+lack of data.
+
+
+
+
+Tomas Martin Etcheverry  2:1  Cristian Garin    ❗    ✔
+
+2.10    1.73
+
+Tomas Martin Etcheverry 2:0 Cristian Garin 0.3061
+Tomas Martin Etcheverry 2:1 Cristian Garin 0.2193
+Tomas Martin Etcheverry 1:2 Cristian Garin 0.2096
+Tomas Martin Etcheverry 0:2 Cristian Garin 0.265
+
+
+
+
+**Marrakech**
+
+Roberto Carballes Baena  2:1  Daniel Evans    ❌
+
+1.80    2.00
+
+Roberto Carballes Baena 2:0 Daniel Evans 0.2396
+Roberto Carballes Baena 2:1 Daniel Evans 0.188
+Roberto Carballes Baena 1:2 Daniel Evans 0.2104
+Roberto Carballes Baena 0:2 Daniel Evans 0.362
+
+
+
+Alexandre Muller  2:0  Pavel Kotov    ✔
+
+1.61    2.30
+
+Alexandre Muller 2:0 Pavel Kotov 0.33
+Alexandre Muller 2:1 Pavel Kotov 0.229
+Alexandre Muller 1:2 Pavel Kotov 0.1972
+Alexandre Muller 0:2 Pavel Kotov 0.2438
+
+
+
+
+**Estoril**
+
+Marco Cecchinato  0:2  Miomir Kecmanovic    ✔
+
+3.40    1.33
+
+Marco Cecchinato 2:0 Miomir Kecmanovic 0.2044
+Marco Cecchinato 2:1 Miomir Kecmanovic 0.1704
+Marco Cecchinato 1:2 Miomir Kecmanovic 0.2416
+Marco Cecchinato 0:2 Miomir Kecmanovic 0.3836
+
+
+
+Casper Ruud  2:1  Quentin Halys    ✔
+
+1.25    4.00
+
+Casper Ruud 2:0 Quentin Halys 0.2968
+Casper Ruud 2:1 Quentin Halys 0.2199
+Casper Ruud 1:2 Quentin Halys 0.2283
+Casper Ruud 0:2 Quentin Halys 0.255
+
+
+
+
+#### Day 5
+
+**Houston**
+
+
+Max Purcell  2:1  Daniel Altmaier    ❗
+
+3.20    1.36
+
+lack of data.
+
+
+
+
+**Marrakech**
+
+Andrea Vavassori  0:2  Daniel Evans
+
+2.10    1.73
+
+lack of data.
+
+
+
+Roberto Carballes Baena  2:1  Tallon Griekspoor    ❗    ✔
+
+2.38    1.57
+
+Roberto Carballes Baena 2:0 Tallon Griekspoor 0.3214
+Roberto Carballes Baena 2:1 Tallon Griekspoor 0.2085
+Roberto Carballes Baena 1:2 Tallon Griekspoor 0.19
+Roberto Carballes Baena 0:2 Tallon Griekspoor 0.2801
+
+
+
+Lorenzo Musetti  1:2  Alexandre Muller    ❗
+
+1.40    3.00
+
+lack of data.
+
+
+
+
+Christopher Oconnell  1:2  Pavel Kotov    ❗    ✔
+
+1.67    2.20
+
+Christopher Oconnell 2:0 Pavel Kotov 0.2632
+Christopher Oconnell 2:1 Pavel Kotov 0.2304
+Christopher Oconnell 1:2 Pavel Kotov 0.2246
+Christopher Oconnell 0:2 Pavel Kotov 0.2818
+
+
+
+
+**Estoril**
+
+Marco Cecchinato  2:0  Alejandro Davidovich Fokina    ❗    ❌
+
+3.75    1.28
+
+Marco Cecchinato 2:0 Alejandro Davidovich Fokina 0.2946
+Marco Cecchinato 2:1 Alejandro Davidovich Fokina 0.2016
+Marco Cecchinato 1:2 Alejandro Davidovich Fokina 0.2132
+Marco Cecchinato 0:2 Alejandro Davidovich Fokina 0.2906
+
+
+
+Miomir Kecmanovic  2:0  Bernabe Zapata Miralles    ✔
+
+1.73    2.10
+
+Miomir Kecmanovic 2:0 Bernabe Zapata Miralles 0.309
+Miomir Kecmanovic 2:1 Bernabe Zapata Miralles 0.2288
+Miomir Kecmanovic 1:2 Bernabe Zapata Miralles 0.2066
+Miomir Kecmanovic 0:2 Bernabe Zapata Miralles 0.2556
+
+
+
+Quentin Halys  2:0  Dominic Thiem
+
+1.91    1.91
+
+lack of data.
+
+
+
+Casper Ruud  2:0  Sebastian Baez    ❌
+
+1.44    2.75
+
+Casper Ruud 2:0 Sebastian Baez 0.2535
+Casper Ruud 2:1 Sebastian Baez 0.2037
+Casper Ruud 1:2 Sebastian Baez 0.2301
+Casper Ruud 0:2 Sebastian Baez 0.3127
+
+
+
+
+#### Day 4
+
+
+**Marrakech**
+
+Elias Ymer  1:2  Tallon Griekspoor    ✔
 
 4.00    1.25
 
@@ -101,7 +359,7 @@ Elias Ymer 0:2 Tallon Griekspoor 0.2858
 
 
 
-Andrea Vavassori  vs  Jaume Munar
+Andrea Vavassori  2:1  Jaume Munar    ❗
 
 2.75    1.44
 
@@ -110,7 +368,7 @@ lack of data.
 
 
 
-Pavel Kotov  vs  Benjamin Bonzi
+Pavel Kotov  2:0  Benjamin Bonzi    ❗    ✔
 
 2.38    1.57
 
@@ -121,7 +379,7 @@ Pavel Kotov 0:2 Benjamin Bonzi 0.2204
 
 
 
-Botic Van De Zandschulp  vs  Christopher Oconnell
+Botic Van De Zandschulp  1:2  Christopher Oconnell    ❗
 
 1.50    2.62
 
@@ -129,7 +387,7 @@ lack of data.
 
 
 
-Alexei Popyrin  vs  Daniel Evans
+Alexei Popyrin  0:2  Daniel Evans    ❗
 
 1.67    2.20
 
@@ -138,7 +396,7 @@ lack of data.
 
 
 
-Lorenzo Musetti  vs  Hugo Gaston
+Lorenzo Musetti  2:0  Hugo Gaston    ✔
 
 1.57    2.38
 
@@ -149,7 +407,7 @@ Lorenzo Musetti 0:2 Hugo Gaston 0.2375
 
 
 
-Francesco Passaro  vs  Alexandre Muller
+Francesco Passaro  0:2  Alexandre Muller
 
 2.38    1.57
 
@@ -158,7 +416,7 @@ lack of data.
 
 
 
-Roberto Carballes Baena  vs  Dimitar Kuzmanov
+Roberto Carballes Baena  0:0 (RET)  Dimitar Kuzmanov
 
 1.36    3.20
 
@@ -170,7 +428,7 @@ lack of data.
 
 **Estoril**
 
-Miomir Kecmanovic  vs  Jurij Rodionov
+Miomir Kecmanovic  2:0  Jurij Rodionov
 
 1.40    3.00
 
@@ -178,7 +436,7 @@ lack of data.
 
 
 
-Dominic Thiem  vs  Ben Shelton
+Dominic Thiem  2:0  Ben Shelton
 
 1.61    2.30
 
@@ -187,7 +445,7 @@ lack of data.
 
 
 
-Bernabe Zapata Miralles  vs  Hubert Hurkacz
+Bernabe Zapata Miralles  2:1  Hubert Hurkacz    ❗    ❌
 
 2.75    1.44
 
@@ -198,7 +456,7 @@ Bernabe Zapata Miralles 0:2 Hubert Hurkacz 0.4098
 
 
 
-Roberto Bautista Agut  vs  Quentin Halys
+Roberto Bautista Agut  0:2  Quentin Halys    ❗    ❌
 
 1.57    2.38
 
