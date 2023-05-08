@@ -1,0 +1,392 @@
+{# 继承bootstrap中的base.html #}
+{% extends "homepage.html" %}
+{# 块修改标题 #}
+{% block title %}Records{% endblock %}
+
+{# 块导航栏 #}
+
+
+{# css块 #}
+{% block styles %}
+    {{super()}}
+<style>
+    .PlayerInfo{position:absolute; left: 20px; top: 70px; right: 20px;}
+    .PlayerName_full{float:center; position: absolute; left: 32%; top: 40px; font-family: Times New Roman; width:300px}
+    .PlayerName_head{float:center; position: absolute; left: 35.1%; top: 40px; font-family: Times New Roman; width:300px}
+    #W_num{width:8.95%; position: absolute; left: 51.1%; top: 140px; font-size: 40pt; color: #FF60AF; font-family: SimHei;}
+    .Win_tag{width:8.95%; position: absolute; left: 50%; top: 90px; font-size: 30pt; color: #FF60AF; font-family: Times New Roman;}
+    #L_num{width:8.95%; position: absolute; left: 78.2%; top: 140px; font-size: 40pt; color: #0080FF; font-family: SimHei;}
+    .Lose_tag{width:8.95%; position: absolute; left: 77.1%; top: 90px; font-size: 30pt; color: #0080FF; font-family: Times New Roman;}
+    #Rate{ position: absolute; left: 42%; top: 70px; font-size: 35pt; color: black; font-family: SimHei; opacity: 0.6}
+    #piechart{width:33%; height:33%; position: absolute; left: 50%; top: 33px;}
+    .SelectPlayer{position: absolute; left: 60px; top: 20px; right: 20px;}
+    .matchres{ width:60%; position: absolute; left: 250px; top: 0px;}
+</style>
+{% endblock %}
+
+{# JavaScript块 #}
+{% block scripts %}
+    {{super()}}
+<script src="./static/Chart.js-2.9.4/dist/chart.js"></script>
+<script>
+window.onload = function()
+{
+    //修改成该选手是否赢得比赛
+    var tblEle = document.getElementById("tbl");
+    var len = tblEle.tBodies[0].rows.length;
+    var w1 = 0;
+    var w2 = 0;
+    var pat=new RegExp('W');
+    var pat_q = new RegExp('Q[1-3]');
+    var wopat = new RegExp('W/O');
+
+    for(var i=0;i<len;i++)
+    {   
+        if(tblEle.tBodies[0].rows[i].cells.length==2){continue;}
+        //alert(tblEle.tBodies[0].rows[i].cells[3].innerHTML);
+        if(wopat.test(tblEle.tBodies[0].rows[i].cells[3].innerHTML) == true)
+        {
+            tblEle.tBodies[0].rows[i].style.backgroundColor="LightGray";
+            continue;
+        }
+        else if(pat.test(tblEle.tBodies[0].rows[i].cells[1].innerHTML.trim()) == true)
+        {
+            tblEle.tBodies[0].rows[i].style.backgroundColor="#FFC1E0";
+            if(pat_q.test(tblEle.tBodies[0].rows[i].cells[0].innerHTML.trim()) == false)
+            {
+                w1 = w1 + 1;
+            }
+        }
+        else
+        {
+            tblEle.tBodies[0].rows[i].style.backgroundColor="#ACD6FF";
+            if(pat_q.test(tblEle.tBodies[0].rows[i].cells[0].innerHTML.trim()) == false)
+            {
+                w2 = w2 + 1;
+            }
+        }
+    }
+    var rate = Math.round((w1/(w1+w2+0.0001))*100);
+    var rate_info = document.getElementById("Rate");
+    document.getElementById("Rate").innerHTML = rate +'%';
+    if (rate < 10)
+    {
+        rate_info.style.setProperty('left','44.8%');
+    }
+    else
+    {
+        if (rate == 100)
+        {
+            rate_info.style.setProperty('left','38.8%');
+        }
+    }
+    document.getElementById("W_num").innerHTML=w1;
+    document.getElementById("L_num").innerHTML=w2;
+    if (w1<10)
+    {
+        document.getElementById("W_num").style.setProperty('left','52%');
+    }
+    if (w2<10)
+    {
+        document.getElementById("L_num").style.setProperty('left','78.9%');
+    }
+    if (w1>=100)
+    {
+        document.getElementById("W_num").style.setProperty('left','50.1%');
+    }
+    if (w2>=100)
+    {
+        document.getElementById("L_num").style.setProperty('left','77.0%');
+    }
+    if (w1>=1000)
+    {
+        document.getElementById("W_num").style.setProperty('left','49.0%');
+    }
+    if (w2>=1000)
+    {
+        document.getElementById("L_num").style.setProperty('left','77.0%');
+    }
+    if (w1 == 0 && w2 ==0)
+    {
+        w1 = 0.001;
+        w2 = 0.001;
+    }
+
+    var ctx = document.getElementById("myChart");
+    var myChart = new Chart(ctx, {
+        type: "doughnut",
+        data: {
+            labels: ['lose', 'win'],
+            datasets: [{
+                data: [w2,w1],
+                backgroundColor: [
+                    '#0080FF',
+                    '#FF60AF',
+                ],
+                borderColor: [
+                    '#0080FF',
+                    '#FF60AF',
+                ],
+                borderWidth: 0
+            }]
+        },
+        options: {
+            legend: {
+                display: false
+            },
+            cutoutPercentage: 65,
+            rotation: -0.5 * Math.PI
+        }
+    });
+}
+</script>
+
+<script>
+    function check_v2()
+    {
+        var con = document.querySelector(".player").value;
+        var t = {{ playerlist|tojson }}.indexOf(con);
+        if (con == '' || t == -1)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+    </script>
+
+    <script>
+    {% if img != [] %}
+        {% if img[0][22]=='h' %}
+            var box = document.getElementById('Playerh');
+            var box = box.innerText.trim();
+            var cat = box.length;
+            if(cat >= 22)
+            {
+            document.getElementById("Playerh").style.fontSize=15+'pt';
+            }
+            else{
+                if(cat >= 18)
+                {
+                document.getElementById("Playerh").style.fontSize=18+'pt';
+                }
+                else{
+                document.getElementById("Playerh").style.fontSize=20+'pt';
+                }
+            }
+        {% else %}
+            var box = document.getElementById('Playerf');
+            var box = box.innerText.trim();
+            var cat = box.length;
+            if(cat >= 22)
+            {
+            document.getElementById("Playerf").style.fontSize=15+'pt';
+            }
+            else{
+                if(cat >= 18)
+                {
+                document.getElementById("Playerf").style.fontSize=18+'pt';
+                }
+                else{
+                document.getElementById("Playerf").style.fontSize=20+'pt';
+                }
+            }
+
+        {% endif %}
+    {% endif %}
+    </script>
+
+    <script>
+    function tpformsubmit(){
+        var gid = $('input[name=player]').val();
+        var type = $('select[name=year]').val();
+        url = '/performance_?player='+gid+'&year='+type;
+        window.location.href = url;
+    }
+    </script>
+{% endblock %}
+
+
+{# 块内容 #}
+{% block content %}
+<body>
+<img src="./static/123.jpg" style="opacity:0.15; width:100%; height:100%; position: fixed; top: 50px;" >
+    <div class="PlayerInfo">
+        {% if img == [] %}
+            <img src="./static/Player_Photo_head/default.webp" style="width: 17%; position: absolute; left: 17.8%;top:25px">
+        {% else %}
+            {% if img[0][22]=='h' %}
+                <img src="{{ img[0] }}" style="width: 18%; position: absolute; left: 16.8%;top:10px">
+                <div class="PlayerName_head" id="Playerh">
+                        <b>{{ name }}</b>
+                        <br>
+                        <img src="{{ img[1] }}" style="width:40px; position: absolute; left: 8px; top:65px; border-style:solid; border-width: 0.5px;">
+                        {% if year == '0' %}
+                            <div class="yy" style="font-size:12pt; position: absolute; left: 70px; top:67px">
+                                <b> Career </b>
+                            </div>
+                        {% else %}
+                        {% if year == '1' %}
+                            <div class="yy" style="font-size:5pt; position: absolute; left: 60px; top:67px">
+                                <b> Last 52 Weeks </b>
+                            </div>
+                        {% else %}
+                            <div class="yy" style="font-size:12pt; position: absolute; left: 70px; top:67px">
+                                <b> {{ year }}</b>
+                            </div>
+                            <div class="yy" style="font-size:12pt; position: absolute; left: 115px; top:67px; color:Gray">
+                                <b> {{ age }}</b>
+                            </div>
+                        {% endif %}
+                        {% endif %}
+                    {% if court != 'All' %}
+                        <div class="ct" style="font-size:12pt; position: absolute; left: 70px; top:98px;">
+                            <b> {{ court }}</b>
+                        </div>
+                    {% endif %}
+                    {% if special != '1' %}
+                        <div class="sp" style="font-size:12pt; position: absolute; left: 8px; top:128px;">
+                            <b> {{ special }} </b>
+                        </div>
+                    {% endif %}
+                    </div>
+            {% else %}
+                <img src="{{ img[0] }}" style="width: 25%; position: absolute; left: 11%; top:0px">
+                <div class="PlayerName_full" id="Playerf">
+                    <b>{{ name }}</b>
+                    <br>
+                    <img src="{{ img[1] }}" style="width:40px; position: absolute; left: 8px; top:65px; border-style:solid; border-width: 0.5px;">
+                    {% if court != 'All' %}
+                        <div class="ct" style="font-size:12pt; position: absolute; left: 70px; top:98px;">
+                            <b> {{ court }}</b>
+                        </div>
+                    {% endif %}
+                    {% if special != '1' %}
+                        <div class="sp" style="font-size:12pt; position: absolute; left: 8px; top:128px;">
+                            <b> {{ special }} </b>
+                        </div>
+                    {% endif %}
+                    {% if year == '1' %}
+                        <div class="yy" style="font-size:5pt; position: absolute; left: 60px; top:71px">
+                            <b> Last 52 Weeks </b>
+                        </div>
+                    {% else %}
+                        {% if year == '0' %}
+                            <div class="yy" style="font-size:12pt; position: absolute; left: 70px; top:67px">
+                                <b> Career </b>
+                            </div>
+                        {% else %}
+                        {% if year == '1' %}
+                            <div class="yy" style="font-size:5pt; position: absolute; left: 60px; top:67px">
+                                <b> Last 52 Weeks </b>
+                            </div>
+                        {% else %}
+                            <div class="yy" style="font-size:12pt; position: absolute; left: 70px; top:67px">
+                                <b> {{ year }}</b>
+                            </div>
+                            <div class="yy" style="font-size:12pt; position: absolute; left: 115px; top:67px; color:Gray">
+                                <b> {{ age }}</b>
+                            </div>
+                        {% endif %}
+                        {% endif %}
+
+                    {% endif %}
+                </div>
+            {% endif %}
+        {% endif %}
+        <div class='Win_Num' id='W_num'>
+        </div>  
+        <div class='Win_tag'>
+            <b>Win</b>
+            <br>            
+        </div>   
+        <div class='Lose_Num' id='L_num'>
+        </div>  
+        <div class='Lose_tag'>
+            <b>Lose</b>
+            <br>            
+        </div> 
+
+        <div id="piechart">
+            <div class='Win_Rate' id='Rate'>
+        </div>
+            <canvas id="myChart" style="opacity:0.7;"></canvas>
+        </div>        
+    </div>
+    <div>
+    <div class="SelectPlayer">
+        <form action="/performance" method="post" onsubmit="return check_v2()" id="content">
+            <input class="player" value="{{ name }}" type="text" name="player_name" autocomplete="on" style="position: absolute; left: 30.1%; top: 318px; height:30px; width:170px" list="playerdata" placeholder="name (only English)" onclick=javascript:this.value=''>
+                    <datalist id="playerdata">
+                    {% for p in playerlist %}
+                          <option>{{ p }}</option>
+                    {% endfor %}
+                    </datalist>
+                    <select class="form-control" name="year" data-toggle="tooltip" style="position: absolute; left: 57.6%; top: 318px; width:8%; height:30px;">
+                        <option> Career </option>
+                        <option>Last 52 Weeks</option>
+                        <option selected="selected">{{ yearlist[0] }}</option>
+                            {% for p in yearlist[1:] %}
+                        <option>{{ p }}</option>
+                    {% endfor %}
+                    </select>
+                    <select class="form-control" name="court" data-toggle="tooltip" style="position: absolute; left: 65.7%; top: 318px; width:8%; height:30px;">
+                        <option selected="selected">All</option>
+                        <option>Hard</option>
+                        <option>Clay</option>
+                        <option>Grass</option>
+                        <option>Carpet</option>
+                        <option>Grand Slam</option>
+                        <option>Masters</option>
+                    </select>
+                    <select class="form-control" name="special" data-toggle="tooltip" style="position: absolute; left: 73.8%; top: 318px; width:10%; height:30px;">
+                        <option selected="selected">  </option>
+                        <option>With game 6-0</option>
+                        <option>With game 0-6</option>
+                        <option>After 0-1 set</option>
+                        <option>After 0-2 set</option>
+                        <option>VS Top 10</option>
+                        <option>VS Top 20</option>
+                        <option>VS Top 50</option>
+                        <option>VS Top 100</option>
+                        <option>With RET</option>
+                    </select>
+            <input type="image" src="./static/zoom.png" class="button" value="performance" style="position: absolute; left: 48.8%; top: 304px; height:60px; width:60px;">
+        </form>
+    </div>                      
+    <div id="matchtable" style="text-align:left; font-family: Times New Roman; position:relative; top:400px; width:1290px;">
+        <table class="matchres" border="0" cellspacing="1" id="tbl">
+            <tbody>
+            {% for item in data %}
+                {%if item[0] == 1%}
+                <tr>
+                        <td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ item[1] }} </td>
+                        {% if item[2] == name %}
+                        <td> &nbsp;&nbsp;&nbsp;&nbsp;W </td>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="{{ item[7] }}" style="width: 22px; height: 22px;">&nbsp;&nbsp;{{ item[9] }}&nbsp;&nbsp;{{ item[3] }} </td>
+                        {% else %}
+                        <td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;L </td>
+                        <td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="{{ item[6] }}" style="width: 22px; height: 22px;">&nbsp;&nbsp;{{ item[8] }}&nbsp;&nbsp;{{ item[2] }} </td>
+                        {% endif %}
+                        <td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ item[4] }} </td>
+                </tr>
+                {% else %}
+            <tr>
+                <th style="height:40px;font-size: 15pt; color: {{ item[3] }};" colspan="3"><img src="{{ item[2] }}" style="width: 30px; height: 30px;">&nbsp;&nbsp;&nbsp;{{ item[1] }} &nbsp;&nbsp; <span style="font-size:10pt;color:gray"> {{ item[4] }} </span></th>
+                <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size:11pt;color:black">{{ item[-1] }} </span></th>
+            </tr>
+                {% endif %}
+            {% endfor %}
+            </tbody>
+            <tfoot>
+            <tr>
+            <th style="height:40px;" colspan="4">&nbsp;</th>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+        </div>
+</body>
+{% endblock %}

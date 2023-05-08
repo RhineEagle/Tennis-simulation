@@ -3,19 +3,30 @@
 {# 块修改标题 #}
 {% block title %}H2H{% endblock %}
 
-{# 块导航栏 #}
-
 
 {# css块 #}
 {% block styles %}
     {{super()}}
 <style>
-    .PlayerInfo{position:absolute; left: 20px; top: 50px; right: 20px;}
-    .Player1Win{float:left; position: absolute; right: 0px; top: -140px; font-size: 75pt; color: pink; font-family: SimHei}
-    .Player1Name{float:left; position: absolute; right: 970px; top: 180px; font-size: 20pt; font-family: Times New Roman;}
-    .Player2Name{float:right; position: absolute; left: 965px; top: 180px; font-size: 20pt; font-family: Times New Roman;}
-    .Player2Win{float:center; position: absolute; left: 0px; top: -140px; font-size: 75pt; color: gold; font-family: SimHei}
-    .matchres{ width:60%; position: absolute; left: 250px; top: 0px;}
+    .PlayerInfo{position:absolute; left: 1.63%; top: 50px; right: 1.63%;}
+    .Player1Win{float:left; position: absolute; right: 0px; top: -140px; font-size: 75pt; color: #FF60AF; font-family: SimHei}
+    .Player1Name{float:left; position: absolute; right: 78.4%; top: 180px; font-size: 20pt; font-family: Times New Roman;}
+    .Player2Name{float:right; position: absolute; left: 77.4%; top: 180px; font-size: 20pt; font-family: Times New Roman;}
+    .Player2Win{float:center; position: absolute; left: 0px; top: -140px; font-size: 75pt; color: #0080FF; font-family: SimHei}
+    .matchres{ width:68%; position: absolute; left: 15%; top: 0px;}
+    .SelectPlayer{position:absolute; left: 0.5%; top: 0px; right: 0.5%;}
+    .default{background:White}
+
+    .label {color:black}
+    .label-250{background-color: #C7C7E2}
+    .label-500{background-color: #A3D1D1}
+    .label-1000{background-color: #FFC78E}
+    .label-GS{background-color: #FF9797}
+    .label-Cup{background-color: #d3a4ff}
+    .label-Davis{background-color: #ffa6ff}
+    .label-O{background-color: #A6FFA6}
+    .label-F{background-color: #FFFFAA}
+
 </style>
 {% endblock %}
 
@@ -28,9 +39,9 @@ window.onload = function()
 {
     var tblEle = document.getElementById("tbl");
     var len = tblEle.tBodies[0].rows.length;
-    var w1 = 0;
-    var w2 = 0;
-    var pat=new RegExp('{{ name[0] }} d. {{ name[1] }}'.trim());
+    var w1 = {{ win|tojson }};
+    var w2 = {{ lose|tojson }};
+    var pat=new RegExp('{{ name[0] }} d.'.trim());
 
     for(var i=0;i<len;i++)
     {
@@ -41,34 +52,56 @@ window.onload = function()
         }
         else if(pat.test(tblEle.tBodies[0].rows[i].cells[4].innerHTML.trim()) == true)
         {
-            tblEle.tBodies[0].rows[i].style.backgroundColor="pink";
-            w1 = w1 + 1;
+            tblEle.tBodies[0].rows[i].style.backgroundColor="#FFC1E0";
         }
         else
         {
-            tblEle.tBodies[0].rows[i].style.backgroundColor="gold";
-            w2 = w2 + 1;
+            tblEle.tBodies[0].rows[i].style.backgroundColor="#ACD6FF";
+        }
+
+        if(tblEle.tBodies[0].rows[i].cells[2].innerHTML.trim() == '<b>Clay</b>')
+        {
+            tblEle.tBodies[0].rows[i].cells[2].style.color="#D94600";
+        }
+        else if(tblEle.tBodies[0].rows[i].cells[2].innerHTML.trim() == '<b>Hard</b>')
+        {
+            tblEle.tBodies[0].rows[i].cells[2].style.color="#0072E3";
+        }
+        else if(tblEle.tBodies[0].rows[i].cells[2].innerHTML.trim() == '<b>Grass</b>')
+        {
+            tblEle.tBodies[0].rows[i].cells[2].style.color="#009100";
+        }
+        else if(tblEle.tBodies[0].rows[i].cells[2].innerHTML.trim() == '<b>Carpet</b>')
+        {
+            tblEle.tBodies[0].rows[i].cells[2].style.color="#C6A300";
         }
     }
+
     document.getElementById("P1Win").innerHTML = w1;
     document.getElementById("P2Win").innerHTML = w2;
+    if (w1 == 0 && w2 ==0)
+    {
+        w1 = 0.001;
+        w2 = 0.001;
+    }
+
 
     var ctx = document.getElementById("myChart");
     var myChart = new Chart(ctx, {
         type: "doughnut",
         data: {
-            labels: ['{{ name[0] }}', '{{ name[1] }}'],
+            labels: ['{{ name[1] }}', '{{ name[0] }}'],
             datasets: [{
-                data: [w1+0.0001,w2+0.0001],
+                data: [w2,w1],
                 backgroundColor: [
-                    'pink',
-                    'gold',
+                    '#0080FF',
+                    '#FF60AF',
                 ],
                 borderColor: [
-                    'pink',
-                    'gold',
+                    '#0080FF',
+                    '#FF60AF',
                 ],
-                borderWidth: 1
+                borderWidth: 0
             }]
         },
         options: {
@@ -76,7 +109,7 @@ window.onload = function()
                 display: false
             },
             cutoutPercentage: 65,
-            rotation: 0.5 * Math.PI
+            rotation: -0.5 * Math.PI
         }
     });
 }
@@ -85,10 +118,31 @@ window.onload = function()
 <script>
     function check()
     {
-        var con1 = document.querySelector(".player1").value;
-        var con2 = document.querySelector(".player2").value;
+        var con1 = document.querySelector(".form-control-player1").value;
+        var con2 = document.querySelector(".form-control-player2").value;
+        var t1 = {{ playerlist|tojson }}.indexOf(con1);
+        var flag = document.querySelector(".form-control-player2").placeholder;
+        if (flag == 'name (only English)')
+        {
+            var t2 = {{ playerlist|tojson }}.indexOf(con2);
+        }
+        else
+        {
+            if (flag == 'Top N')
+            {
+                var t2 = -1;
+                if (con2>='1' && con2<='9999')
+                {
+                    t2 = 0;
+                }
+            }
+            else
+            {
+                var t2 = {{ countrylist|tojson }}.indexOf(con2);
+            }
+        }
 
-        if (con1==con2 || con1 == '' || con2 == '')
+        if (con1==con2 || con1 == '' || con2 == '' || t1 == -1 || t2 == -1)
         {
             return false;
         }
@@ -100,12 +154,44 @@ window.onload = function()
     </script>
 
     <script>
+    var result = document.getElementById('table');
+    var data = {{ data|tojson }};
+    var con = "";
+    for (var i=0; i<15; i++)
+    {
+        if (i>=data.length)
+        {
+            break;
+        }
+        var item = data[i];
+        con = con + "<tr style='height:23px;'> <td>"+item[1]+"</td> <td> "+item[0]+" </td> <td> <b>"+item[3]+"</b></td> <td>  "+item[4]+"  </td> <td>"+item[8]+"&nbsp;"+item[5]+" d. "+item[6]+"&nbsp;"+item[9]+" </td> <td> "+item[7]+" </td> </tr> ";
+    }
+    result.innerHTML=con;
+    if ({{ tp|tojson }}>5)
+    {
+        for (var i=5;i<{{ tp|tojson }};i++)
+        {
+            document.getElementById('page'+i).style.setProperty('display','none');
+        }
+    }
+    var end = data.length;
+    var start = 1;
+    if (end>15)
+    {
+        end = 15;
+    }
+    if (end != 0)
+    {
+        document.getElementById('Num').innerHTML = 'show '+start+'-'+end+' of '+data.length+ ' records';
+    }
+
     var box = document.getElementById('P1');
     var box = box.innerText.trim();
     var cat = box.length;
     if(cat >= 22)
     {
     document.getElementById("P1").style.fontSize=15+'pt';
+    document.getElementById("P1").style.setProperty('top','183px');
     }
     else{
         if(cat >= 18)
@@ -123,6 +209,7 @@ window.onload = function()
     if(cat >= 22)
     {
     document.getElementById("P2").style.fontSize=15+'pt';
+    document.getElementById("P2").style.setProperty('top','183px');
     }
     else{
         if(cat >= 18)
@@ -136,53 +223,475 @@ window.onload = function()
     </script>
 
     <script>
+        function getcountry()
+        {
+            document.querySelector(".form-control-player2").placeholder='country (only English)';
+
+            var con = {{ countrystr|tojson }};
+            if ('{{ flag }}' == '1')
+            {
+                var ele = document.getElementById("bup");
+                ele.className = 'default';
+                var ele = document.getElementById("but");
+                ele.className = 'default';
+                var ele = document.getElementById("buc");
+                ele.className = 'active';
+                document.querySelector(".form-control-player2").autocomplete = 'on';
+                document.getElementById("datalistDiv1").innerHTML = '<datalist id="data2">'+con;
+            }
+            else
+            {
+                if ('{{ flag }}' == '2')
+                {
+                    document.querySelector(".form-control-player2").value = '';
+                    var ele = document.getElementById("buc2");
+                    ele.className = 'active';
+                    var ele = document.getElementById("bup2");
+                    ele.className = 'default';
+                    var ele = document.getElementById("but2");
+                    ele.className = 'default';
+                    document.querySelector(".form-control-player2").list = 'data1';
+                    document.querySelector(".form-control-player2").autocomplete = 'on';
+                    document.getElementById("datalistDiv2").innerHTML = '<datalist id="data3">'+con;
+                }
+                else
+                {
+                    var ele = document.getElementById("buc1");
+                    ele.className = 'active';
+                    var ele = document.getElementById("but1");
+                    ele.className = 'default';
+                    var ele = document.getElementById("bup1");
+                    ele.className = 'default';
+                    document.querySelector(".form-control-player2").autocomplete = 'on';
+                    document.getElementById("datalistDiv").innerHTML = '<datalist id="data1">'+con;
+                }
+            }
+        }
+
+        function getplayer()
+        {
+            document.querySelector(".form-control-player2").placeholder='name (only English)';
+
+            var con = {{ playerstr|tojson }};
+            if ('{{ flag }}' == '1')
+            {
+                document.querySelector(".form-control-player2").value = '';
+                var ele = document.getElementById("buc");
+                ele.className = 'default';
+                var ele = document.getElementById("but");
+                ele.className = 'default';
+                var ele = document.getElementById("bup");
+                ele.className = 'active';
+                document.querySelector(".form-control-player2").autocomplete = 'on';
+                document.getElementById("datalistDiv1").innerHTML = '<datalist id="data2">'+con;
+            }
+            else
+            {
+                if ('{{ flag }}' == '2')
+                {
+                    document.querySelector(".form-control-player2").value = '';
+                    var ele = document.getElementById("buc2");
+                    ele.className = 'default';
+                    var ele = document.getElementById("bup2");
+                    ele.className = 'active';
+                    var ele = document.getElementById("but2");
+                    ele.className = 'default';
+                    document.querySelector(".form-control-player2").list = 'data1';
+                    document.querySelector(".form-control-player2").autocomplete = 'on';
+                    document.getElementById("datalistDiv2").innerHTML = '<datalist id="data3">'+con;
+                }
+                else
+                {
+                    var ele = document.getElementById("buc1");
+                    ele.className = 'default';
+                    var ele = document.getElementById("but1");
+                    ele.className = 'default';
+                    var ele = document.getElementById("bup1");
+                    ele.className = 'active';
+                    document.querySelector(".form-control-player2").autocomplete = 'on';
+                    document.getElementById("datalistDiv").innerHTML = '<datalist id="data1">'+con;
+                }
+            }
+        }
+
+        function gettop()
+        {
+            document.querySelector(".form-control-player2").placeholder='Top N';
+
+            if ('{{ flag }}' == '1')
+            {
+                var ele = document.getElementById("bup");
+                ele.className = 'default';
+                var ele = document.getElementById("but");
+                ele.className = 'active';
+                var ele = document.getElementById("buc");
+                ele.className = 'default';
+                document.querySelector(".form-control-player2").autocomplete = 'off';
+                document.getElementById("datalistDiv1").innerHTML = '<datalist id="data2"></datalist>';
+            }
+            else
+            {
+                if ('{{ flag }}' == '2')
+                {
+                    document.querySelector(".form-control-player2").value = '';
+                    var ele = document.getElementById("buc2");
+                    ele.className = 'default';
+                    var ele = document.getElementById("bup2");
+                    ele.className = 'default';
+                    var ele = document.getElementById("but2");
+                    ele.className = 'active';
+                    document.querySelector(".form-control-player2").autocomplete = 'off';
+                    document.getElementById("datalistDiv2").innerHTML = '<datalist id="data3"></datalist>';
+                }
+                else
+                {
+                    var ele = document.getElementById("buc1");
+                    ele.className = 'default';
+                    var ele = document.getElementById("but1");
+                    ele.className = 'active';
+                    var ele = document.getElementById("bup1");
+                    ele.className = 'default';
+                    document.querySelector(".form-control-player2").autocomplete = 'off';
+                    document.getElementById("datalistDiv").innerHTML = '<datalist id="data1"></datalist>';
+                }
+            }
+        }
+</script>
+
+    <script>
+    function plot()
+    {
+        var tblEle = document.getElementById("tbl");
+        var len = tblEle.tBodies[0].rows.length;
+        var pat=new RegExp('{{ name[0] }} d.'.trim());
+
+        for(var i=0;i<len;i++)
+        {
+            if(tblEle.tBodies[0].rows[i].cells[5].innerHTML.trim() == 'W/O')
+            {
+                tblEle.tBodies[0].rows[i].style.backgroundColor="LightGray";
+                continue;
+            }
+            else if(pat.test(tblEle.tBodies[0].rows[i].cells[4].innerHTML.trim()) == true)
+            {
+                tblEle.tBodies[0].rows[i].style.backgroundColor="#FFC1E0";
+            }
+            else
+            {
+                tblEle.tBodies[0].rows[i].style.backgroundColor="#ACD6FF";
+            }
+
+            if(tblEle.tBodies[0].rows[i].cells[2].innerHTML.trim() == '<b>Clay</b>')
+            {
+                tblEle.tBodies[0].rows[i].cells[2].style.color="#D94600";
+            }
+            else if(tblEle.tBodies[0].rows[i].cells[2].innerHTML.trim() == '<b>Hard</b>')
+            {
+                tblEle.tBodies[0].rows[i].cells[2].style.color="#0072E3";
+            }
+            else if(tblEle.tBodies[0].rows[i].cells[2].innerHTML.trim() == '<b>Grass</b>')
+            {
+                tblEle.tBodies[0].rows[i].cells[2].style.color="#009100";
+            }
+            else if(tblEle.tBodies[0].rows[i].cells[2].innerHTML.trim() == '<b>Carpet</b>')
+            {
+                tblEle.tBodies[0].rows[i].cells[2].style.color="#C6A300";
+            }
+        }
+    }
+
+    function getcontent(i)
+    {
+        var data = {{ data|tojson }};
+        var start = 15*i;
+        var end = 15*i+15;
+        var con = "";
+        for (var i=start; i<end; i++)
+        {
+            if (i>=data.length)
+            {
+                break;
+            }
+            var item = data[i];
+            con = con + "<tr style='height:23px;'> <td> "+item[1]+" </td> <td> "+item[0]+" </td> <td> <b>"+item[3]+"</b></td> <td>  "+item[4]+"  </td> <td>"+item[8]+"&nbsp;"+item[5]+" d. "+item[6]+"&nbsp;"+item[9]+" </td> <td> "+item[7]+" </td> </tr> ";
+        }
+        return con;
+    }
+
+        function showpre()
+        {
+            var page = Number(document.querySelector(".active-tag").innerHTML)-1;
+
+            if (page == 0)
+            {
+                return 0;
+            }
+
+            page = page-5;
+
+            if (page <0)
+            {
+                page = 0;
+            }
+            var pg = document.querySelector("#page"+page);
+            var tg = document.querySelector("#tag"+page);
+            var result = document.getElementById('table');
+            result.innerHTML=getcontent(page);
+            plot();
+            var end = data.length;
+            var start = page*15+1;
+            if (page*15+15<end)
+            {
+                end = page*15+15;
+            }
+            document.getElementById('Num').innerHTML = 'show '+start+'-'+end+'records of '+data.length;
+            document.querySelector(".active-page").className='default';
+            document.querySelector(".active-tag").className='default';
+            pg.className = 'active active-page';
+            tg.className = 'active active-tag';
+            var iv=[0,5];
+            if (page==0 || page==1)
+            {
+                iv = [0,5];
+            }
+            else if(page=={{ tp|tojson }}-1 || page=={{ tp|tojson }}-2)
+            {
+                iv = [{{ tp|tojson }}-5,{{ tp|tojson }}];
+            }
+            else
+            {
+                iv = [page-2,page+3];
+            }
+            for (var i=0;i<{{ tp|tojson }};i++)
+            {
+                if (i>=iv[0] && i<iv[1])
+                {
+                    document.getElementById('page'+i).style.setProperty('display','inline');
+                    continue;
+                }
+                document.getElementById('page'+i).style.setProperty('display','none');
+            }
+            var end = data.length;
+            var start = i*15+1;
+            if (i*15+15<end)
+            {
+                end = i*15+15;
+            }
+            if (end != 0)
+            {
+                document.getElementById('Num').innerHTML = 'show '+start+'-'+end+' of '+data.length+ ' records';
+            }
+        }
+
+        function shownext()
+        {
+            var page = Number(document.querySelector(".active-tag").innerHTML)-1;
+            if (page == Number({{ tp|tojson }})-1)
+            {
+                return 0;
+            }
+            page = page+5;
+            if (page >= Number({{ tp|tojson }}))
+            {
+                page = {{ tp|tojson }}-1;
+            }
+            var end = data.length;
+            var start = page*15+1;
+            if (page*15+15<end)
+            {
+                end = page*15+15;
+            }
+            if (end != 0)
+            {
+                document.getElementById('Num').innerHTML = 'show '+start+'-'+end+' of '+data.length+ ' records';
+            }
+            var pg = document.querySelector("#page"+page);
+            var tg = document.querySelector("#tag"+page);
+            var result = document.getElementById('table');
+            result.innerHTML=getcontent(page);
+            plot();
+            document.querySelector(".active-page").className='default';
+            document.querySelector(".active-tag").className='default';
+            pg.className = 'active active-page';
+            tg.className = 'active active-tag';
+            var iv=[0,5];
+            if (page==0 || page==1)
+            {
+                iv = [0,5];
+            }
+            else if(page=={{ tp|tojson }}-1 || page=={{ tp|tojson }}-2)
+            {
+                iv = [{{ tp|tojson }}-5,{{ tp|tojson }}];
+            }
+            else
+            {
+                iv = [page-2,page+3];
+            }
+            for (var i=0;i<{{ tp|tojson }};i++)
+            {
+                if (i>=iv[0] && i<iv[1])
+                {
+                    document.getElementById('page'+i).style.setProperty('display','inline');
+                    continue;
+                }
+                document.getElementById('page'+i).style.setProperty('display','none');
+            }
+        }
+
+        function getpage(i)
+        {
+            var end = data.length;
+            var start = i*15+1;
+            if (i*15+15<end)
+            {
+                end = i*15+15;
+            }
+            if (end != 0)
+            {
+                document.getElementById('Num').innerHTML = 'show '+start+'-'+end+' of '+data.length+ ' records';
+            }
+            var page = Number(document.querySelector(".active-tag").innerHTML)-1;
+            if (i==page)
+            {
+                return 0;
+            }
+            var pg = document.querySelector("#page"+i);
+            var tg = document.querySelector("#tag"+i);
+            var result = document.getElementById('table');
+            result.innerHTML=getcontent(i);
+            plot();
+            document.querySelector(".active-page").className='default';
+            document.querySelector(".active-tag").className='default';
+            pg.className = 'active active-page';
+            tg.className = 'active active-tag';
+            var iv=[0,5];
+            if (i==0 || i==1)
+            {
+                iv = [0,5];
+            }
+            else if(i=={{ tp|tojson }}-1 || i=={{ tp|tojson }}-2)
+            {
+                iv = [{{ tp|tojson }}-5,{{ tp|tojson }}];
+            }
+            else
+            {
+                iv = [i-2,i+3];
+            }
+            for (var i=0;i<{{ tp|tojson }};i++)
+            {
+                if (i>=iv[0] && i<iv[1])
+                {
+                    document.getElementById('page'+i).style.setProperty('display','inline');
+                    continue;
+                }
+                document.getElementById('page'+i).style.setProperty('display','none');
+            }
+        }
     </script>
+
 {% endblock %}
 
 {# 块内容 #}
 {% block content %}
 <body>
-<img src="./static/123.jpg" style="opacity:0.35; width:100%; height:100%; position: fixed; top: 50px;" >
+<img src="./static/123.jpg" style="opacity:0.15; width:100%; height:100%; position: fixed; top: 50px;" >
+
     <div class="PlayerInfo">
-        <img src={{ img[0] }} style="width: 220px; height: 220px; position: absolute; left: 290px; top: 30px;">
-        <div class="Player1Name" id="P1">
-            <div class="Player1Win" id="P1Win"></div>
-            <b>{{ name[0] }}</b>
-            <br>
-            <img src={{ country[0] }} style="width: 40px; position: absolute; top:60px; right:10px; border-style:solid; border-width: 0.5px;">
-        </div>
-        <img src="./static/VS-02.svg" style = "width:110px; height: 110px; position: absolute; left: 44.6%; top: 95px;">
-        <img src={{ img[1] }} style="width: 220px; height: 220px; position: absolute; left: 700px; top: 30px;">
-        <div class="Player2Name" id="P2">
-            <div class="Player2Win" id="P2Win"></div>
-            <b>{{ name[1] }}</b>
-            <br>
-            <img src={{ country[1] }} style="width: 40px; position: absolute; top:60px; left:10px; border-style:solid; border-width: 0.5px;">
-        </div>
-        <div style="width:33%; height:33%; position: absolute; left: 402px; top: 45px;">
+        {% if img != [] %}
+            <img src={{ img[0] }} style="width: 17.97%; position: absolute; left: 23.69%; top: 30px;">
+            <div class="Player1Name" id="P1">
+                <div class="Player1Win" id="P1Win"></div>
+                <b>{{ name[0] }}</b>
+                <br>
+                <img src={{ country[0] }} style="width: 38px; position: absolute; top:60px; right:4.545%; border-style:solid; border-width: 0.5px;">
+            </div>
+            {% if flag != 1 %}
+            <img src={{ img[1] }} style="width: 17.97%; position: absolute; right: 25.09%; top: 30px;">
+            {% else %}
+            <img src="{{ country[1] }}" style="width: 14.97%; position: absolute; right: 25.79%; top: 92px;">
+            {% endif %}
+            <div class="Player2Name" id="P2">
+                <div class="Player2Win" id="P2Win"></div>
+                {% if flag !=2 %}
+                <b>{{ name[1] }}</b>
+                {% else %}
+                <b>Top {{ name[1] }}</b>
+                {% endif %}
+                <br>
+                {% if flag == 0 %}
+                <img src={{ country[1] }} style="width: 38px; position: absolute; top:60px; left:4.545%; border-style:solid; border-width: 0.5px;">
+                {% endif %}
+            </div>
+        {% else %}
+            <img src="./static/Player_Photo_head/default.webp" style="width: 17.97%; position: absolute; left: 23.69%; top: 30px;">
+            <img src="./static/Player_Photo_head/default.webp" style="width: 17.97%; position: absolute; right: 25.09%; top: 30px;">
+        {% endif %}
+        <img src="./static/VS-02.svg" style = "width:8.95%; position: absolute; left: 44.6%; top: 100px;">
+        <div style="width:33%; height:33%; position: absolute; left: 32.34%; top: 45px;">
             <canvas id="myChart" style="opacity:0.7;"></canvas>
         </div>
     </div>
+    <ul class="nav nav-pills" style="position:absolute;left:33.5%;top:390px">
+        {% if flag == 1 %}
+        <li role="presentation" class="default" id="bup" onclick="getplayer()"><a href="#">VS Player</a></li>
+        <li role="presentation" class="active" id="buc" onclick="getcountry()"><a href="#">VS Country</a></li>
+        <li role="presentation" class="default" id="but" onclick="gettop()"><a href="#">VS Top</a></li>
+        {% elif flag == 0 %}
+        <li role="presentation" class="active" id="bup1" onclick="getplayer()"><a href="#">VS Player</a></li>
+        <li role="presentation" class="default" id="buc1" onclick="getcountry()"><a href="#">VS Country</a></li>
+        <li role="presentation" class="default" id="but1" onclick="gettop()"><a href="#">VS Top</a></li>
+        {% else %}
+        <li role="presentation" class="default" id="bup2" onclick="getplayer()"><a href="#">VS Player</a></li>
+        <li role="presentation" class="default" id="buc2" onclick="getcountry()"><a href="#">VS Country</a></li>
+        <li role="presentation" class="active" id="but2" onclick="gettop()"><a href="#">VS Top</a></li>
+        {% endif %}
+    </ul>
+
     <div class="SelectPlayer">
         <form action="/h2h" method="post" onsubmit="return check()" id="content">
-            <input class="player1" type="text" name="player1" autocomplete="on" style="position: absolute; left: 26.1%; top: 323px;" list="data" placeholder="name (only English)">
+            <input class="form-control form-control-player1" value="{{ name[0] }}" type="text" name="player1" autocomplete="on" style="position: absolute; left: 26.1%; top: 323px; width:175px; height:28px" list="data" placeholder="name (only English)" onclick=javascript:this.value=''>
                     <datalist id="data">
                     {% for p in playerlist %}
                           <option>{{ p }}</option>
                     {% endfor %}
                     </datalist>
-            <input type="image" src="./static/gun.jpg" class="button" name="sub" value="H2H" style="position: absolute; left: 46.4%; top: 300px; height:80px; width:67px;">
-            <input class="player2" type="text" name="player2" autocomplete="on" style="position: absolute; right: 28%; top: 323px;" list="data" placeholder="name (only English)">
-            <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#Advance" style="position: absolute; left:990px; top:352px; width:60px; height:35px">
-                Adv.
+            <input type="image" src="./static/gun.png" class="button" name="sub" value="H2H" style="position: absolute; left: 46.2%; top: 300px; height:80px; width:5.5%;">
+            {% if flag == 0 %}
+            <input class="form-control form-control-player2" value="{{ name[1] }}" type="text" name="player2" autocomplete="on" style="position: absolute; right: 27.5%; top: 323px; width:175px; height:28px" list="data1" placeholder="name (only English)" onclick=javascript:this.value=''>
+            {% elif flag == 1 %}
+            <input class="form-control form-control-player2" value="{{ name[1] }}" type="text" name="player2" autocomplete="on" style="position: absolute; right: 27.5%; top: 323px;width:175px; height:28px" list="data2" placeholder="country (only English)" onclick=javascript:this.value=''>
+            {% else %}
+            <input class="form-control form-control-player2" value="{{ name[1] }}" type="text" name="player2" autocomplete="off" style="position: absolute; right: 27.5%; top: 323px;width:175px; height:28px" list="data3" placeholder="Top N" onclick=javascript:this.value=''>
+            {% endif %}
+            <div id='datalistDiv'>
+            <datalist id="data1">
+                    {% for p in playerlist %}
+                          <option>{{ p }}</option>
+                    {% endfor %}
+                    </datalist>
+            </div>
+            <div id='datalistDiv1'>
+            <datalist id="data2">
+                    {% for p in countrylist %}
+                          <option>{{ p }}</option>
+                    {% endfor %}
+                    </datalist>
+            </div>
+            <div id='datalistDiv2'>
+                <datalist id="data3">
+                </datalist>
+            </div>
+
+            <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#Advance" style="position: absolute; left:55.3%; top:390px; width:6.5%; height:40px">
+                &nbsp;&nbsp;Adv.&nbsp;&nbsp;
                 <i class="fa fa-chevron-down"></i>
             </button>
             <div id="Advance" class="collapse">
                 <div class="col-md-2">
-                    <label class="input-group-addon" style="position: absolute; left: 317px; top: 285px; width:60px; height:28px">
-                        Court:
+                    <label class="input-group-addon" style="position: absolute; left: 157%; top: 355px; width:71px; height:30px">
+                        Surface
                     </label>
-                    <select class="form-control" name="court_type" data-toggle="tooltip" style="position: absolute; left: 377px; top: 285px; width:150px; height:28px">
+                    <select class="form-control" name="court_type" data-toggle="tooltip" style="position: absolute; left: 191%; top: 355px; width:102px; height:30px">
                         <option>All</option>
                         <option>Hard</option>
                         <option>Clay</option>
@@ -190,10 +699,10 @@ window.onload = function()
                     </select>
                 </div>
                 <div class="col-md-2">
-                    <label class="input-group-addon" style="position: absolute; left: 515px; top: 285px; width:60px; height:30px">
-                        Level:
+                    <label class="input-group-addon" style="position: absolute; left: 252.5%; top: 355px; width:71px; height:30px">
+                        Level
                     </label>
-                    <select class="form-control" name="Level_type" data-toggle="tooltip" style="position: absolute; left: 575px; top: 285px; width:150px; height:30px">
+                    <select class="form-control" name="Level_type" data-toggle="tooltip" style="position: absolute; left:286.5%; top: 355px; width:102px; height:30px">
                         <option>All</option>
                         <option>Only Main Draw</option>
                         <option>Only Final</option>
@@ -204,34 +713,53 @@ window.onload = function()
         </form>
     </div>
 
-    <div style="text-align:center; font-family: Times New Roman; position:absolute; top:400px; width:1290px;">
-        <table class="matchres" border="1" cellspacing="1" id="tbl">
+    <div style="text-align:center; font-family: Times New Roman; position:relative; top:450px; width:101%;">
+        <table class="matchres" border="0" cellspacing="1" id="tbl">
             <thead>
-                <tr>
-                    <td> Year </td><td>Tour</td><td>Court</td><td>Round</td><td>Result</td><td>Score</td>
+                <tr bgcolor="white" style="font-family: Times New Roman; height:25px; font-size:11.5pt">
+                    <td> Date </td><td>Tour</td><td>Surface</td><td>Round</td><td>Result</td><td>Score</td>
                 </tr>
             </thead>
-            <tbody>
-            {% for item in data %}
-                <tr>
-                        <td> {{ item[1] }} </td>
-                        <td> {{ item[0] }} </td>
-                        <td> {{ item[2] }} </td>
-                        <td> {{ item[3] }} </td>
-                        {% if item[7] == None %}
-                        <td> {{ item[4] }} d. {{ item[5] }} ({{ item[8] }}) </td>
-                        {% else %}
-                        {%  if item[8] == None  %}
-                        <td>({{ item[7] }}) {{ item[4] }} d. {{ item[5] }} </td>
-                        {% else %}
-                        <td>({{ item[7] }}) {{ item[4] }} d. {{ item[5] }} ({{ item[8] }}) </td>
-                        {% endif %}
-                        {% endif %}
-                        <td> {{ item[6] }} </td>
-                </tr>
-            {% endfor %}
+            <tbody id="table" style="font-family: Times New Roman;">
             </tbody>
+            <tfoot>
+            <tr>
+                    <td colspan="6"> &nbsp; <br>
+                        <span id="Num"></span></td>
+                </tr>
+            <tr>
+                <td colspan="6">
+                    {% if tp >=2 %}
+                  <nav aria-label="Page navigation" style="position:relative;top:0px;">
+                  <ul class="pagination">
+                    <li>
+                      <a href="#" aria-label="Previous" onclick="showpre()" id="prepage">
+                        <span aria-hidden="true">&laquo;</span>
+                      </a>
+                    </li>
+
+                      {% for i in range(0,tp) %}
+                          {% if i == 0 %}
+                            <li id="page{{ i }}" class="active active-page"><a href="#" id="tag{{ i }}" class="active active-tag" onclick="getpage({{ i }})">{{ i+1 }}</a></li>
+                          {% else %}
+                            <li id="page{{ i }}"><a href="#" id="tag{{ i }}" onclick="getpage({{ i }})">{{ i+1 }}</a></li>
+                          {% endif %}
+                      {% endfor %}
+                  <li>
+                      <a href="#" aria-label="Next" onclick="shownext()" id="nextpage">
+                        <span aria-hidden="true">&raquo;</span>
+                      </a>
+                  </li>
+                  </ul>
+                  </nav>
+                    {% endif %}
+                    &nbsp;
+
+                </td>
+                </tr>
+            </tfoot>
         </table>
+
     </div>
 
 </body>

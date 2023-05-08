@@ -7,7 +7,7 @@
 {% block head %}
 {{super()}}
 <link rel='stylesheet' href="{{ url_for('static', filename='font-awesome-4.7.0/css/font-awesome.min.css')}}">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" href="./static/favicon.ico">
 {% endblock %}
 
 {# 块导航栏 #}
@@ -23,41 +23,53 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="/">
-        Tennis Crystal Ball</a>
+      <img src="./static/crystal.jpg" width="33px" height="35px" style="position:relative; left:-8px; top:-6px"></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#"> <span class="glyphicon glyphicon-time" aria-hidden="true"></span> Today Score<span class="sr-only">(current)</span></a></li>
+        <li class="active"><a class="navbar-brand" href="/"> Tennis Crystal Ball<span class="sr-only">(current)</span></a></li>
         <li><a href="#">  <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>  Tournament</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Player<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Profile</a></li>
-            <li><a href="/h2h">H 2 H</a></li>
-            <li><a href="#">Performance</a></li>
-            <li><a href="#">Results & Titles</a></li>
+            <li><a href="#"><i class="fa fa-address-card-o" aria-hidden="true">&nbsp;Profile</i></a></li>
+            <li><a href="/h2h"><i class="fa fa-handshake-o" aria-hidden="true"></i>&nbsp;H 2 H</a></li>
+            <li><a href="/performance"><i class="fa fa-bar-chart" aria-hidden="true"></i>&nbsp;Performance</a></li>
+            <li><a href="/result"><i class="fa fa-trophy" aria-hidden="true">&nbsp;Results & Titles</i></a></li>
           </ul>
         </li>
-        <li><a href="#"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Forecast</a></li>
+        <li><a href="/forecast"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Forecast</a></li>
       </ul>
       <form class="navbar-form navbar-right">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search Player">
+          <input id="sub" type="text" class="form-control" autocomplete="on" list="player" placeholder="Search Player">
+            <datalist id="player">
+              {% for p in playerlist %}
+                <option>{{ p }}</option>
+              {% endfor %}
+            </datalist>
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Login</a></li>
+        <li id="login"><a href="/login"><i class="fa fa-sign-in" aria-hidden="true">&nbsp;Login</i></a></li>
+        <li class="dropdown" id="center">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-question-home" aria-hidden="true"></span> Welcome, {{ user }} <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+          <li id="exit"><a href="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;Exit</a></li>
+          </ul>
+        </li>
+
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> About<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">ATP Tour</a></li>
-            <li><a href="#">Glossary</a></li>
-            <li><a href="#">Tips</a></li>
+            <li><a href="https://www.atptour.com/en/"><i class="fa fa-link" aria-hidden="true"></i>&nbsp;ATP Tour</a></li>
+            <li><a href="#"><i class="fa fa-book" aria-hidden="true"></i>&nbsp;Glossary</a></li>
+            <li><a href="#"><i class="fa fa-bookmark" aria-hidden="true"></i>&nbsp;Tips</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="#">GitHub</a></li>
+            <li><a href="https://github.com/RhineEagle/Tennis-simulation"><i class="fa fa-github" aria-hidden="true"></i>&nbsp;GitHub</a></li>
           </ul>
         </li>
       </ul>
@@ -69,6 +81,176 @@
 {# 块内容 #}
 {% block content %}
 <img src="./static/123.jpg" style="opacity:0.35; width:100%; height:100%; position: fixed; top: 50px;" >
+<div class="jumbotron" style="position:absolute; top:65px;left:50px;right:30px;padding:20px">
+  <h1>Welcome to Crystal Ball Tennis!</h1>
+  <p>Tournament information, Match stats, Players' Profile, H2H, Performance, Titles & Result... All you want to know.</p>
+  <p>Forecast the winners of daily matches. Participate in and become the prophet.</p>
+  <p>Query with complex conditions, Abundant visual charts, Alternative assessment indicators... More convenient for search.</p>
+  <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+</div>
+
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="position:absolute;top:440px;left:50px">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    {% for i in range(birthplayer|length-1) %}
+    <li data-target="#carousel-example-generic" data-slide-to="{{ i+1 }}"></li>
+    {% endfor %}
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+
+    <div class="item active" style="width:400px;height:160px">
+      <img src="/static/birthday.jpg" width="400px" style="position:absolute;opacity:0.6">
+      {% if birthplayer[0][0] != "" %}
+      <img src="{{ birthplayer[0][0] }}" alt="..." width="110px" style="position:relative;left:6%;top:48px;opacity:0.9">
+      {% endif %}
+      <div class="carousel-caption" style="font-size:12pt">
+        Happy Birthday to<br> {{ birthplayer[0][1] }}
+        <br>
+        {{ birthplayer[0][2] }}
+      </div>
+    </div>
+    {% for item in birthplayer[1:] %}
+    <div class="item" style="width:400px;height:160px">
+      <img src="/static/birthday.jpg" width="400px" style="position:absolute;opacity:0.6">
+      {% if item[0] %}
+      <img src="{{ item[0] }}" alt="..." width="110px" style="position:relative;left:6%;top:48px;opacity:0.9">
+      {% endif %}
+      <div class="carousel-caption carousel-caption-birthday" style="font-size:12pt;">
+        Happy Birthday to <br>{{ item[1] }}
+        <br>
+        {{ item[2] }}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+<div id="carousel-example" class="carousel slide" data-ride="carousel" style="position:absolute;top:600px;left:50px">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    {% for i in range(9) %}
+    <li data-target="#carousel-example-generic" data-slide-to="{{ i+1 }}"></li>
+    {% endfor %}
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+
+    <div class="item active" style="width:400px;height:137px">
+      <img src="/static/win.jpg" width="400px" style="position:absolute;opacity:0.7">
+      <div class="carousel-caption" style="font-size:12pt">
+        Congratulations to<br> {{ win[0][0] }}
+        <br>
+        on the {{ win[0][1] }}th win in {{ win[0][2] }}
+      </div>
+    </div>
+    {% for item in win[1:] %}
+    <div class="item" style="width:400px;height:137px">
+      <img src="/static/win.jpg" width="400px" style="position:absolute;opacity:0.7">
+      <div class="carousel-caption carousel-caption-winner" style="font-size:12pt;">
+        Congratulations to <br>{{ item[0] }}
+        <br>
+        on the {{ item[1] }}th win in {{ item[2] }}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+<div id="carousel-generic" class="carousel slide" data-ride="carousel" style="position:absolute;top:440px;left:455px">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    {% for i in range(pic|length-1) %}
+    <li data-target="#carousel-example-generic" data-slide-to="{{ i+1 }}"></li>
+    {% endfor %}
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+
+    <div class="item active" style="width:545px;height:297px">
+      {% if pic[0][0] != "" %}
+      <img src="{{ pic[0][0] }}" alt="..." width="840px" style="opacity:0.75">
+      {% endif %}
+      <div class="carousel-caption" style="font-size:14pt">
+        Congratulations to <br> {{ pic[0][2] }}
+        <br>
+        <i class="fa fa-trophy" aria-hidden="true"></i> {{ pic[0][1] }} &nbsp;
+        <span class="glyphicon glyphicon-time" aria-hidden="true"></span> {{ pic[0][3] }}
+      </div>
+    </div>
+    {% for item in pic[1:] %}
+    <div class="item" style="width:545px;height:297px">
+      {% if item[0] %}
+      <img src="{{ item[0] }}" alt="..." width="840px" style="opacity:0.75">
+      {% endif %}
+      <div class="carousel-caption carousel-caption-trophy" style="font-size:14pt;">
+        Congratulations to <br>{{ item[2] }}
+        <br>
+        <i class="fa fa-trophy" aria-hidden="true"></i> {{ item[1] }} &nbsp;
+        <span class="glyphicon glyphicon-time" aria-hidden="true"></span> {{ item[3] }}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#carousel-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+<p style="position:absolute;top:1250px">&nbsp;</p>
+
+<div class="panel panel-info" style="position:absolute; right:30px; top:440px;">
+  <!-- Default panel contents -->
+  <div class="panel-heading">ATP Official Ranking <span style="font-size:4pt;position:absolute;top:15px; right:5px">{{ data[0][3] }}</span></div>
+  <!-- Table -->
+  <table class="table" style="text-align:center;">
+      <thead>
+          <tr style="font-family: Times New Roman;">
+              <td> Rank </td><td colspan="1">Name</td><td>Points</td>
+          </tr>
+      </thead>
+      <tbody id="table" style="font-family: Times New Roman;">
+      {% for item in data %}
+      <tr>
+        <td>{{ item[1] }}</td><td><a href="#">{{ item[0] }}</a></td><td>{{ item[2] }}</td>
+      </tr>
+      {% endfor %}
+      </tbody>
+  </table>
+</div>
 {% endblock %}
 
 {# css块 #}
@@ -83,7 +265,7 @@
 .navbar-fixed-top .navbar-brand {
   color: #ecf0f1;
 }
-.navbar-fixed-top .navbar-brand:hover,
+.navbar-fixed-top .navbar-brand:hover ,
 .navbar-fixed-top .navbar-brand:focus {
   color: #ecdbff;
 }
@@ -93,7 +275,10 @@
 .navbar-fixed-top .navbar-nav > li > a {
   color: #ecf0f1;
 }
-.navbar-fixed-top .navbar-nav > li > a:hover,
+.navbar-fixed-top .navbar-nav > li > a:hover
+{
+  color: #8e44ad;
+},
 .navbar-fixed-top .navbar-nav > li > a:focus {
   color: #ecdbff;
 }
@@ -165,7 +350,7 @@
     background-color: #8e44ad;
   }
 }
-.body {padding-bottom: 70px;}
+.carousel-caption- {color:#00FFFF;}
 
 </style>
 {% endblock %}
@@ -173,4 +358,19 @@
 {# JavaScript块 #}
 {% block scripts %}
     {{super()}}
+<script>
+var user = '{{ user }}';
+if(user=="")
+{
+  var center = document.getElementById("center");
+  var exit = document.getElementById("exit");
+  center.style.display='none';
+  exit.style.display='none';
+}
+else
+{
+  var login=document.getElementById("login");
+  login.style.display='none';
+}
+</script>
 {% endblock %}

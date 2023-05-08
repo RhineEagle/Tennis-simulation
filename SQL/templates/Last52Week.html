@@ -1,0 +1,98 @@
+{# 继承bootstrap中的base.html #}
+{% extends "homepage.html" %}
+{# 块修改标题 #}
+{% block title %}Title Holders{% endblock %}
+
+{# 块导航栏 #}
+
+
+{# css块 #}
+{% block styles %}
+    {{super()}}
+<style>
+    .PlayerInfo{position:absolute; left: 20px; top: 70px; right: 20px;}
+    .PlayerName_full{float:center; position: absolute; left: 32%; top: 40px; font-family: Times New Roman; width:300px}
+    .PlayerName_head{float:center; position: absolute; left: 35.1%; top: 40px; font-family: Times New Roman;}
+    #W_num{width:8.95%; position: absolute; left: 51.1%; top: 140px; font-size: 40pt; color: #FF60AF; font-family: SimHei;}
+    .Win_tag{width:8.95%; position: absolute; left: 50%; top: 90px; font-size: 30pt; color: #FF60AF; font-family: Times New Roman;}
+    #L_num{width:8.95%; position: absolute; left: 78.7%; top: 140px; font-size: 40pt; color: #0080FF; font-family: SimHei;}
+    .Lose_tag{width:8.95%; position: absolute; left: 77.1%; top: 90px; font-size: 30pt; color: #0080FF; font-family: Times New Roman;}
+    #Rate{ position: absolute; left: 42%; top: 70px; font-size: 35pt; color: black; font-family: SimHei; opacity: 0.6}
+    #piechart{width:33%; height:33%; position: absolute; left: 50%; top: 33px;}
+    .SelectPlayer{position: absolute; left: 60px; top: 20px; right: 20px;}
+    .matchres{ width:60%; position: absolute; left: 250px; top: 0px;}
+    .label-250{background-color: #B3D9D9}
+    .label-500{background-color: #DAB1D5}
+    .label-1000{background-color: #FFA042}
+    .label-GS{background-color: #FF2D2D}
+    .label-Cup{background-color: #FF95CA}
+    .label-Davis{background-color: #ffa6ff}
+    .label-O{background-color: #00DB00}
+    .label-W{background-color: #00DB00}
+    .label-F{background-color: #EAC100}
+    .label-Q{background-color: #d0d0d0}
+    .label-Fi{background-color: #B87070}
+    .label-SF{background-color: #C4C400}
+    .label-QF{background-color: #81C0C0}
+    .label-R{background-color: #C2C287}
+    #tbl{ width:70%; position: absolute; left: 200px; top: 0px;}
+</style>
+{% endblock %}
+
+{# JavaScript块 #}
+{% block scripts %}
+    {{super()}}
+<script src="./static/Chart.js-2.9.4/dist/chart.js"></script>
+{% endblock %}
+
+
+{# 块内容 #}
+{% block content %}
+<body>
+<img src="./static/123.jpg" style="opacity:0.15; width:100%; height:100%; position: fixed; top: 50px;" >
+<span style="font-size:5pt;position:absolute;top:78px;left:78%">Update: &nbsp;&nbsp;{{ Date }}</span>
+<div style="position:absolute;top:60px;width:1290px">
+    <table class="table table-condensed table-striped" border="0" cellspacing="1" id="tbl">
+             <thead style="height:40px;font-family:Times New Roman;font-size:12pt;">
+             <tr>
+                <th style="font-family:Times New Roman;font-size:14pt;text-align:center" colspan="8">&nbsp;ATP Tour Title Holders in Last 52 Weeks </th>
+             </tr>
+             <tr>
+                 <th> Rank </th> <th style="text-align:center" colspan="2">&nbsp;Name </th><th class="text-align:center" > Age </th><th class="text-align:center" > Points </th> <th style="text-align:center"> Winner </th> <th style="text-align:center"> Runner-Up </th> <th style="text-align:center"> Semi-Finalist </th>
+             </tr>
+             </thead>
+        <tbody>
+        {% for player in data %}
+                <tr style="height:35px;" bgcolor="#F0F0F0">
+                    <td style="vertical-align: middle;text-align:center;"> {{ player['rank'] }} </td>
+                    <td style="vertical-align: middle;text-align:center;"><img src="{{ player['Country'] }}" width="25px" style="border-style:solid; border-width: 0.5px;"></td>
+                    <td style="vertical-align: middle;text-align:center;"><a href="/result_title%3Fname%3D{{ player['id'] }}%26year%3D1"> {{ player['Name'] }}</a></td>
+                    <td style="vertical-align: middle;text-align:center;"> {{ player['age'] }} </td>
+                    <td style="vertical-align: middle;text-align:center;">{{ player['point'] }}</td>
+                    <td style="vertical-align: middle;text-align:left;">
+                        {% for item in player['W'] %}
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="{{ item[3] }}">{{ item[2] }}</span>&nbsp;<a herf="/tournament_?tour=" class="{{ item[1] }}">{{ item[0] }}</a><br>
+                        {% endfor %}
+                    </td>
+                    <td style="vertical-align: middle;text-align:left;">
+                        {% for item in player['F'] %}
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="{{ item[3] }}">{{ item[2] }}</span>&nbsp;<a herf="/tournament_?tour=" class="{{ item[1] }}">{{ item[0] }}</a><br>
+                        {% endfor %}
+                    </td>
+                    <td style="vertical-align: middle;text-align:left;">
+                        {% for item in player['SF'] %}
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="{{ item[3] }}">{{ item[2] }}</span>&nbsp;<a herf="/tournament_?tour=" class="{{ item[1] }}">{{ item[0] }}</a><br>
+                        {% endfor %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <th style="height:40px;" colspan="2">&nbsp;</th>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+</body>
+{% endblock %}
