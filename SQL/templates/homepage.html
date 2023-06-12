@@ -30,11 +30,11 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active"><a class="navbar-brand" href="/"> Tennis Crystal Ball<span class="sr-only">(current)</span></a></li>
-        <li><a href="#">  <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>  Tournament</a></li>
+        <li><a href="/tournament">  <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>  Tournament</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Player<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#"><i class="fa fa-address-card-o" aria-hidden="true">&nbsp;Profile</i></a></li>
+            <li><a href="/profile"><i class="fa fa-address-card-o" aria-hidden="true">&nbsp;Profile</i></a></li>
             <li><a href="/h2h"><i class="fa fa-handshake-o" aria-hidden="true"></i>&nbsp;H 2 H</a></li>
             <li><a href="/performance"><i class="fa fa-bar-chart" aria-hidden="true"></i>&nbsp;Performance</a></li>
             <li><a href="/result"><i class="fa fa-trophy" aria-hidden="true">&nbsp;Results & Titles</i></a></li>
@@ -42,9 +42,9 @@
         </li>
         <li><a href="/forecast"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Forecast</a></li>
       </ul>
-      <form class="navbar-form navbar-right">
+      <form class="navbar-form navbar-right" action="/profile" method="POST">
         <div class="form-group">
-          <input id="sub" type="text" class="form-control" autocomplete="on" list="player" placeholder="Search Player">
+          <input id="sub" name="player" type="text" class="form-control" autocomplete="on" list="player" placeholder="Search Player">
             <datalist id="player">
               {% for p in playerlist %}
                 <option>{{ p }}</option>
@@ -58,6 +58,10 @@
         <li class="dropdown" id="center">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-question-home" aria-hidden="true"></span> Welcome, {{ user }} <span class="caret"></span></a>
           <ul class="dropdown-menu">
+            {% if user == 'Rhine' %}
+            <li id="selfcenter"><a href="/center"><i class="fa fa-check" aria-hidden="true"></i>&nbsp;Admin Center</a></li>
+            {% endif %}
+            <li id="dailyforecast"><a href="/Daily"><i class="fa fa-eye" aria-hidden="true"></i>&nbsp;Daily Forecast</a></li>
           <li id="exit"><a href="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;Exit</a></li>
           </ul>
         </li>
@@ -81,15 +85,15 @@
 {# 块内容 #}
 {% block content %}
 <img src="./static/123.jpg" style="opacity:0.35; width:100%; height:100%; position: fixed; top: 50px;" >
-<div class="jumbotron" style="position:absolute; top:65px;left:50px;right:30px;padding:20px">
-  <h1>Welcome to Crystal Ball Tennis!</h1>
+<div class="jumbotron" style="position:absolute; top:65px;left:3.952%;right:2.3715%;padding:20px">
+  <h1>Welcome to Tennis Crystal Ball!</h1>
   <p>Tournament information, Match stats, Players' Profile, H2H, Performance, Titles & Result... All you want to know.</p>
   <p>Forecast the winners of daily matches. Participate in and become the prophet.</p>
   <p>Query with complex conditions, Abundant visual charts, Alternative assessment indicators... More convenient for search.</p>
-  <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+  <p><a class="btn btn-primary btn-lg" href="https://github.com/RhineEagle/Tennis-simulation#readme" target="_blank" role="button">Learn more</a></p>
 </div>
 
-<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="position:absolute;top:440px;left:50px">
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="position:absolute;top:420px;left:3.952%;width:31.62%">
   <!-- Indicators -->
   <ol class="carousel-indicators">
     <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -101,10 +105,10 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
 
-    <div class="item active" style="width:400px;height:160px">
+    <div class="item active" style="height:160px">
       <img src="/static/birthday.jpg" width="400px" style="position:absolute;opacity:0.6">
       {% if birthplayer[0][0] != "" %}
-      <img src="{{ birthplayer[0][0] }}" alt="..." width="110px" style="position:relative;left:6%;top:48px;opacity:0.9">
+      <img src="{{ birthplayer[0][0] }}" alt="..." width="27.5%" style="position:relative;left:6%;top:48px;opacity:0.9">
       {% endif %}
       <div class="carousel-caption" style="font-size:12pt">
         Happy Birthday to<br> {{ birthplayer[0][1] }}
@@ -113,10 +117,10 @@
       </div>
     </div>
     {% for item in birthplayer[1:] %}
-    <div class="item" style="width:400px;height:160px">
+    <div class="item" style="height:160px">
       <img src="/static/birthday.jpg" width="400px" style="position:absolute;opacity:0.6">
       {% if item[0] %}
-      <img src="{{ item[0] }}" alt="..." width="110px" style="position:relative;left:6%;top:48px;opacity:0.9">
+      <img src="{{ item[0] }}" alt="..." width="27.5%" style="position:relative;left:6%;top:48px;opacity:0.9">
       {% endif %}
       <div class="carousel-caption carousel-caption-birthday" style="font-size:12pt;">
         Happy Birthday to <br>{{ item[1] }}
@@ -138,11 +142,11 @@
   </a>
 </div>
 
-<div id="carousel-example" class="carousel slide" data-ride="carousel" style="position:absolute;top:600px;left:50px">
+<div id="carousel-example" class="carousel slide" data-ride="carousel" style="position:absolute;top:580px;left:3.952%;width:31.62%;">
   <!-- Indicators -->
   <ol class="carousel-indicators">
     <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-    {% for i in range(9) %}
+    {% for i in range(win|length-1) %}
     <li data-target="#carousel-example-generic" data-slide-to="{{ i+1 }}"></li>
     {% endfor %}
   </ol>
@@ -150,7 +154,7 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
 
-    <div class="item active" style="width:400px;height:137px">
+    <div class="item active" style="height:137px">
       <img src="/static/win.jpg" width="400px" style="position:absolute;opacity:0.7">
       <div class="carousel-caption" style="font-size:12pt">
         Congratulations to<br> {{ win[0][0] }}
@@ -159,7 +163,7 @@
       </div>
     </div>
     {% for item in win[1:] %}
-    <div class="item" style="width:400px;height:137px">
+    <div class="item" style="height:137px">
       <img src="/static/win.jpg" width="400px" style="position:absolute;opacity:0.7">
       <div class="carousel-caption carousel-caption-winner" style="font-size:12pt;">
         Congratulations to <br>{{ item[0] }}
@@ -181,7 +185,7 @@
   </a>
 </div>
 
-<div id="carousel-generic" class="carousel slide" data-ride="carousel" style="position:absolute;top:440px;left:455px">
+<div id="carousel-generic" class="carousel slide" data-ride="carousel" style="position:absolute;top:420px;left:35.96838%;width:43.08%;">
   <!-- Indicators -->
   <ol class="carousel-indicators">
     <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -193,7 +197,7 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
 
-    <div class="item active" style="width:545px;height:297px">
+    <div class="item active" style="height:297px">
       {% if pic[0][0] != "" %}
       <img src="{{ pic[0][0] }}" alt="..." width="840px" style="opacity:0.75">
       {% endif %}
@@ -205,7 +209,7 @@
       </div>
     </div>
     {% for item in pic[1:] %}
-    <div class="item" style="width:545px;height:297px">
+    <div class="item" style="height:297px">
       {% if item[0] %}
       <img src="{{ item[0] }}" alt="..." width="840px" style="opacity:0.75">
       {% endif %}
@@ -230,9 +234,23 @@
   </a>
 </div>
 
-<p style="position:absolute;top:1250px">&nbsp;</p>
+<div class="panel panel-success" style="position:relative; left:3.9525%; top:727px; width:75.0988%; height:135px">
+  <div class="panel-heading" style="font-size:11.5pt">This Week & Coming Tournament</div>
+  <div class="panel-body" style="background:LightGray">
+    <ul style="list-style:none;display:inline">
+      {% for item in tour %}
+        <li style="float:left; width:17.4%; text-align:center; font-family:Arial">
+          <img src="{{ item[0] }}" style="height:60px"><br>
+          {{ item[1] }}
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
 
-<div class="panel panel-info" style="position:absolute; right:30px; top:440px;">
+<p style="position:absolute;top:889px">&nbsp;</p>
+
+<div class="panel panel-info" style="position:absolute; right:2.3715%; top:420px;">
   <!-- Default panel contents -->
   <div class="panel-heading">ATP Official Ranking <span style="font-size:4pt;position:absolute;top:15px; right:5px">{{ data[0][3] }}</span></div>
   <!-- Table -->
@@ -245,7 +263,7 @@
       <tbody id="table" style="font-family: Times New Roman;">
       {% for item in data %}
       <tr>
-        <td>{{ item[1] }}</td><td><a href="#">{{ item[0] }}</a></td><td>{{ item[2] }}</td>
+        <td>{{ item[1] }}</td><td><a href="/profile_detail%3FName%3D{{ item[0] }}">{{ item[4] }}</a></td><td>{{ item[2] }}</td>
       </tr>
       {% endfor %}
       </tbody>

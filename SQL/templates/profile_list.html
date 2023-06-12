@@ -1,0 +1,89 @@
+{# 继承bootstrap中的base.html #}
+{% extends "homepage.html" %}
+{# 块修改标题 #}
+{% block title %}Top 100 Players{% endblock %}
+
+{# 块导航栏 #}
+
+
+{# css块 #}
+{% block styles %}
+    {{super()}}
+<style>
+    .label-250{background-color: #ACD6FF}
+    .label-500{background-color: #D2A2CC}
+    .label-1000{background-color: #FFA042}
+    .label-GS{background-color: #ff7575}
+    .label-Cup{background-color: #FF95CA}
+    .label-Davis{background-color: #ffa6ff}
+    .label-O{background-color: #00DB00}
+    .label-W{background-color: #00DB00}
+    .label-F{background-color: #EAC100}
+    .label-Q{background-color: #d0d0d0}
+    .label-Fi{background-color: #8080C0}
+    .label-SF{background-color: #EAC100}
+    .label-QF{background-color: #81C0C0}
+    .label-R{background-color: #C2C287}
+    .label-RD{background-color: #CF9E9E}
+    .label-Qy{background-color: #DEDEBE}
+    .matchres{ width:60%; position: absolute; left: 250px; top: 0px;}
+    #tbl{ width:70%; position: absolute; left: 200px; top: 0px;}
+</style>
+{% endblock %}
+
+{# JavaScript块 #}
+{% block scripts %}
+    {{super()}}
+<script src="./static/Chart.js-2.9.4/dist/chart.js"></script>
+{% endblock %}
+
+
+{# 块内容 #}
+{% block content %}
+<body>
+<img src="./static/123.jpg" style="opacity:0.15; width:100%; height:100%; position: fixed; top: 50px;" >
+<span style="font-size:5pt;position:absolute;top:78px;left:77.2%">Update: &nbsp;&nbsp;{{ data['Date'][0] }}</span>
+<div style="position:absolute;top:60px;width:100%">
+    <table class="table table-condensed" border="0" cellspacing="1" id="tbl">
+             <thead style="height:40px;font-family:Times New Roman;font-size:12pt;">
+             <tr>
+                <th style="font-family:Times New Roman;font-size:14pt;text-align:center" colspan="8">&nbsp;ATP Official Ranking Overview </th>
+             </tr>
+             <tr>
+                 <th> Rank </th> <th style="text-align:center">&nbsp;Name </th><th class="text-align:center" > Age </th><th class="text-align:center" > Points </th> <th style="text-align:center"> Last Appearance </th> <th style="text-align:center"> Last Match </th>
+             </tr>
+             </thead>
+        <tbody>
+        {% for player in data.values %}
+                {% if player[18] == 'L' %}
+                <tr style="height:35px;" bgcolor="#E5E5E5">
+                {% else %}
+                <tr style="height:35px;" bgcolor="white">
+                {% endif %}
+                    <td style="vertical-align: middle;text-align:center;"> {{ player[1] }} </td>
+                    <td style="vertical-align: middle;text-align:left;"><img src="{{ player[4] }}" width="25px" style="border-style:solid; border-width: 0.5px;">&nbsp;&nbsp;<a href="/profile_detail%3FName%3D{{ player[3] }}"> {{ player[3] }}</a></td>
+                    <td style="vertical-align: middle;text-align:center;"> {{ player[5] }} </td>
+                    <td style="vertical-align: middle;text-align:center;">{{ player[2] }}</td>
+                    <td style="white-space: nowrap;overflow: hidden;vertical-align: middle;text-align:left;">
+                        <span class="{{ player[16] }}"><a href="/tournament%3FTour%3D{{ player[8]//100 }}&Year%3D{{ 2000+player[8]%100 }}" target="_blank" style="color:white"> {{ player[7] }}</a></span>&nbsp;
+                        <span class="{{ player[19] }}">{{ player[10] }}</span>&nbsp;&nbsp;
+                    </td>
+                    <td>
+                    {% if player[17] == 'W' %}
+                        {{ player[13] }}&nbsp;&nbsp;{{ player[15] }}&nbsp;&nbsp;<a href="/profile_detail%3FName%3D{{ player[14] }}">{{ player[14] }}</a>
+                    {% else %}
+                        <a href="/profile_detail%3FName%3D{{ player[13] }}">{{ player[13] }}</a>&nbsp;&nbsp;{{ player[15] }}&nbsp;&nbsp;{{ player[14] }}
+                    </td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <th style="height:40px;" colspan="2">&nbsp;</th>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+</body>
+{% endblock %}

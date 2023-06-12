@@ -1,0 +1,249 @@
+{# 继承bootstrap中的base.html #}
+{% extends "homepage.html" %}
+{# 块修改标题 #}
+{% block title %}Profile{% endblock %}
+
+{# css块 #}
+{% block styles %}
+    {{super()}}
+<style>
+    .label-250{background-color: #ACD6FF}
+    .label-500{background-color: #D2A2CC}
+    .label-1000{background-color: #FFA042}
+    .label-GS{background-color: #FF2D2D}
+    .label-Cup{background-color: #FF95CA}
+    .label-Davis{background-color: #ffa6ff}
+    .label-Next{background-color: #BEBEBE}
+    .label-O{background-color: #00DB00}
+    .label-W{background-color: #00DB00}
+    .label-F{background-color: #EAC100}
+    .label-Q{background-color: #d0d0d0}
+    .label-Fi{background-color: #8080C0}
+    .label-SF{background-color: #EAC100}
+    .label-QF{background-color: #81C0C0}
+    .label-R{background-color: #C2C287}
+    .label-RD{background-color: #CF9E9E}
+    .label-Qy{background-color: #DEDEBE}
+    .progress-bar-overall{background:#5B5B5B}
+</style>
+{% endblock %}
+
+{# JavaScript块 #}
+{% block scripts %}
+    {{super()}}
+
+{% endblock %}
+
+{# 块内容 #}
+{% block content %}
+<body>
+<img src="./static/123.jpg" style="opacity:0.2; width:100%; height:100%; position: fixed; top: 50px;" >
+<div class="binfo" style="width:50%;position: absolute; left: 1%; top:80px;font-family:Times New Roman;font-size:12.2pt">
+    <img src="{{ info['Photo'] }}" style="width: 50%;" >
+    <div class="pname" style="float:center; font-size:16pt; position: absolute; left: 45%; top: 15px; width:100%">
+        <b>{{ info['Name'] }}</b>
+    </div>
+    <div class="Country" style="position:absolute; left:48%;top:75px;">
+        <img src="{{ info['flag'] }}" width="13%" border="0.5px">
+        <span><b>&nbsp;&nbsp;&nbsp;&nbsp;{{ info['Country'] }}</b></span>
+    </div>
+    <div class="Other" style="position:absolute; left:48%;top:125px;">
+          <table class="table" style="border-top-color: 1px solid black;">
+            <tbody>
+
+            <tr>
+                <td><b>Age</b></td><td><b>{{ info['age'] }}&nbsp; ({{ info['birth'] }})</b></td>
+            </tr>
+            <tr>
+                <td><b>Height</b></td><td><b>{{ info['Height'] }}&nbsp;cm</b></td>
+            </tr>
+            <tr>
+                <td><b>Favourite Surface</b></td><td><b><label class="{{ info['surface_style'] }}"><span style="font-family:Arial">{{ info['surface'] }}&nbsp;&nbsp;{{ info['special']|round(2) }}%</span></label></b></td>
+            </tr>
+            <tr>
+                <td><b>Last Appearance</b></td><td><b>{{ info['Last appear'] }}</b></td>
+            </tr>
+            <tr>
+                <td></td><td><span style="font-family:Arial;"><a class="{{ info['Level'] }}" href="/tournament%3FTour%3D{{ info['tourid'] }}&Year%3D{{ info['year'] }}" target="_blank">{{ info['Tour'] }}</a>&nbsp;<label class="{{ info['round_style'] }}">{{ info['Round'] }}</label></span></td>
+            </tr>
+            </tbody>
+          </table>
+    </div>
+</div>
+<div class="Title" style="font-family:Times New Roman; font-size:12.2pt; position:absolute; left:49%;top:121px;">
+          <table class="table" style="border-top-color: 1px solid black;">
+            <tbody>
+            <tr>
+                <td height="30px" style="font-size:14pt"><b>Titles</b></td>
+            </tr>
+            {% for key,value in info['champion_level'].items() %}
+            <tr style="font-family:Arial">
+                <td><b><label class="{{ value[0] }}">{{ key }}</label></b></td><td><i class="fa fa-trophy" aria-hidden="true" style="color:{{ value[2] }};font-size:13pt;position:relative;top:3px"></i>&nbsp;<label class="{{ value[0] }}"><b>{{ value[1] }}</b></label></td>
+            </tr>
+            {% endfor %}
+            <tr>
+                <td><b>More details</b></td><td><a href="/result_title%3Fname%3D{{ info['Name'] }}%26year%3D0">Titles Summary</a></td>
+            </tr>
+            </tbody>
+          </table>
+    </div>
+
+<div style="position:absolute; top:168px;left:89.2411%">
+    {% if info['champion']['Hard']+info['champion']['Clay']+info['champion']['Grass']+info['champion']['Carpet'] != 0 %}
+    <span class="label label-default" style="font-size:7pt;">{{ info['champion']['Hard']+info['champion']['Clay']+info['champion']['Grass']+info['champion']['Carpet'] }}</span>
+    <i class="fa fa-trophy" aria-hidden="true" style="color:#5B5B5B;font-size:12pt;position:relative;top:2.5px;left:-1px"></i>
+    {% else %}
+    <span class="label label-default" style="font-size:7pt;visibility:hidden">0</span>
+    <i class="fa fa-trophy" aria-hidden="true" style="color:#5B5B5B;font-size:11pt;visibility:hidden"></i>
+    {% endif %}
+</div>
+<div class="col-md-3" style="position:absolute;top:127px;left:67.5257%;width:22.5059%;">
+    <table class="table table-condensed text-nowrap">
+        <tbody>
+        <tr>
+            <td colspan="2" height="30px" style="font-size:13pt;font-family:Times New Roman"> <b>&nbsp;Surface Breakdown</b></td>
+        </tr>
+        <tr>
+            <td><span style="vertical-align: middle; color:#5B5B5B"><b>Overall</b></span></td>
+            <td width="85%">
+                <div class="progress">
+                <div class="progress-bar progress-bar-overall progress-bar-striped" role="progressbar" aria-valuenow="{{ info['rate'][12] }}" aria-valuemin="0" aria-valuemax="100" style="min-width: 1em; width:{{ info['rate'][12] }}%;">
+                    <a href="/performance_view%3Fplayer%3D{{ info['Name'] }}%26year%3D0%26Type%3DAll%26level%3DAll%26special%3D1" style="color:white">{{ info['rate'][12] }}% ({{ info['rate'][13] }}-{{ info['rate'][14] }})</a>
+                </div>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div style="position:absolute; top:198px;left:89.2411%">
+    {% if info['champion']['Hard'] != 0 %}
+    <span class="label label-primary" style="font-size:7pt;">{{ info['champion']['Hard'] }}</span>
+    <i class="fa fa-trophy" aria-hidden="true" style="color:#005AB5;font-size:12pt;position:relative;top:2.5px;left:-1px"></i>
+    {% else %}
+    <span class="label label-primary" style="font-size:7pt;visibility:hidden">0</span>
+    <i class="fa fa-trophy" aria-hidden="true" style="color:blue;font-size:11pt;visibility:hidden"></i>
+    {% endif %}
+</div>
+<div class="col-md-3" style="position:absolute;top:193px;left:67.5257%;width:22.5059%;">
+    <table class="table table-condensed text-nowrap">
+        <tbody>
+        <tr>
+            <td><span style="vertical-align: middle; color:#0066CC"><b>Hard</b></span></td>
+            <td width="85%">
+                <div class="progress">
+                <div class="progress-bar  progress-bar-striped" role="progressbar" aria-valuenow="{{ info['rate'][0] }}" aria-valuemin="0" aria-valuemax="100" style="min-width: 1em; width:{{ info['rate'][0] }}%;">
+                    <a href="/performance_view%3Fplayer%3D{{ info['Name'] }}%26year%3D0%26Type%3DHard%26level%3DAll%26special%3D1" style="color:white">{{ info['rate'][0] }}% ({{ info['rate'][1] }}-{{ info['rate'][2] }})</a>
+                </div>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div style="position:absolute; top:228px;left:89.2411%">
+    {% if info['champion']['Clay'] != 0 %}
+    <span class="label label-danger" style="font-size:7pt">{{ info['champion']['Clay'] }}</span>
+    <i class="fa fa-trophy" aria-hidden="true" style="color:#CE0000;font-size:12pt;position:relative;top:2.5px;left:-1px"></i>
+    {% else %}
+    <span class="label label-primary" style="font-size:7pt;visibility:hidden">0</span>
+    <i class="fa fa-trophy" aria-hidden="true" style="color:blue;font-size:11pt;visibility:hidden"></i>
+    {% endif %}
+</div>
+<div class="col-md-3" style="position:absolute;top:223px;left:67.5257%;width:22.5059%;">
+    <table class="table table-condensed text-nowrap">
+        <tbody>
+        <tr>
+            <td><span style="vertical-align: middle;color:#EA0000"><b>Clay</b></span></td>
+            <td width="85%">
+                <div class="progress">
+                <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar" aria-valuenow="{{ info['rate'][3] }}" aria-valuemin="0" aria-valuemax="100" style="min-width: 1em; width:{{ info['rate'][3] }}%">
+                    <a href="/performance_view%3Fplayer%3D{{ info['Name'] }}%26year%3D0%26Type%3DClay%26level%3DAll%26special%3D1" style="color:white"> {{ info['rate'][3] }}% ({{ info['rate'][4] }}-{{ info['rate'][5] }}) </a>
+                </div>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div style="position:absolute; top:258px;left:89.2411%">
+    {% if info['champion']['Grass'] != 0 %}
+    <span class="label label-success" style="font-size:7pt;">{{ info['champion']['Grass'] }}</span>
+    <i class="fa fa-trophy" aria-hidden="true" style="color:#00BB00;font-size:12pt;position:relative;top:2.5px;left:-1px"></i>
+    {% else %}
+    <span class="label label-primary" style="font-size:7pt;visibility:hidden">0</span>
+    <i class="fa fa-trophy" aria-hidden="true" style="color:blue;font-size:11pt;visibility:hidden"></i>
+    {% endif %}
+</div>
+<div class="col-md-3" style="position:absolute;top:253px;left:67.5257%;width:22.5059%;">
+    <table class="table table-condensed text-nowrap">
+        <tbody>
+        <tr>
+            <td><span style="vertical-align: middle;color:green"><b>Grass</b></span></td>
+            <td width="85%">
+                <div class="progress">
+                <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="{{ info['rate'][6] }}" aria-valuemin="0" aria-valuemax="100" style="min-width: 1em; width:{{ info['rate'][6] }}%">
+                    <a href="/performance_view%3Fplayer%3D{{ info['Name'] }}%26year%3D0%26Type%3DGrass%26level%3DAll%26special%3D1" style="color:white">{{ info['rate'][6] }}% ({{ info['rate'][7] }}-{{ info['rate'][8] }})</a>
+                </div>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+{% if info['rate'][10]+info['rate'][11] != 0 %}
+<div style="position:absolute; top:288px;left:89.2411%">
+    {% if info['champion']['Carpet'] != 0 %}
+    <span class="label label-warning" style="font-size:7pt;">{{ info['champion']['Carpet'] }}</span>
+    <i class="fa fa-trophy" aria-hidden="true" style="color:#EAC100;font-size:12pt;position:relative;top:2.5px;left:-1px"></i>
+    {% else %}
+    <span class="label label-primary" style="font-size:7pt;visibility:hidden">0</span>
+    <i class="fa fa-trophy" aria-hidden="true" style="color:blue;font-size:11pt;visibility:hidden"></i>
+    {% endif %}
+</div>
+    <div class="col-md-3" style="position:absolute;top:283px;left:67.5257%;width:22.5059%;">
+    <table class="table table-condensed text-nowrap">
+        <tbody>
+        <tr>
+            <td><span style="vertical-align: middle;color:orange"><b>Carpet</b></span></td>
+            <td width="85%">
+                <div class="progress">
+                <div class="progress-bar progress-bar-warning progress-bar-striped" role="progressbar" aria-valuenow="{{ info['rate'][9] }}" aria-valuemin="0" aria-valuemax="100" style="min-width: 1em; width:{{ info['rate'][9] }}%">
+                    <a href="/performance_view%3Fplayer%3D{{ info['Name'] }}%26year%3D0%26Type%3DCarpet%26level%3DAll%26special%3D1" style="color:white">{{ info['rate'][9] }}% ({{ info['rate'][10] }}-{{ info['rate'][11] }})</a>
+                </div>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+{% endif %}
+<div class="col-md-3" style="position:absolute;top:333px;left:67.5257%;width:25.5059%;">
+    <table class="table table-condensed text-nowrap">
+        <tbody>
+        <tr>
+            <td><span style="vertical-align: middle;"><b>H2H</b></span></td>
+            <td width="85%">
+                <div class="progress">
+                <div class="progress">
+                  <div class="progress-bar progress-bar-success" style="width: {{ info['lead_num']/(info['lead_num']+info['tie_num']+info['tail_num'])*100 }}%">
+                    <span>{{ info['lead_num'] }}</span>
+                  </div>
+                  <div class="progress-bar progress-bar-warning progress-bar-striped" style="width: {{ info['tie_num']/(info['lead_num']+info['tie_num']+info['tail_num'])*100 }}%">
+                    <span>{{ info['tie_num'] }}</span>
+                  </div>
+                  <div class="progress-bar progress-bar-danger" style="width: {{ info['tail_num']/(info['lead_num']+info['tie_num']+info['tail_num'])*100 }}%">
+                    <span>{{ info['tail_num'] }}</span>
+                  </div>
+                </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td><b>H2H%</b></td><td><b>&nbsp;{{ (info['lead_num']/(info['lead_num']+info['tie_num']+info['tail_num'])*100)|round(2) }}%</b></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+{% endblock %}

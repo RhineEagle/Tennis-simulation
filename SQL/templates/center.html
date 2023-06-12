@@ -1,0 +1,151 @@
+{# 继承bootstrap中的base.html #}
+{% extends "homepage.html" %}
+{# 块修改标题 #}
+{% block title %}Administrator Center{% endblock %}
+
+
+{# css块 #}
+{% block styles %}
+    {{super()}}
+<style>
+    .function { position:absolute;left:25px;top:50px; }
+    .DailyUpdate{ position:absolute;left:75px;top:150px;width:80%}
+    .explain{ position:absolute;left:130px;top:17px;width:80%}
+    .Manageinfo{ position:absolute;left:50px;top:70px;}
+    .hr { border-bottom: 3px solid LightGray; margin: 10px 0; width: 96%;}
+    .SQLQuery{ position:absolute;left:75px;top:370px;width:80%}
+    .queryres{ width:68%; position: absolute; top: 0px;}
+    .returncode{ position: absolute;left:750px;top:85px; }
+</style>
+{% endblock %}
+
+{# JavaScript块 #}
+{% block scripts %}
+    {{super()}}
+<script>
+    function ajaxsub(data1)
+    {
+        document.getElementById("code").innerHTML = '<span class="label label-default">Please Wait ...</span>';
+        $.ajax({
+            url:"/update",
+            type:"post",
+            data: {'name':data1},
+            dataType: 'text',
+            success:function(response,status,xhr){
+                if (response == 'success')
+                {
+                    document.getElementById("code").innerHTML = '<span class="label label-success">Success</span>';
+                }
+                else
+                {
+                    document.getElementById("code").innerHTML = '<span class="label label-danger">Fail</span>';
+                }
+            }
+        })
+    }
+    function ajaxsqlsub()
+    {
+        var data = document.getElementById("Query");
+        $.ajax({
+            url:"/sqlquery",
+            type:"post",
+            data: {'query': data.value,'type':'select'},
+            dataType: 'json',
+            success:function(response,status,xhr){
+                var con = "<tr>";
+                var item = response[0];
+                for (j=0;j<item.length;j++)
+                {
+                    con = con+"<td><b>"+item[j]+"</b>&nbsp;&nbsp;</td>";
+                }
+                con = con+"</tr>";
+                for (i=1;i<Object.keys(response).length;i++)
+                {
+                    con = con+"<tr>";
+                    var item = response[i];
+                    for (j=0;j<item.length;j++)
+                    {
+                        con = con+"<td>&nbsp;&nbsp;"+item[j]+"&nbsp;&nbsp;</td>";
+                    }
+                    con = con+"</tr>";
+                }
+                document.getElementById("table").innerHTML = (con);
+            }
+        })
+
+    }
+    function ajaxsqlusub()
+    {
+        var data = document.getElementById("Update");
+        $.ajax({
+            url:"/sqlquery",
+            type:"post",
+            data: {'query': data.value, 'type': 'update'},
+            dataType: 'json'
+        })
+
+    }
+</script>
+{% endblock %}
+
+{# 块内容 #}
+{% block content %}
+<body>
+<img src="./static/123.jpg" style="opacity:0.15; width:100%; height:100%; position: fixed; top: 50px;" >
+<div class="Manageinfo">
+    <span style="font-size:20pt;font-family:Arial"><b>{{ user }}</b></span>
+    <span style="color:Gray">&nbsp;&nbsp;&nbsp;administrator</span>
+
+</div>
+ <div class="hr" style="position:absolute;left:20px; top:100px;"> </div>
+<div class="DailyUpdate">
+    <span style="font-size:16pt;font-family:Arial"><b>Daily Update</b></span>
+    <div class="function">
+        <div class="btn-group-vertical" role="group" aria-label="...">
+            <button type="button" class="btn btn-default" onclick="ajaxsub('Record')">Record</button>
+            <button type="button" class="btn btn-default" onclick="ajaxsub('Summary')">Summary</button>
+            <button type="button" class="btn btn-default" onclick="ajaxsub('Forecast')">Forecast</button>
+        </div>
+    </div>
+    <div class="explain">
+        <ul style="list-style:none;display:inline;line-height:33.5px;">
+            <li>Update daily competition results and ranking information.&nbsp;&nbsp;&nbsp;<a href="https://github.com/RhineEagle/Tennis-simulation/blob/main/rank-tennis.py">click here see the code</a></li>
+            <li>Aggregate the prediction results of the forecasting model.&nbsp;&nbsp;&nbsp;<a href="https://github.com/RhineEagle/Tennis-simulation/blob/main/record_tour.py">click here see the code</a></li>
+            <li>Use the model to predict the outcome of the next match day.&nbsp;&nbsp;&nbsp;<a href="https://github.com/RhineEagle/Tennis-simulation/blob/main/tour_forecast.py">click here see the code</a></li>
+        </ul>
+    </div>
+    <div class="returncode" id="code">
+        <span class="label label-primary">Status Zone</span>
+    </div>
+</div>
+ <div class="hr" style="position:absolute;left:20px; top:320px;"> </div>
+<div class="SQLQuery">
+    <span style="font-size:16pt;font-family:Arial;"><b>SQL Server API</b></span>
+    <div class="input-group" style="position:absolute;top:50px;left:30px">
+      <div class="input-group-btn">
+          <button type="button" class="btn btn-default" id="sizing-addon1">Select</button>
+          </div>
+      <input id="Query" type="text" class="form-control" aria-describedby="sizing-addon1">
+      <div class="input-group-btn">
+          <button type="button" class="btn btn-default" onclick="ajaxsqlsub()">Submit</button>
+      </div>
+    </div>
+    <div class="input-group" style="position:absolute;top:90px;left:30px">
+      <div class="input-group-btn">
+          <button type="button" class="btn btn-default" id="sizing-addon2">Update</button>
+          </div>
+      <input id="Update" type="text" class="form-control" aria-describedby="sizing-addon1">
+      <div class="input-group-btn">
+          <button type="button" class="btn btn-default" onclick="ajaxsqlusub()">Submit</button>
+      </div>
+    </div>
+    <div style="text-align:center; font-family: Times New Roman; position:relative; top:130px; width:100%;">
+    <table class="queryres" id="tbl" border="1">
+        <tbody id="table" style="font-family: Helvetica;">
+            </tbody>
+    </table>
+
+    </div>
+</div>
+</body>
+{% endblock %}

@@ -1,7 +1,7 @@
 {# 继承bootstrap中的base.html #}
 {% extends "homepage.html" %}
 {# 块修改标题 #}
-{% block title %}Titles{% endblock %}
+{% block title %}Season Summary{% endblock %}
 
 
 {# css块 #}
@@ -9,12 +9,12 @@
     {{super()}}
 <style>
     .PlayerInfo{position:absolute; left: 0px; top: 70px; right: 20px;}
-    .PlayerName_full{float:center; position: absolute; left: 27%; top: 33px; font-family: Times New Roman;width:300px}
-    .PlayerName_head{float:center; position: absolute; left: 30.1%; top: 33px; font-family: Times New Roman;width:300px}
+    .PlayerName_full{float:center; position: absolute; left: 27%; top: 33px; font-family: Times New Roman;width:23.7154%}
+    .PlayerName_head{float:center; position: absolute; left: 30.1%; top: 33px; font-family: Times New Roman;width:23.7154%}
     .SelectPlayer{position:absolute; left: 5.5%; top: 30px; right: 0.5%;}
     //.label {color:black}
-    .label-250{background-color: #B3D9D9}
-    .label-500{background-color: #DAB1D5}
+    .label-250{background-color: #ACD6FF}
+    .label-500{background-color: #D2A2CC}
     .label-1000{background-color: #FFA042}
     .label-GS{background-color: #FF2D2D}
     .label-Cup{background-color: #FF95CA}
@@ -23,11 +23,13 @@
     .label-W{background-color: #00DB00}
     .label-F{background-color: #EAC100}
     .label-Q{background-color: #d0d0d0}
-    .label-Fi{background-color: #B87070}
-    .label-SF{background-color: #C4C400}
+    .label-Fi{background-color: #8080C0}
+    .label-SF{background-color: #EAC100}
     .label-QF{background-color: #81C0C0}
     .label-R{background-color: #C2C287}
-    #tbl{ width:70%; position: absolute; left: 200px; top: 0px;}
+    .label-RD{background-color: #CF9E9E}
+    .label-Qy{background-color: #DEDEBE}
+    #tbl{ width:70%; position: absolute; left: 17%; top: 0px;}
     .progress{background:LightGray}
     .progress-bar-overall{background:#5B5B5B}
 
@@ -117,22 +119,6 @@ window.onload = function()
 }
 </script>
 
-<script>
-    function check_v2()
-    {
-        var con = document.querySelector(".player").value;
-        var t = {{ playerlist|tojson }}.indexOf(con);
-        if (con == '' || t == -1)
-        {
-            return false;
-        }
-        else
-        {
-            return true;
-        }
-    }
-    </script>
-
     <script>
         {% if img[0][22]=='h' %}
             var box = document.getElementById('Playerh');
@@ -171,6 +157,45 @@ window.onload = function()
 
         {% endif %}
     </script>
+<script>
+    function ajaxyear()
+    {
+        $.ajax({
+            url:"/player_year_check",
+            type:"post",
+            data: {'type':'year', 'year': document.querySelector(".player").value},
+            dataType: 'json',
+            success:function(response,status,xhr){
+                var name = document.querySelector(".player").value;
+                if (response[0]<=2021)
+                {
+                    var con = "<option style='display:none' value='#'>Year</option><option value='/result_title%3Fname%3D"+name+"%26year%3D0'>Career</option><option value='/result_title%3Fname%3D"+name+"%26year%3D"+response[0]+"'>"+response[0]+"</option>";
+                }
+                else
+                {
+                    var con = "<option style='display:none' value='#'>Year</option><option value='/result_title%3Fname%3D"+name+"%26year%3D0'>Career</option><option value='/result_title%3Fname%3D"+name+"%26year%3D1'>Last 52 Weeks</option><option value='/result_title%3Fname%3D"+name+"%26year%3D"+response[0]+"'>"+response[0]+"</option>";
+                }
+                for (i=1;i<response.length;i++)
+                {
+                    con = con + "<option value='/result_title%3Fname%3D"+name+"%26year%3D"+response[i]+"'>"+response[i]+"</option>";
+                }
+                document.getElementById("year").innerHTML = con;
+            }
+            })
+    }
+    function jump(e){
+        var con = document.querySelector(".player").value;
+        var t = {{ playerlist|tojson }}.indexOf(con);
+        if (con == '' || t == -1)
+        {
+            return false;
+        }
+        else
+        {
+            window.location.href = e.value;
+        }
+    }
+</script>
 
 {% endblock %}
 
@@ -180,32 +205,32 @@ window.onload = function()
 <img src="./static/123.jpg" style="opacity:0.15; width:100%; height:100%; position: fixed; top: 50px;" >
 <div class="PlayerInfo">
         {% if img[0][22]=='h' %}
-            <img src={{ img[0] }} style="width: 18%; position: absolute; left: 11.8%;top:10px">
+            <img src={{ img[0] }} style="width: 18%; position: absolute; left: 11.8%; top:10px">
             <div class="PlayerName_head" id="Playerh">
                     <b>{{ name }}</b>
                     <br>
-                    <img src={{ img[1] }} style="width:40px; position: absolute; left: 8px; top:65px; border=0.5px">
-                    <div class="yy" style="font-size:12pt; position: absolute; left: 70px; top:67px">
+                    <img src={{ img[1] }} style="width:13.3%; position: absolute; left: 2.67%; top:65px; border=0.5px">
+                    <div class="yy" style="font-size:12pt; position: absolute; left: 23.3%; top:67px">
                         <b> {{ year }}</b>
                     </div>
                 </div>
         {% else %}
-            <img src={{ img[0] }} style="width: 23%; position: absolute; left: 8%; top:0px">
+            <img src={{ img[0] }} style="width: 24%; position: absolute; left: 7.5%; top:0px">
             <div class="PlayerName_full" id="Playerf">
                 <b>{{ name }}</b>
                 <br>
-                <img src={{ img[1] }} style="width:40px; position: absolute; left: 8px; top:65px; border-style:solid; border-width: 0.5px;">
+                <img src={{ img[1] }} style="width:13.3%; position: absolute; left: 2.67%; top:65px; border-style:solid; border-width: 0.5px;">
                 {% if year == '0' %}
-                <div class="yy" style="font-size:12pt; position: absolute; left: 70px; top:67px">
+                <div class="yy" style="font-size:12pt; position: absolute; left: 23.3%; top:67px">
                     <b> Career </b>
                 </div>
                     {% else %}
                     {% if year == '1' %}
-                <div class="yy" style="font-size:12pt; position: absolute; left: 63px; top:67px">
+                <div class="yy" style="font-size:12pt; position: absolute; left: 21%; top:67px">
                     <b><span style="font-size:5pt;"> Last 52 Weeks </span></b>
                 </div>
                 {% else %}
-                <div class="yy" style="font-size:12pt; position: absolute; left: 70px; top:67px">
+                <div class="yy" style="font-size:12pt; position: absolute; left: 23.3%; top:67px">
                         <b> {{ year }}</b>
                 </div>
                     {% endif %}
@@ -215,25 +240,34 @@ window.onload = function()
         {% endif %}
 </div>
 <div class="SelectPlayer">
-        <form action="/result" method="post" onsubmit="return check_v2()" id="content">
-            <input class="player" type="text" value="{{ name }}" name="player_name" autocomplete="on" style="position: absolute; left: 30.1%; top: 318px; height:30px; width:170px" list="playerdata" placeholder="name (only English) " onclick=javascript:this.value=''>
-                    <datalist id="playerdata">
-                    {% for p in playerlist %}
-                          <option>{{ p }}</option>
-                    {% endfor %}
-                    </datalist>
-                    <select class="form-control" name="year" data-toggle="tooltip" style="position: absolute; left: 57.6%; top: 318px; width:10%; height:30px;">
-                        <option>Career</option>
-                        <option>Last 52 Weeks</option>
-                        <option selected="selected">{{ yearlist[0] }}</option>
-                    {% for p in yearlist[1:] %}
-                        <option>{{ p }}</option>
-                    {% endfor %}
-                    </select>
-            <input type="image" src="./static/zoom.png" class="button" style="position: absolute; left: 48.5%; top: 300px; height:67px; width:67px;">
-        </form>
+    <div class="input-group" style="position: absolute; left: 34.7%; top: 308px; height:30px; width:14.4387%;">
+        <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></span>
+        <input class="player" id="player" type="text" value="{{ name }}" name="player_name" autocomplete="on" style="height:30px;text-align:center;width:120%" list="playerdata" placeholder="name (only English) " onclick="javascript:this.value=''" onchange="ajaxyear()">
     </div>
-<div class="col-md-3" style="position:absolute;top:145px;left:500px;width:310px;">
+        <div id="player_select">
+                <datalist id="playerdata">
+                {% for p in playerlist %}
+                      <option>{{ p }}</option>
+                {% endfor %}
+                </datalist>
+        </div>
+        <div id="year_select">
+            <div class="input-group" style="position: absolute; left: 51.35%; top: 308px; width:11.0387%;height:30px">
+                <span class="input-group-addon" id="basic-addon2"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
+                <select id="year" class="form-control" name="year" data-toggle="tooltip" style="height:30px" onchange="jump(this)">
+                    <option style="display:none;" value="#">&nbsp;&nbsp;&nbsp;Year</option>
+                    <option value="/result_title%3Fname%3D{{ name }}%26year%3D0">Career</option>
+                {% if yearlist[0]>'2021' %}
+                    <option value="/result_title%3Fname%3D{{ name }}%26year%3D1">Last 52 Weeks</option>
+                {% endif %}
+                {% for p in yearlist[0:] %}
+                    <option value="/result_title%3Fname%3D{{ name }}%26year%3D{{ p }}">{{ p }}</option>
+                {% endfor %}
+                </select>
+            </div>
+        </div>
+</div>
+<div class="col-md-3" style="position:absolute;top:145px;left:39.5257%;width:24.5059%;">
     <table class="table table-condensed text-nowrap">
         <tbody>
         <tr><b>&nbsp;&nbsp;Surface Breakdown</b></tr>
@@ -242,7 +276,7 @@ window.onload = function()
             <td width="85%">
                 <div class="progress">
                 <div class="progress-bar progress-bar-overall progress-bar-striped" role="progressbar" aria-valuenow="{{ rate[-3] }}" aria-valuemin="0" aria-valuemax="100" style="min-width: 1em; width:{{ rate[-3] }}%;">
-                    <a href="/performance_view%3Fplayer%3D{{ name }}%26year%3D{{ year }}%26Type%3DAll%26special%3D1" style="color:white">{{ rate[-3] }}% ({{ rate[-2] }}-{{ rate[-1] }})</a>
+                    <a href="/performance_view%3Fplayer%3D{{ name }}%26year%3D{{ year }}%26Type%3DAll%26level%3DAll%26special%3D1" style="color:white">{{ rate[-3] }}% ({{ rate[-2] }}-{{ rate[-1] }})</a>
                 </div>
                 </div>
             </td>
@@ -250,7 +284,7 @@ window.onload = function()
         </tbody>
     </table>
 </div>
-<div style="position:absolute; top:200px;left:800px">
+<div style="position:absolute; top:200px;left:63.2411%">
     {% if court['Hard'] != 0 %}
     <span class="label label-primary" style="font-size:7pt;">{{ court['Hard'] }}</span>
     <i class="fa fa-trophy" aria-hidden="true" style="color:#005AB5;font-size:12pt;position:relative;top:2.5px;left:-1px"></i>
@@ -259,15 +293,15 @@ window.onload = function()
     <i class="fa fa-trophy" aria-hidden="true" style="color:blue;font-size:11pt;visibility:hidden"></i>
     {% endif %}
 </div>
-<div class="col-md-3" style="position:absolute;top:195px;left:500px;width:310px;">
+<div class="col-md-3" style="position:absolute;top:195px;left:39.5257%;width:24.5059%;">
     <table class="table table-condensed text-nowrap">
         <tbody>
         <tr>
-            <td><span style="vertical-align: middle; color:blue"><b>Hard</b></span></td>
+            <td><span style="vertical-align: middle; color:#0066CC"><b>Hard</b></span></td>
             <td width="85%">
                 <div class="progress">
                 <div class="progress-bar  progress-bar-striped" role="progressbar" aria-valuenow="{{ rate[0] }}" aria-valuemin="0" aria-valuemax="100" style="min-width: 1em; width:{{ rate[0] }}%;">
-                    <a href="/performance_view%3Fplayer%3D{{ name }}%26year%3D{{ year }}%26Type%3DHard%26special%3D1" style="color:white">{{ rate[0] }}% ({{ rate[1] }}-{{ rate[2] }})</a>
+                    <a href="/performance_view%3Fplayer%3D{{ name }}%26year%3D{{ year }}%26Type%3DHard%26level%3DAll%26special%3D1" style="color:white">{{ rate[0] }}% ({{ rate[1] }}-{{ rate[2] }})</a>
                 </div>
                 </div>
             </td>
@@ -275,7 +309,7 @@ window.onload = function()
         </tbody>
     </table>
 </div>
-<div style="position:absolute; top:230px;left:800px">
+<div style="position:absolute; top:230px;left:63.2411%">
     {% if court['Clay'] != 0 %}
     <span class="label label-danger" style="font-size:7pt">{{ court['Clay'] }}</span>
     <i class="fa fa-trophy" aria-hidden="true" style="color:#CE0000;font-size:12pt;position:relative;top:2.5px;left:-1px"></i>
@@ -284,15 +318,15 @@ window.onload = function()
     <i class="fa fa-trophy" aria-hidden="true" style="color:blue;font-size:11pt;visibility:hidden"></i>
     {% endif %}
 </div>
-<div class="col-md-3" style="position:absolute;top:225px;left:500px;width:310px;">
+<div class="col-md-3" style="position:absolute;top:225px;left:39.5257%;width:24.5059%;">
     <table class="table table-condensed text-nowrap">
         <tbody>
         <tr>
-            <td><span style="vertical-align: middle;color:red"><b>Clay</b></span></td>
+            <td><span style="vertical-align: middle;color:#EA0000"><b>Clay</b></span></td>
             <td width="85%">
                 <div class="progress">
                 <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar" aria-valuenow="{{ rate[3] }}" aria-valuemin="0" aria-valuemax="100" style="min-width: 1em; width:{{ rate[3] }}%">
-                    <a href="/performance_view%3Fplayer%3D{{ name }}%26year%3D{{ year }}%26Type%3DClay%26special%3D1" style="color:white"> {{ rate[3] }}% ({{ rate[4] }}-{{ rate[5] }}) </a>
+                    <a href="/performance_view%3Fplayer%3D{{ name }}%26year%3D{{ year }}%26Type%3DClay%26level%3DAll%26special%3D1" style="color:white"> {{ rate[3] }}% ({{ rate[4] }}-{{ rate[5] }}) </a>
                 </div>
                 </div>
             </td>
@@ -300,7 +334,7 @@ window.onload = function()
         </tbody>
     </table>
 </div>
-<div style="position:absolute; top:260px;left:800px">
+<div style="position:absolute; top:260px;left:63.2411%">
     {% if court['Grass'] != 0 %}
     <span class="label label-success" style="font-size:7pt;">{{ court['Grass'] }}</span>
     <i class="fa fa-trophy" aria-hidden="true" style="color:#00BB00;font-size:12pt;position:relative;top:2.5px;left:-1px"></i>
@@ -309,7 +343,7 @@ window.onload = function()
     <i class="fa fa-trophy" aria-hidden="true" style="color:blue;font-size:11pt;visibility:hidden"></i>
     {% endif %}
 </div>
-<div class="col-md-3" style="position:absolute;top:255px;left:500px;width:310px;">
+<div class="col-md-3" style="position:absolute;top:255px;left:39.5257%;width:24.5059%;">
     <table class="table table-condensed text-nowrap">
         <tbody>
         <tr>
@@ -317,7 +351,7 @@ window.onload = function()
             <td width="85%">
                 <div class="progress">
                 <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="{{ rate[6] }}" aria-valuemin="0" aria-valuemax="100" style="min-width: 1em; width:{{ rate[6] }}%">
-                    <a href="/performance_view%3Fplayer%3D{{ name }}%26year%3D{{ year }}%26Type%3DGrass%26special%3D1" style="color:white">{{ rate[6] }}% ({{ rate[7] }}-{{ rate[8] }})</a>
+                    <a href="/performance_view%3Fplayer%3D{{ name }}%26year%3D{{ year }}%26Type%3DGrass%26level%3DAll%26special%3D1" style="color:white">{{ rate[6] }}% ({{ rate[7] }}-{{ rate[8] }})</a>
                 </div>
                 </div>
             </td>
@@ -326,7 +360,7 @@ window.onload = function()
     </table>
 </div>
 {% if rate|length == 15 %}
-<div style="position:absolute; top:290px;left:800px">
+<div style="position:absolute; top:290px;left:63.2411%">
     {% if court['Carpet'] != 0 %}
     <span class="label label-warning" style="font-size:7pt;">{{ court['Carpet'] }}</span>
     <i class="fa fa-trophy" aria-hidden="true" style="color:#EAC100;font-size:12pt;position:relative;top:2.5px;left:-1px"></i>
@@ -335,7 +369,7 @@ window.onload = function()
     <i class="fa fa-trophy" aria-hidden="true" style="color:blue;font-size:11pt;visibility:hidden"></i>
     {% endif %}
 </div>
-    <div class="col-md-3" style="position:absolute;top:285px;left:500px;width:310px;">
+    <div class="col-md-3" style="position:absolute;top:285px;left:39.5257%;width:24.5059%;">
     <table class="table table-condensed text-nowrap">
         <tbody>
         <tr>
@@ -343,7 +377,7 @@ window.onload = function()
             <td width="85%">
                 <div class="progress">
                 <div class="progress-bar progress-bar-warning progress-bar-striped" role="progressbar" aria-valuenow="{{ rate[9] }}" aria-valuemin="0" aria-valuemax="100" style="min-width: 1em; width:{{ rate[9] }}%">
-                    <a href="/performance_view%3Fplayer%3D{{ name }}%26year%3D{{ year }}%26Type%3DCarpet%26special%3D1" style="color:white">{{ rate[9] }}% ({{ rate[10] }}-{{ rate[11] }})</a>
+                    <a href="/performance_view%3Fplayer%3D{{ name }}%26year%3D{{ year }}%26Type%3DCarpet%26level%3DAll%26special%3D1" style="color:white">{{ rate[9] }}% ({{ rate[10] }}-{{ rate[11] }})</a>
                 </div>
                 </div>
             </td>
@@ -353,7 +387,7 @@ window.onload = function()
 </div>
 {% endif %}
 
-<div class="col-md-3" style="position:absolute;top:145px;left:839px;width:300px;">
+<div class="col-md-3" style="position:absolute;top:145px;left:66.324%;width:23.715%">
     <table class="table table-condensed text-nowrap">
         <tbody>
         <tr>&nbsp;&nbsp;<b>Opponent Rank Breakdown</b></tr>
@@ -362,7 +396,7 @@ window.onload = function()
             <td width="85%">
                 <div class="progress">
                 <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="{{ rank_rate[0] }}" aria-valuemin="0" aria-valuemax="100" style="min-width: 1em; width:{{ rank_rate[0] }}%">
-                    <a href="/performance_view%3Fplayer%3D{{ name }}%26year%3D{{ year }}%26Type%3DAll%26special%3DVS%20Top%2010" style="color:white">{{ rank_rate[0] }}% ({{ rank_rate[1] }}-{{ rank_rate[2] }})</a>
+                    <a href="/performance_view%3Fplayer%3D{{ name }}%26year%3D{{ year }}%26Type%3DAll%26level%3DAll%26special%3DVS%20Top%2010" style="color:white">{{ rank_rate[0] }}% ({{ rank_rate[1] }}-{{ rank_rate[2] }})</a>
                 </div>
                 </div>
             </td>
@@ -370,7 +404,7 @@ window.onload = function()
         </tbody>
     </table>
 </div>
-<div class="col-md-3" style="position:absolute;top:195px;left:839px;width:300px;">
+<div class="col-md-3" style="position:absolute;top:195px;left:66.324%;width:23.715%">
     <table class="table table-condensed text-nowrap">
         <tbody>
         <tr>
@@ -378,7 +412,7 @@ window.onload = function()
             <td width="85%">
                 <div class="progress">
                 <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="{{ rank_rate[3] }}" aria-valuemin="0" aria-valuemax="100" style="min-width: 1em; width:{{ rank_rate[3] }}%">
-                    <a href="/performance_view%3Fplayer%3D{{ name }}%26year%3D{{ year }}%26Type%3DAll%26special%3DVS%20Top%2020" style="color:white">{{ rank_rate[3] }}% ({{ rank_rate[4] }}-{{ rank_rate[5] }})</a>
+                    <a href="/performance_view%3Fplayer%3D{{ name }}%26year%3D{{ year }}%26Type%3DAll%26level%3DAll%26special%3DVS%20Top%2020" style="color:white">{{ rank_rate[3] }}% ({{ rank_rate[4] }}-{{ rank_rate[5] }})</a>
                 </div>
                 </div>
             </td>
@@ -386,7 +420,7 @@ window.onload = function()
         </tbody>
     </table>
 </div>
-<div class="col-md-3" style="position:absolute;top:225px;left:839px;width:300px;">
+<div class="col-md-3" style="position:absolute;top:225px;left:66.324%;width:23.715%">
     <table class="table table-condensed text-nowrap">
         <tbody>
         <tr>
@@ -394,7 +428,7 @@ window.onload = function()
             <td width="85%">
                 <div class="progress">
                 <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="{{ rank_rate[6] }}" aria-valuemin="0" aria-valuemax="100" style="min-width: 1em; width:{{ rank_rate[6] }}%">
-                    <a href="/performance_view%3Fplayer%3D{{ name }}%26year%3D{{ year }}%26Type%3DAll%26special%3DVS%20Top%2050" style="color:white">{{ rank_rate[6] }}% ({{ rank_rate[7] }}-{{ rank_rate[8] }})</a>
+                    <a href="/performance_view%3Fplayer%3D{{ name }}%26year%3D{{ year }}%26Type%3DAll%26level%3DAll%26special%3DVS%20Top%2050" style="color:white">{{ rank_rate[6] }}% ({{ rank_rate[7] }}-{{ rank_rate[8] }})</a>
                 </div>
                 </div>
             </td>
@@ -402,7 +436,7 @@ window.onload = function()
         </tbody>
     </table>
 </div>
-<div class="col-md-3" style="position:absolute;top:255px;left:839px;width:300px;">
+<div class="col-md-3" style="position:absolute;top:255px;left:66.324%;width:23.715%">
     <table class="table table-condensed text-nowrap">
         <tbody>
         <tr>
@@ -410,7 +444,7 @@ window.onload = function()
             <td width="85%">
                 <div class="progress">
                 <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="{{ rank_rate[9] }}" aria-valuemin="0" aria-valuemax="100" style="min-width: 1em; width:{{ rank_rate[9] }}%">
-                    <a href="/performance_view%3Fplayer%3D{{ name }}%26year%3D{{ year }}%26Type%3DAll%26special%3DVS%20Top%20100" style="color:white">{{ rank_rate[9] }}% ({{ rank_rate[10] }}-{{ rank_rate[11] }})</a>
+                    <a href="/performance_view%3Fplayer%3D{{ name }}%26year%3D{{ year }}%26Type%3DAll%26level%3DAll%26special%3DVS%20Top%20100" style="color:white">{{ rank_rate[9] }}% ({{ rank_rate[10] }}-{{ rank_rate[11] }})</a>
                 </div>
                 </div>
             </td>
@@ -419,7 +453,7 @@ window.onload = function()
     </table>
 </div>
 
-<div style="position:absolute;top:400px;width:1290px">
+<div style="position:absolute;top:390px;width:100%">
 <table class="table table-condensed table-striped" border="0" cellspacing="1" id="tbl">
              <thead>
                 <th style="height:35px;font-family:Times New Roman;font-size:12pt" colspan="2">&nbsp;Highlight </th>
@@ -430,7 +464,7 @@ window.onload = function()
                 <td style="vertical-align: middle;width:40px;text-align:center;"><span class="{{ data[key][0][2] }}">{{ key }}</span></td>
                 <td style="vertical-align: middle;">
                     {% for item in value %}
-                    <a herf="/tournament_?tour=" class="{{ item[1] }}">{{ item[0] }}</a>&nbsp;
+                    <a href="/tournament%3FTour%3D{{ item[4] }}&Year%3D{{ item[3] }}" class="{{ item[1] }}" target="_blank">{{ item[0] }}</a>&nbsp;
                     {% endfor %}
                 </td>
             </tr>

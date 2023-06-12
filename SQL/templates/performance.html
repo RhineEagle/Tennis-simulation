@@ -1,7 +1,7 @@
 {# 继承bootstrap中的base.html #}
 {% extends "homepage.html" %}
 {# 块修改标题 #}
-{% block title %}Records{% endblock %}
+{% block title %}Season Records{% endblock %}
 
 {# 块导航栏 #}
 
@@ -11,16 +11,16 @@
     {{super()}}
 <style>
     .PlayerInfo{position:absolute; left: 20px; top: 70px; right: 20px;}
-    .PlayerName_full{float:center; position: absolute; left: 32%; top: 40px; font-family: Times New Roman; width:300px}
-    .PlayerName_head{float:center; position: absolute; left: 35.1%; top: 40px; font-family: Times New Roman; width:300px}
+    .PlayerName_full{float:center; position: absolute; left: 32%; top: 40px; font-family: Times New Roman; width:23.715%}
+    .PlayerName_head{float:center; position: absolute; left: 35.1%; top: 40px; font-family: Times New Roman; width:23.715%}
     #W_num{width:8.95%; position: absolute; left: 51.1%; top: 140px; font-size: 40pt; color: #FF60AF; font-family: SimHei;}
     .Win_tag{width:8.95%; position: absolute; left: 50%; top: 90px; font-size: 30pt; color: #FF60AF; font-family: Times New Roman;}
     #L_num{width:8.95%; position: absolute; left: 78.2%; top: 140px; font-size: 40pt; color: #0080FF; font-family: SimHei;}
     .Lose_tag{width:8.95%; position: absolute; left: 77.1%; top: 90px; font-size: 30pt; color: #0080FF; font-family: Times New Roman;}
     #Rate{ position: absolute; left: 42%; top: 70px; font-size: 35pt; color: black; font-family: SimHei; opacity: 0.6}
     #piechart{width:33%; height:33%; position: absolute; left: 50%; top: 33px;}
-    .SelectPlayer{position: absolute; left: 60px; top: 20px; right: 20px;}
-    .matchres{ width:60%; position: absolute; left: 250px; top: 0px;}
+    .SelectPlayer{position: absolute; left: 4.743%; top: 20px; right: 20px;}
+    .matchres{ width:62%; position: absolute; left: 19.7628%; top: 0px;}
 </style>
 {% endblock %}
 
@@ -116,7 +116,7 @@ window.onload = function()
     var myChart = new Chart(ctx, {
         type: "doughnut",
         data: {
-            labels: ['lose', 'win'],
+            labels: ['loss', 'win'],
             datasets: [{
                 data: [w2,w1],
                 backgroundColor: [
@@ -222,32 +222,32 @@ window.onload = function()
                 <div class="PlayerName_head" id="Playerh">
                         <b>{{ name }}</b>
                         <br>
-                        <img src="{{ img[1] }}" style="width:40px; position: absolute; left: 8px; top:65px; border-style:solid; border-width: 0.5px;">
+                        <img src="{{ img[1] }}" style="width:13.3%; position: absolute; left: 2.67%; top:65px; border-style:solid; border-width: 0.5px;">
                         {% if year == '0' %}
-                            <div class="yy" style="font-size:12pt; position: absolute; left: 70px; top:67px">
+                            <div class="yy" style="font-size:12pt; position: absolute; left: 23.3%; top:67px">
                                 <b> Career </b>
                             </div>
                         {% else %}
                         {% if year == '1' %}
-                            <div class="yy" style="font-size:5pt; position: absolute; left: 60px; top:67px">
+                            <div class="yy" style="font-size:5pt; position: absolute; left: 20%; top:67px">
                                 <b> Last 52 Weeks </b>
                             </div>
                         {% else %}
-                            <div class="yy" style="font-size:12pt; position: absolute; left: 70px; top:67px">
+                            <div class="yy" style="font-size:12pt; position: absolute; left: 23.3%; top:67px">
                                 <b> {{ year }}</b>
                             </div>
-                            <div class="yy" style="font-size:12pt; position: absolute; left: 115px; top:67px; color:Gray">
+                            <div class="yy" style="font-size:12pt; position: absolute; left: 38.3%; top:67px; color:Gray">
                                 <b> {{ age }}</b>
                             </div>
                         {% endif %}
                         {% endif %}
                     {% if court != 'All' %}
-                        <div class="ct" style="font-size:12pt; position: absolute; left: 70px; top:98px;">
+                        <div class="ct" style="font-size:12pt; position: absolute; left: 23.3%; top:98px;">
                             <b> {{ court }}</b>
                         </div>
                     {% endif %}
                     {% if special != '1' %}
-                        <div class="sp" style="font-size:12pt; position: absolute; left: 8px; top:128px;">
+                        <div class="sp" style="font-size:12pt; position: absolute; left: 2.67%; top:128px;">
                             <b> {{ special }} </b>
                         </div>
                     {% endif %}
@@ -257,36 +257,36 @@ window.onload = function()
                 <div class="PlayerName_full" id="Playerf">
                     <b>{{ name }}</b>
                     <br>
-                    <img src="{{ img[1] }}" style="width:40px; position: absolute; left: 8px; top:65px; border-style:solid; border-width: 0.5px;">
+                    <img src="{{ img[1] }}" style="width:13.3%; position: absolute; left: 2.67%; top:65px; border-style:solid; border-width: 0.5px;">
                     {% if court != 'All' %}
-                        <div class="ct" style="font-size:12pt; position: absolute; left: 70px; top:98px;">
+                        <div class="ct" style="font-size:12pt; position: absolute; left: 23.3%; top:98px;">
                             <b> {{ court }}</b>
                         </div>
                     {% endif %}
                     {% if special != '1' %}
-                        <div class="sp" style="font-size:12pt; position: absolute; left: 8px; top:128px;">
+                        <div class="sp" style="font-size:12pt; position: absolute; left: 2.67%; top:128px;">
                             <b> {{ special }} </b>
                         </div>
                     {% endif %}
                     {% if year == '1' %}
-                        <div class="yy" style="font-size:5pt; position: absolute; left: 60px; top:71px">
+                        <div class="yy" style="font-size:5pt; position: absolute; left: 20%; top:71px">
                             <b> Last 52 Weeks </b>
                         </div>
                     {% else %}
                         {% if year == '0' %}
-                            <div class="yy" style="font-size:12pt; position: absolute; left: 70px; top:67px">
+                            <div class="yy" style="font-size:12pt; position: absolute; left: 23.3%; top:67px">
                                 <b> Career </b>
                             </div>
                         {% else %}
                         {% if year == '1' %}
-                            <div class="yy" style="font-size:5pt; position: absolute; left: 60px; top:67px">
+                            <div class="yy" style="font-size:5pt; position: absolute; left: 20%; top:67px">
                                 <b> Last 52 Weeks </b>
                             </div>
                         {% else %}
-                            <div class="yy" style="font-size:12pt; position: absolute; left: 70px; top:67px">
+                            <div class="yy" style="font-size:12pt; position: absolute; left: 23.3%; top:67px">
                                 <b> {{ year }}</b>
                             </div>
-                            <div class="yy" style="font-size:12pt; position: absolute; left: 115px; top:67px; color:Gray">
+                            <div class="yy" style="font-size:12pt; position: absolute; left: 38.3%; top:67px; color:Gray">
                                 <b> {{ age }}</b>
                             </div>
                         {% endif %}
@@ -305,7 +305,7 @@ window.onload = function()
         <div class='Lose_Num' id='L_num'>
         </div>  
         <div class='Lose_tag'>
-            <b>Lose</b>
+            <b>Loss</b>
             <br>            
         </div> 
 
@@ -318,13 +318,13 @@ window.onload = function()
     <div>
     <div class="SelectPlayer">
         <form action="/performance" method="post" onsubmit="return check_v2()" id="content">
-            <input class="player" value="{{ name }}" type="text" name="player_name" autocomplete="on" style="position: absolute; left: 30.1%; top: 318px; height:30px; width:170px" list="playerdata" placeholder="name (only English)" onclick=javascript:this.value=''>
+            <input class="player" value="{{ name }}" type="text" name="player_name" autocomplete="on" style="position: absolute; left: 30.1%; top: 318px; height:30px; width:13.88%" list="playerdata" placeholder="name (only English)" onclick=javascript:this.value=''>
                     <datalist id="playerdata">
                     {% for p in playerlist %}
                           <option>{{ p }}</option>
                     {% endfor %}
                     </datalist>
-                    <select class="form-control" name="year" data-toggle="tooltip" style="position: absolute; left: 57.6%; top: 318px; width:8%; height:30px;">
+                    <select class="form-control" name="year" data-toggle="tooltip" style="position: absolute; left: 52.3%; top: 318px; width:8%; height:30px;">
                         <option> Career </option>
                         <option>Last 52 Weeks</option>
                         <option selected="selected">{{ yearlist[0] }}</option>
@@ -332,16 +332,19 @@ window.onload = function()
                         <option>{{ p }}</option>
                     {% endfor %}
                     </select>
-                    <select class="form-control" name="court" data-toggle="tooltip" style="position: absolute; left: 65.7%; top: 318px; width:8%; height:30px;">
+                    <select class="form-control" name="court" data-toggle="tooltip" style="position: absolute; left: 60.4%; top: 318px; width:7%; height:30px;">
                         <option selected="selected">All</option>
                         <option>Hard</option>
                         <option>Clay</option>
                         <option>Grass</option>
                         <option>Carpet</option>
+                    </select>
+                    <select class="form-control" name="level" data-toggle="tooltip" style="position: absolute; left: 67.5%; top: 318px; width:8%; height:30px;">
+                        <option selected="selected">All</option>
                         <option>Grand Slam</option>
                         <option>Masters</option>
                     </select>
-                    <select class="form-control" name="special" data-toggle="tooltip" style="position: absolute; left: 73.8%; top: 318px; width:10%; height:30px;">
+                    <select class="form-control" name="special" data-toggle="tooltip" style="position: absolute; left: 75.6%; top: 318px; width:10%; height:30px;">
                         <option selected="selected">  </option>
                         <option>With game 6-0</option>
                         <option>With game 0-6</option>
@@ -353,10 +356,10 @@ window.onload = function()
                         <option>VS Top 100</option>
                         <option>With RET</option>
                     </select>
-            <input type="image" src="./static/zoom.png" class="button" value="performance" style="position: absolute; left: 48.8%; top: 304px; height:60px; width:60px;">
+            <input type="image" src="./static/zoom.png" class="button" value="performance" style="position: absolute; left: 46.3%; top: 310px; height:45px; width:45px;">
         </form>
     </div>                      
-    <div id="matchtable" style="text-align:left; font-family: Times New Roman; position:relative; top:400px; width:1290px;">
+    <div id="matchtable" style="text-align:left; font-family: Times New Roman; position:relative; top:400px; width:100%;">
         <table class="matchres" border="0" cellspacing="1" id="tbl">
             <tbody>
             {% for item in data %}

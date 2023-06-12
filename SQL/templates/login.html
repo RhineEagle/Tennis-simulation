@@ -97,11 +97,6 @@
               <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
               <strong>Warning!</strong> This password is wrong!
             </div>
-<!--        {% else %}-->
-<!--            <div class="alert alert-success" role="alert" style="position:absolute;top:50px;left:60%">-->
-<!--                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
-<!--                <strong>Success!</strong> Welcome to our website!-->
-<!--            </div>-->
         {% endif %}
     {% endif %}
   <div class="container">
@@ -129,8 +124,8 @@
                     </div>
                     <div class="clearfix"></div>
                     <button class="btn btn-danger col-sm-6" style="margin-top:10px;">Login</button>
-                    <button class="btn btn-info col-sm-4 col-sm-offset-2" style="margin-top:10px">Sign Up</button>
                 </form>
+                <button class="btn btn-info col-sm-4 col-sm-offset-2" style="margin-top:10px" onclick="window.location.href = '/signup'">Sign Up</button>
             </div>
         </div>
     </div>

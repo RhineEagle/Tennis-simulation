@@ -1,0 +1,30 @@
+{% extends "homepage.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+{% block title %}
+    Register
+{% endblock %}
+
+{# css块 #}
+{% block styles %}
+    {{super()}}
+{% endblock %}
+
+{% block content %}
+<img src="./static/123.jpg" style="opacity:0.2; width:100%; height:100%; position: fixed; top: 50px;" >
+<div class="row">
+            <div class="col-sm-6 col-sm-offset-3">
+                <h1 class="text-center" style="margin-top:70px">Register</h1>
+            </div>
+</div>
+<div style="width:400px;position:absolute;top:130px;left:34%">
+    <form class="form" method="POST">
+    {{ form.csrf_token }}
+    {{ wtf.form_field(form.email) }}
+    {{ wtf.form_field(form.username) }}
+    {{ wtf.form_field(form.password) }}
+    {{ wtf.form_field(form.confirm) }}
+    <button style="position:relative;left:40%" type="submit" class="btn btn-primary">Register</button>
+    </form>
+</div>
+
+{% endblock %}

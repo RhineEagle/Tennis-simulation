@@ -1,10 +1,308 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Forecast</title>
-</head>
-<body>
+{# 继承bootstrap中的base.html #}
+{% extends "homepage.html" %}
+{# 块修改标题 #}
+{% block title %}Forecast{% endblock %}
+
+
+{# css块 #}
+{% block styles %}
+    {{super()}}
+<style>
+    .PlayerInfo{position:absolute; left: 1.63%; top: 50px; right: 1.63%;}
+    .Player1Win{float:left; position: absolute; right: 0px; top: -120px; font-size: 50pt; color: #FF60AF; font-family: Arial}
+    .Player1Name{float:left; position: absolute; right: 78.4%; top: 180px; font-size: 20pt; font-family: Times New Roman;}
+    .Player2Name{float:right; position: absolute; left: 77.4%; top: 180px; font-size: 20pt; font-family: Times New Roman;}
+    .Player2Win{float:center; position: absolute; left: 0px; top: -120px; font-size: 50pt; color: #0080FF; font-family: Arial}
+    .SelectPlayer{position:absolute; left: 0.5%; top: 0px; right: 0.5%;}
+
+
+</style>
+{% endblock %}
+
+{# JavaScript块 #}
+{% block scripts %}
+    {{super()}}
+<script src="./static/Chart.js-2.9.4/dist/chart.js"></script>
+<script>
+    var w1 = {{ win|tojson }};
+    var w2 = {{ lose|tojson }};
+
+    document.getElementById("P1Win").innerHTML = w1;
+    document.getElementById("P2Win").innerHTML = w2;
+    if (w1 == 0 && w2 ==0)
+    {
+        w1 = 0.001;
+        w2 = 0.001;
+    }
+
+
+    var ctx = document.getElementById("myChart");
+    var myChart = new Chart(ctx, {
+        type: "doughnut",
+        data: {
+            labels: ['{{ name[1] }}', '{{ name[0] }}'],
+            datasets: [{
+                data: [w2,w1],
+                backgroundColor: [
+                    '#0080FF',
+                    '#FF60AF',
+                ],
+                borderColor: [
+                    '#0080FF',
+                    '#FF60AF',
+                ],
+                borderWidth: 0
+            }]
+        },
+        options: {
+            legend: {
+                display: false
+            },
+            cutoutPercentage: 65,
+            rotation: -0.5 * Math.PI
+        }
+    });
+</script>
+
+<script>
+    function check()
+    {
+        var con1 = document.querySelector(".form-control-player1").value;
+        var con2 = document.querySelector(".form-control-player2").value;
+        var t1 = {{ playerlist|tojson }}.indexOf(con1);
+        var flag = document.querySelector(".form-control-player2").placeholder;
+        var t2 = {{ playerlist|tojson }}.indexOf(con2);
+        var speed = document.querySelector(".form-control-speed").value;
+
+        if (con1==con2 || t1 == -1 || t2 == -1 || speed < '0' || speed > '99')
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+    </script>
+
+    <script>
+
+    var box = document.getElementById('P1');
+    var box = box.innerText.trim();
+    var cat = box.length;
+    if(cat >= 22)
+    {
+    document.getElementById("P1").style.fontSize=15+'pt';
+    document.getElementById("P1").style.setProperty('top','183px');
+    }
+    else{
+        if(cat >= 18)
+        {
+        document.getElementById("P1").style.fontSize=18+'pt';
+        }
+        else{
+        document.getElementById("P1").style.fontSize=20+'pt';
+        }
+    }
+
+    var box = document.getElementById('P2');
+    var box = box.innerText.trim();
+    var cat = box.length;
+    if(cat >= 22)
+    {
+    document.getElementById("P2").style.fontSize=15+'pt';
+    document.getElementById("P2").style.setProperty('top','183px');
+    }
+    else{
+        if(cat >= 18)
+        {
+        document.getElementById("P2").style.fontSize=18+'pt';
+        }
+        else{
+        document.getElementById("P2").style.fontSize=20+'pt';
+        }
+    }
+    </script>
+
+
+    <script>
+    function ajaxfore()
+    {
+        var flag = check();
+        if (flag==true)
+        {
+            var player1 = document.querySelector(".form-control-player1").value;
+            var player2 = document.querySelector(".form-control-player2").value;
+            var surface = document.querySelector("#court_type").value;
+            var speed = document.querySelector("#speed").value;
+
+            $.ajax({
+                url:"/forecast_simulation",
+                type:"post",
+                data: {'player1':player1, 'player2': player2, 'surface':surface, 'speed':speed},
+                dataType: 'text',
+                success:function(response,status,xhr){
+                    var con = "<table style='background:white;width:100%'><thead><tr><td><b>Possible Results</b></td><td><b>Possibility</b></td></tr></thead><tbody>";
+                    var response_list = response.split("*");
+                    var w1 = 0;
+                    var w2 = 0;
+                    if (response_list.length==7)
+                    {
+                        var color = ["#ffaad5","#FFC1E0","#ACD6FF","#97CBFF"];
+                    }
+                    else if (response_list.length==9)
+                    {
+                        var color = ["#ffaad5","#FFC1E0","#FFECF5","#D2E9FF","#ACD6FF","#97CBFF"];
+                    }
+                    for(i=2;i<response_list.length-1;i++)
+                    {
+                        var sample = response_list[i].split("0.");
+                        if (sample.length == 1)
+                        {
+                            con = con + "<tr style='height:30px;text-align:center;font-size:11.5pt;font-family:Helvetica;'><td colspan='2'>" + sample[0] + "</td></tr>";
+                            break;
+                        }
+                        else
+                        {
+                            if (i-2<(response_list.length-3)/2)
+                            {
+                                w1 = w1+Number(sample[1]);
+                            }
+                            else
+                            {
+                                w2 = w2+Number(sample[1]);
+                            }
+
+                            con = con + "<tr style='height:30px;text-align:center;font-size:11.5pt;font-family:Helvetica;background:"+color[i-2]+"'><td>" + sample[0] +"</td><td>0."+ sample[1] +"</td></tr>";
+                        }
+                    }
+                    document.getElementById("iResult").innerHTML = con+"</tbody></table>";
+                    w1 = Math.round(w1/10)/10;
+                    w2 = Math.round(w2/10)/10;
+
+
+                    if (w1 == 0 && w2 ==0)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        document.getElementById("P1Win").innerHTML = w1+'%';
+                        document.getElementById("P2Win").innerHTML = w2+'%';
+                    }
+
+                    document.getElementById("myChart").remove();
+                    var ctx = document.getElementById("Chart");
+                    var myChart = new Chart(ctx, {
+                        type: "doughnut",
+                        data: {
+                            labels: ['{{ name[1] }}', '{{ name[0] }}'],
+                            datasets: [{
+                                data: [w2,w1],
+                                backgroundColor: [
+                                    '#0080FF',
+                                    '#FF60AF',
+                                ],
+                                borderColor: [
+                                    '#0080FF',
+                                    '#FF60AF',
+                                ],
+                                borderWidth: 0
+                            }]
+                        },
+                        options: {
+                            legend: {
+                                display: false
+                            },
+                            cutoutPercentage: 65,
+                            rotation: -0.5 * Math.PI
+                        }
+                    });
+                }
+                })
+        }
+    }
+</script>
+
+{% endblock %}
+
+{# 块内容 #}
+{% block content %}
+<body onload="ajaxfore()">
+<img src="./static/123.jpg" style="opacity:0.15; width:100%; height:100%; position: fixed; top: 50px;" >
+
+    <div class="PlayerInfo">
+        {% if img != [] %}
+            <img src="{{ img[0] }}" style="width: 17.97%; position: absolute; left: 23.69%; top: 30px;">
+            <div class="Player1Name" id="P1">
+                <div class="Player1Win" id="P1Win"></div>
+                <b>{{ name[0] }}</b>
+                <br>
+                <img src="{{ country[0] }}" style="width: 38px; position: absolute; top:60px; right:4.545%; border-style:solid; border-width: 0.5px;">
+            </div>
+            <img src='{{ img[1] }}' style="width: 17.97%; position: absolute; right: 25.09%; top: 30px;">
+            <div class="Player2Name" id="P2">
+                <div class="Player2Win" id="P2Win"></div>
+                <b>{{ name[1] }}</b>
+                <img src='{{ country[1] }}' style="width: 38px; position: absolute; top:60px; left:4.545%; border-style:solid; border-width: 0.5px;">
+            </div>
+        {% else %}
+            <img src="./static/Player_Photo_head/default.webp" style="width: 17.97%; position: absolute; left: 23.69%; top: 30px;">
+            <img src="./static/Player_Photo_head/default.webp" style="width: 17.97%; position: absolute; right: 25.09%; top: 30px;">
+        {% endif %}
+        <img src="./static/VS-02.svg" style = "width:8.95%; position: absolute; left: 44.6%; top: 100px;">
+        <div style="width:33%; height:33%; position: absolute; left: 32.34%; top: 45px;">
+            <canvas id="myChart" style="opacity:0.7;"></canvas>
+            <canvas id="Chart" style="opacity:0.7;"></canvas>
+        </div>
+    </div>
+
+    <div class="SelectPlayer">
+    <form action="/forecast" method="post" onsubmit="return check()" id="content">
+        <input class="form-control form-control-player1" value="{{ name[0] }}" type="text" name="player1" autocomplete="on" style="position: absolute; left: 26.1%; top: 323px; width:13.734%; height:28px" list="data" placeholder="name (only English)" onclick=javascript:this.value=''>
+                <datalist id="data">
+                {% for p in playerlist %}
+                      <option>{{ p }}</option>
+                {% endfor %}
+                </datalist>
+        <input type="image" src="./static/gun.png" class="button" name="sub" value="H2H" style="position: absolute; left: 46.2%; top: 300px; height:80px; width:5.5%;">
+        <input class="form-control form-control-player2" value="{{ name[1] }}" type="text" name="player2" autocomplete="on" style="position: absolute; right: 27.5%; top: 323px; width:13.734%; height:28px" list="data1" placeholder="name (only English)" onclick=javascript:this.value=''>
+        <datalist id="data1">
+                {% for p in playerlist %}
+                      <option>{{ p }}</option>
+                {% endfor %}
+                </datalist>
+        <label class="input-group-addon" style="position: absolute; left: 26.1%; top: 355px; width:71px; height:30px">
+            Surface
+        </label>
+        <select class="form-control" id="court_type" name="court_type" data-toggle="tooltip" style="position: absolute; left: 31.7%; top: 355px; width:102px; height:30px">
+            <option>Hard</option>
+            {% if court == 'Clay' %}
+            <option selected="selected">Clay</option>
+            {% else %}
+            <option>Clay</option>
+            {% endif %}
+            {% if court == 'Grass' %}
+            <option selected="selected">Grass</option>
+            {% else %}
+            <option>Grass</option>
+            {% endif %}
+        </select>
+        <label class="input-group-addon" style="position: absolute; right: 35.6%; top: 355px; width:71px; height:30px">
+            Speed
+        </label>
+        <input class="form-control form-control-speed" value="{{ speed }}" type="text" id="speed" name="speed" style="position: absolute; right:27.6%; top: 355px; width:102px; height:30px">
+    </form>
+    </div>
+
+    <div id="iResult" style="position:absolute;top:430px;left:30.68%;width:36.64%;text-align:center">
+<!--        {% if name[0] != '' %}-->
+        <span>
+            <i class="fa fa-spinner fa-spin fa-fw fa-3x"></i>
+        </span>
+<!--        {% endif %}-->
+        <span class="sr-only">Loading...</span>
+    </div>
 
 </body>
-</html>
+{% endblock %}

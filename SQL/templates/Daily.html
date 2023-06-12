@@ -1,0 +1,126 @@
+{# 继承bootstrap中的base.html #}
+{% extends "homepage.html" %}
+{# 块修改标题 #}
+{% block title %}Daily Forecast{% endblock %}
+
+{# css块 #}
+{% block styles %}
+    {{super()}}
+<style>
+    .userinfo{ position:absolute;left:100px;top:50px;}
+    #tbl{position:absolute;left:15%;width:70%;background:white}
+    .winner{ background:blue;color:white}
+</style>
+{% endblock %}
+
+{# JavaScript块 #}
+{% block scripts %}
+    {{super()}}
+<script>
+    function choose(p1,p2)
+    {
+        var ele1 = document.getElementById(p1);
+        ele1.className = 'winner';
+        var ele2 = document.getElementById(p2);
+        ele2.className = 'loser';
+    }
+    function check()
+    {
+        var d = new Date();
+        var hour = d.getHours();
+        var day = d.getDate();
+        if (hour>=17 || day != {{ time[-2:] }})
+        {
+            var con = '<div class="bs-example bs-example-standalone" data-example-id="dismissible-alert-js" style="position:absolute;left:600px; top:50px;"><div class="alert alert-warning alert-dismissible fade in" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong>Sorry!</strong> Because of the Deadline, you can not commit the choice.</div></div>';
+            document.getElementById('warning').innerHTML = con;
+            return false;
+        }
+        else
+        {
+            var data = document.getElementById("tbl");
+            $.ajax({
+                url:"/subres",
+                type:"post",
+                data: {'submit': data.innerHTML},
+                dataType: 'json'
+            })
+            document.getElementById("success").removeAttribute("hidden");
+        }
+    }
+</script>
+{% endblock %}
+
+{# 块内容 #}
+{% block content %}
+<body>
+<img src="./static/123.jpg" style="opacity:0.15; width:100%; height:100%; position: fixed; top: 50px;" >
+<div class="userinfo">
+    <div class="page-header">
+        <h1><b> Daily Pick </b></h1>
+    </div>
+    <span style="font-size:15pt;font-family:Arial">{{ user }}</span>
+    <span style="color:Gray">&nbsp;&nbsp;&nbsp;{{ info[3] }}</span>&nbsp;|
+    <span style="color:Gray"> Yesterday Score:</span> {{ info[4] }}&nbsp;|
+    <span style="color:Gray">  Week Score: </span> {{ info[5] }}
+    <br>
+
+</div>
+<div id="warning">
+</div>
+<div id="success"  class="alert alert-success" role="alert" style="position:absolute;left:600px;top:80px;" hidden> <strong>Successfully Commit!</strong> </div>
+<div class="iMatchlist" style="text-align:center;position:absolute;top:250px;width:100%;">
+    <table id="tbl">
+        <thead>
+            <tr style="height:30px">
+                <td colspan="5" style="text-align:left">&nbsp;&nbsp; {{ time }} &nbsp;&nbsp;&nbsp;&nbsp;Deadline: 17:00</td>
+                {% if flag == 1 %}
+                <td style="text-align:center"><button onclick="check()">Commit</button></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td><b>Tour</b></td>
+                <td colspan="3"><b>Match</b></td>
+                <td><b>H2H</b></td>
+            </tr>
+        </thead>
+        <tbody>
+        {% for item in table %}
+        <tr>
+            {% if flag == 1 %}
+            <td>{{ item[0] }}</td><td class="winner" id = "{{ item[1] }}"><label onclick="choose('{{ item[1] }}','{{ item[2] }}')">{{ item[1] }}</label></td><td>vs</td><td class="loser" id="{{ item[2] }}"><label onclick="choose('{{ item[2] }}','{{ item[1] }}')">{{ item[2] }}</label></td>
+            {% else %}
+            <td>{{ item[0] }}</td>
+            {% if item[5]==1 %}
+            <td class="loser"><label>{{ item[1] }}</label></td>
+            <td>vs</td>
+            <td class="winner"><label>{{ item[2] }}</label></td>
+            {% else %}
+            <td class="winner"><label>{{ item[1] }}</label></td>
+            <td>vs</td>
+            <td class="loser"><label>{{ item[2] }}</label></td>
+            {% endif %}
+            {% endif %}
+            <td>&nbsp;&nbsp;<a href="/h2h_query%3FP1%3D{{ item[1] }}%26P2%3D{{ item[2] }}%26Court_type%3DAll%26Level%3DAll" target="_blank">{{ item[3] }}:{{ item[4] }}</a>&nbsp;&nbsp;</td>
+            <td>
+                Sets&nbsp;&nbsp;
+                <select style="width:35px;height:23px" name="Sets" data-toggle="tooltip">
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot>
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+        </tfoot>
+    </table>
+</div>
+
+
+</body>
+{% endblock %}

@@ -1,0 +1,334 @@
+{# 继承bootstrap中的base.html #}
+{% extends "homepage.html" %}
+{# 块修改标题 #}
+{% block title %}Tournament List{% endblock %}
+
+{# css块 #}
+{% block styles %}
+    {{super()}}
+<style>
+    .label-250{background-color: #ACD6FF}
+    .label-500{background-color: #D2A2CC}
+    .label-1000{background-color: #FFA042}
+    .label-GS{background-color: #FF2D2D}
+    .label-Cup{background-color: #FF95CA}
+    .label-Davis{background-color: #ffa6ff}
+    .label-F{background-color: #EAC100}
+    .label-O{background-color: #00DB00}
+    .label-Next{background-color: #BEBEBE}
+    #tbl{ width:85%; position: absolute; left: 100px; top: 0px;}
+</style>
+{% endblock %}
+
+{# JavaScript块 #}
+{% block scripts %}
+    {{super()}}
+<script>
+    var result = document.getElementById('table');
+    var data = {{ data|tojson }};
+    var con = "";
+    for (var i=0; i<25; i++)
+    {
+        if (i>=data.length)
+        {
+            break;
+        }
+        var tour = data[i];
+        con = con + '<tr style="height:32px;" bgcolor="#F0F0F0"> <td>'+tour[6]+' </td> <td> <a href="/tournament%3FTour%3D'+tour[1]+'&Year%3D'+tour[0]+'" target="_blank" class="'+tour[10]+'">'+tour[2]+'</a>  </td><td> <span class="'+tour[11]+'">'+tour[4]+'</span>  </td> <td> <span class="'+tour[11]+'" style="opacity:'+tour[5]/80+'">'+tour[5]+'</span>  </td> <td> '+tour[7]+' </td> <td>'+tour[12]+' </td><td>'+tour[13]+'</td><td><img src="'+tour[9]+'" style="width:25px">&nbsp;&nbsp;<a href="/profile_detail%3FName%3D'+tour[8]+'" target="_blank">'+tour[8]+' </td> </tr>';
+    }
+    result.innerHTML=con;
+    if ({{ tp|tojson }}>5)
+    {
+        for (var i=5;i<{{ tp|tojson }};i++)
+        {
+            document.getElementById('page'+i).style.setProperty('display','none');
+        }
+    }
+
+    function getcontent(i)
+    {
+        var data = {{ data|tojson }};
+        var start = 25*i;
+        var end = 25*i+25;
+        var con = "";
+        for (var i=start; i<end; i++)
+        {
+            if (i>=data.length)
+            {
+                break;
+            }
+            var tour = data[i];
+            con = con + '<tr style="height:32px;" bgcolor="#F0F0F0"> <td>'+tour[6]+' </td> <td> <a href="/tournament%3FTour%3D'+tour[1]+'&Year%3D'+tour[0]+'" class="'+tour[10]+'">'+tour[2]+'</a>  </td><td> <span class="'+tour[11]+'">'+tour[4]+'</span>  </td> <td> <span class="'+tour[11]+'" style="opacity:'+tour[5]/80+'">'+tour[5]+'</span>  </td> <td> '+tour[7]+' </td> <td>'+tour[12]+' </td><td> '+tour[13]+'</td><td><img src="'+tour[9]+'" style="width:25px">&nbsp;&nbsp;'+tour[8]+' </td> </tr>';
+        }
+        return con;
+    }
+
+        function showpre()
+        {
+            var page = Number(document.querySelector(".active-tag").innerHTML)-1;
+
+            if (page == 0)
+            {
+                return 0;
+            }
+
+            page = page-5;
+
+            if (page <0)
+            {
+                page = 0;
+            }
+            var pg = document.querySelector("#page"+page);
+            var tg = document.querySelector("#tag"+page);
+            var result = document.getElementById('table');
+            result.innerHTML=getcontent(page);
+            var end = data.length;
+            var start = page*25+1;
+            if (page*25+25<end)
+            {
+                end = page*25+25;
+            }
+            document.querySelector(".active-page").className='default';
+            document.querySelector(".active-tag").className='default';
+            pg.className = 'active active-page';
+            tg.className = 'active active-tag';
+            var iv=[0,5];
+            if (page==0 || page==1)
+            {
+                iv = [0,5];
+            }
+            else if(page=={{ tp|tojson }}-1 || page=={{ tp|tojson }}-2)
+            {
+                iv = [{{ tp|tojson }}-5,{{ tp|tojson }}];
+            }
+            else
+            {
+                iv = [page-2,page+3];
+            }
+            for (var i=0;i<{{ tp|tojson }};i++)
+            {
+                if (i>=iv[0] && i<iv[1])
+                {
+                    document.getElementById('page'+i).style.setProperty('display','inline');
+                    continue;
+                }
+                document.getElementById('page'+i).style.setProperty('display','none');
+            }
+            var end = data.length;
+            var start = i*25+1;
+            if (i*25+25<end)
+            {
+                end = i*25+25;
+            }
+        }
+
+        function shownext()
+        {
+            var page = Number(document.querySelector(".active-tag").innerHTML)-1;
+            if (page == Number({{ tp|tojson }})-1)
+            {
+                return 0;
+            }
+            page = page+5;
+            if (page >= Number({{ tp|tojson }}))
+            {
+                page = {{ tp|tojson }}-1;
+            }
+            var end = data.length;
+            var start = page*25+1;
+            if (page*25+25<end)
+            {
+                end = page*25+25;
+            }
+
+            var pg = document.querySelector("#page"+page);
+            var tg = document.querySelector("#tag"+page);
+            var result = document.getElementById('table');
+            result.innerHTML=getcontent(page);
+            document.querySelector(".active-page").className='default';
+            document.querySelector(".active-tag").className='default';
+            pg.className = 'active active-page';
+            tg.className = 'active active-tag';
+            var iv=[0,5];
+            if (page==0 || page==1)
+            {
+                iv = [0,5];
+            }
+            else if(page=={{ tp|tojson }}-1 || page=={{ tp|tojson }}-2)
+            {
+                iv = [{{ tp|tojson }}-5,{{ tp|tojson }}];
+            }
+            else
+            {
+                iv = [page-2,page+3];
+            }
+            for (var i=0;i<{{ tp|tojson }};i++)
+            {
+                if (i>=iv[0] && i<iv[1])
+                {
+                    document.getElementById('page'+i).style.setProperty('display','inline');
+                    continue;
+                }
+                document.getElementById('page'+i).style.setProperty('display','none');
+            }
+        }
+
+        function showgo()
+        {
+            var page = Number(document.querySelector("#go").value)-1;
+            if (page <= 0)
+            {
+                page = 0;
+            }
+            if (page >= Number({{ tp|tojson }}))
+            {
+                page = {{ tp|tojson }}-1;
+            }
+            var end = data.length;
+            var start = page*25+1;
+            if (page*25+25<end)
+            {
+                end = page*25+25;
+            }
+
+            var pg = document.querySelector("#page"+page);
+            var tg = document.querySelector("#tag"+page);
+            var result = document.getElementById('table');
+            result.innerHTML=getcontent(page);
+            document.querySelector(".active-page").className='default';
+            document.querySelector(".active-tag").className='default';
+            pg.className = 'active active-page';
+            tg.className = 'active active-tag';
+            var iv=[0,5];
+            if (page==0 || page==1)
+            {
+                iv = [0,5];
+            }
+            else if(page=={{ tp|tojson }}-1 || page=={{ tp|tojson }}-2)
+            {
+                iv = [{{ tp|tojson }}-5,{{ tp|tojson }}];
+            }
+            else
+            {
+                iv = [page-2,page+3];
+            }
+            for (var i=0;i<{{ tp|tojson }};i++)
+            {
+                if (i>=iv[0] && i<iv[1])
+                {
+                    document.getElementById('page'+i).style.setProperty('display','inline');
+                    continue;
+                }
+                document.getElementById('page'+i).style.setProperty('display','none');
+            }
+        }
+
+        function getpage(i)
+        {
+            var end = data.length;
+            var start = i*25+1;
+            if (i*25+25<end)
+            {
+                end = i*25+25;
+            }
+            var page = Number(document.querySelector(".active-tag").innerHTML)-1;
+            if (i==page)
+            {
+                return 0;
+            }
+            var pg = document.querySelector("#page"+i);
+            var tg = document.querySelector("#tag"+i);
+            var result = document.getElementById('table');
+            result.innerHTML=getcontent(i);
+            document.querySelector(".active-page").className='default';
+            document.querySelector(".active-tag").className='default';
+            pg.className = 'active active-page';
+            tg.className = 'active active-tag';
+            var iv=[0,5];
+            if (i==0 || i==1)
+            {
+                iv = [0,5];
+            }
+            else if(i=={{ tp|tojson }}-1 || i=={{ tp|tojson }}-2)
+            {
+                iv = [{{ tp|tojson }}-5,{{ tp|tojson }}];
+            }
+            else
+            {
+                iv = [i-2,i+3];
+            }
+            for (var i=0;i<{{ tp|tojson }};i++)
+            {
+                if (i>=iv[0] && i<iv[1])
+                {
+                    document.getElementById('page'+i).style.setProperty('display','inline');
+                    continue;
+                }
+                document.getElementById('page'+i).style.setProperty('display','none');
+            }
+        }
+    </script>
+{% endblock %}
+
+{# 块内容 #}
+{% block content %}
+<body>
+<img src="./static/123.jpg" style="opacity:0.2; width:100%; height:100%; position: fixed; top: 50px;" >
+<div style="position:absolute;top:70px;width:100%">
+    <table class="table table-condensed table-striped" border="0" cellspacing="1" id="tbl">
+             <thead style="height:40px;font-family:Times New Roman;font-size:12pt;">
+             <tr>
+                 <th> Date </th> <th>&nbsp;Name </th> <th>&nbsp;Surface </th> <th>&nbsp;Speed </th> <th>&nbsp;Draw </th> <th>&nbsp;Part. </th> <th> Diff. </th> <th>&nbsp;Winner </th>
+             </tr>
+             </thead>
+        <tbody id = 'table'>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th style="height:40px;text-align: center;" colspan="7">
+                    {% if tp > 2 %}
+                    <nav aria-label="Page navigation" style="position:relative;top:0px;">
+                      <ul class="pagination">
+                          <li>
+                              <a href="#" aria-label="Previous" onclick="showpre()" id="prepage">
+                                <span aria-hidden="true">&laquo;</span>
+                              </a>
+                          </li>
+
+                          {% for i in range(0,tp) %}
+                              {% if i == 0 %}
+                                <li id="page{{ i }}" class="active active-page"><a href="#" id="tag{{ i }}" class="active active-tag" onclick="getpage({{ i }})">{{ i+1 }}</a></li>
+                              {% else %}
+                                <li id="page{{ i }}"><a href="#" id="tag{{ i }}" onclick="getpage({{ i }})">{{ i+1 }}</a></li>
+                              {% endif %}
+                          {% endfor %}
+                          <li>
+                              <a href="#" aria-label="Next" onclick="shownext()" id="nextpage">
+                                <span aria-hidden="true">&raquo;</span>
+                              </a>
+                          </li>
+                          <li>
+                              <div class="col-lg-3" style="position:relative;left:0px">
+                                  <div class="input-group">
+                                  <input type="text" class="form-control" placeholder="" id="go" onclick="javascript:this.value=''">
+                                  <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button" onclick="showgo()" id="gopage">Go!</button>
+                                  </span>
+                                </div><!-- /input-group -->
+                              </div><!-- /.col-lg-6 -->
+                          </li>
+                          <li>
+                              <div style="position:relative;top:6px">
+                                  total pages: {{ tp }}
+                              </div>
+                          </li>
+                      </ul>
+                    </nav>
+                    {% endif %}
+                </th>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+</body>
+{% endblock %}
