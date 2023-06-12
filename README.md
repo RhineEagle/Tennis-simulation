@@ -2,6 +2,22 @@
 
 ### 2.3
 
+**2023.6.12**
+
+We have been building the front-end visualisation pages for this project for nearly three months, a project based on the Flask framework and built primarily using JS technology. It is a comprehensive platform for querying, managing and forecasting, which greatly facilitates the querying operations of users and the updating tasks of administrators.
+Many thanks to Yongfang Lu, Chongyu Mei and Yunxi Zheng for their help with this front-end project.
+
+**Files include:**
+
+- match_result.py   simulate the match result for input players' name
+- tour_forecast.py   write down the forecast results automatically
+- record_result.py   summarize yesterday's match results automatically
+- trans_structure.py   transform the data format to fit the database
+- rank-tennis.py   record statistics of match which is lack in UTS from rank-tennis
+- fla.py   Flask structure
+
+
+
 **2023.4.6**
 
 The file record_result.py can automatically summarize the results of yesterday's competition and evaluate the accuracy of odds and predictions. At this point, the automation of the daily competition prediction process has been fully realized.
