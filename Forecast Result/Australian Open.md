@@ -1,1174 +1,1262 @@
 # Australian Open
 
-#### Day 14
+#### Day 13
+
 
 **Australian Open**
 
-Stefanos Tsitsipas  0:3  Novak Djokovic    ✔
+Jannik Sinner  vs  Daniil Medvedev
 
-4.80    1.20
+1.36    3.25
 
-Stefanos Tsitsipas 3:0 Novak Djokovic 0.103
-Stefanos Tsitsipas 3:1 Novak Djokovic 0.1388
-Stefanos Tsitsipas 3:2 Novak Djokovic 0.1466
-Stefanos Tsitsipas 2:3 Novak Djokovic 0.1758
-Stefanos Tsitsipas 1:3 Novak Djokovic 0.2204
-Stefanos Tsitsipas 0:3 Novak Djokovic 0.2154
+Jannik Sinner 3:0 Daniil Medvedev 0.3108
+Jannik Sinner 3:1 Daniil Medvedev 0.2560
+Jannik Sinner 3:2 Daniil Medvedev 0.1604
+Jannik Sinner 2:3 Daniil Medvedev 0.1106
+Jannik Sinner 1:3 Daniil Medvedev 0.0926
+Jannik Sinner 0:3 Daniil Medvedev 0.0696
 
 
 
 
 #### Day 12
 
+
 **Australian Open**
 
-Karen Khachanov  1:3  Stefanos Tsitsipas    ✔
+Novak Djokovic  1:3  Jannik Sinner    ❗    ✔
 
-3.40    1.33
+1.44    2.75
 
-Karen Khachanov 3:0 Stefanos Tsitsipas 0.1608
-Karen Khachanov 3:1 Stefanos Tsitsipas 0.1644
-Karen Khachanov 3:2 Stefanos Tsitsipas 0.1532
-Karen Khachanov 2:3 Stefanos Tsitsipas 0.159
-Karen Khachanov 1:3 Stefanos Tsitsipas 0.194
-Karen Khachanov 0:3 Stefanos Tsitsipas 0.1686
+Novak Djokovic 3:0 Jannik Sinner 0.1520
+Novak Djokovic 3:1 Jannik Sinner 0.1730
+Novak Djokovic 3:2 Jannik Sinner 0.1452
+Novak Djokovic 2:3 Jannik Sinner 0.1732
+Novak Djokovic 1:3 Jannik Sinner 0.1880
+Novak Djokovic 0:3 Jannik Sinner 0.1686
 
 
 
-Novak Djokovic  3:0  Tommy Paul    ✔
+Daniil Medvedev  3:2  Alexander Zverev    ❌
 
-1.05    11.00
+1.67    2.20
 
-Novak Djokovic 3:0 Tommy Paul 0.2616
-Novak Djokovic 3:1 Tommy Paul 0.2658
-Novak Djokovic 3:2 Tommy Paul 0.1712
-Novak Djokovic 2:3 Tommy Paul 0.1136
-Novak Djokovic 1:3 Tommy Paul 0.1112
-Novak Djokovic 0:3 Tommy Paul 0.0766
+Daniil Medvedev 3:0 Alexander Zverev 0.0650
+Daniil Medvedev 3:1 Alexander Zverev 0.1030
+Daniil Medvedev 3:2 Alexander Zverev 0.1058
+Daniil Medvedev 2:3 Alexander Zverev 0.1794
+Daniil Medvedev 1:3 Alexander Zverev 0.2596
+Daniil Medvedev 0:3 Alexander Zverev 0.2872
+
+
+
+
+#### Day 11
+
+
+**Australian Open**
+
+Hubert Hurkacz  2:3  Daniil Medvedev    ❌
+
+3.00    1.40
+
+Hubert Hurkacz 3:0 Daniil Medvedev 0.2242
+Hubert Hurkacz 3:1 Daniil Medvedev 0.2184
+Hubert Hurkacz 3:2 Daniil Medvedev 0.1636
+Hubert Hurkacz 2:3 Daniil Medvedev 0.1384
+Hubert Hurkacz 1:3 Daniil Medvedev 0.1428
+Hubert Hurkacz 0:3 Daniil Medvedev 0.1126
+
+
+
+Alexander Zverev  3:1  Carlos Alcaraz    ❗    ❌
+
+5.00    1.17
+
+Alexander Zverev 3:0 Carlos Alcaraz 0.1580
+Alexander Zverev 3:1 Carlos Alcaraz 0.1800
+Alexander Zverev 3:2 Carlos Alcaraz 0.1492
+Alexander Zverev 2:3 Carlos Alcaraz 0.1528
+Alexander Zverev 1:3 Carlos Alcaraz 0.1850
+Alexander Zverev 0:3 Carlos Alcaraz 0.1750
 
 
 
 
 #### Day 10
 
+
 **Australian Open**
 
-Ben Shelton  1:3  Tommy Paul    ✔
+Novak Djokovic  3:1  Taylor Fritz    ✔
 
-3.20    1.36
+1.10    7.00
 
-Ben Shelton 3:0 Tommy Paul 0.1426
-Ben Shelton 3:1 Tommy Paul 0.1644
-Ben Shelton 3:2 Tommy Paul 0.1416
-Ben Shelton 2:3 Tommy Paul 0.1498
-Ben Shelton 1:3 Tommy Paul 0.2014
-Ben Shelton 0:3 Tommy Paul 0.2002
+Novak Djokovic 3:0 Taylor Fritz 0.1928
+Novak Djokovic 3:1 Taylor Fritz 0.1962
+Novak Djokovic 3:2 Taylor Fritz 0.1630
+Novak Djokovic 2:3 Taylor Fritz 0.1566
+Novak Djokovic 1:3 Taylor Fritz 0.1530
+Novak Djokovic 0:3 Taylor Fritz 0.1384
 
 
 
-Andrey Rublev  0:3  Novak Djokovic    ✔
+Jannik Sinner  3:0  Andrey Rublev    ✔
 
-6.00    1.12
+1.25    4.00
 
-Andrey Rublev 3:0 Novak Djokovic 0.049
-Andrey Rublev 3:1 Novak Djokovic 0.063
-Andrey Rublev 3:2 Novak Djokovic 0.0788
-Andrey Rublev 2:3 Novak Djokovic 0.1506
-Andrey Rublev 1:3 Novak Djokovic 0.2778
-Andrey Rublev 0:3 Novak Djokovic 0.3808
+Jannik Sinner 3:0 Andrey Rublev 0.2696
+Jannik Sinner 3:1 Andrey Rublev 0.2422
+Jannik Sinner 3:2 Andrey Rublev 0.1594
+Jannik Sinner 2:3 Andrey Rublev 0.1148
+Jannik Sinner 1:3 Andrey Rublev 0.1210
+Jannik Sinner 0:3 Andrey Rublev 0.0930
 
 
 
 
 #### Day 9
 
+
 **Australian Open**
 
-Karen Khachanov  2:0 (RET) Sebastian Korda    ❗    ✔
+Nuno Borges  1:3  Daniil Medvedev    ✔
 
-2.00    1.80
+13.00    1.04
 
-Karen Khachanov 3:0 Sebastian Korda 0.203
-Karen Khachanov 3:1 Sebastian Korda 0.2034
-Karen Khachanov 3:2 Sebastian Korda 0.1522
-Karen Khachanov 2:3 Sebastian Korda 0.1434
-Karen Khachanov 1:3 Sebastian Korda 0.1644
-Karen Khachanov 0:3 Sebastian Korda 0.1336
+Nuno Borges 3:0 Daniil Medvedev 0.1036
+Nuno Borges 3:1 Daniil Medvedev 0.1372
+Nuno Borges 3:2 Daniil Medvedev 0.1330
+Nuno Borges 2:3 Daniil Medvedev 0.1612
+Nuno Borges 1:3 Daniil Medvedev 0.2222
+Nuno Borges 0:3 Daniil Medvedev 0.2428
 
 
 
-Stefanos Tsitsipas  3:0  Jiri Lehecka    ✔
+Miomir Kecmanovic  0:3  Carlos Alcaraz    ✔
 
-1.14    5.50
+13.00    1.04
 
-Stefanos Tsitsipas 3:0 Jiri Lehecka 0.2426
-Stefanos Tsitsipas 3:1 Jiri Lehecka 0.2266
-Stefanos Tsitsipas 3:2 Jiri Lehecka 0.1718
-Stefanos Tsitsipas 2:3 Jiri Lehecka 0.1216
-Stefanos Tsitsipas 1:3 Jiri Lehecka 0.1292
-Stefanos Tsitsipas 0:3 Jiri Lehecka 0.1082
+Miomir Kecmanovic 3:0 Carlos Alcaraz 0.0940
+Miomir Kecmanovic 3:1 Carlos Alcaraz 0.1328
+Miomir Kecmanovic 3:2 Carlos Alcaraz 0.1272
+Miomir Kecmanovic 2:3 Carlos Alcaraz 0.1684
+Miomir Kecmanovic 1:3 Carlos Alcaraz 0.2270
+Miomir Kecmanovic 0:3 Carlos Alcaraz 0.2506
+
+
+
+Alexander Zverev  3:2  Cameron Norrie    ✔
+
+1.28    3.75
+
+Alexander Zverev 3:0 Cameron Norrie 0.2686
+Alexander Zverev 3:1 Cameron Norrie 0.2496
+Alexander Zverev 3:2 Cameron Norrie 0.1748
+Alexander Zverev 2:3 Cameron Norrie 0.1152
+Alexander Zverev 1:3 Cameron Norrie 0.1190
+Alexander Zverev 0:3 Cameron Norrie 0.0728
+
+
+
+Arthur Cazaux  0:3  Hubert Hurkacz    ✔
+
+3.40    1.33
+
+Arthur Cazaux 3:0 Hubert Hurkacz 0.1446
+Arthur Cazaux 3:1 Hubert Hurkacz 0.1804
+Arthur Cazaux 3:2 Hubert Hurkacz 0.1612
+Arthur Cazaux 2:3 Hubert Hurkacz 0.1618
+Arthur Cazaux 1:3 Hubert Hurkacz 0.1958
+Arthur Cazaux 0:3 Hubert Hurkacz 0.1562
 
 
 
 
 #### Day 8
 
+
 **Australian Open**
 
-Andrey Rublev  3:2  Holger Rune    ❗    ❌
+Novak Djokovic  3:0  Adrian Mannarino    ✔
+
+1.02    19.00
+
+Novak Djokovic 3:0 Adrian Mannarino 0.2614
+Novak Djokovic 3:1 Adrian Mannarino 0.2516
+Novak Djokovic 3:2 Adrian Mannarino 0.1704
+Novak Djokovic 2:3 Adrian Mannarino 0.1136
+Novak Djokovic 1:3 Adrian Mannarino 0.1194
+Novak Djokovic 0:3 Adrian Mannarino 0.0836
+
+
+
+Alex De Minaur  2:3  Andrey Rublev    ✔
 
 2.10    1.73
 
-Andrey Rublev 3:0 Holger Rune 0.1442
-Andrey Rublev 3:1 Holger Rune 0.1611
-Andrey Rublev 3:2 Holger Rune 0.1415
-Andrey Rublev 2:3 Holger Rune 0.1653
-Andrey Rublev 1:3 Holger Rune 0.2078
-Andrey Rublev 0:3 Holger Rune 0.1801
+Alex De Minaur 3:0 Andrey Rublev 0.1542
+Alex De Minaur 3:1 Andrey Rublev 0.1750
+Alex De Minaur 3:2 Andrey Rublev 0.1604
+Alex De Minaur 2:3 Andrey Rublev 0.1574
+Alex De Minaur 1:3 Andrey Rublev 0.1842
+Alex De Minaur 0:3 Andrey Rublev 0.1688
 
 
 
-Alex De Minaur  0:3  Novak Djokovic    ✔
+Jannik Sinner  3:0  Karen Khachanov    ✔
 
-4.50    1.20
+1.10    7.00
 
-Alex De Minaur 3:0 Novak Djokovic 0.0434
-Alex De Minaur 3:1 Novak Djokovic 0.0698
-Alex De Minaur 3:2 Novak Djokovic 0.0868
-Alex De Minaur 2:3 Novak Djokovic 0.1554
-Alex De Minaur 1:3 Novak Djokovic 0.2676
-Alex De Minaur 0:3 Novak Djokovic 0.377
-
-
-
-Roberto Bautista Agut  1:3  Tommy Paul    ❓
-
-2.00    1.80
-
-Roberto Bautista Agut 3:0 Tommy Paul 0.1607
-Roberto Bautista Agut 3:1 Tommy Paul 0.1808
-Roberto Bautista Agut 3:2 Tommy Paul 0.1589
-Roberto Bautista Agut 2:3 Tommy Paul 0.1543
-Roberto Bautista Agut 1:3 Tommy Paul 0.1847
-Roberto Bautista Agut 0:3 Tommy Paul 0.1606
+Jannik Sinner 3:0 Karen Khachanov 0.3002
+Jannik Sinner 3:1 Karen Khachanov 0.2476
+Jannik Sinner 3:2 Karen Khachanov 0.1516
+Jannik Sinner 2:3 Karen Khachanov 0.1062
+Jannik Sinner 1:3 Karen Khachanov 0.1118
+Jannik Sinner 0:3 Karen Khachanov 0.0826
 
 
 
-Ben Shelton  3:2  J.J. Wolf    ❓
+Taylor Fritz  3:1  Stefanos Tsitsipas    ❗    ✔
 
-1.91    1.91
+2.30    1.61
 
-Ben Shelton 3:0 J.J. Wolf 0.174
-Ben Shelton 3:1 J.J. Wolf 0.1801
-Ben Shelton 3:2 J.J. Wolf 0.1462
-Ben Shelton 2:3 J.J. Wolf 0.1458
-Ben Shelton 1:3 J.J. Wolf 0.1826
-Ben Shelton 0:3 J.J. Wolf 0.1713
+Taylor Fritz 3:0 Stefanos Tsitsipas 0.1761
+Taylor Fritz 3:1 Stefanos Tsitsipas 0.1887
+Taylor Fritz 3:2 Stefanos Tsitsipas 0.1466
+Taylor Fritz 2:3 Stefanos Tsitsipas 0.1481
+Taylor Fritz 1:3 Stefanos Tsitsipas 0.1819
+Taylor Fritz 0:3 Stefanos Tsitsipas 0.1586
 
 
 
 
 #### Day 7
 
+
 **Australian Open**
 
-Hubert Hurkacz  2:3  Sebastian Korda    ✔
+Juncheng Shang  0:2  Carlos Alcaraz    ✔
+
+15.00    1.03
+
+Juncheng Shang 3:0 Carlos Alcaraz 0.0884
+Juncheng Shang 3:1 Carlos Alcaraz 0.1206
+Juncheng Shang 3:2 Carlos Alcaraz 0.1270
+Juncheng Shang 2:3 Carlos Alcaraz 0.1602
+Juncheng Shang 1:3 Carlos Alcaraz 0.2278
+Juncheng Shang 0:3 Carlos Alcaraz 0.2760
+
+
+
+Alexander Zverev  3:0  Alex Michelsen    ✔
+
+1.14    5.50
+
+Alexander Zverev 3:0 Alex Michelsen 0.2818
+Alexander Zverev 3:1 Alex Michelsen 0.2398
+Alexander Zverev 3:2 Alex Michelsen 0.1630
+Alexander Zverev 2:3 Alex Michelsen 0.1172
+Alexander Zverev 1:3 Alex Michelsen 0.1168
+Alexander Zverev 0:3 Alex Michelsen 0.0814
+
+
+
+Tommy Paul  2:3  Miomir Kecmanovic    ❗    ✔
+
+1.40    3.00
+
+Tommy Paul 3:0 Miomir Kecmanovic 0.1785
+Tommy Paul 3:1 Miomir Kecmanovic 0.1758
+Tommy Paul 3:2 Miomir Kecmanovic 0.1440
+Tommy Paul 2:3 Miomir Kecmanovic 0.1484
+Tommy Paul 1:3 Miomir Kecmanovic 0.1821
+Tommy Paul 0:3 Miomir Kecmanovic 0.1712
+
+
+
+Felix Auger-Aliassime  0:3  Daniil Medvedev    ✔
+
+5.00    1.17
+
+Felix Auger-Aliassime 3:0 Daniil Medvedev 0.1360
+Felix Auger-Aliassime 3:1 Daniil Medvedev 0.1622
+Felix Auger-Aliassime 3:2 Daniil Medvedev 0.1452
+Felix Auger-Aliassime 2:3 Daniil Medvedev 0.1496
+Felix Auger-Aliassime 1:3 Daniil Medvedev 0.2160
+Felix Auger-Aliassime 0:3 Daniil Medvedev 0.1910
+
+
+
+Ugo Humbert  1:3  Hubert Hurkacz    ❌
 
 2.38    1.57
 
-Hubert Hurkacz 3:0 Sebastian Korda 0.1458
-Hubert Hurkacz 3:1 Sebastian Korda 0.1636
-Hubert Hurkacz 3:2 Sebastian Korda 0.1404
-Hubert Hurkacz 2:3 Sebastian Korda 0.1618
-Hubert Hurkacz 1:3 Sebastian Korda 0.2098
-Hubert Hurkacz 0:3 Sebastian Korda 0.1786
+Ugo Humbert 3:0 Hubert Hurkacz 0.1954
+Ugo Humbert 3:1 Hubert Hurkacz 0.1953
+Ugo Humbert 3:2 Hubert Hurkacz 0.1537
+Ugo Humbert 2:3 Hubert Hurkacz 0.1418
+Ugo Humbert 1:3 Hubert Hurkacz 0.1727
+Ugo Humbert 0:3 Hubert Hurkacz 0.1411
 
 
 
-Stefanos Tsitsipas  3:2  Jannik Sinner    ✔
+Cameron Norrie  3:1  Casper Ruud    ❗    ❌
 
-1.44    2.75
+3.20    1.36
 
-Stefanos Tsitsipas 3:0 Jannik Sinner 0.2308
-Stefanos Tsitsipas 3:1 Jannik Sinner 0.1922
-Stefanos Tsitsipas 3:2 Jannik Sinner 0.1396
-Stefanos Tsitsipas 2:3 Jannik Sinner 0.1398
-Stefanos Tsitsipas 1:3 Jannik Sinner 0.1478
-Stefanos Tsitsipas 0:3 Jannik Sinner 0.1498
-
-
-
-Jiri Lehecka  3:1  Felix Auger-Aliassime    ❗    ❌
-
-4.33    1.22
-
-Jiri Lehecka 3:0 Felix Auger-Aliassime 0.1244
-Jiri Lehecka 3:1 Felix Auger-Aliassime 0.1542
-Jiri Lehecka 3:2 Felix Auger-Aliassime 0.1422
-Jiri Lehecka 2:3 Felix Auger-Aliassime 0.1634
-Jiri Lehecka 1:3 Felix Auger-Aliassime 0.2098
-Jiri Lehecka 0:3 Felix Auger-Aliassime 0.206
+Cameron Norrie 3:0 Casper Ruud 0.0856
+Cameron Norrie 3:1 Casper Ruud 0.1202
+Cameron Norrie 3:2 Casper Ruud 0.1216
+Cameron Norrie 2:3 Casper Ruud 0.1622
+Cameron Norrie 1:3 Casper Ruud 0.2464
+Cameron Norrie 0:3 Casper Ruud 0.2640
 
 
 
-Yoshihito Nishioka  0:3  Karen Khachanov    ✔
+Grigor Dimitrov  1:3  Nuno Borges    ❗    ❌
 
-2.75    1.44
+1.08    8.00
 
-Yoshihito Nishioka 3:0 Karen Khachanov 0.1292
-Yoshihito Nishioka 3:1 Karen Khachanov 0.1514
-Yoshihito Nishioka 3:2 Karen Khachanov 0.1392
-Yoshihito Nishioka 2:3 Karen Khachanov 0.1716
-Yoshihito Nishioka 1:3 Karen Khachanov 0.2054
-Yoshihito Nishioka 0:3 Karen Khachanov 0.2032
+Grigor Dimitrov 3:0 Nuno Borges 0.3820
+Grigor Dimitrov 3:1 Nuno Borges 0.2590
+Grigor Dimitrov 3:2 Nuno Borges 0.1466
+Grigor Dimitrov 2:3 Nuno Borges 0.0824
+Grigor Dimitrov 1:3 Nuno Borges 0.0798
+Grigor Dimitrov 0:3 Nuno Borges 0.0502
+
+
+
+Arthur Cazaux  3:0  Tallon Griekspoor    ❗    ✔
+
+2.30    1.61
+
+Arthur Cazaux 3:0 Tallon Griekspoor 0.1846
+Arthur Cazaux 3:1 Tallon Griekspoor 0.2028
+Arthur Cazaux 3:2 Tallon Griekspoor 0.1735
+Arthur Cazaux 2:3 Tallon Griekspoor 0.1534
+Arthur Cazaux 1:3 Tallon Griekspoor 0.1637
+Arthur Cazaux 0:3 Tallon Griekspoor 0.1220
 
 
 
 
 #### Day 6
 
+
 **Australian Open**
 
-Benjamin Bonzi  0:3  Alex De Minaur    ✔
+Luca Van Assche  0:3  Stefanos Tsitsipas    ✔
 
-4.33    1.22
+4.50    1.20
 
-Benjamin Bonzi 3:0 Alex De Minaur 0.1586
-Benjamin Bonzi 3:1 Alex De Minaur 0.1732
-Benjamin Bonzi 3:2 Alex De Minaur 0.145
-Benjamin Bonzi 2:3 Alex De Minaur 0.162
-Benjamin Bonzi 1:3 Alex De Minaur 0.1912
-Benjamin Bonzi 0:3 Alex De Minaur 0.17
-
-
-
-Grigor Dimitrov  0:3  Novak Djokovic    ✔
-
-6.00    1.12
-
-Grigor Dimitrov 3:0 Novak Djokovic 0.0732
-Grigor Dimitrov 3:1 Novak Djokovic 0.1
-Grigor Dimitrov 3:2 Novak Djokovic 0.1046
-Grigor Dimitrov 2:3 Novak Djokovic 0.1578
-Grigor Dimitrov 1:3 Novak Djokovic 0.2486
-Grigor Dimitrov 0:3 Novak Djokovic 0.3158
+Luca Van Assche 3:0 Stefanos Tsitsipas 0.1270
+Luca Van Assche 3:1 Stefanos Tsitsipas 0.1528
+Luca Van Assche 3:2 Stefanos Tsitsipas 0.1308
+Luca Van Assche 2:3 Stefanos Tsitsipas 0.1592
+Luca Van Assche 1:3 Stefanos Tsitsipas 0.2098
+Luca Van Assche 0:3 Stefanos Tsitsipas 0.2204
 
 
 
-Andrey Rublev  3:0  Daniel Evans    ✔
+Novak Djokovic  3:0  Tomas Martin Etcheverry    ✔
 
-1.25    4.00
+1.05    11.00
 
-Andrey Rublev 3:0 Daniel Evans 0.1938
-Andrey Rublev 3:1 Daniel Evans 0.194
-Andrey Rublev 3:2 Daniel Evans 0.1508
-Andrey Rublev 2:3 Daniel Evans 0.1431
-Andrey Rublev 1:3 Daniel Evans 0.1731
-Andrey Rublev 0:3 Daniel Evans 0.1452
-
-
-
-Andy Murray  1:3  Roberto Bautista Agut    ✔
-
-3.75    1.28
-
-Andy Murray 3:0 Roberto Bautista Agut 0.0954
-Andy Murray 3:1 Roberto Bautista Agut 0.134
-Andy Murray 3:2 Roberto Bautista Agut 0.1292
-Andy Murray 2:3 Roberto Bautista Agut 0.1632
-Andy Murray 1:3 Roberto Bautista Agut 0.2306
-Andy Murray 0:3 Roberto Bautista Agut 0.2476
+Novak Djokovic 3:0 Tomas Martin Etcheverry 0.2338
+Novak Djokovic 3:1 Tomas Martin Etcheverry 0.2324
+Novak Djokovic 3:2 Tomas Martin Etcheverry 0.1716
+Novak Djokovic 2:3 Tomas Martin Etcheverry 0.1376
+Novak Djokovic 1:3 Tomas Martin Etcheverry 0.1300
+Novak Djokovic 0:3 Tomas Martin Etcheverry 0.0946
 
 
 
-Ugo Humbert  0:3  Holger Rune    ✔
+Jannik Sinner  3:0  Sebastian Baez    ✔
 
-5.00    1.17
+1.02    17.00
 
-Ugo Humbert 3:0 Holger Rune 0.066
-Ugo Humbert 3:1 Holger Rune 0.0858
-Ugo Humbert 3:2 Holger Rune 0.096
-Ugo Humbert 2:3 Holger Rune 0.1726
-Ugo Humbert 1:3 Holger Rune 0.2736
-Ugo Humbert 0:3 Holger Rune 0.306
-
-
-
-Alexei Popyrin  0:3  Ben Shelton    ❗    ✔
-
-1.57    2.38
-
-Alexei Popyrin 3:0 Ben Shelton 0.1394
-Alexei Popyrin 3:1 Ben Shelton 0.1676
-Alexei Popyrin 3:2 Ben Shelton 0.1498
-Alexei Popyrin 2:3 Ben Shelton 0.1644
-Alexei Popyrin 1:3 Ben Shelton 0.1996
-Alexei Popyrin 0:3 Ben Shelton 0.1792
+Jannik Sinner 3:0 Sebastian Baez 0.3786
+Jannik Sinner 3:1 Sebastian Baez 0.2570
+Jannik Sinner 3:2 Sebastian Baez 0.1442
+Jannik Sinner 2:3 Sebastian Baez 0.0890
+Jannik Sinner 1:3 Sebastian Baez 0.0784
+Jannik Sinner 0:3 Sebastian Baez 0.0528
 
 
 
-J.J. Wolf  3:0  Michael Mmoh    ✔
+Sebastian Korda  0:3  Andrey Rublev    ✔
 
-1.33    3.40
+2.75    1.44
 
-J.J. Wolf 3:0 Michael Mmoh 0.1822
-J.J. Wolf 3:1 Michael Mmoh 0.2026
-J.J. Wolf 3:2 Michael Mmoh 0.1718
-J.J. Wolf 2:3 Michael Mmoh 0.1526
-J.J. Wolf 1:3 Michael Mmoh 0.1676
-J.J. Wolf 0:3 Michael Mmoh 0.1232
+Sebastian Korda 3:0 Andrey Rublev 0.1436
+Sebastian Korda 3:1 Andrey Rublev 0.1588
+Sebastian Korda 3:2 Andrey Rublev 0.1364
+Sebastian Korda 2:3 Andrey Rublev 0.1538
+Sebastian Korda 1:3 Andrey Rublev 0.2084
+Sebastian Korda 0:3 Andrey Rublev 0.1990
 
 
 
-Tommy Paul  3:0  Jenson Brooksby    ✔
+Taylor Fritz  3:1  Fabian Marozsan    ✔
 
-1.67    2.20
+1.30    3.50
 
-Tommy Paul 3:0 Jenson Brooksby 0.2536
-Tommy Paul 3:1 Jenson Brooksby 0.2028
-Tommy Paul 3:2 Jenson Brooksby 0.1546
-Tommy Paul 2:3 Jenson Brooksby 0.129
-Tommy Paul 1:3 Jenson Brooksby 0.1442
-Tommy Paul 0:3 Jenson Brooksby 0.1158
+Taylor Fritz 3:0 Fabian Marozsan 0.2406
+Taylor Fritz 3:1 Fabian Marozsan 0.2378
+Taylor Fritz 3:2 Fabian Marozsan 0.1598
+Taylor Fritz 2:3 Fabian Marozsan 0.1336
+Taylor Fritz 1:3 Fabian Marozsan 0.1284
+Taylor Fritz 0:3 Fabian Marozsan 0.0998
+
+
+
+Alex De Minaur  3:0  Flavio Cobolli    ✔
+
+1.08    8.00
+
+Alex De Minaur 3:0 Flavio Cobolli 0.2490
+Alex De Minaur 3:1 Flavio Cobolli 0.2320
+Alex De Minaur 3:2 Flavio Cobolli 0.1528
+Alex De Minaur 2:3 Flavio Cobolli 0.1218
+Alex De Minaur 1:3 Flavio Cobolli 0.1422
+Alex De Minaur 0:3 Flavio Cobolli 0.1022
+
+
+
+Tomas Machac  1:3  Karen Khachanov    ✔
+
+2.50    1.53
+
+Tomas Machac 3:0 Karen Khachanov 0.1486
+Tomas Machac 3:1 Karen Khachanov 0.1800
+Tomas Machac 3:2 Karen Khachanov 0.1520
+Tomas Machac 2:3 Karen Khachanov 0.1588
+Tomas Machac 1:3 Karen Khachanov 0.1872
+Tomas Machac 0:3 Karen Khachanov 0.1734
+
+
+
+Adrian Mannarino  3:2  Ben Shelton    ❗    ❌
+
+3.20    1.36
+
+Adrian Mannarino 3:0 Ben Shelton 0.1316
+Adrian Mannarino 3:1 Ben Shelton 0.1650
+Adrian Mannarino 3:2 Ben Shelton 0.1590
+Adrian Mannarino 2:3 Ben Shelton 0.1654
+Adrian Mannarino 1:3 Ben Shelton 0.2056
+Adrian Mannarino 0:3 Ben Shelton 0.1734
 
 
 
 
 #### Day 5
 
+
 **Australian Open**
 
-Stefanos Tsitsipas  3:0  Tallon Griekspoor    ✔
+Lorenzo Sonego  1:3  Carlos Alcaraz    ✔
 
-1.08    8.00
+13.00    1.04
 
-Stefanos Tsitsipas 3:0 Tallon Griekspoor 0.2144
-Stefanos Tsitsipas 3:1 Tallon Griekspoor 0.2314
-Stefanos Tsitsipas 3:2 Tallon Griekspoor 0.162
-Stefanos Tsitsipas 2:3 Tallon Griekspoor 0.1248
-Stefanos Tsitsipas 1:3 Tallon Griekspoor 0.1456
-Stefanos Tsitsipas 0:3 Tallon Griekspoor 0.1218
+Lorenzo Sonego 3:0 Carlos Alcaraz 0.1274
+Lorenzo Sonego 3:1 Carlos Alcaraz 0.1386
+Lorenzo Sonego 3:2 Carlos Alcaraz 0.1270
+Lorenzo Sonego 2:3 Carlos Alcaraz 0.1536
+Lorenzo Sonego 1:3 Carlos Alcaraz 0.2120
+Lorenzo Sonego 0:3 Carlos Alcaraz 0.2414
 
 
 
-Sebastian Korda  3:0  Daniil Medvedev    ❗    ❌
+Emil Ruusuvuori  2:3  Daniil Medvedev    ❓
+
+8.00    1.08
+
+Emil Ruusuvuori 3:0 Daniil Medvedev 0.1572
+Emil Ruusuvuori 3:1 Daniil Medvedev 0.1950
+Emil Ruusuvuori 3:2 Daniil Medvedev 0.1476
+Emil Ruusuvuori 2:3 Daniil Medvedev 0.1422
+Emil Ruusuvuori 1:3 Daniil Medvedev 0.1856
+Emil Ruusuvuori 0:3 Daniil Medvedev 0.1724
+
+
+
+Max Purcell  2:3  Casper Ruud    ✔
 
 4.50    1.20
 
-Sebastian Korda 3:0 Daniil Medvedev 0.1367
-Sebastian Korda 3:1 Daniil Medvedev 0.1678
-Sebastian Korda 3:2 Daniil Medvedev 0.1438
-Sebastian Korda 2:3 Daniil Medvedev 0.1627
-Sebastian Korda 1:3 Daniil Medvedev 0.1967
-Sebastian Korda 0:3 Daniil Medvedev 0.1923
+Max Purcell 3:0 Casper Ruud 0.0540
+Max Purcell 3:1 Casper Ruud 0.0788
+Max Purcell 3:2 Casper Ruud 0.0900
+Max Purcell 2:3 Casper Ruud 0.1552
+Max Purcell 1:3 Casper Ruud 0.2708
+Max Purcell 0:3 Casper Ruud 0.3512
 
 
 
-Marton Fucsovics  2:3  Jannik Sinner    ✔
+Holger Rune  1:3  Arthur Cazaux    ❗
 
-6.50    1.11
+1.14    5.50
 
-Marton Fucsovics 3:0 Jannik Sinner 0.0802
-Marton Fucsovics 3:1 Jannik Sinner 0.1076
-Marton Fucsovics 3:2 Jannik Sinner 0.1076
-Marton Fucsovics 2:3 Jannik Sinner 0.1588
-Marton Fucsovics 1:3 Jannik Sinner 0.2424
-Marton Fucsovics 0:3 Jannik Sinner 0.3034
+lack of data.
 
 
 
-Hubert Hurkacz  3:2  Denis Shapovalov    ✔
+Alexander Zverev  3:2  Lukas Klein
 
-1.91    1.91
+1.06    10.00
 
-Hubert Hurkacz 3:0 Denis Shapovalov 0.1986
-Hubert Hurkacz 3:1 Denis Shapovalov 0.1996
-Hubert Hurkacz 3:2 Denis Shapovalov 0.1582
-Hubert Hurkacz 2:3 Denis Shapovalov 0.1472
-Hubert Hurkacz 1:3 Denis Shapovalov 0.1556
-Hubert Hurkacz 0:3 Denis Shapovalov 0.1408
+lack of data.
 
 
 
-Francisco Cerundolo  1:3  Felix Auger-Aliassime    ✔
+Grigor Dimitrov  3:1  Thanasi Kokkinakis    ✔
 
-6.50    1.11
+1.17    5.00
 
-Francisco Cerundolo 3:0 Felix Auger-Aliassime 0.129
-Francisco Cerundolo 3:1 Felix Auger-Aliassime 0.1658
-Francisco Cerundolo 3:2 Felix Auger-Aliassime 0.1594
-Francisco Cerundolo 2:3 Felix Auger-Aliassime 0.1588
-Francisco Cerundolo 1:3 Felix Auger-Aliassime 0.2048
-Francisco Cerundolo 0:3 Felix Auger-Aliassime 0.1822
-
-
-
-Karen Khachanov  3:1  Frances Tiafoe    ✔
-
-1.91    1.91
-
-Karen Khachanov 3:0 Frances Tiafoe 0.1767
-Karen Khachanov 3:1 Frances Tiafoe 0.1799
-Karen Khachanov 3:2 Frances Tiafoe 0.1474
-Karen Khachanov 2:3 Frances Tiafoe 0.1436
-Karen Khachanov 1:3 Frances Tiafoe 0.1777
-Karen Khachanov 0:3 Frances Tiafoe 0.1747
+Grigor Dimitrov 3:0 Thanasi Kokkinakis 0.3130
+Grigor Dimitrov 3:1 Thanasi Kokkinakis 0.2538
+Grigor Dimitrov 3:2 Thanasi Kokkinakis 0.1720
+Grigor Dimitrov 2:3 Thanasi Kokkinakis 0.0998
+Grigor Dimitrov 1:3 Thanasi Kokkinakis 0.1016
+Grigor Dimitrov 0:3 Thanasi Kokkinakis 0.0598
 
 
 
-Cameron Norrie  2:3  Jiri Lehecka    ❗    ❌
+Tommy Paul  3:1  Jack Draper    ❌
 
-1.33    3.40
+1.67    2.20
 
-Cameron Norrie 3:0 Jiri Lehecka 0.3132
-Cameron Norrie 3:1 Jiri Lehecka 0.2404
-Cameron Norrie 3:2 Jiri Lehecka 0.1552
-Cameron Norrie 2:3 Jiri Lehecka 0.1092
-Cameron Norrie 1:3 Jiri Lehecka 0.103
-Cameron Norrie 0:3 Jiri Lehecka 0.079
+Tommy Paul 3:0 Jack Draper 0.0936
+Tommy Paul 3:1 Jack Draper 0.1188
+Tommy Paul 3:2 Jack Draper 0.1204
+Tommy Paul 2:3 Jack Draper 0.1502
+Tommy Paul 1:3 Jack Draper 0.2318
+Tommy Paul 0:3 Jack Draper 0.2852
 
 
 
-Mackenzie Mcdonald  0:3  Yoshihito Nishioka    ❌
+Jakub Mensik  2:3  Hubert Hurkacz    ✔
 
-2.38    1.57
+4.50    1.20
 
-Mackenzie Mcdonald 3:0 Yoshihito Nishioka 0.1855
-Mackenzie Mcdonald 3:1 Yoshihito Nishioka 0.1732
-Mackenzie Mcdonald 3:2 Yoshihito Nishioka 0.1442
-Mackenzie Mcdonald 2:3 Yoshihito Nishioka 0.1425
-Mackenzie Mcdonald 1:3 Yoshihito Nishioka 0.1792
-Mackenzie Mcdonald 0:3 Yoshihito Nishioka 0.1754
+Jakub Mensik 3:0 Hubert Hurkacz 0.1528
+Jakub Mensik 3:1 Hubert Hurkacz 0.1672
+Jakub Mensik 3:2 Hubert Hurkacz 0.1348
+Jakub Mensik 2:3 Hubert Hurkacz 0.1492
+Jakub Mensik 1:3 Hubert Hurkacz 0.1940
+Jakub Mensik 0:3 Hubert Hurkacz 0.2020
+
+
+
+Cameron Norrie  3:2  Giulio Zeppieri
+
+1.28    3.75
+
+lack of data.
+
+
+
+
+Felix Auger-Aliassime  3:1  Hugo Grenier
+
+1.12    6.00
+
+lack of data.
+
+
+
+
+Alex Michelsen  3:1  Jiri Lehecka    ❗    ❌
+
+3.50    1.30
+
+Alex Michelsen 3:0 Jiri Lehecka 0.1022
+Alex Michelsen 3:1 Jiri Lehecka 0.1292
+Alex Michelsen 3:2 Jiri Lehecka 0.1256
+Alex Michelsen 2:3 Jiri Lehecka 0.1574
+Alex Michelsen 1:3 Jiri Lehecka 0.2314
+Alex Michelsen 0:3 Jiri Lehecka 0.2542
+
+
+
+Nuno Borges  3:0  Alejandro Davidovich Fokina    ❗    ❌
+
+4.33    1.22
+
+Nuno Borges 3:0 Alejandro Davidovich Fokina 0.1012
+Nuno Borges 3:1 Alejandro Davidovich Fokina 0.1170
+Nuno Borges 3:2 Alejandro Davidovich Fokina 0.1092
+Nuno Borges 2:3 Alejandro Davidovich Fokina 0.1492
+Nuno Borges 1:3 Alejandro Davidovich Fokina 0.2380
+Nuno Borges 0:3 Alejandro Davidovich Fokina 0.2854
+
+
+
+Arthur Fils  1:3  Tallon Griekspoor    ❗    ❌
+
+1.61    2.30
+
+Arthur Fils 3:0 Tallon Griekspoor 0.2200
+Arthur Fils 3:1 Tallon Griekspoor 0.2184
+Arthur Fils 3:2 Tallon Griekspoor 0.1680
+Arthur Fils 2:3 Tallon Griekspoor 0.1300
+Arthur Fils 1:3 Tallon Griekspoor 0.1440
+Arthur Fils 0:3 Tallon Griekspoor 0.1196
+
+
+
+Miomir Kecmanovic  3:2  Jan-Lennard Struff    ✔
+
+1.73    2.10
+
+Miomir Kecmanovic 3:0 Jan-Lennard Struff 0.2742
+Miomir Kecmanovic 3:1 Jan-Lennard Struff 0.2528
+Miomir Kecmanovic 3:2 Jan-Lennard Struff 0.1648
+Miomir Kecmanovic 2:3 Jan-Lennard Struff 0.1226
+Miomir Kecmanovic 1:3 Jan-Lennard Struff 0.1088
+Miomir Kecmanovic 0:3 Jan-Lennard Struff 0.0768
+
+
+
+Ugo Humbert  3:1  Zhizhen Zhang    ✔
+
+1.50    2.62
+
+Ugo Humbert 3:0 Zhizhen Zhang 0.3074
+Ugo Humbert 3:1 Zhizhen Zhang 0.2334
+Ugo Humbert 3:2 Zhizhen Zhang 0.1614
+Ugo Humbert 2:3 Zhizhen Zhang 0.1132
+Ugo Humbert 1:3 Zhizhen Zhang 0.1036
+Ugo Humbert 0:3 Zhizhen Zhang 0.0810
+
+
+
+Sumit Nagal  1:3  Juncheng Shang
+
+3.00    1.40
+
+lack of data.
+
 
 
 
 
 #### Day 4
 
+
 **Australian Open**
 
-Jenson Brooksby  3:1  Casper Ruud    ❗    ❌
+Alex De Minaur  3:0  Matteo Arnaldi    ✔
 
-3.40    1.33
+1.17    5.00
 
-Jenson Brooksby 3:0 Casper Ruud 0.0846
-Jenson Brooksby 3:1 Casper Ruud 0.1368
-Jenson Brooksby 3:2 Casper Ruud 0.1234
-Jenson Brooksby 2:3 Casper Ruud 0.1452
-Jenson Brooksby 1:3 Casper Ruud 0.233
-Jenson Brooksby 0:3 Casper Ruud 0.277
+Alex De Minaur 3:0 Matteo Arnaldi 0.1982
+Alex De Minaur 3:1 Matteo Arnaldi 0.2172
+Alex De Minaur 3:2 Matteo Arnaldi 0.1598
+Alex De Minaur 2:3 Matteo Arnaldi 0.1410
+Alex De Minaur 1:3 Matteo Arnaldi 0.1572
+Alex De Minaur 0:3 Matteo Arnaldi 0.1266
 
 
 
-Enzo Couacaud  1:3  Novak Djokovic
+Novak Djokovic  3:1  Alexei Popyrin    ✔
 
-29.00    1.01
+1.02    19.00
+
+Novak Djokovic 3:0 Alexei Popyrin 0.2512
+Novak Djokovic 3:1 Alexei Popyrin 0.2518
+Novak Djokovic 3:2 Alexei Popyrin 0.1754
+Novak Djokovic 2:3 Alexei Popyrin 0.1238
+Novak Djokovic 1:3 Alexei Popyrin 0.1170
+Novak Djokovic 0:3 Alexei Popyrin 0.0808
+
+
+
+Jannik Sinner  3:0  Jesper De Jong
+
+1.02    19.00
 
 lack of data.
 
 
 
 
-Michael Mmoh  3:1  Alexander Zverev    ❗
+Jordan Thompson  1:3  Stefanos Tsitsipas    ✔
 
 4.50    1.20
 
-lack of data.
+Jordan Thompson 3:0 Stefanos Tsitsipas 0.1132
+Jordan Thompson 3:1 Stefanos Tsitsipas 0.1412
+Jordan Thompson 3:2 Stefanos Tsitsipas 0.1294
+Jordan Thompson 2:3 Stefanos Tsitsipas 0.1538
+Jordan Thompson 1:3 Stefanos Tsitsipas 0.2180
+Jordan Thompson 0:3 Stefanos Tsitsipas 0.2444
 
 
 
-Andy Murray  3:2  Thanasi Kokkinakis    ❗    ❌
+Christopher Oconnell  1:3  Ben Shelton    ✔
 
-2.38    1.57
+4.00    1.25
 
-Andy Murray 3:0 Thanasi Kokkinakis 0.0786
-Andy Murray 3:1 Thanasi Kokkinakis 0.1196
-Andy Murray 3:2 Thanasi Kokkinakis 0.1318
-Andy Murray 2:3 Thanasi Kokkinakis 0.1722
-Andy Murray 1:3 Thanasi Kokkinakis 0.2434
-Andy Murray 0:3 Thanasi Kokkinakis 0.2544
-
-
-
-Taylor Fritz  2:3  Alexei Popyrin    ❗    ❌
-
-1.11    6.50
-
-Taylor Fritz 3:0 Alexei Popyrin 0.3238
-Taylor Fritz 3:1 Alexei Popyrin 0.2708
-Taylor Fritz 3:2 Alexei Popyrin 0.1696
-Taylor Fritz 2:3 Alexei Popyrin 0.0942
-Taylor Fritz 1:3 Alexei Popyrin 0.083
-Taylor Fritz 0:3 Alexei Popyrin 0.0586
+Christopher Oconnell 3:0 Ben Shelton 0.1036
+Christopher Oconnell 3:1 Ben Shelton 0.1432
+Christopher Oconnell 3:2 Ben Shelton 0.1348
+Christopher Oconnell 2:3 Ben Shelton 0.1626
+Christopher Oconnell 1:3 Ben Shelton 0.2320
+Christopher Oconnell 0:3 Ben Shelton 0.2238
 
 
 
-Adrian Mannarino  1:3  Alex De Minaur    ✔
-
-5.00    1.17
-
-Adrian Mannarino 3:0 Alex De Minaur 0.162
-Adrian Mannarino 3:1 Alex De Minaur 0.1682
-Adrian Mannarino 3:2 Alex De Minaur 0.1474
-Adrian Mannarino 2:3 Alex De Minaur 0.1524
-Adrian Mannarino 1:3 Alex De Minaur 0.194
-Adrian Mannarino 0:3 Alex De Minaur 0.176
-
-
-
-Andrey Rublev  3:1  Emil Ruusuvuori    ❌
-
-1.22    4.33
-
-Andrey Rublev 3:0 Emil Ruusuvuori 0.1698
-Andrey Rublev 3:1 Emil Ruusuvuori 0.1532
-Andrey Rublev 3:2 Emil Ruusuvuori 0.1378
-Andrey Rublev 2:3 Emil Ruusuvuori 0.1451
-Andrey Rublev 1:3 Emil Ruusuvuori 0.1943
-Andrey Rublev 0:3 Emil Ruusuvuori 0.1998
-
-
-
-Maxime Cressy  0:3  Holger Rune    ✔
-
-5.00    1.17
-
-Maxime Cressy 3:0 Holger Rune 0.0832
-Maxime Cressy 3:1 Holger Rune 0.1082
-Maxime Cressy 3:2 Holger Rune 0.1208
-Maxime Cressy 2:3 Holger Rune 0.1692
-Maxime Cressy 1:3 Holger Rune 0.2358
-Maxime Cressy 0:3 Holger Rune 0.2828
-
-
-
-Ben Shelton  3:0  Nicolas Jarry    ❌
-
-1.80    2.00
-
-Ben Shelton 3:0 Nicolas Jarry 0.1542
-Ben Shelton 3:1 Nicolas Jarry 0.1792
-Ben Shelton 3:2 Nicolas Jarry 0.1438
-Ben Shelton 2:3 Nicolas Jarry 0.1418
-Ben Shelton 1:3 Nicolas Jarry 0.1852
-Ben Shelton 0:3 Nicolas Jarry 0.1958
-
-
-
-Grigor Dimitrov  3:0  Laslo Djere    ✔
-
-1.28    3.75
-
-Grigor Dimitrov 3:0 Laslo Djere 0.2544
-Grigor Dimitrov 3:1 Laslo Djere 0.2114
-Grigor Dimitrov 3:2 Laslo Djere 0.1614
-Grigor Dimitrov 2:3 Laslo Djere 0.1192
-Grigor Dimitrov 1:3 Laslo Djere 0.139
-Grigor Dimitrov 0:3 Laslo Djere 0.1146
-
-
-
-Jeremy Chardy  0:3  Daniel Evans
+Christopher Eubanks  0:3  Andrey Rublev    ✔
 
 6.50    1.11
 
-lack of data.
+Christopher Eubanks 3:0 Andrey Rublev 0.0946
+Christopher Eubanks 3:1 Andrey Rublev 0.1262
+Christopher Eubanks 3:2 Andrey Rublev 0.1214
+Christopher Eubanks 2:3 Andrey Rublev 0.1684
+Christopher Eubanks 1:3 Andrey Rublev 0.2318
+Christopher Eubanks 0:3 Andrey Rublev 0.2576
 
 
 
-Diego Schwartzman  0:3  J.J. Wolf    ✔
+Taylor Fritz  3:0  Hugo Gaston    ✔
 
-2.50    1.53
+1.10    7.00
 
-Diego Schwartzman 3:0 J.J. Wolf 0.0774
-Diego Schwartzman 3:1 J.J. Wolf 0.1082
-Diego Schwartzman 3:2 J.J. Wolf 0.1154
-Diego Schwartzman 2:3 J.J. Wolf 0.1616
-Diego Schwartzman 1:3 J.J. Wolf 0.2454
-Diego Schwartzman 0:3 J.J. Wolf 0.292
+Taylor Fritz 3:0 Hugo Gaston 0.2928
+Taylor Fritz 3:1 Hugo Gaston 0.2516
+Taylor Fritz 3:2 Hugo Gaston 0.1670
+Taylor Fritz 2:3 Hugo Gaston 0.1096
+Taylor Fritz 1:3 Hugo Gaston 0.1062
+Taylor Fritz 0:3 Hugo Gaston 0.0728
 
 
 
-Denis Kudla  1:3  Ugo Humbert    ✔
+Frances Tiafoe  0:3  Tomas Machac    ❗    ❌
+
+1.50    2.62
+
+Frances Tiafoe 3:0 Tomas Machac 0.1936
+Frances Tiafoe 3:1 Tomas Machac 0.2039
+Frances Tiafoe 3:2 Tomas Machac 0.1467
+Frances Tiafoe 2:3 Tomas Machac 0.1445
+Frances Tiafoe 1:3 Tomas Machac 0.1636
+Frances Tiafoe 0:3 Tomas Machac 0.1477
+
+
+
+Daniel Elahi Galan  1:3  Sebastian Baez    ✔
 
 2.75    1.44
 
-Denis Kudla 3:0 Ugo Humbert 0.1386
-Denis Kudla 3:1 Ugo Humbert 0.165
-Denis Kudla 3:2 Ugo Humbert 0.1396
-Denis Kudla 2:3 Ugo Humbert 0.1552
-Denis Kudla 1:3 Ugo Humbert 0.1932
-Denis Kudla 0:3 Ugo Humbert 0.2084
+Daniel Elahi Galan 3:0 Sebastian Baez 0.0814
+Daniel Elahi Galan 3:1 Sebastian Baez 0.1114
+Daniel Elahi Galan 3:2 Sebastian Baez 0.1092
+Daniel Elahi Galan 2:3 Sebastian Baez 0.1698
+Daniel Elahi Galan 1:3 Sebastian Baez 0.2592
+Daniel Elahi Galan 0:3 Sebastian Baez 0.2690
 
 
 
-Alejandro Davidovich Fokina  2:3  Tommy Paul    ✔
+Aleksandar Kovacevic  1:3  Karen Khachanov    ✔
 
-2.75    1.44
+5.00    1.17
 
-Alejandro Davidovich Fokina 3:0 Tommy Paul 0.111
-Alejandro Davidovich Fokina 3:1 Tommy Paul 0.1322
-Alejandro Davidovich Fokina 3:2 Tommy Paul 0.1332
-Alejandro Davidovich Fokina 2:3 Tommy Paul 0.1524
-Alejandro Davidovich Fokina 1:3 Tommy Paul 0.216
-Alejandro Davidovich Fokina 0:3 Tommy Paul 0.2552
-
-
-
-Brandon Holt  2:3  Roberto Bautista Agut    ✔
-
-7.00    1.10
-
-Brandon Holt 3:0 Roberto Bautista Agut 0.081
-Brandon Holt 3:1 Roberto Bautista Agut 0.1175
-Brandon Holt 3:2 Roberto Bautista Agut 0.1364
-Brandon Holt 2:3 Roberto Bautista Agut 0.1701
-Brandon Holt 1:3 Roberto Bautista Agut 0.2518
-Brandon Holt 0:3 Roberto Bautista Agut 0.2432
+Aleksandar Kovacevic 3:0 Karen Khachanov 0.1551
+Aleksandar Kovacevic 3:1 Karen Khachanov 0.1731
+Aleksandar Kovacevic 3:2 Karen Khachanov 0.1522
+Aleksandar Kovacevic 2:3 Karen Khachanov 0.1511
+Aleksandar Kovacevic 1:3 Karen Khachanov 0.1829
+Aleksandar Kovacevic 0:3 Karen Khachanov 0.1856
 
 
 
-Pablo Carreno Busta  2:3  Benjamin Bonzi    ❗    ❌
+Gael Monfils  0:3  Tomas Martin Etcheverry    ❗    ❌
 
-1.36    3.20
+1.73    2.10
 
-Pablo Carreno Busta 3:0 Benjamin Bonzi 0.2296
-Pablo Carreno Busta 3:1 Benjamin Bonzi 0.2116
-Pablo Carreno Busta 3:2 Benjamin Bonzi 0.1524
-Pablo Carreno Busta 2:3 Benjamin Bonzi 0.1336
-Pablo Carreno Busta 1:3 Benjamin Bonzi 0.1438
-Pablo Carreno Busta 0:3 Benjamin Bonzi 0.129
+Gael Monfils 3:0 Tomas Martin Etcheverry 0.1824
+Gael Monfils 3:1 Tomas Martin Etcheverry 0.2076
+Gael Monfils 3:2 Tomas Martin Etcheverry 0.1658
+Gael Monfils 2:3 Tomas Martin Etcheverry 0.1496
+Gael Monfils 1:3 Tomas Martin Etcheverry 0.1658
+Gael Monfils 0:3 Tomas Martin Etcheverry 0.1288
+
+
+
+Pavel Kotov  1:3  Flavio Cobolli    ❗    ❌
+
+1.57    2.38
+
+Pavel Kotov 3:0 Flavio Cobolli 0.2828
+Pavel Kotov 3:1 Flavio Cobolli 0.2548
+Pavel Kotov 3:2 Flavio Cobolli 0.1632
+Pavel Kotov 2:3 Flavio Cobolli 0.1074
+Pavel Kotov 1:3 Flavio Cobolli 0.1080
+Pavel Kotov 0:3 Flavio Cobolli 0.0838
+
+
+
+Sebastian Korda  3:0  Quentin Halys    ✔
+
+1.25    4.00
+
+Sebastian Korda 3:0 Quentin Halys 0.2474
+Sebastian Korda 3:1 Quentin Halys 0.2220
+Sebastian Korda 3:2 Quentin Halys 0.1530
+Sebastian Korda 2:3 Quentin Halys 0.1274
+Sebastian Korda 1:3 Quentin Halys 0.1412
+Sebastian Korda 0:3 Quentin Halys 0.1090
+
+
+
+Lorenzo Musetti  2:3  Luca Van Assche    ❗    ✔
+
+1.44    2.75
+
+Lorenzo Musetti 3:0 Luca Van Assche 0.1357
+Lorenzo Musetti 3:1 Luca Van Assche 0.1488
+Lorenzo Musetti 3:2 Luca Van Assche 0.1356
+Lorenzo Musetti 2:3 Luca Van Assche 0.1379
+Lorenzo Musetti 1:3 Luca Van Assche 0.2083
+Lorenzo Musetti 0:3 Luca Van Assche 0.2337
+
+
+
+Adrian Mannarino  3:2  Jaume Munar    ✔
+
+1.28    3.75
+
+Adrian Mannarino 3:0 Jaume Munar 0.3060
+Adrian Mannarino 3:1 Jaume Munar 0.2538
+Adrian Mannarino 3:2 Jaume Munar 0.1586
+Adrian Mannarino 2:3 Jaume Munar 0.1100
+Adrian Mannarino 1:3 Jaume Munar 0.1064
+Adrian Mannarino 0:3 Jaume Munar 0.0652
+
+
+
+Fabian Marozsan  3:0  Francisco Cerundolo    ✔
+
+1.61    2.30
+
+Fabian Marozsan 3:0 Francisco Cerundolo 0.3032
+Fabian Marozsan 3:1 Francisco Cerundolo 0.2226
+Fabian Marozsan 3:2 Francisco Cerundolo 0.1464
+Fabian Marozsan 2:3 Francisco Cerundolo 0.1074
+Fabian Marozsan 1:3 Francisco Cerundolo 0.1200
+Fabian Marozsan 0:3 Francisco Cerundolo 0.1004
 
 
 
 
 #### Day 3
 
+
 **Australian Open**
 
-Rafael Nadal  0:3  Mackenzie Mcdonald    ❗    ✔
+Holger Rune  3:1  Yoshihito Nishioka    ✔
 
-1.07    9.00
+1.11    6.50
 
-Rafael Nadal 3:0 Mackenzie Mcdonald 0.1719
-Rafael Nadal 3:1 Mackenzie Mcdonald 0.1842
-Rafael Nadal 3:2 Mackenzie Mcdonald 0.1425
-Rafael Nadal 2:3 Mackenzie Mcdonald 0.1378
-Rafael Nadal 1:3 Mackenzie Mcdonald 0.1811
-Rafael Nadal 0:3 Mackenzie Mcdonald 0.1825
-
-
-
-Stefanos Tsitsipas  3:0  Rinky Hijikata    ✔
-
-1.05    11.00
-
-Stefanos Tsitsipas 3:0 Rinky Hijikata 0.3238
-Stefanos Tsitsipas 3:1 Rinky Hijikata 0.265
-Stefanos Tsitsipas 3:2 Rinky Hijikata 0.1618
-Stefanos Tsitsipas 2:3 Rinky Hijikata 0.1046
-Stefanos Tsitsipas 1:3 Rinky Hijikata 0.0886
-Stefanos Tsitsipas 0:3 Rinky Hijikata 0.0562
+Holger Rune 3:0 Yoshihito Nishioka 0.2744
+Holger Rune 3:1 Yoshihito Nishioka 0.2202
+Holger Rune 3:2 Yoshihito Nishioka 0.1444
+Holger Rune 2:3 Yoshihito Nishioka 0.1138
+Holger Rune 1:3 Yoshihito Nishioka 0.1332
+Holger Rune 0:3 Yoshihito Nishioka 0.1140
 
 
 
-Alex Molcan  2:3  Felix Auger-Aliassime    ✔
-
-11.00    1.05
-
-Alex Molcan 3:0 Felix Auger-Aliassime 0.051
-Alex Molcan 3:1 Felix Auger-Aliassime 0.0768
-Alex Molcan 3:2 Felix Auger-Aliassime 0.0814
-Alex Molcan 2:3 Felix Auger-Aliassime 0.1396
-Alex Molcan 1:3 Felix Auger-Aliassime 0.2716
-Alex Molcan 0:3 Felix Auger-Aliassime 0.3796
-
-
-
-John Millman  0:3  Daniil Medvedev    ✔
+Richard Gasquet  0:3  Carlos Alcaraz    ✔
 
 19.00    1.02
 
-John Millman 3:0 Daniil Medvedev 0.0734
-John Millman 3:1 Daniil Medvedev 0.0912
-John Millman 3:2 Daniil Medvedev 0.104
-John Millman 2:3 Daniil Medvedev 0.1664
-John Millman 1:3 Daniil Medvedev 0.2496
-John Millman 0:3 Daniil Medvedev 0.3154
+Richard Gasquet 3:0 Carlos Alcaraz 0.0818
+Richard Gasquet 3:1 Carlos Alcaraz 0.1108
+Richard Gasquet 3:2 Carlos Alcaraz 0.1078
+Richard Gasquet 2:3 Carlos Alcaraz 0.1480
+Richard Gasquet 1:3 Carlos Alcaraz 0.2444
+Richard Gasquet 0:3 Carlos Alcaraz 0.3072
 
 
 
-Tomas Martin Etcheverry  0:3  Jannik Sinner    ✔
+Albert Ramos-Vinolas  0:3  Casper Ruud    ✔
 
-13.00    1.04
+15.00    1.03
 
-Tomas Martin Etcheverry 3:0 Jannik Sinner 0.0728
-Tomas Martin Etcheverry 3:1 Jannik Sinner 0.097
-Tomas Martin Etcheverry 3:2 Jannik Sinner 0.0946
-Tomas Martin Etcheverry 2:3 Jannik Sinner 0.1468
-Tomas Martin Etcheverry 1:3 Jannik Sinner 0.2416
-Tomas Martin Etcheverry 0:3 Jannik Sinner 0.3472
-
-
-
-Shang Jun Cheng  0:3  Frances Tiafoe
-
-5.50    1.14
-
-lack of data.
+Albert Ramos-Vinolas 3:0 Casper Ruud 0.0522
+Albert Ramos-Vinolas 3:1 Casper Ruud 0.0748
+Albert Ramos-Vinolas 3:2 Casper Ruud 0.0804
+Albert Ramos-Vinolas 2:3 Casper Ruud 0.1494
+Albert Ramos-Vinolas 1:3 Casper Ruud 0.2696
+Albert Ramos-Vinolas 0:3 Casper Ruud 0.3736
 
 
 
-Karen Khachanov  3:1  Jason Kubler    ✔
+Alexander Zverev  3:1  Dominik Koepfer    ✔
 
-1.30    3.50
+1.08    8.00
 
-Karen Khachanov 3:0 Jason Kubler 0.2136
-Karen Khachanov 3:1 Jason Kubler 0.2002
-Karen Khachanov 3:2 Jason Kubler 0.1474
-Karen Khachanov 2:3 Jason Kubler 0.1432
-Karen Khachanov 1:3 Jason Kubler 0.1528
-Karen Khachanov 0:3 Jason Kubler 0.1428
-
-
-
-Thanasi Kokkinakis  3:0  Fabio Fognini    ✔
-
-1.14    5.50
-
-Thanasi Kokkinakis 3:0 Fabio Fognini 0.4182
-Thanasi Kokkinakis 3:1 Fabio Fognini 0.2636
-Thanasi Kokkinakis 3:2 Fabio Fognini 0.1372
-Thanasi Kokkinakis 2:3 Fabio Fognini 0.0726
-Thanasi Kokkinakis 1:3 Fabio Fognini 0.0688
-Thanasi Kokkinakis 0:3 Fabio Fognini 0.0396
+Alexander Zverev 3:0 Dominik Koepfer 0.2486
+Alexander Zverev 3:1 Dominik Koepfer 0.2218
+Alexander Zverev 3:2 Dominik Koepfer 0.1582
+Alexander Zverev 2:3 Dominik Koepfer 0.1348
+Alexander Zverev 1:3 Dominik Koepfer 0.1326
+Alexander Zverev 0:3 Dominik Koepfer 0.1040
 
 
 
-Cameron Norrie  3:1  Constant Lestienne    ✔
+Grigor Dimitrov  3:1  Marton Fucsovics    ✔
 
-1.11    6.50
+1.17    5.00
 
-Cameron Norrie 3:0 Constant Lestienne 0.3634
-Cameron Norrie 3:1 Constant Lestienne 0.2428
-Cameron Norrie 3:2 Constant Lestienne 0.1506
-Cameron Norrie 2:3 Constant Lestienne 0.0926
-Cameron Norrie 1:3 Constant Lestienne 0.0868
-Cameron Norrie 0:3 Constant Lestienne 0.0638
-
-
-
-Aleksandar Vukic  2:3  Brandon Holt    ❗    ✔
-
-1.61    2.30
-
-Aleksandar Vukic 3:0 Brandon Holt 0.1228
-Aleksandar Vukic 3:1 Brandon Holt 0.152
-Aleksandar Vukic 3:2 Brandon Holt 0.1334
-Aleksandar Vukic 2:3 Brandon Holt 0.1594
-Aleksandar Vukic 1:3 Brandon Holt 0.2162
-Aleksandar Vukic 0:3 Brandon Holt 0.2162
+Grigor Dimitrov 3:0 Marton Fucsovics 0.3682
+Grigor Dimitrov 3:1 Marton Fucsovics 0.2686
+Grigor Dimitrov 3:2 Marton Fucsovics 0.1454
+Grigor Dimitrov 2:3 Marton Fucsovics 0.0846
+Grigor Dimitrov 1:3 Marton Fucsovics 0.0768
+Grigor Dimitrov 0:3 Marton Fucsovics 0.0564
 
 
 
-Taro Daniel  0:3  Denis Shapovalov    ✔
-
-4.50    1.20
-
-Taro Daniel 3:0 Denis Shapovalov 0.1174
-Taro Daniel 3:1 Denis Shapovalov 0.1392
-Taro Daniel 3:2 Denis Shapovalov 0.1356
-Taro Daniel 2:3 Denis Shapovalov 0.1612
-Taro Daniel 1:3 Denis Shapovalov 0.215
-Taro Daniel 0:3 Denis Shapovalov 0.2316
-
-
-
-John Isner  1:3  Adrian Mannarino    ❗    ❌
+Sebastian Ofner  2:3  Thanasi Kokkinakis    ❗    ❌
 
 1.80    2.00
 
-John Isner 3:0 Adrian Mannarino 0.1976
-John Isner 3:1 Adrian Mannarino 0.2038
-John Isner 3:2 Adrian Mannarino 0.1448
-John Isner 2:3 Adrian Mannarino 0.1338
-John Isner 1:3 Adrian Mannarino 0.17
-John Isner 0:3 Adrian Mannarino 0.15
+Sebastian Ofner 3:0 Thanasi Kokkinakis 0.1920
+Sebastian Ofner 3:1 Thanasi Kokkinakis 0.2002
+Sebastian Ofner 3:2 Thanasi Kokkinakis 0.1612
+Sebastian Ofner 2:3 Thanasi Kokkinakis 0.1486
+Sebastian Ofner 1:3 Thanasi Kokkinakis 0.1642
+Sebastian Ofner 0:3 Thanasi Kokkinakis 0.1338
 
 
 
-Hubert Hurkacz  3:2  Lorenzo Sonego    ✔
+Max Purcell  3:1  Mate Valkusz
 
-1.25    4.00
+1.28    3.75
 
-Hubert Hurkacz 3:0 Lorenzo Sonego 0.2248
-Hubert Hurkacz 3:1 Lorenzo Sonego 0.2204
-Hubert Hurkacz 3:2 Lorenzo Sonego 0.158
-Hubert Hurkacz 2:3 Lorenzo Sonego 0.1368
-Hubert Hurkacz 1:3 Lorenzo Sonego 0.1412
-Hubert Hurkacz 0:3 Lorenzo Sonego 0.1188
+lack of data.
 
 
 
-Richard Gasquet  0:3  Ugo Humbert    ❗    ❌
 
-1.67    2.20
+Tommy Paul  3:0  Gregoire Barrere    ✔
 
-Richard Gasquet 3:0 Ugo Humbert 0.3896
-Richard Gasquet 3:1 Ugo Humbert 0.2556
-Richard Gasquet 3:2 Ugo Humbert 0.1444
-Richard Gasquet 2:3 Ugo Humbert 0.0762
-Richard Gasquet 1:3 Ugo Humbert 0.0748
-Richard Gasquet 0:3 Ugo Humbert 0.0594
+1.08    8.00
+
+Tommy Paul 3:0 Gregoire Barrere 0.2126
+Tommy Paul 3:1 Gregoire Barrere 0.1870
+Tommy Paul 3:2 Gregoire Barrere 0.1512
+Tommy Paul 2:3 Gregoire Barrere 0.1296
+Tommy Paul 1:3 Gregoire Barrere 0.1648
+Tommy Paul 0:3 Gregoire Barrere 0.1548
 
 
 
-Joao Sousa  0:3  Roberto Bautista Agut    ✔
+Cameron Norrie  3:0  Juan Pablo Varillas    ✔
+
+1.10    7.00
+
+Cameron Norrie 3:0 Juan Pablo Varillas 0.2342
+Cameron Norrie 3:1 Juan Pablo Varillas 0.2176
+Cameron Norrie 3:2 Juan Pablo Varillas 0.1628
+Cameron Norrie 2:3 Juan Pablo Varillas 0.1374
+Cameron Norrie 1:3 Juan Pablo Varillas 0.1418
+Cameron Norrie 0:3 Juan Pablo Varillas 0.1062
+
+
+
+Mackenzie Mcdonald  2:3  Juncheng Shang    ❌
+
+2.20    1.67
+
+Mackenzie Mcdonald 3:0 Juncheng Shang 0.1770
+Mackenzie Mcdonald 3:1 Juncheng Shang 0.1888
+Mackenzie Mcdonald 3:2 Juncheng Shang 0.1474
+Mackenzie Mcdonald 2:3 Juncheng Shang 0.1380
+Mackenzie Mcdonald 1:3 Juncheng Shang 0.1817
+Mackenzie Mcdonald 0:3 Juncheng Shang 0.1671
+
+
+
+James Mccabe  1:3  Alex Michelsen
+
+5.00    1.17
+
+lack of data.
+
+
+
+
+Daniel Evans  1:3  Lorenzo Sonego    ✔
+
+2.00    1.80
+
+Daniel Evans 3:0 Lorenzo Sonego 0.1594
+Daniel Evans 3:1 Lorenzo Sonego 0.1768
+Daniel Evans 3:2 Lorenzo Sonego 0.1366
+Daniel Evans 2:3 Lorenzo Sonego 0.1556
+Daniel Evans 1:3 Lorenzo Sonego 0.1960
+Daniel Evans 0:3 Lorenzo Sonego 0.1756
+
+
+
+Dusan Lajovic  1:3  Giulio Zeppieri    ❗
+
+1.80    2.00
+
+lack of data.
+
+
+
+
+Alexander Bublik  0:3  Sumit Nagal    ❗
+
+1.17    5.00
+
+lack of data.
+
+
+
+
+Roman Safiullin  2:3  Tallon Griekspoor    ❗    ❌
+
+1.50    2.62
+
+Roman Safiullin 3:0 Tallon Griekspoor 0.1648
+Roman Safiullin 3:1 Tallon Griekspoor 0.1968
+Roman Safiullin 3:2 Tallon Griekspoor 0.1678
+Roman Safiullin 2:3 Tallon Griekspoor 0.1496
+Roman Safiullin 1:3 Tallon Griekspoor 0.1796
+Roman Safiullin 0:3 Tallon Griekspoor 0.1414
+
+
+
+Marcos Giron  2:3  Jack Draper    ✔
+
+3.50    1.30
+
+Marcos Giron 3:0 Jack Draper 0.0708
+Marcos Giron 3:1 Jack Draper 0.1078
+Marcos Giron 3:2 Jack Draper 0.1106
+Marcos Giron 2:3 Jack Draper 0.1644
+Marcos Giron 1:3 Jack Draper 0.2522
+Marcos Giron 0:3 Jack Draper 0.2942
+
+
+
+Arthur Fils  3:1  Jiri Vesely    ✔
+
+1.08    8.00
+
+Arthur Fils 3:0 Jiri Vesely 0.2948
+Arthur Fils 3:1 Jiri Vesely 0.2615
+Arthur Fils 3:2 Jiri Vesely 0.1567
+Arthur Fils 2:3 Jiri Vesely 0.1059
+Arthur Fils 1:3 Jiri Vesely 0.1057
+Arthur Fils 0:3 Jiri Vesely 0.0754
+
+
+
+Bernabe Zapata Miralles  0:3  Jiri Lehecka    ✔
 
 9.00    1.07
 
-Joao Sousa 3:0 Roberto Bautista Agut 0.0358
-Joao Sousa 3:1 Roberto Bautista Agut 0.0592
-Joao Sousa 3:2 Roberto Bautista Agut 0.0724
-Joao Sousa 2:3 Roberto Bautista Agut 0.139
-Joao Sousa 1:3 Roberto Bautista Agut 0.2698
-Joao Sousa 0:3 Roberto Bautista Agut 0.4238
+Bernabe Zapata Miralles 3:0 Jiri Lehecka 0.0332
+Bernabe Zapata Miralles 3:1 Jiri Lehecka 0.0526
+Bernabe Zapata Miralles 3:2 Jiri Lehecka 0.0578
+Bernabe Zapata Miralles 2:3 Jiri Lehecka 0.1146
+Bernabe Zapata Miralles 1:3 Jiri Lehecka 0.2346
+Bernabe Zapata Miralles 0:3 Jiri Lehecka 0.5072
 
 
 
-Enzo Couacaud  3:0  Hugo Dellien
-
-1.11    6.50
-
-lack of data.
-
-
-
-
-Christopher Eubanks  1:3  Jiri Lehecka    ✔
-
-2.75    1.44
-
-Christopher Eubanks 3:0 Jiri Lehecka 0.1044
-Christopher Eubanks 3:1 Jiri Lehecka 0.138
-Christopher Eubanks 3:2 Jiri Lehecka 0.1384
-Christopher Eubanks 2:3 Jiri Lehecka 0.1658
-Christopher Eubanks 1:3 Jiri Lehecka 0.2364
-Christopher Eubanks 0:3 Jiri Lehecka 0.217
-
-
-
-Max Purcell  1:3  Emil Ruusuvuori
-
-3.40    1.33
-
-lack of data.
-
-
-
-
-Dalibor Svrcina  0:3  Yoshihito Nishioka
-
-4.00    1.25
-
-lack of data.
-
-
-
-
-Sebastian Korda  3:0  Yosuke Watanuki
-
-1.22    4.33
-
-lack of data.
-
-
-
-Denis Kudla  3:1  Roman Safiullin    ❗    ❌
+Soon Woo Kwon  1:3  Lukas Klein
 
 3.20    1.36
 
-Denis Kudla 3:0 Roman Safiullin 0.0772
-Denis Kudla 3:1 Roman Safiullin 0.1096
-Denis Kudla 3:2 Roman Safiullin 0.1158
-Denis Kudla 2:3 Roman Safiullin 0.1604
-Denis Kudla 1:3 Roman Safiullin 0.2472
-Denis Kudla 0:3 Roman Safiullin 0.2898
+lack of data.
 
 
 
-Tallon Griekspoor  3:0  Botic Van De Zandschulp    ❗    ❌
+Laslo Djere  2:3  Arthur Cazaux    ❗
 
-2.00    1.80
+1.67    2.20
 
-Tallon Griekspoor 3:0 Botic Van De Zandschulp 0.1539
-Tallon Griekspoor 3:1 Botic Van De Zandschulp 0.1709
-Tallon Griekspoor 3:2 Botic Van De Zandschulp 0.1362
-Tallon Griekspoor 2:3 Botic Van De Zandschulp 0.1553
-Tallon Griekspoor 1:3 Botic Van De Zandschulp 0.1965
-Tallon Griekspoor 0:3 Botic Van De Zandschulp 0.1872
+lack of data.
 
-
-
-Maxime Cressy  3:1  Albert Ramos-Vinolas    ❌
-
-1.36    3.20
-
-Maxime Cressy 3:0 Albert Ramos-Vinolas 0.15
-Maxime Cressy 3:1 Albert Ramos-Vinolas 0.185
-Maxime Cressy 3:2 Albert Ramos-Vinolas 0.1506
-Maxime Cressy 2:3 Albert Ramos-Vinolas 0.1546
-Maxime Cressy 1:3 Albert Ramos-Vinolas 0.1908
-Maxime Cressy 0:3 Albert Ramos-Vinolas 0.169
-
-
-
-Michael Mmoh  3:2  Laurent Lokoli    ❌
-
-1.57    2.38
-
-Michael Mmoh 3:0 Laurent Lokoli 0.129
-Michael Mmoh 3:1 Laurent Lokoli 0.114
-Michael Mmoh 3:2 Laurent Lokoli 0.0927
-Michael Mmoh 2:3 Laurent Lokoli 0.1195
-Michael Mmoh 1:3 Laurent Lokoli 0.203
-Michael Mmoh 0:3 Laurent Lokoli 0.3418
-
-
-
-Lloyd Harris  1:3  Marton Fucsovics    ❌
-
-2.00    1.80
-
-Lloyd Harris 3:0 Marton Fucsovics 0.1684
-Lloyd Harris 3:1 Marton Fucsovics 0.2018
-Lloyd Harris 3:2 Marton Fucsovics 0.1694
-Lloyd Harris 2:3 Marton Fucsovics 0.1586
-Lloyd Harris 1:3 Marton Fucsovics 0.1684
-Lloyd Harris 0:3 Marton Fucsovics 0.1334
-
-
-
-Francisco Cerundolo  3:1  Corentin Moutet    ❌
-
-1.91    1.91
-
-Francisco Cerundolo 3:0 Corentin Moutet 0.1364
-Francisco Cerundolo 3:1 Corentin Moutet 0.1573
-Francisco Cerundolo 3:2 Corentin Moutet 0.1479
-Francisco Cerundolo 2:3 Corentin Moutet 0.1651
-Francisco Cerundolo 1:3 Corentin Moutet 0.2076
-Francisco Cerundolo 0:3 Corentin Moutet 0.1857
 
 
 
 
 #### Day 2
 
+
 **Australian Open**
 
-Matteo Berrettini  2:3  Andy Murray    ❗    ❌
+Zizou Bergs  1:3  Stefanos Tsitsipas    ✔
 
-1.25    4.00
+3.50    1.30
 
-Matteo Berrettini 3:0 Andy Murray 0.258
-Matteo Berrettini 3:1 Andy Murray 0.2472
-Matteo Berrettini 3:2 Andy Murray 0.1714
-Matteo Berrettini 2:3 Andy Murray 0.116
-Matteo Berrettini 1:3 Andy Murray 0.1262
-Matteo Berrettini 0:3 Andy Murray 0.0812
-
-
-
-Roberto Carballes Baena  0:3  Novak Djokovic    ✔
-
-29.00    1.01
-
-Roberto Carballes Baena 3:0 Novak Djokovic 0.0338
-Roberto Carballes Baena 3:1 Novak Djokovic 0.055
-Roberto Carballes Baena 3:2 Novak Djokovic 0.0598
-Roberto Carballes Baena 2:3 Novak Djokovic 0.1262
-Roberto Carballes Baena 1:3 Novak Djokovic 0.2474
-Roberto Carballes Baena 0:3 Novak Djokovic 0.4778
+Zizou Bergs 3:0 Stefanos Tsitsipas 0.0838
+Zizou Bergs 3:1 Stefanos Tsitsipas 0.1179
+Zizou Bergs 3:2 Stefanos Tsitsipas 0.1162
+Zizou Bergs 2:3 Stefanos Tsitsipas 0.1778
+Zizou Bergs 1:3 Stefanos Tsitsipas 0.2522
+Zizou Bergs 0:3 Stefanos Tsitsipas 0.2521
 
 
 
-Juan Pablo Varillas  2:3  Alexander Zverev
+Alex De Minaur  1:1 (RET)  Milos Raonic    ✔
 
-10.00    1.06
+1.12    6.00
 
-lack of data.
-
-
-
-
-Tomas Machac  1:3  Casper Ruud    ✔
-
-5.00    1.17
-
-Tomas Machac 3:0 Casper Ruud 0.0848
-Tomas Machac 3:1 Casper Ruud 0.1282
-Tomas Machac 3:2 Casper Ruud 0.119
-Tomas Machac 2:3 Casper Ruud 0.168
-Tomas Machac 1:3 Casper Ruud 0.2494
-Tomas Machac 0:3 Casper Ruud 0.2506
+Alex De Minaur 3:0 Milos Raonic 0.1800
+Alex De Minaur 3:1 Milos Raonic 0.1760
+Alex De Minaur 3:2 Milos Raonic 0.1504
+Alex De Minaur 2:3 Milos Raonic 0.1386
+Alex De Minaur 1:3 Milos Raonic 0.1850
+Alex De Minaur 0:3 Milos Raonic 0.1700
 
 
 
-Andrey Rublev  3:0  Dominic Thiem    ✔
+Terence Atmane  1:2  Daniil Medvedev    ✔
 
-1.22    4.33
+21.00    1.01
 
-Andrey Rublev 3:0 Dominic Thiem 0.1848
-Andrey Rublev 3:1 Dominic Thiem 0.1848
-Andrey Rublev 3:2 Dominic Thiem 0.1396
-Andrey Rublev 2:3 Dominic Thiem 0.139
-Andrey Rublev 1:3 Dominic Thiem 0.1776
-Andrey Rublev 0:3 Dominic Thiem 0.1742
-
-
-
-Taylor Fritz  3:1  Nikoloz Basilashvili    ✔
-
-1.02    17.00
-
-Taylor Fritz 3:0 Nikoloz Basilashvili 0.605
-Taylor Fritz 3:1 Nikoloz Basilashvili 0.2254
-Taylor Fritz 3:2 Nikoloz Basilashvili 0.081
-Taylor Fritz 2:3 Nikoloz Basilashvili 0.0356
-Taylor Fritz 1:3 Nikoloz Basilashvili 0.033
-Taylor Fritz 0:3 Nikoloz Basilashvili 0.02
+Terence Atmane 3:0 Daniil Medvedev 0.0835
+Terence Atmane 3:1 Daniil Medvedev 0.1148
+Terence Atmane 3:2 Daniil Medvedev 0.1143
+Terence Atmane 2:3 Daniil Medvedev 0.1658
+Terence Atmane 1:3 Daniil Medvedev 0.2429
+Terence Atmane 0:3 Daniil Medvedev 0.2787
 
 
 
-Hsu Yu Hsiou  0:3  Alex De Minaur
+Felix Auger-Aliassime  3:2  Dominic Thiem    ✔
 
-13.00    1.04
+1.50    2.62
+
+Felix Auger-Aliassime 3:0 Dominic Thiem 0.2222
+Felix Auger-Aliassime 3:1 Dominic Thiem 0.2244
+Felix Auger-Aliassime 3:2 Dominic Thiem 0.1630
+Felix Auger-Aliassime 2:3 Dominic Thiem 0.1392
+Felix Auger-Aliassime 1:3 Dominic Thiem 0.1406
+Felix Auger-Aliassime 0:3 Dominic Thiem 0.1106
+
+
+
+Alexei Popyrin  3:0  Marc Polmans
+
+1.20    4.50
 
 lack of data.
 
 
 
 
-Filip Krajinovic  0:3  Holger Rune    ✔
+Omar Jasika  0:3  Hubert Hurkacz
 
-5.50    1.14
+19.00    1.02
 
-Filip Krajinovic 3:0 Holger Rune 0.076
-Filip Krajinovic 3:1 Holger Rune 0.098
-Filip Krajinovic 3:2 Holger Rune 0.1042
-Filip Krajinovic 2:3 Holger Rune 0.159
-Filip Krajinovic 1:3 Holger Rune 0.2562
-Filip Krajinovic 0:3 Holger Rune 0.3066
+lack of data.
 
 
 
-Grigor Dimitrov  3:0  Aslan Karatsev    ✔
 
-1.44    2.75
+Adrian Mannarino  3:2  Stan Wawrinka    ✔
 
-Grigor Dimitrov 3:0 Aslan Karatsev 0.274
-Grigor Dimitrov 3:1 Aslan Karatsev 0.2112
-Grigor Dimitrov 3:2 Aslan Karatsev 0.1442
-Grigor Dimitrov 2:3 Aslan Karatsev 0.1094
-Grigor Dimitrov 1:3 Aslan Karatsev 0.1396
-Grigor Dimitrov 0:3 Aslan Karatsev 0.1216
+1.40    3.00
 
-
-
-J.J. Wolf  3:1  Jordan Thompson    ✔
-
-1.57    2.38
-
-J.J. Wolf 3:0 Jordan Thompson 0.1774
-J.J. Wolf 3:1 Jordan Thompson 0.1935
-J.J. Wolf 3:2 Jordan Thompson 0.1555
-J.J. Wolf 2:3 Jordan Thompson 0.1471
-J.J. Wolf 1:3 Jordan Thompson 0.173
-J.J. Wolf 0:3 Jordan Thompson 0.1535
+Adrian Mannarino 3:0 Stan Wawrinka 0.1910
+Adrian Mannarino 3:1 Stan Wawrinka 0.1872
+Adrian Mannarino 3:2 Stan Wawrinka 0.1556
+Adrian Mannarino 2:3 Stan Wawrinka 0.1440
+Adrian Mannarino 1:3 Stan Wawrinka 0.1748
+Adrian Mannarino 0:3 Stan Wawrinka 0.1474
 
 
 
-Tseng Chun Hsin  2:3  Alexei Popyrin    ✔
+Andy Murray  0:3  Tomas Martin Etcheverry    ❗    ✔
 
-5.00    1.17
+1.67    2.20
 
-Tseng Chun Hsin 3:0 Alexei Popyrin 0.074
-Tseng Chun Hsin 3:1 Alexei Popyrin 0.1008
-Tseng Chun Hsin 3:2 Alexei Popyrin 0.1058
-Tseng Chun Hsin 2:3 Alexei Popyrin 0.1518
-Tseng Chun Hsin 1:3 Alexei Popyrin 0.2556
-Tseng Chun Hsin 0:3 Alexei Popyrin 0.312
-
-
-
-Jan-Lennard Struff  0:3  Tommy Paul    ✔
-
-3.00    1.40
-
-Jan-Lennard Struff 3:0 Tommy Paul 0.1
-Jan-Lennard Struff 3:1 Tommy Paul 0.1234
-Jan-Lennard Struff 3:2 Tommy Paul 0.1088
-Jan-Lennard Struff 2:3 Tommy Paul 0.1552
-Jan-Lennard Struff 1:3 Tommy Paul 0.2228
-Jan-Lennard Struff 0:3 Tommy Paul 0.2898
+Andy Murray 3:0 Tomas Martin Etcheverry 0.1132
+Andy Murray 3:1 Tomas Martin Etcheverry 0.1436
+Andy Murray 3:2 Tomas Martin Etcheverry 0.1476
+Andy Murray 2:3 Tomas Martin Etcheverry 0.1680
+Andy Murray 1:3 Tomas Martin Etcheverry 0.2236
+Andy Murray 0:3 Tomas Martin Etcheverry 0.2040
 
 
 
-Nicolas Jarry  3:0  Miomir Kecmanovic    ❗    ❌
+Roberto Bautista Agut  0:3  Ben Shelton    ✔
 
-3.40    1.33
+3.50    1.30
 
-Nicolas Jarry 3:0 Miomir Kecmanovic 0.1243
-Nicolas Jarry 3:1 Miomir Kecmanovic 0.1251
-Nicolas Jarry 3:2 Miomir Kecmanovic 0.1153
-Nicolas Jarry 2:3 Miomir Kecmanovic 0.1531
-Nicolas Jarry 1:3 Miomir Kecmanovic 0.2158
-Nicolas Jarry 0:3 Miomir Kecmanovic 0.2664
+Roberto Bautista Agut 3:0 Ben Shelton 0.1252
+Roberto Bautista Agut 3:1 Ben Shelton 0.1648
+Roberto Bautista Agut 3:2 Ben Shelton 0.1390
+Roberto Bautista Agut 2:3 Ben Shelton 0.1584
+Roberto Bautista Agut 1:3 Ben Shelton 0.2164
+Roberto Bautista Agut 0:3 Ben Shelton 0.1962
 
 
 
-Christopher O'connell  1:3  Jenson Brooksby    ✔
+Daniel Altmaier  1:3  Karen Khachanov    ✔
+
+4.00    1.25
+
+Daniel Altmaier 3:0 Karen Khachanov 0.0818
+Daniel Altmaier 3:1 Karen Khachanov 0.1082
+Daniel Altmaier 3:2 Karen Khachanov 0.1104
+Daniel Altmaier 2:3 Karen Khachanov 0.1596
+Daniel Altmaier 1:3 Karen Khachanov 0.2424
+Daniel Altmaier 0:3 Karen Khachanov 0.2976
+
+
+
+Aleksandar Vukic  2:3  Jordan Thompson    ✔
 
 3.00    1.40
 
-Christopher O'connell 3:0 Jenson Brooksby 0.1621
-Christopher O'connell 3:1 Jenson Brooksby 0.1767
-Christopher O'connell 3:2 Jenson Brooksby 0.1548
-Christopher O'connell 2:3 Jenson Brooksby 0.1664
-Christopher O'connell 1:3 Jenson Brooksby 0.19
-Christopher O'connell 0:3 Jenson Brooksby 0.15
+Aleksandar Vukic 3:0 Jordan Thompson 0.1168
+Aleksandar Vukic 3:1 Jordan Thompson 0.1508
+Aleksandar Vukic 3:2 Jordan Thompson 0.1316
+Aleksandar Vukic 2:3 Jordan Thompson 0.1610
+Aleksandar Vukic 1:3 Jordan Thompson 0.2148
+Aleksandar Vukic 0:3 Jordan Thompson 0.2250
 
 
 
-Facundo Bagnis  1:3  Daniel Evans    ✔
+Rinky Hijikata  2:3  Jan-Lennard Struff    ✔
 
-6.00    1.12
+2.20    1.67
 
-Facundo Bagnis 3:0 Daniel Evans 0.0958
-Facundo Bagnis 3:1 Daniel Evans 0.1302
-Facundo Bagnis 3:2 Daniel Evans 0.1342
-Facundo Bagnis 2:3 Daniel Evans 0.1718
-Facundo Bagnis 1:3 Daniel Evans 0.2408
-Facundo Bagnis 0:3 Daniel Evans 0.2272
-
-
-
-
-Pablo Carreno Busta  3:0  Pedro Cachin    ✔
-
-1.08    8.00
-
-Pablo Carreno Busta 3:0 Pedro Cachin 0.2882
-Pablo Carreno Busta 3:1 Pedro Cachin 0.2482
-Pablo Carreno Busta 3:2 Pedro Cachin 0.1566
-Pablo Carreno Busta 2:3 Pedro Cachin 0.1066
-Pablo Carreno Busta 1:3 Pedro Cachin 0.1078
-Pablo Carreno Busta 0:3 Pedro Cachin 0.0926
+Rinky Hijikata 3:0 Jan-Lennard Struff 0.1446
+Rinky Hijikata 3:1 Jan-Lennard Struff 0.1680
+Rinky Hijikata 3:2 Jan-Lennard Struff 0.1494
+Rinky Hijikata 2:3 Jan-Lennard Struff 0.1620
+Rinky Hijikata 1:3 Jan-Lennard Struff 0.1922
+Rinky Hijikata 0:3 Jan-Lennard Struff 0.1838
 
 
 
-Daniel Elahi Galan  1:3  Jeremy Chardy    ❗
+Patrick Kypson  1:3  Emil Ruusuvuori
+
+7.00    1.10
+
+lack of data.
+
+
+
+
+Alexandre Muller  2:3  Hugo Grenier    ❗
 
 1.36    3.20
 
@@ -1176,60 +1264,182 @@ lack of data.
 
 
 
-Zizou Bergs  1:3  Laslo Djere    ❌
 
-3.00    1.40
+James Duckworth  2:3  Luca Van Assche    ✔
 
-Zizou Bergs 3:0 Laslo Djere 0.1996
-Zizou Bergs 3:1 Laslo Djere 0.193
-Zizou Bergs 3:2 Laslo Djere 0.157
-Zizou Bergs 2:3 Laslo Djere 0.136
-Zizou Bergs 1:3 Laslo Djere 0.1698
-Zizou Bergs 0:3 Laslo Djere 0.1446
+2.10    1.73
 
-
-
-Ben Shelton  3:2  Zhang Zhi Zhen    ✔
-
-1.40    3.00
-
-Ben Shelton 3:0 Zhang Zhi Zhen 0.1818
-Ben Shelton 3:1 Zhang Zhi Zhen 0.2022
-Ben Shelton 3:2 Zhang Zhi Zhen 0.1536
-Ben Shelton 2:3 Zhang Zhi Zhen 0.1426
-Ben Shelton 1:3 Zhang Zhi Zhen 0.1672
-Ben Shelton 0:3 Zhang Zhi Zhen 0.1526
+James Duckworth 3:0 Luca Van Assche 0.1450
+James Duckworth 3:1 Luca Van Assche 0.1594
+James Duckworth 3:2 Luca Van Assche 0.1428
+James Duckworth 2:3 Luca Van Assche 0.1556
+James Duckworth 1:3 Luca Van Assche 0.2078
+James Duckworth 0:3 Luca Van Assche 0.1894
 
 
 
-Mattia Bellucci  1:3  Benjamin Bonzi
+Yannick Hanfmann  0:3  Gael Monfils    ✔
 
-3.20    1.36
+2.50    1.53
 
-lack of data.
+Yannick Hanfmann 3:0 Gael Monfils 0.1478
+Yannick Hanfmann 3:1 Gael Monfils 0.1717
+Yannick Hanfmann 3:2 Gael Monfils 0.1552
+Yannick Hanfmann 2:3 Gael Monfils 0.1591
+Yannick Hanfmann 1:3 Gael Monfils 0.1934
+Yannick Hanfmann 0:3 Gael Monfils 0.1728
 
 
 
+Denis Shapovalov  0:3  Jakub Mensik    ✔
 
-Alejandro Davidovich Fokina  3:2  Alexander Bublik    ✔
+2.38    1.57
+
+Denis Shapovalov 3:0 Jakub Mensik 0.1852
+Denis Shapovalov 3:1 Jakub Mensik 0.1640
+Denis Shapovalov 3:2 Jakub Mensik 0.1273
+Denis Shapovalov 2:3 Jakub Mensik 0.1345
+Denis Shapovalov 1:3 Jakub Mensik 0.1738
+Denis Shapovalov 0:3 Jakub Mensik 0.2152
+
+
+
+Zhizhen Zhang  3:0  Federico Coria    ✔
+
+1.06    10.00
+
+Zhizhen Zhang 3:0 Federico Coria 0.3092
+Zhizhen Zhang 3:1 Federico Coria 0.2453
+Zhizhen Zhang 3:2 Federico Coria 0.1594
+Zhizhen Zhang 2:3 Federico Coria 0.1070
+Zhizhen Zhang 1:3 Federico Coria 0.1084
+Zhizhen Zhang 0:3 Federico Coria 0.0707
+
+
+
+Constant Lestienne  0:3  Alejandro Davidovich Fokina    ✔
+
+4.50    1.20
+
+Constant Lestienne 3:0 Alejandro Davidovich Fokina 0.0666
+Constant Lestienne 3:1 Alejandro Davidovich Fokina 0.0888
+Constant Lestienne 3:2 Alejandro Davidovich Fokina 0.0906
+Constant Lestienne 2:3 Alejandro Davidovich Fokina 0.1536
+Constant Lestienne 1:3 Alejandro Davidovich Fokina 0.2508
+Constant Lestienne 0:3 Alejandro Davidovich Fokina 0.3496
+
+
+
+Ugo Humbert  3:1  David Goffin    ✔
+
+1.36    3.20
+
+Ugo Humbert 3:0 David Goffin 0.2948
+Ugo Humbert 3:1 David Goffin 0.2220
+Ugo Humbert 3:2 David Goffin 0.1380
+Ugo Humbert 2:3 David Goffin 0.1130
+Ugo Humbert 1:3 David Goffin 0.1322
+Ugo Humbert 0:3 David Goffin 0.1000
+
+
+
+Roberto Carballes Baena  1:3  Hugo Gaston    ❗    ❌
+
+1.67    2.20
+
+Roberto Carballes Baena 3:0 Hugo Gaston 0.2214
+Roberto Carballes Baena 3:1 Hugo Gaston 0.2078
+Roberto Carballes Baena 3:2 Hugo Gaston 0.1536
+Roberto Carballes Baena 2:3 Hugo Gaston 0.1326
+Roberto Carballes Baena 1:3 Hugo Gaston 0.1558
+Roberto Carballes Baena 0:3 Hugo Gaston 0.1288
+
+
+
+Maximilian Marterer  0:3  Nuno Borges    ❗    ❌
 
 1.80    2.00
 
-Alejandro Davidovich Fokina 3:0 Alexander Bublik 0.201
-Alejandro Davidovich Fokina 3:1 Alexander Bublik 0.1886
-Alejandro Davidovich Fokina 3:2 Alexander Bublik 0.1412
-Alejandro Davidovich Fokina 2:3 Alexander Bublik 0.1412
-Alejandro Davidovich Fokina 1:3 Alexander Bublik 0.1704
-Alejandro Davidovich Fokina 0:3 Alexander Bublik 0.1576
+Maximilian Marterer 3:0 Nuno Borges 0.2822
+Maximilian Marterer 3:1 Nuno Borges 0.2274
+Maximilian Marterer 3:2 Nuno Borges 0.1512
+Maximilian Marterer 2:3 Nuno Borges 0.1114
+Maximilian Marterer 1:3 Nuno Borges 0.1192
+Maximilian Marterer 0:3 Nuno Borges 0.1086
 
 
 
+Flavio Cobolli  3:2  Nicolas Jarry    ❗    ❌
 
-Diego Schwartzman  3:1  Oleksii Krutykh
+4.00    1.25
 
-1.50    2.62
+Flavio Cobolli 3:0 Nicolas Jarry 0.0416
+Flavio Cobolli 3:1 Nicolas Jarry 0.0636
+Flavio Cobolli 3:2 Nicolas Jarry 0.0784
+Flavio Cobolli 2:3 Nicolas Jarry 0.1332
+Flavio Cobolli 1:3 Nicolas Jarry 0.2660
+Flavio Cobolli 0:3 Nicolas Jarry 0.4172
+
+
+
+Christopher Eubanks  3:0  Taro Daniel    ❗    ❌
+
+2.00    1.80
+
+Christopher Eubanks 3:0 Taro Daniel 0.1202
+Christopher Eubanks 3:1 Taro Daniel 0.1474
+Christopher Eubanks 3:2 Taro Daniel 0.1296
+Christopher Eubanks 2:3 Taro Daniel 0.1596
+Christopher Eubanks 1:3 Taro Daniel 0.2330
+Christopher Eubanks 0:3 Taro Daniel 0.2102
+
+
+
+Lorenzo Musetti  3:1  Benjamin Bonzi    ❌
+
+1.44    2.75
+
+Lorenzo Musetti 3:0 Benjamin Bonzi 0.1040
+Lorenzo Musetti 3:1 Benjamin Bonzi 0.1308
+Lorenzo Musetti 3:2 Benjamin Bonzi 0.1184
+Lorenzo Musetti 2:3 Benjamin Bonzi 0.1452
+Lorenzo Musetti 1:3 Benjamin Bonzi 0.2250
+Lorenzo Musetti 0:3 Benjamin Bonzi 0.2766
+
+
+
+Miomir Kecmanovic  3:1  Yosuke Watanuki    ✔
+
+1.40    3.00
+
+Miomir Kecmanovic 3:0 Yosuke Watanuki 0.3322
+Miomir Kecmanovic 3:1 Yosuke Watanuki 0.2820
+Miomir Kecmanovic 3:2 Yosuke Watanuki 0.1368
+Miomir Kecmanovic 2:3 Yosuke Watanuki 0.0962
+Miomir Kecmanovic 1:3 Yosuke Watanuki 0.0902
+Miomir Kecmanovic 0:3 Yosuke Watanuki 0.0626
+
+
+
+Sebastian Korda  3:2  Vit Kopriva
+
+1.08    8.00
 
 lack of data.
+
+
+
+
+Alejandro Tabilo  2:3  Aleksandar Kovacevic    ❗    ❌
+
+1.80    2.00
+
+Alejandro Tabilo 3:0 Aleksandar Kovacevic 0.2004
+Alejandro Tabilo 3:1 Aleksandar Kovacevic 0.1992
+Alejandro Tabilo 3:2 Aleksandar Kovacevic 0.1470
+Alejandro Tabilo 2:3 Aleksandar Kovacevic 0.1286
+Alejandro Tabilo 1:3 Aleksandar Kovacevic 0.1622
+Alejandro Tabilo 0:3 Aleksandar Kovacevic 0.1626
 
 
 
@@ -1238,411 +1448,201 @@ lack of data.
 
 **Australian Open**
 
-Rafael Nadal  3:1  Jack Draper    ❌
-
-1.36    3.20
-
-Rafael Nadal 3:0 Jack Draper 0.1258
-Rafael Nadal 3:1 Jack Draper 0.1312
-Rafael Nadal 3:2 Jack Draper 0.129
-Rafael Nadal 2:3 Jack Draper 0.151
-Rafael Nadal 1:3 Jack Draper 0.2198
-Rafael Nadal 0:3 Jack Draper 0.2432
-
-
-
-Marcos Giron  0:3  Daniil Medvedev    ✔
-
-11.00    1.05
-
-Marcos Giron 3:0 Daniil Medvedev 0.119
-Marcos Giron 3:1 Daniil Medvedev 0.1404
-Marcos Giron 3:2 Daniil Medvedev 0.1302
-Marcos Giron 2:3 Daniil Medvedev 0.1544
-Marcos Giron 1:3 Daniil Medvedev 0.2174
-Marcos Giron 0:3 Daniil Medvedev 0.2386
-
-
-
-Hubert Hurkacz  3:0  Pedro Martinez    ✔
+Jannik Sinner  3:0  Botic Van De Zandschulp    ✔
 
 1.06    10.00
 
-Hubert Hurkacz 3:0 Pedro Martinez 0.346
-Hubert Hurkacz 3:1 Pedro Martinez 0.257
-Hubert Hurkacz 3:2 Pedro Martinez 0.1664
-Hubert Hurkacz 2:3 Pedro Martinez 0.0924
-Hubert Hurkacz 1:3 Pedro Martinez 0.091
-Hubert Hurkacz 0:3 Pedro Martinez 0.0472
+Jannik Sinner 3:0 Botic Van De Zandschulp 0.2682
+Jannik Sinner 3:1 Botic Van De Zandschulp 0.2294
+Jannik Sinner 3:2 Botic Van De Zandschulp 0.1514
+Jannik Sinner 2:3 Botic Van De Zandschulp 0.1200
+Jannik Sinner 1:3 Botic Van De Zandschulp 0.1282
+Jannik Sinner 0:3 Botic Van De Zandschulp 0.1028
 
 
 
-Stefanos Tsitsipas  3:0  Quentin Halys    ✔
+Novak Djokovic  2:1  Dino Prizmic
 
-1.17    5.00
-
-Stefanos Tsitsipas 3:0 Quentin Halys 0.3738
-Stefanos Tsitsipas 3:1 Quentin Halys 0.2444
-Stefanos Tsitsipas 3:2 Quentin Halys 0.126
-Stefanos Tsitsipas 2:3 Quentin Halys 0.0908
-Stefanos Tsitsipas 1:3 Quentin Halys 0.0892
-Stefanos Tsitsipas 0:3 Quentin Halys 0.0758
-
-
-
-Kyle Edmund  0:3  Jannik Sinner    ✔
-
-10.00    1.06
-
-Kyle Edmund 3:0 Jannik Sinner 0.0486
-Kyle Edmund 3:1 Jannik Sinner 0.0642
-Kyle Edmund 3:2 Jannik Sinner 0.0676
-Kyle Edmund 2:3 Jannik Sinner 0.099
-Kyle Edmund 1:3 Jannik Sinner 0.2176
-Kyle Edmund 0:3 Jannik Sinner 0.503
-
-
-
-Sebastian Baez  0:3  Jason Kubler    ✔
-
-3.20    1.36
-
-Sebastian Baez 3:0 Jason Kubler 0.0526
-Sebastian Baez 3:1 Jason Kubler 0.0736
-Sebastian Baez 3:2 Jason Kubler 0.077
-Sebastian Baez 2:3 Jason Kubler 0.1568
-Sebastian Baez 1:3 Jason Kubler 0.279
-Sebastian Baez 0:3 Jason Kubler 0.361
-
-
-
-Vasek Pospisil  1:3  Felix Auger-Aliassime    ✔
-
-8.00    1.08
-
-Vasek Pospisil 3:0 Felix Auger-Aliassime 0.0884
-Vasek Pospisil 3:1 Felix Auger-Aliassime 0.1086
-Vasek Pospisil 3:2 Felix Auger-Aliassime 0.1122
-Vasek Pospisil 2:3 Felix Auger-Aliassime 0.1644
-Vasek Pospisil 1:3 Felix Auger-Aliassime 0.2272
-Vasek Pospisil 0:3 Felix Auger-Aliassime 0.2992
-
-
-
-Daniel Altmaier  1:3  Frances Tiafoe    ✔
-
-6.00    1.12
-
-Daniel Altmaier 3:0 Frances Tiafoe 0.0466
-Daniel Altmaier 3:1 Frances Tiafoe 0.0696
-Daniel Altmaier 3:2 Frances Tiafoe 0.0826
-Daniel Altmaier 2:3 Frances Tiafoe 0.147
-Daniel Altmaier 1:3 Frances Tiafoe 0.282
-Daniel Altmaier 0:3 Frances Tiafoe 0.3722
-
-
-
-Cameron Norrie  3:0  Luca Van Assche
-
-1.07    9.00
+1.01    29.00
 
 lack of data.
 
 
 
+Thiago Seyboth Wild  2:3  Andrey Rublev    ✔
 
-Dusan Lajovic  1:3  Denis Shapovalov    ✔
+17.00    1.02
 
-8.00    1.08
+Thiago Seyboth Wild 3:0 Andrey Rublev 0.0228
+Thiago Seyboth Wild 3:1 Andrey Rublev 0.0398
+Thiago Seyboth Wild 3:2 Andrey Rublev 0.0510
+Thiago Seyboth Wild 2:3 Andrey Rublev 0.1248
+Thiago Seyboth Wild 1:3 Andrey Rublev 0.2852
+Thiago Seyboth Wild 0:3 Andrey Rublev 0.4764
 
-Dusan Lajovic 3:0 Denis Shapovalov 0.075
-Dusan Lajovic 3:1 Denis Shapovalov 0.1094
-Dusan Lajovic 3:2 Denis Shapovalov 0.0996
-Dusan Lajovic 2:3 Denis Shapovalov 0.155
-Dusan Lajovic 1:3 Denis Shapovalov 0.2568
-Dusan Lajovic 0:3 Denis Shapovalov 0.3042
 
 
+Frances Tiafoe  3:1  Borna Coric    ✔
 
-Alex Molcan  3:2  Stan Wawrinka    ❗    ❌
+1.53    2.50
 
-4.33    1.22
+Frances Tiafoe 3:0 Borna Coric 0.2220
+Frances Tiafoe 3:1 Borna Coric 0.2056
+Frances Tiafoe 3:2 Borna Coric 0.1576
+Frances Tiafoe 2:3 Borna Coric 0.1360
+Frances Tiafoe 1:3 Borna Coric 0.1464
+Frances Tiafoe 0:3 Borna Coric 0.1324
 
-Alex Molcan 3:0 Stan Wawrinka 0.079
-Alex Molcan 3:1 Stan Wawrinka 0.0946
-Alex Molcan 3:2 Stan Wawrinka 0.1062
-Alex Molcan 2:3 Stan Wawrinka 0.1598
-Alex Molcan 1:3 Stan Wawrinka 0.2552
-Alex Molcan 0:3 Stan Wawrinka 0.3052
 
 
-
-John Millman  3:2  Marc-Andrea Huesler    ❗    ❌
-
-2.10    1.73
-
-John Millman 3:0 Marc-Andrea Huesler 0.1018
-John Millman 3:1 Marc-Andrea Huesler 0.1292
-John Millman 3:2 Marc-Andrea Huesler 0.1244
-John Millman 2:3 Marc-Andrea Huesler 0.167
-John Millman 1:3 Marc-Andrea Huesler 0.2274
-John Millman 0:3 Marc-Andrea Huesler 0.2502
-
-
-
-Tomas Martin Etcheverry  3:1  Gregoire Barrere    ❗    ❌
-
-2.30    1.61
-
-Tomas Martin Etcheverry 3:0 Gregoire Barrere 0.1036
-Tomas Martin Etcheverry 3:1 Gregoire Barrere 0.124
-Tomas Martin Etcheverry 3:2 Gregoire Barrere 0.1198
-Tomas Martin Etcheverry 2:3 Gregoire Barrere 0.1528
-Tomas Martin Etcheverry 1:3 Gregoire Barrere 0.2454
-Tomas Martin Etcheverry 0:3 Gregoire Barrere 0.2544
-
-
-
-Jaume Munar  0:3  Dalibor Svrcina    ❗    ❌
-
-1.44    2.75
-
-Jaume Munar 3:0 Dalibor Svrcina 0.256
-Jaume Munar 3:1 Dalibor Svrcina 0.2044
-Jaume Munar 3:2 Dalibor Svrcina 0.1428
-Jaume Munar 2:3 Dalibor Svrcina 0.118
-Jaume Munar 1:3 Dalibor Svrcina 0.15
-Jaume Munar 0:3 Dalibor Svrcina 0.1288
-
-
-
-Tallon Griekspoor  3:0  Pavel Kotov    ✔
-
-1.36    3.20
-
-Tallon Griekspoor 3:0 Pavel Kotov 0.2088
-Tallon Griekspoor 3:1 Pavel Kotov 0.2006
-Tallon Griekspoor 3:2 Pavel Kotov 0.1428
-Tallon Griekspoor 2:3 Pavel Kotov 0.1366
-Tallon Griekspoor 1:3 Pavel Kotov 0.1619
-Tallon Griekspoor 0:3 Pavel Kotov 0.1493
-
-
-
-Lorenzo Sonego  3:1  Nuno Borges    ❌
-
-1.30    3.50
-
-Lorenzo Sonego 3:0 Nuno Borges 0.1707
-Lorenzo Sonego 3:1 Nuno Borges 0.175
-Lorenzo Sonego 3:2 Nuno Borges 0.1509
-Lorenzo Sonego 2:3 Nuno Borges 0.1459
-Lorenzo Sonego 1:3 Nuno Borges 0.1867
-Lorenzo Sonego 0:3 Nuno Borges 0.1708
-
-
-
-Sebastian Korda  3:1  Cristian Garin    ✔
-
-1.08    8.00
-
-Sebastian Korda 3:0 Cristian Garin 0.4276
-Sebastian Korda 3:1 Cristian Garin 0.262
-Sebastian Korda 3:2 Cristian Garin 0.1474
-Sebastian Korda 2:3 Cristian Garin 0.071
-Sebastian Korda 1:3 Cristian Garin 0.0552
-Sebastian Korda 0:3 Cristian Garin 0.0368
-
-
-
-Jiri Lehecka  3:0  Borna Coric    ❗    ❌
-
-3.40    1.33
-
-Jiri Lehecka 3:0 Borna Coric 0.0558
-Jiri Lehecka 3:1 Borna Coric 0.0802
-Jiri Lehecka 3:2 Borna Coric 0.0896
-Jiri Lehecka 2:3 Borna Coric 0.151
-Jiri Lehecka 1:3 Borna Coric 0.261
-Jiri Lehecka 0:3 Borna Coric 0.3624
-
-
-
-Mikael Ymer  0:3  Yoshihito Nishioka    ✔
-
-2.00    1.80
-
-Mikael Ymer 3:0 Yoshihito Nishioka 0.1778
-Mikael Ymer 3:1 Yoshihito Nishioka 0.1646
-Mikael Ymer 3:2 Yoshihito Nishioka 0.1296
-Mikael Ymer 2:3 Yoshihito Nishioka 0.1348
-Mikael Ymer 1:3 Yoshihito Nishioka 0.1946
-Mikael Ymer 0:3 Yoshihito Nishioka 0.1986
-
-
-
-Yannick Hanfmann  2:3  Rinky Hijikata    ❗    ❌
-
-1.80    2.00
-
-Yannick Hanfmann 3:0 Rinky Hijikata 0.1786
-Yannick Hanfmann 3:1 Rinky Hijikata 0.1994
-Yannick Hanfmann 3:2 Rinky Hijikata 0.1542
-Yannick Hanfmann 2:3 Rinky Hijikata 0.152
-Yannick Hanfmann 1:3 Rinky Hijikata 0.1684
-Yannick Hanfmann 0:3 Rinky Hijikata 0.1474
-
-
-
-Yosuke Watanuki  3:0  Arthur Rinderknech    ❗
-
-2.38    1.57
-
-lack of data.
-
-
-
-
-Ernesto Escobedo  1:3  Taro Daniel    ✔
-
-2.38    1.57
-
-Ernesto Escobedo 3:0 Taro Daniel 0.1315
-Ernesto Escobedo 3:1 Taro Daniel 0.166
-Ernesto Escobedo 3:2 Taro Daniel 0.1456
-Ernesto Escobedo 2:3 Taro Daniel 0.1595
-Ernesto Escobedo 1:3 Taro Daniel 0.2022
-Ernesto Escobedo 0:3 Taro Daniel 0.1952
-
-
-
-Oscar Otte  1:3  Shang Jun Cheng    ❗    ✔
-
-1.40    3.00
-
-Oscar Otte 3:0 Shang Jun Cheng 0.1862
-Oscar Otte 3:1 Shang Jun Cheng 0.1726
-Oscar Otte 3:2 Shang Jun Cheng 0.1396
-Oscar Otte 2:3 Shang Jun Cheng 0.1392
-Oscar Otte 1:3 Shang Jun Cheng 0.1768
-Oscar Otte 0:3 Shang Jun Cheng 0.1856
-
-
-
-Karen Khachanov  3:0  Bernabe Zapata Miralles    ✔
-
-1.07    9.00
-
-Karen Khachanov 3:0 Bernabe Zapata Miralles 0.3678
-Karen Khachanov 3:1 Bernabe Zapata Miralles 0.2386
-Karen Khachanov 3:2 Bernabe Zapata Miralles 0.1324
-Karen Khachanov 2:3 Bernabe Zapata Miralles 0.0902
-Karen Khachanov 1:3 Bernabe Zapata Miralles 0.0942
-Karen Khachanov 0:3 Bernabe Zapata Miralles 0.0768
-
-
-
-Corentin Moutet  3:2  Wu Yi Bing    ❗    ❌
-
-2.38    1.57
-
-Corentin Moutet 3:0 Wu Yi Bing 0.1422
-Corentin Moutet 3:1 Wu Yi Bing 0.167
-Corentin Moutet 3:2 Wu Yi Bing 0.1404
-Corentin Moutet 2:3 Wu Yi Bing 0.1464
-Corentin Moutet 1:3 Wu Yi Bing 0.196
-Corentin Moutet 0:3 Wu Yi Bing 0.208
-
-
-
-Lorenzo Musetti  2:3  Lloyd Harris    ❗    ❌
-
-1.36    3.20
-
-Lorenzo Musetti 3:0 Lloyd Harris 0.3782
-Lorenzo Musetti 3:1 Lloyd Harris 0.2488
-Lorenzo Musetti 3:2 Lloyd Harris 0.1384
-Lorenzo Musetti 2:3 Lloyd Harris 0.0864
-Lorenzo Musetti 1:3 Lloyd Harris 0.0874
-Lorenzo Musetti 0:3 Lloyd Harris 0.0608
-
-
-
-Francisco Cerundolo  3:0  Guido Pella    ✔
-
-1.11    6.50
-
-Francisco Cerundolo 3:0 Guido Pella 0.2974
-Francisco Cerundolo 3:1 Guido Pella 0.2264
-Francisco Cerundolo 3:2 Guido Pella 0.1642
-Francisco Cerundolo 2:3 Guido Pella 0.11
-Francisco Cerundolo 1:3 Guido Pella 0.1138
-Francisco Cerundolo 0:3 Guido Pella 0.0882
-
-
-
-Christopher Eubanks  3:2  Kwon Soonwoo    ❗    ❌
-
-2.38    1.57
-
-Christopher Eubanks 3:0 Kwon Soonwoo 0.131
-Christopher Eubanks 3:1 Kwon Soonwoo 0.146
-Christopher Eubanks 3:2 Kwon Soonwoo 0.1366
-Christopher Eubanks 2:3 Kwon Soonwoo 0.1578
-Christopher Eubanks 1:3 Kwon Soonwoo 0.218
-Christopher Eubanks 0:3 Kwon Soonwoo 0.2106
-
-
-
-Brandon Nakashima  2:3  Mackenzie Mcdonald    ❗    ❌
-
-1.57    2.38
-
-Brandon Nakashima 3:0 Mackenzie Mcdonald 0.2128
-Brandon Nakashima 3:1 Mackenzie Mcdonald 0.1768
-Brandon Nakashima 3:2 Mackenzie Mcdonald 0.1574
-Brandon Nakashima 2:3 Mackenzie Mcdonald 0.1368
-Brandon Nakashima 1:3 Mackenzie Mcdonald 0.1604
-Brandon Nakashima 0:3 Mackenzie Mcdonald 0.1558
-
-
-
-Thiago Monteiro  0:3  Constant Lestienne    ❗    ✔
-
-1.80    2.00
-
-Thiago Monteiro 3:0 Constant Lestienne 0.1582
-Thiago Monteiro 3:1 Constant Lestienne 0.1742
-Thiago Monteiro 3:2 Constant Lestienne 0.1466
-Thiago Monteiro 2:3 Constant Lestienne 0.1514
-Thiago Monteiro 1:3 Constant Lestienne 0.1876
-Thiago Monteiro 0:3 Constant Lestienne 0.182
-
-
-
-Ilya Ivashka  1:3  Botic Van De Zandschulp    ✔
+Dane Sweeny  2:3  Francisco Cerundolo
 
 3.00    1.40
 
-Ilya Ivashka 3:0 Botic Van De Zandschulp 0.1464
-Ilya Ivashka 3:1 Botic Van De Zandschulp 0.1785
-Ilya Ivashka 3:2 Botic Van De Zandschulp 0.1488
-Ilya Ivashka 2:3 Botic Van De Zandschulp 0.1502
-Ilya Ivashka 1:3 Botic Van De Zandschulp 0.1872
-Ilya Ivashka 0:3 Botic Van De Zandschulp 0.1889
+lack of data.
 
 
 
-Federico Coria  2:3  Marton Fucsovics    ✔
+Taylor Fritz  3:2  Facundo Diaz Acosta    ✔
 
-5.50    1.14
+1.03    15.00
 
-Federico Coria 3:0 Marton Fucsovics 0.08
-Federico Coria 3:1 Marton Fucsovics 0.099
-Federico Coria 3:2 Marton Fucsovics 0.0878
-Federico Coria 2:3 Marton Fucsovics 0.1356
-Federico Coria 1:3 Marton Fucsovics 0.2308
-Federico Coria 0:3 Marton Fucsovics 0.3668
+Taylor Fritz 3:0 Facundo Diaz Acosta 0.4911
+Taylor Fritz 3:1 Facundo Diaz Acosta 0.2577
+Taylor Fritz 3:2 Facundo Diaz Acosta 0.1207
+Taylor Fritz 2:3 Facundo Diaz Acosta 0.0547
+Taylor Fritz 1:3 Facundo Diaz Acosta 0.0477
+Taylor Fritz 0:3 Facundo Diaz Acosta 0.0281
 
 
 
+Matteo Arnaldi  3:0  Adam Walton
+
+1.20    4.50
+
+lack of data.
+
+
+
+
+Daniel Elahi Galan  3:2  Jason Kubler    ❗    ❌
+
+2.50    1.53
+
+Daniel Elahi Galan 3:0 Jason Kubler 0.1360
+Daniel Elahi Galan 3:1 Jason Kubler 0.1568
+Daniel Elahi Galan 3:2 Jason Kubler 0.1452
+Daniel Elahi Galan 2:3 Jason Kubler 0.1512
+Daniel Elahi Galan 1:3 Jason Kubler 0.2042
+Daniel Elahi Galan 0:3 Jason Kubler 0.2066
+
+
+
+Fabian Marozsan  3:1  Marin Cilic
+
+1.80    2.00
+
+lack of data.
+
+
+
+
+J.J. Wolf  1:2  Sebastian Baez    ❗    ✔
+
+1.57    2.38
+
+J.J. Wolf 3:0 Sebastian Baez 0.1649
+J.J. Wolf 3:1 Sebastian Baez 0.1774
+J.J. Wolf 3:2 Sebastian Baez 0.1408
+J.J. Wolf 2:3 Sebastian Baez 0.1503
+J.J. Wolf 1:3 Sebastian Baez 0.1858
+J.J. Wolf 0:3 Sebastian Baez 0.1808
+
+
+
+Alexander Shevchenko  0:3  Jaume Munar    ❗    ❌
+
+1.28    3.75
+
+Alexander Shevchenko 3:0 Jaume Munar 0.3916
+Alexander Shevchenko 3:1 Jaume Munar 0.2680
+Alexander Shevchenko 3:2 Jaume Munar 0.1414
+Alexander Shevchenko 2:3 Jaume Munar 0.0806
+Alexander Shevchenko 1:3 Jaume Munar 0.0692
+Alexander Shevchenko 0:3 Jaume Munar 0.0492
+
+
+
+Christopher Oconnell  3:2  Cristian Garin    ✔
+
+1.40    3.00
+
+Christopher Oconnell 3:0 Cristian Garin 0.1834
+Christopher Oconnell 3:1 Cristian Garin 0.1979
+Christopher Oconnell 3:2 Cristian Garin 0.1556
+Christopher Oconnell 2:3 Cristian Garin 0.1454
+Christopher Oconnell 1:3 Cristian Garin 0.1741
+Christopher Oconnell 0:3 Cristian Garin 0.1436
+
+
+
+Pavel Kotov  3:2  Arthur Rinderknech    ✔
+
+1.67    2.20
+
+Pavel Kotov 3:0 Arthur Rinderknech 0.3446
+Pavel Kotov 3:1 Arthur Rinderknech 0.2678
+Pavel Kotov 3:2 Arthur Rinderknech 0.1614
+Pavel Kotov 2:3 Arthur Rinderknech 0.0902
+Pavel Kotov 1:3 Arthur Rinderknech 0.0816
+Pavel Kotov 0:3 Arthur Rinderknech 0.0544
+
+
+
+Quentin Halys  3:1  Lloyd Harris    ❗    ✔
+
+3.00    1.40
+
+Quentin Halys 3:0 Lloyd Harris 0.1602
+Quentin Halys 3:1 Lloyd Harris 0.1894
+Quentin Halys 3:2 Lloyd Harris 0.1512
+Quentin Halys 2:3 Lloyd Harris 0.1486
+Quentin Halys 1:3 Lloyd Harris 0.1869
+Quentin Halys 0:3 Lloyd Harris 0.1637
+
+
+
+Tomas Machac  3:0  Shintaro Mochizuki    ✔
+
+1.20    4.50
+
+Tomas Machac 3:0 Shintaro Mochizuki 0.3612
+Tomas Machac 3:1 Shintaro Mochizuki 0.2574
+Tomas Machac 3:2 Shintaro Mochizuki 0.1462
+Tomas Machac 2:3 Shintaro Mochizuki 0.0826
+Tomas Machac 1:3 Shintaro Mochizuki 0.0944
+Tomas Machac 0:3 Shintaro Mochizuki 0.0582
+
+
+
+Jesper De Jong  3:1  Pedro Cachin
+
+1.44    2.75
+
+lack of data.
+
+
+
+
+2:0    accuracy: 81.82%    base: 80.95%    profit: 169.0%
+3:1    accuracy: 76.47%    base: 75.0%    profit: 89.5%
+3:2    accuracy: 77.08%    base: 75.38%    profit: 51.6%
+4:2    accuracy: 77.78%    base: 76.47%    profit: 72.17%
+4:3    accuracy: 75.34%    base: 75.0%    profit: 47.57%
+4:3    accuracy: 76.54%    base: 75.96%    profit: 47.57%
+6:4    accuracy: 75.28%    base: 74.11%    profit: 56.3%
+7:4    accuracy: 76.34%    base: 74.14%    profit: 63.0%
+7:4    accuracy: 77.32%    base: 75.0%    profit: 63.0%
+7:4    accuracy: 77.78%    base: 75.41%    profit: 63.0%
+7:5    accuracy: 76.24%    base: 75.0%    profit: 49.42%
+8:6    accuracy: 75.73%    base: 74.6%    profit: 47.71%
