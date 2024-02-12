@@ -5,7 +5,7 @@
 
 **Australian Open**
 
-Jannik Sinner  vs  Daniil Medvedev
+Jannik Sinner  3:2  Daniil Medvedev    ✔
 
 1.36    3.25
 
@@ -1646,3 +1646,4 @@ lack of data.
 7:4    accuracy: 77.78%    base: 75.41%    profit: 63.0%
 7:5    accuracy: 76.24%    base: 75.0%    profit: 49.42%
 8:6    accuracy: 75.73%    base: 74.6%    profit: 47.71%
+8:6    accuracy: 75.96%    base: 74.8%    profit: 47.71%
