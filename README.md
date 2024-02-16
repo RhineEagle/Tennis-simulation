@@ -2,6 +2,20 @@
 
 ### 2.3
 
+**2024.2.16**
+
+During the last few months, we are devoted to improving the visualisation project. Our goal is to refer to a number of other sites and maximize the aggregation of their features to enhance our visible results. We will still continue to accomplish the following four goals in the next visualisation project:
+1. enter pre-1990 match results using appropriate categorisation.
+2. add some interesting records.
+3. enter ranking data and visualise it by drawing charts.
+4. plot draw for tournaments, and display the results of team tournaments in divisions to improve readability.
+
+For the prediction model, we have not made any further improvements yet, and this work still needs long-term observation and experimentation.
+
+We have also encountered some problems,  http://ultimatetennisstatistics.com has stopped updating at the moment, and http://rank-tennis.com also has some problems. It made many trouble for tournament speed formula is not available. We designed a formula to calculate the speed. At this stage of the work, we have shifted as much as possible the data source requirements needed for the programme to the ATP official website.
+
+
+
 **2023.6.12**
 
 We have been building the front-end visualisation pages for this project for nearly three months, a project based on the Flask framework and built primarily using JS technology. It is a comprehensive platform for querying, managing and forecasting, which greatly facilitates the querying operations of users and the updating tasks of administrators.
