@@ -1,7 +1,7 @@
 {# 继承bootstrap中的base.html #}
 {% extends "homepage.html" %}
 {# 块修改标题 #}
-{% block title %}Tournament List{% endblock %}
+{% block title %}Event{% endblock %}
 
 {# css块 #}
 {% block styles %}
@@ -16,6 +16,13 @@
     .label-F{background-color: #EAC100}
     .label-O{background-color: #00DB00}
     .label-Next{background-color: #BEBEBE}
+    .label-W{background-color: #00A600}
+    .label-Fi{background-color: #8080C0}
+    .label-SF{background-color: #EAC100}
+    .label-QF{background-color: #81C0C0}
+    .label-R{background-color: #C2C287}
+    .label-RD{background-color: #CF9E9E}
+    .label-Qy{background-color: #DEDEBE}
     #tbl{ width:85%; position: absolute; left: 100px; top: 0px;}
     .bg-level-G{background-color: #FFC0CB}
     .bg-level-F{background-color: #FFFACD}
@@ -34,12 +41,6 @@
 {# JavaScript块 #}
 {% block scripts %}
     {{super()}}
-<script type="text/javascript" src="./static/bootstrap-table.min.js"></script>
-<!--	<script>-->
-<!--    $(document).ready(function() {-->
-<!--        $('#tbl').bootstrapTable();-->
-<!--    });-->
-<!--	</script>-->
 <script>
     var result = document.getElementById('table');
     var data = {{ data|tojson }};
@@ -54,7 +55,7 @@
 				break;
 			}
 			var tour = data[i];
-			con = con + '<tr style="height:32px;" bgcolor="#F0F0F0"> <td>'+tour[6]+' </td> <td> <a href="/tournament%3FTour%3D'+tour[1]+'&Year%3D'+tour[0]+'" target="_blank" class="'+tour[12]+'">'+tour[2]+'</a>  </td><td> <span class="'+tour[13]+'">'+tour[4]+'</span>  </td> <td> <span class="'+tour[13]+'" style="opacity:'+tour[5]/80+'">'+tour[5]+'</span>  </td> <td> '+tour[7]+' </td> <td>'+tour[10]+' </td><td>'+tour[11]+'</td><td><img src="'+tour[9]+'" style="width:25px">&nbsp;&nbsp;<a href="/profile_detail%3FName%3D'+tour[8]+'" target="_blank">'+tour[8]+' </td> </tr>';
+			con = con + '<tr style="height:32px;" bgcolor="#F0F0F0"> <td>'+tour[0]+' </td> <td> <a href="/tournament%3FTour%3D'+tour[8]+'&Year%3D'+tour[7]+'" target="_blank" class="'+tour[18]+'">'+tour[1]+'</a>  </td> <td> <span class="'+tour[19]+'">'+tour[2]+'</span>  </td> <td> <span class="'+tour[19]+'" style="opacity:'+tour[12]/80+'">'+tour[12]+'</span>  </td> <td> '+tour[13]+' </td> <td>'+tour[16]+' </td><td>'+tour[6]+'</td><td><span class="'+ tour[20] +'">' + tour[4] + '</span></td> </tr>';
 		}
 		result.innerHTML=con;
 		plic = Math.min(5,tp);
@@ -82,8 +83,8 @@
                 break;
             }
             var tour = data[i];
-            con = con + '<tr style="height:32px;" bgcolor="#F0F0F0"> <td>'+tour[6]+' </td> <td> <a href="/tournament%3FTour%3D'+tour[1]+'&Year%3D'+tour[0]+'" target="_blank" class="'+tour[12]+'">'+tour[2]+'</a>  </td><td> <span class="'+tour[13]+'">'+tour[4]+'</span>  </td> <td> <span class="'+tour[13]+'" style="opacity:'+tour[5]/80+'">'+tour[5]+'</span>  </td> <td> '+tour[7]+' </td> <td>'+tour[10]+' </td><td>'+tour[11]+'</td><td><img src="'+tour[9]+'" style="width:25px">&nbsp;&nbsp;<a href="/profile_detail%3FName%3D'+tour[8]+'" target="_blank">'+tour[8]+' </td> </tr>';
-        }
+            con = con + '<tr style="height:32px;" bgcolor="#F0F0F0"> <td>'+tour[0]+' </td> <td> <a href="/tournament%3FTour%3D'+tour[8]+'&Year%3D'+tour[7]+'" target="_blank" class="'+tour[18]+'">'+tour[1]+'</a>  </td> <td> <span class="'+tour[19]+'">'+tour[2]+'</span>  </td> <td> <span class="'+tour[19]+'" style="opacity:'+tour[12]/80+'">'+tour[12]+'</span>  </td> <td> '+tour[13]+' </td> <td>'+tour[16]+' </td><td>'+tour[6]+'</td><td><span class="'+ tour[20] +'">' + tour[4] + '</span></td> </tr>';
+		}
         return con;
     }
 
@@ -308,7 +309,6 @@
             	data = response;
             	tp = Math.ceil(data.length/25);
             	show_fstpage();
-            	getpage(0);
             },
             error:function(jqXHR, textStatus, errorThrown){
             	console.log(textStatus,errorThrown);
@@ -344,13 +344,13 @@
 <div style="position:absolute;top:90px;width:100%">
     <div class="row margin-top" style="position:relative;left:7%;top:10px;width:92%">
 		<div class="col-md-3">
-			<h4 class="text-nowrap" style="display: inline;position:relative;top:8px"><i class="fa fa-calendar"></i> Tournament Events</h4>
+			<h4 class="text-nowrap" style="display: inline;position:relative;top:8px"><i class="fa fa-th-list"></i> &nbsp; {{ player }}</h4>
 		</div>
 		<div class="col-md-2">
 			<select id="season" class="form-control" onchange="reloadTournamentEvents()" data-toggle="tooltip" data-placement="top" title="Filter by season">
 				<option value="all">All seasons</option>
 				<option value="-1">Last 52 Weeks</option>
-				{% for i in range(2024,1988,-1) %}
+				{% for i in range(2024,1989,-1) %}
 					<option value="{{ i }}">{{ i }}</option>
 				{% endfor %}
 			</select>
@@ -371,11 +371,29 @@
 		</div>
 		<div class="col-md-2">
 			<select id="surface" class="form-control" onchange="reloadTournamentEvents()" data-toggle="tooltip" data-placement="top" title="Filter by surface">
-				<option value="all">All surfaces</option>
-				<option value="Hard" class="bg-surface-H">Hard</option>
-				<option value="Clay" class="bg-surface-C">Clay</option>
-				<option value="Grass" class="bg-surface-G">Grass</option>
-				<option value="Carpet" class="bg-surface-P">Carpet</option>
+				{% if status == '1' %}
+					<option value="all">All surfaces</option>
+					<option value="Hard" class="bg-surface-H">Hard</option>
+					<option value="Clay" class="bg-surface-C">Clay</option>
+					<option value="Grass" class="bg-surface-G">Grass</option>
+					<option value="Carpet" class="bg-surface-P">Carpet</option>
+				{% elif status in lock[1:5] %}
+					{% if status == lock[1] %}
+						<option value="Hard" class="bg-surface-H">Hard</option>
+					{% elif status == lock[2] %}
+						<option value="Clay" class="bg-surface-C">Clay</option>
+					{% elif status == lock[3] %}
+						<option value="Grass" class="bg-surface-G">Grass</option>
+					{% else %}
+						<option value="Carpet" class="bg-surface-P">Carpet</option>
+					{% endif %}
+				{% else %}
+					<option value="all">All surfaces</option>
+					<option value="Hard" class="bg-surface-H">Hard</option>
+					<option value="Clay" class="bg-surface-C">Clay</option>
+					<option value="Grass" class="bg-surface-G">Grass</option>
+					<option value="Carpet" class="bg-surface-P">Carpet</option>
+				{% endif %}
 			</select>
 		</div>
 		<div class="col-md-3">
@@ -404,19 +422,21 @@
 				<option value="414" class="bg-level-M">Hamburg Masters</option>
 				<option value="357" class="bg-level-M">Stuttgart Masters</option>
 				<option value="430" class="bg-level-M">Essen Masters</option>
-				<option value="429" class="bg-level-M">Stockholm Masters</option>
 			</optgroup><optgroup label="Olympics" class="bg-level-O">
 				<option value="8421" class="bg-level-O">Olympics</option>
 			</optgroup><optgroup label="ATP 500" class="bg-level-A">
 				{% for eiditem in eidlist['ATP500'] %}
-				<option value="{{ eiditem[0] }}" class="bg-level-A">{{ eiditem[1] }}</option>
+				<option value="{{ eiditem[0] }}" class="bg-level-M">{{ eiditem[1] }}</option>
 				{% endfor %}
 			</optgroup><optgroup label="ATP 250" class="bg-level-B">
 				{% for eiditem in eidlist['ATP250'] %}
-				<option value="{{ eiditem[0] }}" class="bg-level-B">{{ eiditem[1] }}</option>
+				<option value="{{ eiditem[0] }}" class="bg-level-M">{{ eiditem[1] }}</option>
 				{% endfor %}
 			</optgroup><optgroup label="Others" class="bg-level-H">
-				<option value="7696" class="bg-level-H">NextGen Finals</option>
+				<option value="502" class="bg-level-H">Boston</option>
+				<option value="523" class="bg-level-H">Brisbane-Perth-Sydney</option>
+				<option value="392" class="bg-level-H">Milan</option>
+				<option value="499" class="bg-level-H">Tokyo</option>
 			</optgroup>
 		</select>
 		</div>
@@ -424,10 +444,10 @@
 	</div>
 </div>
 <div style="position:absolute;top:150px;width:100%">
-    <table class="table table-condensed table-striped" border="0" cellspacing="1" id="tbl" data-pagination="true">
+    <table class="table table-condensed table-striped" border="0" cellspacing="1" id="tbl">
              <thead style="height:40px;font-family:Times New Roman;font-size:12pt;">
              <tr>
-				 <th onclick="sort_byvalue('Date')"> Date &nbsp; <i class="fa fa-angle-down" aria-hidden="true"></i> </th> <th>&nbsp;Name </th> <th>&nbsp;Surface </th> <th>&nbsp;Speed </th> <th>&nbsp;Draw </th> <th>&nbsp;Part. </th> <th onclick="sort_byvalue('difficulty')"> Diff. &nbsp; <i class="fa fa-angle-down" aria-hidden="true"></i> </th> <th>&nbsp;Winner </th>
+                 <th onclick="sort_byvalue('Date')"> Date &nbsp; <i class="fa fa-angle-down" aria-hidden="true"></i> </th> <th>&nbsp;Name </th> <th>&nbsp;Surface </th> <th>&nbsp;Speed </th> <th>&nbsp;Draw </th> <th>&nbsp;Part. </th> <th onclick="sort_byvalue('score')"> Score &nbsp; <i class="fa fa-angle-down" aria-hidden="true"></i> </th> <th>&nbsp;Result </th>
              </tr>
              </thead>
         <tbody id = 'table'>
@@ -435,7 +455,7 @@
         <tfoot>
             <tr>
                 <th style="height:40px;text-align: center;" colspan="7">
-                    {% if tp > 2 %}
+                    {% if tp >= 2 %}
                     <nav aria-label="Page navigation" style="position:relative;top:0px;">
                       <ul id="pagination" class="pagination">
                           <li>

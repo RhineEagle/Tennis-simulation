@@ -9,8 +9,8 @@
     {{super()}}
 <style>
     .PlayerInfo{position:absolute; left: 0px; top: 70px; right: 20px;}
-    .PlayerName_full{float:center; position: absolute; left: 27%; top: 33px; font-family: Times New Roman;width:23.7154%}
-    .PlayerName_head{float:center; position: absolute; left: 30.1%; top: 33px; font-family: Times New Roman;width:23.7154%}
+    .PlayerName_full{float:center; position: absolute; left: 27%; top: 33px; font-family: Times New Roman;width:23.7154%;white-space: nowrap;}
+    .PlayerName_head{float:center; position: absolute; left: 30.1%; top: 33px; font-family: Times New Roman;width:23.7154%;white-space: nowrap;}
     .SelectPlayer{position:absolute; left: 5.5%; top: 30px; right: 0.5%;}
     //.label {color:black}
     .label-250{background-color: #ACD6FF}
@@ -205,21 +205,31 @@ window.onload = function()
 <img src="./static/123.jpg" style="opacity:0.15; width:100%; height:100%; position: fixed; top: 50px;" >
 <div class="PlayerInfo">
         {% if img[0][22]=='h' %}
-            <img src={{ img[0] }} style="width: 18%; position: absolute; left: 11.8%; top:10px">
+            <img src="{{ img[0] }}" style="width: 18%; position: absolute; left: 11.8%; top:10px">
             <div class="PlayerName_head" id="Playerh">
-                    <b>{{ name }}</b>
+                    <b><a href="/profile_detail%3FName%3D{{ name }}" style="color:black;text-decoration:none">{{ name }}</a></b>
                     <br>
-                    <img src={{ img[1] }} style="width:13.3%; position: absolute; left: 2.67%; top:65px; border=0.5px">
+                    <img src="{{ img[1] }}" style="width:13.3%; position: absolute; left: 2.67%; top:65px; border=0.5px">
+                    {% if year == '0' %}
                     <div class="yy" style="font-size:12pt; position: absolute; left: 23.3%; top:67px">
-                        <b> {{ year }}</b>
+                        <b> Career </b>
                     </div>
+                    {% elif year == '1' %}
+                    <div class="yy" style="font-size:12pt; position: absolute; left: 21%; top:67px">
+                        <b><span style="font-size:9pt;"> Last 52 Weeks </span></b>
+                    </div>
+                    {% else %}
+                    <div class="yy" style="font-size:12pt; position: absolute; left: 23.3%; top:67px">
+                            <b> {{ year }}</b>
+                    </div>
+                    {% endif %}
                 </div>
         {% else %}
-            <img src={{ img[0] }} style="width: 24%; position: absolute; left: 7.5%; top:0px">
+            <img src="{{ img[0] }}" style="width: 24%; position: absolute; left: 7.5%; top:0px">
             <div class="PlayerName_full" id="Playerf">
-                <b>{{ name }}</b>
+                <b><a href="/profile_detail%3FName%3D{{ name }}" style="color:black;text-decoration:none">{{ name }}</a></b>
                 <br>
-                <img src={{ img[1] }} style="width:13.3%; position: absolute; left: 2.67%; top:65px; border-style:solid; border-width: 0.5px;">
+                <img src="{{ img[1] }}" style="width:13.3%; position: absolute; left: 2.67%; top:65px; border-style:solid; border-width: 0.5px;">
                 {% if year == '0' %}
                 <div class="yy" style="font-size:12pt; position: absolute; left: 23.3%; top:67px">
                     <b> Career </b>
@@ -227,7 +237,7 @@ window.onload = function()
                     {% else %}
                     {% if year == '1' %}
                 <div class="yy" style="font-size:12pt; position: absolute; left: 21%; top:67px">
-                    <b><span style="font-size:5pt;"> Last 52 Weeks </span></b>
+                    <b><span style="font-size:9pt;"> Last 52 Weeks </span></b>
                 </div>
                 {% else %}
                 <div class="yy" style="font-size:12pt; position: absolute; left: 23.3%; top:67px">
@@ -236,9 +246,8 @@ window.onload = function()
                     {% endif %}
                     {% endif %}
                 </div>
-            </div>
         {% endif %}
-</div>
+            </div>
 <div class="SelectPlayer">
     <div class="input-group" style="position: absolute; left: 34.7%; top: 308px; height:30px; width:14.4387%;">
         <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></span>

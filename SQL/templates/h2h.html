@@ -598,28 +598,30 @@ window.onload = function()
 
     <div class="PlayerInfo">
         {% if img != [] %}
-            <img src={{ img[0] }} style="width: 17.97%; position: absolute; left: 23.69%; top: 30px;">
+            <img src="{{ img[0] }}" style="width: 17.97%; position: absolute; left: 23.69%; top: 30px;">
             <div class="Player1Name" id="P1">
                 <div class="Player1Win" id="P1Win"></div>
-                <b>{{ name[0] }}</b>
+                <b><a href="/profile_detail%3FName%3D{{ name[0] }}" style="color:black;text-decoration:none">{{ name[0] }}</a></b>
                 <br>
-                <img src={{ country[0] }} style="width: 38px; position: absolute; top:60px; right:4.545%; border-style:solid; border-width: 0.5px;">
+                <img src="{{ country[0] }}" style="width: 38px; position: absolute; top:60px; right:4.545%; border-style:solid; border-width: 0.5px;">
             </div>
             {% if flag != 1 %}
-            <img src={{ img[1] }} style="width: 17.97%; position: absolute; right: 25.09%; top: 30px;">
+            <img src="{{ img[1] }}" style="width: 17.97%; position: absolute; right: 25.09%; top: 30px;">
             {% else %}
             <img src="{{ country[1] }}" style="width: 14.97%; position: absolute; right: 25.79%; top: 92px;">
             {% endif %}
             <div class="Player2Name" id="P2">
                 <div class="Player2Win" id="P2Win"></div>
-                {% if flag !=2 %}
-                <b>{{ name[1] }}</b>
-                {% else %}
+                {% if flag == 2 %}
                 <b>Top {{ name[1] }}</b>
+                {% elif flag == 0 %}
+                <b><a href="/profile_detail%3FName%3D{{ name[1] }}" style="color:black;text-decoration:none">{{ name[1] }}</a></b>
+                {% else %}
+                <b>{{ name[1] }}</b>
                 {% endif %}
                 <br>
                 {% if flag == 0 %}
-                <img src={{ country[1] }} style="width: 38px; position: absolute; top:60px; left:4.545%; border-style:solid; border-width: 0.5px;">
+                <img src="{{ country[1] }}" style="width: 38px; position: absolute; top:60px; left:4.545%; border-style:solid; border-width: 0.5px;">
                 {% endif %}
             </div>
         {% else %}

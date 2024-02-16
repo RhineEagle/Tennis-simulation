@@ -220,7 +220,7 @@ window.onload = function()
             {% if img[0][22]=='h' %}
                 <img src="{{ img[0] }}" style="width: 18%; position: absolute; left: 16.8%;top:10px">
                 <div class="PlayerName_head" id="Playerh">
-                        <b>{{ name }}</b>
+                    <b><a href="/profile_detail%3FName%3D{{ name }}" style="color:black;text-decoration:none">{{ name }}</a></b>
                         <br>
                         <img src="{{ img[1] }}" style="width:13.3%; position: absolute; left: 2.67%; top:65px; border-style:solid; border-width: 0.5px;">
                         {% if year == '0' %}
@@ -255,7 +255,7 @@ window.onload = function()
             {% else %}
                 <img src="{{ img[0] }}" style="width: 25%; position: absolute; left: 11%; top:0px">
                 <div class="PlayerName_full" id="Playerf">
-                    <b>{{ name }}</b>
+                    <b><a href="/profile_detail%3FName%3D{{ name }}" style="color:black;text-decoration:none">{{ name }}</a></b>
                     <br>
                     <img src="{{ img[1] }}" style="width:13.3%; position: absolute; left: 2.67%; top:65px; border-style:solid; border-width: 0.5px;">
                     {% if court != 'All' %}
@@ -269,7 +269,7 @@ window.onload = function()
                         </div>
                     {% endif %}
                     {% if year == '1' %}
-                        <div class="yy" style="font-size:5pt; position: absolute; left: 20%; top:71px">
+                        <div class="yy" style="font-size:10pt; position: absolute; left: 20%; top:71px">
                             <b> Last 52 Weeks </b>
                         </div>
                     {% else %}
@@ -279,7 +279,7 @@ window.onload = function()
                             </div>
                         {% else %}
                         {% if year == '1' %}
-                            <div class="yy" style="font-size:5pt; position: absolute; left: 20%; top:67px">
+                            <div class="yy" style="font-size:10pt; position: absolute; left: 20%; top:67px">
                                 <b> Last 52 Weeks </b>
                             </div>
                         {% else %}
@@ -377,8 +377,8 @@ window.onload = function()
                 </tr>
                 {% else %}
             <tr>
-                <th style="height:40px;font-size: 15pt; color: {{ item[3] }};" colspan="3"><img src="{{ item[2] }}" style="width: 30px; height: 30px;">&nbsp;&nbsp;&nbsp;{{ item[1] }} &nbsp;&nbsp; <span style="font-size:10pt;color:gray"> {{ item[4] }} </span></th>
-                <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size:11pt;color:black">{{ item[-1] }} </span></th>
+                <th style="height:40px;font-size: 15pt;" colspan="3"><img src="{{ item[2] }}" style="width: 30px; height: 30px;">&nbsp;&nbsp;&nbsp;<a href="/tournament%3FTour%3D{{ item[6][0] }}&Year%3D{{ item[6][1] }}" style="color: {{ item[3] }};">{{ item[1] }}</a> &nbsp;&nbsp; <span style="font-size:10pt;color:gray"> {{ item[4] }} </span></th>
+                <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size:11pt;color:black">{{ item[5] }} </span></th>
             </tr>
                 {% endif %}
             {% endfor %}

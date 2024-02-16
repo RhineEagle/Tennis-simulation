@@ -8,7 +8,7 @@
     {{super()}}
 <style>
     .userinfo{ position:absolute;left:100px;top:50px;}
-    #tbl{position:absolute;left:15%;width:70%;background:white}
+    #tbl{position:absolute;left:15%;width:70%;}
     .winner{ background:blue;color:white}
 </style>
 {% endblock %}
@@ -77,15 +77,16 @@
                 <td style="text-align:center"><button onclick="check()">Commit</button></td>
                 {% endif %}
             </tr>
-            <tr>
+            <tr bgcolor="white">
                 <td><b>Tour</b></td>
                 <td colspan="3"><b>Match</b></td>
                 <td><b>H2H</b></td>
+                <td></td>
             </tr>
         </thead>
         <tbody>
         {% for item in table %}
-        <tr>
+        <tr bgcolor="white">
             {% if flag == 1 %}
             <td>{{ item[0] }}</td><td class="winner" id = "{{ item[1] }}"><label onclick="choose('{{ item[1] }}','{{ item[2] }}')">{{ item[1] }}</label></td><td>vs</td><td class="loser" id="{{ item[2] }}"><label onclick="choose('{{ item[2] }}','{{ item[1] }}')">{{ item[2] }}</label></td>
             {% else %}

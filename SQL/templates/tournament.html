@@ -12,7 +12,7 @@
 <style>
     .tour_info{position:absolute; left: 15%; top: 280px; right: 20px; width:20%}
     .SelectTour{position: absolute; left: 0px; top: 100px; right: 20px;}
-    .matchres{ width:90%; position: absolute; left: 50px; top: 0px;}
+    .matchres{ width:95%; position: absolute; left: 50px; top: 0px;}
     .hr { border-bottom: 3px solid LightGray; margin: 10px 0; width: 100%;}
     .queryres{ width:68%; position: absolute; top: 5px; left:95px;}
     .Tourinfo{ position: absolute; left: 8%; top: 55px;width: 85%; height: 300px;background: linear-gradient(white, LightGray, Gray);}
@@ -72,7 +72,14 @@
                     {
                         s2 = s2[0];
                     }
-                    sc = sc + "<tr><td>&nbsp;&nbsp;</td><td style='background:LightGreen;width:25px;height:25px;border: 2px solid white'>"+s1+"</td><td style='background:LightGreen;width:25px;height:25px;border: 2px solid white'>"+s2+"</td><td>&nbsp;&nbsp;</td></tr>";
+                    if (s1>=s2)
+                    {
+                        sc = sc + "<tr><td>&nbsp;&nbsp;</td><td style='background:LightGreen;width:25px;height:25px;border: 2px solid white'>"+s1+"</td><td style='background:LightGray;width:25px;height:25px;border: 2px solid white'>"+s2+"</td><td>&nbsp;&nbsp;</td></tr>";
+                    }
+                    else
+                    {
+                        sc = sc + "<tr><td>&nbsp;&nbsp;</td><td style='background:LightGray;width:25px;height:25px;border: 2px solid white'>"+s1+"</td><td style='background:LightGreen;width:25px;height:25px;border: 2px solid white'>"+s2+"</td><td>&nbsp;&nbsp;</td></tr>";
+                    }
                 }
                 if (sc == "")
                 {
@@ -81,6 +88,7 @@
                 var con = "<tr><td><img src='./static/Player_Photo_head/"+pid[0]+".webp' onerror=javascript:this.style.display='none' style='width:120px'></td><td><div style='text-align:center;font-family:Arial;font-weight:800;color:white'><table style='width:100%;position:relative;top:0px'><tbody>"+sc+"</tbody></table></div></td><td><img src='./static/Player_Photo_head/"+pid[1]+".webp' onerror=javascript:this.style.display='none' style='width:120px'></td>";
                 if (response == "")
                 {
+                    con = con + "<tr><td style='font-size:8pt'>"+name[0]+"</td><td></td><td style='font-size:8pt'>"+name[1]+"</td></tr><tr><td style='height:10px'>&nbsp;</td></tr>";
                     con = con + "<tr><td>&nbsp;</td></tr><tr><td></td><td>match has no data.</td><td></td>";
                     document.getElementById("table").innerHTML = con;
                 }
@@ -94,7 +102,7 @@
                     var fr2 = fs1-response[7];
                     var sr1 = response[15]-response[17];
                     var sr2 = response[6]-response[8];
-                    con = con + "<tr><td style='font-size:5pt'>"+name[0]+"</td><td></td><td style='font-size:5pt'>"+name[1]+"</td></tr><tr><td style='height:10px'>&nbsp;</td></tr>";
+                    con = con + "<tr><td style='font-size:8pt'>"+name[0]+"</td><td></td><td style='font-size:8pt'>"+name[1]+"</td></tr><tr><td style='height:10px'>&nbsp;</td></tr>";
                     con = con + "<tr><td>("+response[3]+"/"+response[5]+")&nbsp;"+Math.round(response[3]/response[5]*100)+"%</td><td>ACE</td><td>"+Math.round(response[12]/response[14]*100)+"%&nbsp;("+response[12]+"/"+response[14]+")</td></tr>";
                     con = con + "<tr><td>("+response[4]+"/"+response[5]+")&nbsp;"+Math.round(response[4]/response[5]*100)+"%</td><td>DF</td><td>"+Math.round(response[13]/response[14]*100)+"%&nbsp;("+response[13]+"/"+response[14]+")</td></tr>";
                     con = con + "<tr><td>("+fs1+"/"+response[5]+")&nbsp;"+Math.round(fs1/response[5]*100)+"%</td><td>1st Serve</td><td>"+Math.round(fs2/response[14]*100)+"%&nbsp;("+fs2+"/"+response[14]+")</td></tr>";
@@ -120,8 +128,12 @@
     <div class="Tourinfo">
         <img src="./static/trophy/{{ year|int%100+eid|int*100 }}.jpg" onerror=javascript:this.style.display='none' style="position:absolute;right:25%;height:300px;opacity:0.8">
         <img src="{{ img }}" style="width:60px; position:absolute;bottom:80px;left:40px;">&nbsp;
-        {% if 'GS' not in img and 'United' not in img and 'ATP-Cup' not in img and 'Davis' not in img and 'Laver' not in img %}
-        <img src="{{ name_img }}" style="position:absolute;bottom:80px;left:110px;width:120px;">
+        {% if 'GS' not in img and 'United' not in img and 'ATP-Cup' not in img and 'Davis' not in img and 'Laver' not in img and 'NextGen' not in img %}
+            {% if '357' in name_img %}
+            <img src="{{ name_img }}" style="position:absolute;bottom:80px;left:110px;height:70px;">
+            {% else %}
+            <img src="{{ name_img }}" style="position:absolute;bottom:80px;left:110px;width:120px;">
+            {% endif %}
         {% endif %}
         <span style="position:absolute;bottom:40px;left:30px;font-size:13pt;font-family:PingFang SC;color:white!important;font-weight:900">{{ tour_name }}
             <span style="font-size:10pt;font-family:Helvetica;font-weight:600">
@@ -169,96 +181,136 @@
   </div>
 </div>
     {% if 'GS' in img %}
-    <div style="text-align:left; font-family: Times New Roman; position:relative; top:350px; left:3%;width:97%">
+    <div style="text-align:left; font-family: Times New Roman; position:relative; top:350px; left:4%;width:91%">
     {% else %}
-    <div style="text-align:left; font-family: Times New Roman; position:relative; top:350px; left:6%;width:88%">
+    <div style="text-align:left; font-family: Times New Roman; position:relative; top:350px; left:8%;width:80%">
     {% endif %}
         <table class="matchres" border="0" cellspacing="1" id="tbl">
             <tbody>
             {% for key, value in data.items() %}
             <tr>
-                <th style="height:40px;font-size: 15pt; color:red;" colspan="5"><div class="hr"> </div></th>
+                <th style="height:40px;" colspan="5"><div class="hr"> </div></th>
             </tr>
             {% for index in range(0,value|length,3) %}               
                 <tr style="height:60px" >
                 {% for i in range(3) %}
-                    {%if index+i < value|length %}
-                    {% if 'GS' in img %}
-                    <td width="185px">
-                    {% else %}
-                    <td width="165px">
-                    {% endif %}
+                    {% if index+i < value|length %}
+                    <td>
                         <table width=95% class='match_result' border='0'>
                         <tbody>
                         <tr bgcolor="white"><td>&nbsp;&nbsp;{{ key }} &nbsp;&nbsp;Men's Single</td>
-                            <td colspan="{{ value[index+i][-1][0]|length-2 }}"></td>
+                            <td colspan="{{ value[index+i][-2][0]|length-2 }}"></td>
                             {% if key[0] == 'Q' and key[1] != 'F' %}
-                            <td colspan="2" style="text-align:right"><a onclick="ajaxstats({{ '99'+eid }}, {{ year }}, {{ value[index+i][1] }}, {{ value[index+i][-2] }}, {{ value[index+i][-1] }}, ['{{ value[index+i][2] }}', '{{ value[index+i][5] }}'])" data-toggle="modal" data-target="#myModal">Stats&nbsp;</a></td>
+                            <td colspan="2" style="text-align:right"><a onclick="ajaxstats({{ '99'+eid }}, {{ year }}, {{ value[index+i][1] }}, {{ value[index+i][-3] }}, {{ value[index+i][-2] }}, ['{{ value[index+i][2] }}', '{{ value[index+i][5] }}'])" data-toggle="modal" data-target="#myModal">Stats&nbsp;</a></td>
                             {% else %}
-                            <td colspan="2" style="text-align:right"><a onclick="ajaxstats({{ eid }}, {{ year }}, {{ value[index+i][1] }}, {{ value[index+i][-2] }}, {{ value[index+i][-1] }}, ['{{ value[index+i][2] }}', '{{ value[index+i][5] }}'])" data-toggle="modal" data-target="#myModal">Stats&nbsp;</a></td>
+                            <td colspan="2" style="text-align:right"><a onclick="ajaxstats({{ eid }}, {{ year }}, {{ value[index+i][1] }}, {{ value[index+i][-3] }}, {{ value[index+i][-2] }}, ['{{ value[index+i][2] }}', '{{ value[index+i][5] }}'])" data-toggle="modal" data-target="#myModal">Stats&nbsp;</a></td>
                             {% endif %}
                         </tr>
                             {% if value[index+i][3] == '' or value[index+i][6] == '' %}
                             <tr bgcolor="#ACD6FF">
-                                <td style="white-space: nowrap;overflow: hidden">&nbsp;&nbsp;<img src="{{ value[index+i][4] }}" style="width: 22px; height: 22px;">&nbsp;&nbsp;{{ value[index+i][2] }}&nbsp;&nbsp;<span style="color:Gray;font-size:7pt">{{ value[index+i][3] }}</span></td>
-                                {% for unit in value[index+i][-1][0] %}
+                                <td style="white-space: nowrap;overflow: hidden">&nbsp;&nbsp;<img src="{{ value[index+i][4] }}" style="width: 22px; height: 22px;">&nbsp;&nbsp;{{ value[index+i][2] }}<span style="font-size:7pt">&nbsp;{{ ' ['+value[index+i][-1][0]|string+'] ' if value[index+i][-1][0] != '' }}</span>&nbsp;<span style="color:Gray;font-size:7pt">{{ value[index+i][3] }}</span></td>
+                                {% for unit in value[index+i][-2][0] %}
                                 {% if unit|length == 1 %}
                                 <td style="width:25px;" align="center">{{ unit[0] }}&nbsp;</td>
                                 {% else %}
-                                <td style="width:25px;" align="center">{{ unit[0] }}<sup style="color:Gray">{{ unit[1] }}</sup></td>
+                                <td style="width:25px;color:Gray" align="center">
+                                    {% if unit[1]!=-2 %}
+                                        {{ unit[0] }}<sup style="color:Gray">{{ unit[1] }}</sup>
+                                    {% else %}
+                                    {{ unit[0] }}&nbsp;
+                                    {% endif %}
+                                </td>
                                 {% endif %}
                                 {% endfor %}
                             </tr>
                             <tr bgcolor="white">
-                                <td style="white-space: nowrap;overflow: hidden">&nbsp;&nbsp;<img src="{{ value[index+i][7] }}" style="width: 22px; height: 22px;">&nbsp;&nbsp;{{ value[index+i][5] }}&nbsp;&nbsp;<span style="color:Gray;font-size:7pt">{{ value[index+i][6] }}</span></td>
-                                {% for unit in value[index+i][-1][1] %}
+                                <td style="white-space: nowrap;overflow: hidden">&nbsp;&nbsp;<img src="{{ value[index+i][7] }}" style="width: 22px; height: 22px;">&nbsp;&nbsp;{{ value[index+i][5] }}<span style="font-size:7pt">&nbsp;{{ ' ['+value[index+i][-1][1]|string+'] ' if value[index+i][-1][1] != '' }}</span>&nbsp;<span style="color:Gray;font-size:7pt">{{ value[index+i][6] }}</span></td>
+                                {% for unit in value[index+i][-2][1] %}
                                 {% if unit|length == 1 %}
                                 <td style="width:25px;" align="center">{{ unit[0] }}&nbsp;</td>
                                 {% else %}
-                                <td style="width:25px;" align="center">{{ unit[0] }}<sup style="color:Gray">{{ unit[1] }}</sup></td>
+                                <td style="width:25px;color:Gray" align="center">
+                                    {% if unit[1]!=-2 %}
+                                        {{ unit[0] }}<sup style="color:Gray">{{ unit[1] }}</sup>
+                                    {% else %}
+                                    {{ unit[0] }}&nbsp;
+                                    {% endif %}
+                                </td>
                                 {% endif %}
                                 {% endfor %}
                             </tr>
                             {% else %}
                             {% if (value[index+i][3]+value[index+i][6])%2==1 %}
                             <tr bgcolor="#ACD6FF">
-                                <td style="white-space: nowrap;overflow: hidden">&nbsp;&nbsp;<img src="{{ value[index+i][4] }}" style="width: 22px; height: 22px;">&nbsp;&nbsp;{{ value[index+i][2] }}&nbsp;&nbsp;<span style="color:Gray;font-size:7pt">{{ value[index+i][3] }}</span></td>
-                                {% for unit in value[index+i][-1][0] %}
+                                <td style="white-space: nowrap;overflow: hidden">&nbsp;&nbsp;<img src="{{ value[index+i][4] }}" style="width: 22px; height: 22px;">&nbsp;&nbsp;{{ value[index+i][2] }}<span style="font-size:7pt">&nbsp;{{ ' ['+value[index+i][-1][0]|string+'] ' if value[index+i][-1][0] != '' }}</span>&nbsp;<span style="color:Gray;font-size:7pt">{{ value[index+i][3] }}</span></td>
+                                {% for unit in value[index+i][-2][0] %}
                                 {% if unit|length == 1 %}
-                                <td style="width:25px;" align="center">{{ unit[0] }}&nbsp;</td>
+                                    <td style="width:25px;" align="center">{{ unit[0] }}&nbsp;</td>
                                 {% else %}
-                                <td style="width:25px;" align="center">{{ unit[0] }}<sup style="color:Gray">{{ unit[1] }}</sup></td>
+                                <td style="width:25px;color:Gray" align="center">
+                                    {% if unit[1]!=-2 %}
+                                        {{ unit[0] }}<sup style="color:Gray">{{ unit[1] }}</sup>
+                                    {% else %}
+                                    {{ unit[0] }}&nbsp;
+                                    {% endif %}
+                                </td>
                                 {% endif %}
                                 {% endfor %}
                             </tr>
                             <tr bgcolor="white">
-                                <td style="white-space: nowrap;overflow: hidden">&nbsp;&nbsp;<img src="{{ value[index+i][7] }}" style="width: 22px; height: 22px;">&nbsp;&nbsp;{{ value[index+i][5] }}&nbsp;&nbsp;<span style="color:Gray;font-size:7pt">{{ value[index+i][6] }}</span></td>
-                                {% for unit in value[index+i][-1][1] %}
+                                <td style="white-space: nowrap;overflow: hidden">&nbsp;&nbsp;<img src="{{ value[index+i][7] }}" style="width: 22px; height: 22px;">&nbsp;&nbsp;{{ value[index+i][5] }}<span style="font-size:7pt">&nbsp;{{ ' ['+value[index+i][-1][1]|string+'] ' if value[index+i][-1][1] != '' }}</span>&nbsp;<span style="color:Gray;font-size:7pt">{{ value[index+i][6] }}</span></td>
+                                {% for unit in value[index+i][-2][1] %}
                                 {% if unit|length == 1 %}
+                                {% if unit[0] != 'RET' %}
                                 <td style="width:25px;" align="center">{{ unit[0] }}&nbsp;</td>
                                 {% else %}
-                                <td style="width:25px;" align="center">{{ unit[0] }}<sup style="color:Gray">{{ unit[1] }}</sup></td>
+                                <td style="width:25px;" align="center"><span style="font-size:8pt">{{ unit[0] }}&nbsp;</span></td>
+                                {% endif %}
+                                {% else %}
+                                <td style="width:25px;color:Gray" align="center">
+                                   {% if unit[1]!=-2 %}
+                                        {{ unit[0] }}<sup style="color:Gray">{{ unit[1] }}</sup>
+                                    {% else %}
+                                    {{ unit[0] }}&nbsp;
+                                    {% endif %}
+                                </td>
                                 {% endif %}
                                 {% endfor %}
                             </tr> 
                             {% else %} 
                             <tr bgcolor="white">
-                                <td style="white-space: nowrap;overflow: hidden">&nbsp;&nbsp;<img src="{{ value[index+i][7] }}" style="width: 22px; height: 22px;">&nbsp;&nbsp;{{ value[index+i][5] }}&nbsp;&nbsp;<span style="color:Gray;font-size:7pt">{{ value[index+i][6] }}</span></td>
-                                {% for unit in value[index+i][-1][1] %}
+                                <td style="white-space: nowrap;overflow: hidden">&nbsp;&nbsp;<img src="{{ value[index+i][7] }}" style="width: 22px; height: 22px;">&nbsp;&nbsp;{{ value[index+i][5] }}<span style="font-size:7pt">&nbsp;{{ ' ['+value[index+i][-1][1]|string+'] ' if value[index+i][-1][1] != '' }}</span>&nbsp;<span style="color:Gray;font-size:7pt">{{ value[index+i][6] }}</span></td>
+                                {% for unit in value[index+i][-2][1] %}
                                 {% if unit|length == 1 %}
-                                <td style="width:25px;" align="center">{{ unit[0] }}&nbsp;</td>
+                                    {% if unit[0] != 'RET' %}
+                                    <td style="width:25px;" align="center">{{ unit[0] }}&nbsp;</td>
+                                    {% else %}
+                                    <td style="width:25px;" align="center"><span style="font-size:8pt">{{ unit[0] }}&nbsp;</span></td>
+                                    {% endif %}
                                 {% else %}
-                                <td style="width:25px;" align="center">{{ unit[0] }}<sup style="color:Gray">{{ unit[1] }}</sup></td>
+                                    <td style="width:25px;color:Gray" align="center">
+                                        {% if unit[1]!=-2 %}
+                                        {{ unit[0] }}<sup style="color:Gray">{{ unit[1] }}</sup>
+                                        {% else %}
+                                        {{ unit[0] }}&nbsp;
+                                        {% endif %}
+                                    </td>
                                 {% endif %}
                                 {% endfor %}
                             </tr>
                             <tr bgcolor="#ACD6FF">
-                                <td style="white-space: nowrap;overflow: hidden">&nbsp;&nbsp;<img src="{{ value[index+i][4] }}" style="width: 22px; height: 22px;">&nbsp;&nbsp;{{ value[index+i][2] }}&nbsp;&nbsp;<span style="color:Gray;font-size:7pt">{{ value[index+i][3] }}</span></td>
-                                {% for unit in value[index+i][-1][0] %}
+                                <td style="white-space: nowrap;overflow: hidden">&nbsp;&nbsp;<img src="{{ value[index+i][4] }}" style="width: 22px; height: 22px;">&nbsp;&nbsp;{{ value[index+i][2] }}<span style="font-size:7pt">&nbsp;{{ ' ['+value[index+i][-1][0]|string+'] ' if value[index+i][-1][0] != '' }}</span>&nbsp;<span style="color:Gray;font-size:7pt">{{ value[index+i][3] }}</span></td>
+                                {% for unit in value[index+i][-2][0] %}
                                 {% if unit|length == 1 %}
-                                <td style="width:25px;" align="center">{{ unit[0] }}&nbsp;</td>
+                                    <td style="width:25px;" align="center">{{ unit[0] }}&nbsp;</td>
                                 {% else %}
-                                <td style="width:25px;" align="center">{{ unit[0] }}<sup style="color:Gray">{{ unit[1] }}</sup></td>
+                                <td style="width:25px;color:Gray" align="center">
+                                    {% if unit[1]!=-2 %}
+                                        {{ unit[0] }}<sup style="color:Gray">{{ unit[1] }}</sup>
+                                    {% else %}
+                                        {{ unit[0] }}&nbsp;
+                                        {% endif %}
+                                </td>
                                 {% endif %}
                                 {% endfor %}
                             </tr>

@@ -42,9 +42,9 @@
         </li>
         <li><a href="/forecast"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Forecast</a></li>
       </ul>
-      <form class="navbar-form navbar-right" action="/profile" method="POST">
+      <form class="navbar-form navbar-right" action="/profile" method="POST" onsubmit="return check_sub()">
         <div class="form-group">
-          <input id="sub" name="player" type="text" class="form-control" autocomplete="on" list="player" placeholder="Search Player">
+          <input id="sub_p" name="player" type="text" class="form-control" autocomplete="on" list="player" placeholder="Search Player">
             <datalist id="player">
               {% for p in playerlist %}
                 <option>{{ p }}</option>
@@ -84,16 +84,17 @@
 
 {# 块内容 #}
 {% block content %}
-<img src="./static/123.jpg" style="opacity:0.35; width:100%; height:100%; position: fixed; top: 50px;" >
-<div class="jumbotron" style="position:absolute; top:65px;left:3.952%;right:2.3715%;padding:20px">
-  <h1>Welcome to Tennis Crystal Ball!</h1>
-  <p>Tournament information, Match stats, Players' Profile, H2H, Performance, Titles & Result... All you want to know.</p>
-  <p>Forecast the winners of daily matches. Participate in and become the prophet.</p>
-  <p>Query with complex conditions, Abundant visual charts, Alternative assessment indicators... More convenient for search.</p>
-  <p><a class="btn btn-primary btn-lg" href="https://github.com/RhineEagle/Tennis-simulation#readme" target="_blank" role="button">Learn more</a></p>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<img src="./static/123.jpg" style="opacity:0.35; width:100%; height:100%; position: fixed; top: 6.9%;" >
+<div class="jumbotron">
+  <h1 style="font-size: 3.5vw">Welcome to Tennis Crystal Ball!</h1>
+  <p style="font-size: 1.5vw">Tournament information, Match stats, Players' Profile, H2H, Performance, Titles & Result... All you want to know.</p>
+  <p style="font-size: 1.5vw">Forecast the winners of daily matches. Participate in and become the prophet.</p>
+  <p style="font-size: 1.5vw">Query with complex conditions, Abundant visual charts, Alternative assessment indicators... More convenient for search.</p>
+  <p style="font-size: 1.5vw"><a class="btn btn-primary btn-lg" href="https://github.com/RhineEagle/Tennis-simulation#readme" target="_blank" role="button">Learn more</a></p>
 </div>
 
-<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="position:absolute;top:420px;left:3.952%;width:31.62%">
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="position:absolute;top:60.83%;left:3.952%;width:31.62%;">
   <!-- Indicators -->
   <ol class="carousel-indicators">
     <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -106,11 +107,11 @@
   <div class="carousel-inner" role="listbox">
 
     <div class="item active" style="height:160px">
-      <img src="/static/birthday.jpg" width="400px" style="position:absolute;opacity:0.6">
+      <img src="/static/birthday.jpg" width="100%" style="position:absolute;opacity:0.6">
       {% if birthplayer[0][0] != "" %}
-      <img src="{{ birthplayer[0][0] }}" alt="..." width="27.5%" style="position:relative;left:6%;top:48px;opacity:0.9">
+      <img src="{{ birthplayer[0][0] }}" alt="..." width="27.5%" style="position:relative;left:6%;top:30%;opacity:0.9">
       {% endif %}
-      <div class="carousel-caption" style="font-size:12pt">
+      <div class="carousel-caption" style="font-size:1.3vw">
         Happy Birthday to<br> {{ birthplayer[0][1] }}
         <br>
         {{ birthplayer[0][2] }}
@@ -118,11 +119,11 @@
     </div>
     {% for item in birthplayer[1:] %}
     <div class="item" style="height:160px">
-      <img src="/static/birthday.jpg" width="400px" style="position:absolute;opacity:0.6">
+      <img src="/static/birthday.jpg" width="100%" style="position:absolute;opacity:0.6">
       {% if item[0] %}
-      <img src="{{ item[0] }}" alt="..." width="27.5%" style="position:relative;left:6%;top:48px;opacity:0.9">
+      <img src="{{ item[0] }}" alt="..." width="27.5%" style="position:relative;left:6%;top:30%;opacity:0.9">
       {% endif %}
-      <div class="carousel-caption carousel-caption-birthday" style="font-size:12pt;">
+      <div class="carousel-caption carousel-caption-birthday" style="font-size:1.3vw;">
         Happy Birthday to <br>{{ item[1] }}
         <br>
         {{ item[2] }}
@@ -142,7 +143,7 @@
   </a>
 </div>
 
-<div id="carousel-example" class="carousel slide" data-ride="carousel" style="position:absolute;top:580px;left:3.952%;width:31.62%;">
+<div id="carousel-example" class="carousel slide" data-ride="carousel" style="position:absolute;top:84.06%;left:3.952%;width:31.62%;">
   <!-- Indicators -->
   <ol class="carousel-indicators">
     <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -155,20 +156,20 @@
   <div class="carousel-inner" role="listbox">
 
     <div class="item active" style="height:137px">
-      <img src="/static/win.jpg" width="400px" style="position:absolute;opacity:0.7">
-      <div class="carousel-caption" style="font-size:12pt">
+      <img src="/static/win.jpg" width="100%" style="position:absolute;opacity:0.7">
+      <div class="carousel-caption" style="font-size:1.3vw">
         Congratulations to<br> {{ win[0][0] }}
         <br>
-        on the {{ win[0][1] }}th win in {{ win[0][2] }}
+        <div style="white-space: nowrap;">on the {{ win[0][1] }}th win in {{ win[0][2] }}</div>
       </div>
     </div>
     {% for item in win[1:] %}
     <div class="item" style="height:137px">
-      <img src="/static/win.jpg" width="400px" style="position:absolute;opacity:0.7">
-      <div class="carousel-caption carousel-caption-winner" style="font-size:12pt;">
+      <img src="/static/win.jpg" width="100%" style="position:absolute;opacity:0.7">
+      <div class="carousel-caption carousel-caption-winner" style="font-size:1.3vw">
         Congratulations to <br>{{ item[0] }}
         <br>
-        on the {{ item[1] }}th win in {{ item[2] }}
+        <div style="white-space: nowrap;">on the {{ item[1] }}th win in {{ item[2] }}</div>
       </div>
     </div>
     {% endfor %}
@@ -185,7 +186,7 @@
   </a>
 </div>
 
-<div id="carousel-generic" class="carousel slide" data-ride="carousel" style="position:absolute;top:420px;left:35.96838%;width:43.08%;">
+<div id="carousel-generic" class="carousel slide" data-ride="carousel" style="position:absolute;top:60.83%;left:35.96838%;width:43.08%;">
   <!-- Indicators -->
   <ol class="carousel-indicators">
     <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -199,9 +200,9 @@
 
     <div class="item active" style="height:297px">
       {% if pic[0][0] != "" %}
-      <img src="{{ pic[0][0] }}" alt="..." width="840px" style="opacity:0.75">
+      <img src="{{ pic[0][0] }}" alt="..." width="100%" style="opacity:0.75">
       {% endif %}
-      <div class="carousel-caption" style="font-size:14pt">
+      <div class="carousel-caption" style="font-size:1.5vw">
         Congratulations to <br> {{ pic[0][2] }}
         <br>
         <i class="fa fa-trophy" aria-hidden="true"></i> {{ pic[0][1] }} &nbsp;
@@ -211,9 +212,9 @@
     {% for item in pic[1:] %}
     <div class="item" style="height:297px">
       {% if item[0] %}
-      <img src="{{ item[0] }}" alt="..." width="840px" style="opacity:0.75">
+      <img src="{{ item[0] }}" alt="..." width="100%" style="opacity:0.75">
       {% endif %}
-      <div class="carousel-caption carousel-caption-trophy" style="font-size:14pt;">
+      <div class="carousel-caption carousel-caption-trophy" style="font-size:1.5vw;">
         Congratulations to <br>{{ item[2] }}
         <br>
         <i class="fa fa-trophy" aria-hidden="true"></i> {{ item[1] }} &nbsp;
@@ -234,33 +235,37 @@
   </a>
 </div>
 
-<div class="panel panel-success" style="position:relative; left:3.9525%; top:727px; width:75.0988%; height:135px">
-  <div class="panel-heading" style="font-size:11.5pt">This Week & Coming Tournament</div>
+<div class="panel panel-success" style="position:absolute; left:3.9525%; top:105.36%; width:75.0988%; height:19.56%">
+  <div class="panel-heading" style="font-size:1.15vw">This Week & Coming Tournament</div>
   <div class="panel-body" style="background:LightGray">
     <ul style="list-style:none;display:inline">
       {% for item in tour %}
         <li style="float:left; width:17.4%; text-align:center; font-family:Arial">
           <img src="{{ item[0] }}" style="height:60px"><br>
+          {% if item[2] == 1 %}
+          <a href="/tournament%3FTour%3D{{ item[3] }}&Year%3D{{ item[4] }}">{{ item[1] }}</a>
+          {% else %}
           {{ item[1] }}
+          {% endif %}
         </li>
       {% endfor %}
     </ul>
   </div>
 </div>
 
-<p style="position:absolute;top:889px">&nbsp;</p>
+<p style="position:absolute;top:128%">&nbsp;</p>
 
-<div class="panel panel-info" style="position:absolute; right:2.3715%; top:420px;">
+<div class="panel panel-info" style="position:absolute; right:2.3715%; top:60.83%;">
   <!-- Default panel contents -->
-  <div class="panel-heading">ATP Official Ranking <span style="font-size:4pt;position:absolute;top:15px; right:5px">{{ data[0][3] }}</span></div>
+  <div class="panel-heading"><span style="font-size:1vw">ATP Official Ranking</span> <span style="font-size:6pt;position:absolute;top:15px; right:3px">{{ data[0][3] }}</span></div>
   <!-- Table -->
   <table class="table" style="text-align:center;">
       <thead>
-          <tr style="font-family: Times New Roman;">
+          <tr style="font-family: Times New Roman; font-size:1.1vw">
               <td> Rank </td><td colspan="1">Name</td><td>Points</td>
           </tr>
       </thead>
-      <tbody id="table" style="font-family: Times New Roman;">
+      <tbody id="table" style="font-family: Times New Roman; font-size:1.1vw">
       {% for item in data %}
       <tr>
         <td>{{ item[1] }}</td><td><a href="/profile_detail%3FName%3D{{ item[0] }}">{{ item[4] }}</a></td><td>{{ item[2] }}</td>
@@ -276,99 +281,101 @@
     {{super()}}
 <style>
 
-.navbar-fixed-top {
-  background-color: #9b59b6;
-  border-color: #8e44ad;
-}
-.navbar-fixed-top .navbar-brand {
-  color: #ecf0f1;
-}
-.navbar-fixed-top .navbar-brand:hover ,
-.navbar-fixed-top .navbar-brand:focus {
-  color: #ecdbff;
-}
-.navbar-fixed-top .navbar-text {
-  color: #ecf0f1;
-}
-.navbar-fixed-top .navbar-nav > li > a {
-  color: #ecf0f1;
-}
-.navbar-fixed-top .navbar-nav > li > a:hover
-{
-  color: #8e44ad;
-},
-.navbar-fixed-top .navbar-nav > li > a:focus {
-  color: #ecdbff;
-}
-.navbar-fixed-top .navbar-nav > li > .dropdown-menu {
-  background-color: #9b59b6;
-}
-.navbar-fixed-top .navbar-nav > li > .dropdown-menu > li > a {
-  color: #ecf0f1;
-}
-.navbar-fixed-top .navbar-nav > li > .dropdown-menu > li > a:hover,
-.navbar-fixed-top .navbar-nav > li > .dropdown-menu > li > a:focus {
-  color: #ecdbff;
-  background-color: #8e44ad;
-}
-.navbar-fixed-top .navbar-nav > li > .dropdown-menu > li.divider {
-  background-color: #8e44ad;
-}
-.navbar-fixed-top .navbar-nav .open .dropdown-menu > .active > a,
-.navbar-fixed-top .navbar-nav .open .dropdown-menu > .active > a:hover,
-.navbar-fixed-top .navbar-nav .open .dropdown-menu > .active > a:focus {
-  color: #ecdbff;
-  background-color: #8e44ad;
-}
-.navbar-fixed-top .navbar-nav > .active > a,
-.navbar-fixed-top .navbar-nav > .active > a:hover,
-.navbar-fixed-top .navbar-nav > .active > a:focus {
-  color: #ecdbff;
-  background-color: #8e44ad;
-}
-.navbar-fixed-top .navbar-nav > .open > a,
-.navbar-fixed-top .navbar-nav > .open > a:hover,
-.navbar-fixed-top .navbar-nav > .open > a:focus {
-  color: #ecdbff;
-  background-color: #8e44ad;
-}
-.navbar-fixed-top .navbar-toggle {
-  border-color: #8e44ad;
-}
-.navbar-fixed-top .navbar-toggle:hover,
-.navbar-fixed-top .navbar-toggle:focus {
-  background-color: #8e44ad;
-}
-.navbar-fixed-top .navbar-toggle .icon-bar {
-  background-color: #ecf0f1;
-}
-.navbar-fixed-top .navbar-collapse,
-.navbar-fixed-top .navbar-form {
-  border-color: #ecf0f1;
-}
-.navbar-fixed-top .navbar-link {
-  color: #ecf0f1;
-}
-.navbar-fixed-top .navbar-link:hover {
-  color: #ecdbff;
-}
+    .navbar-fixed-top {
+      background-color: #9b59b6;
+      border-color: #8e44ad;
+    }
+    .navbar-fixed-top .navbar-brand {
+      color: #ecf0f1;
+    }
+    .navbar-fixed-top .navbar-brand:hover ,
+    .navbar-fixed-top .navbar-brand:focus {
+      color: #ecdbff;
+    }
+    .navbar-fixed-top .navbar-text {
+      color: #ecf0f1;
+    }
+    .navbar-fixed-top .navbar-nav > li > a {
+      color: #ecf0f1;
+    }
+    .navbar-fixed-top .navbar-nav > li > a:hover
+    {
+      color: #8e44ad;
+    },
+    .navbar-fixed-top .navbar-nav > li > a:focus {
+      color: #ecdbff;
+    }
+    .navbar-fixed-top .navbar-nav > li > .dropdown-menu {
+      background-color: #9b59b6;
+    }
+    .navbar-fixed-top .navbar-nav > li > .dropdown-menu > li > a {
+      color: #ecf0f1;
+    }
+    .navbar-fixed-top .navbar-nav > li > .dropdown-menu > li > a:hover,
+    .navbar-fixed-top .navbar-nav > li > .dropdown-menu > li > a:focus {
+      color: #ecdbff;
+      background-color: #8e44ad;
+    }
+    .navbar-fixed-top .navbar-nav > li > .dropdown-menu > li.divider {
+      background-color: #8e44ad;
+    }
+    .navbar-fixed-top .navbar-nav .open .dropdown-menu > .active > a,
+    .navbar-fixed-top .navbar-nav .open .dropdown-menu > .active > a:hover,
+    .navbar-fixed-top .navbar-nav .open .dropdown-menu > .active > a:focus {
+      color: #ecdbff;
+      background-color: #8e44ad;
+    }
+    .navbar-fixed-top .navbar-nav > .active > a,
+    .navbar-fixed-top .navbar-nav > .active > a:hover,
+    .navbar-fixed-top .navbar-nav > .active > a:focus {
+      color: #ecdbff;
+      background-color: #8e44ad;
+    }
+    .navbar-fixed-top .navbar-nav > .open > a,
+    .navbar-fixed-top .navbar-nav > .open > a:hover,
+    .navbar-fixed-top .navbar-nav > .open > a:focus {
+      color: #ecdbff;
+      background-color: #8e44ad;
+    }
+    .navbar-fixed-top .navbar-toggle {
+      border-color: #8e44ad;
+    }
+    .navbar-fixed-top .navbar-toggle:hover,
+    .navbar-fixed-top .navbar-toggle:focus {
+      background-color: #8e44ad;
+    }
+    .navbar-fixed-top .navbar-toggle .icon-bar {
+      background-color: #ecf0f1;
+    }
+    .navbar-fixed-top .navbar-collapse,
+    .navbar-fixed-top .navbar-form {
+      border-color: #ecf0f1;
+    }
+    .navbar-fixed-top .navbar-link {
+      color: #ecf0f1;
+    }
+    .navbar-fixed-top .navbar-link:hover {
+      color: #ecdbff;
+    }
 
-@media (max-width: 767px) {
-  .navbar-fixed-top .navbar-nav .open .dropdown-menu > li > a {
-    color: #ecf0f1;
-  }
-  .navbar-fixed-top .navbar-nav .open .dropdown-menu > li > a:hover,
-  .navbar-fixed-top .navbar-nav .open .dropdown-menu > li > a:focus {
-    color: #ecdbff;
-  }
-  .navbar-fixed-top .navbar-nav .open .dropdown-menu > .active > a,
-  .navbar-fixed-top .navbar-nav .open .dropdown-menu > .active > a:hover,
-  .navbar-fixed-top .navbar-nav .open .dropdown-menu > .active > a:focus {
-    color: #ecdbff;
-    background-color: #8e44ad;
-  }
-}
-.carousel-caption- {color:#00FFFF;}
+    @media (max-width: 767px) {
+      .navbar-fixed-top .navbar-nav .open .dropdown-menu > li > a {
+        color: #ecf0f1;
+      }
+      .navbar-fixed-top .navbar-nav .open .dropdown-menu > li > a:hover,
+      .navbar-fixed-top .navbar-nav .open .dropdown-menu > li > a:focus {
+        color: #ecdbff;
+      }
+      .navbar-fixed-top .navbar-nav .open .dropdown-menu > .active > a,
+      .navbar-fixed-top .navbar-nav .open .dropdown-menu > .active > a:hover,
+      .navbar-fixed-top .navbar-nav .open .dropdown-menu > .active > a:focus {
+        color: #ecdbff;
+        background-color: #8e44ad;
+      }
+    }
+
+    .carousel-caption- {color:#00FFFF;}
+    .jumbotron {position:absolute; top:9%; left:3.952%; right:2.3715%; padding:1.8%;}
 
 </style>
 {% endblock %}
@@ -390,5 +397,20 @@ else
   var login=document.getElementById("login");
   login.style.display='none';
 }
+</script>
+<script>
+  function check_sub()
+    {
+        var con = document.querySelector("#sub_p").value;
+        var t = {{ playerlist|tojson }}.indexOf(con);
+        if (con == '' || t == -1)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
 </script>
 {% endblock %}

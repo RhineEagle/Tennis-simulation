@@ -1,0 +1,138 @@
+{# 继承bootstrap中的base.html #}
+{% extends "homepage.html" %}
+{# 块修改标题 #}
+{% block title %}Rivalries{% endblock %}
+
+{# css块 #}
+{% block styles %}
+    {{super()}}
+<style>
+    .label-250{background-color: #ACD6FF}
+    .label-500{background-color: #D2A2CC}
+    .label-1000{background-color: #FFA042}
+    .label-GS{background-color: #FF2D2D}
+    .label-Cup{background-color: #FF95CA}
+    .label-Davis{background-color: #ffa6ff}
+    .label-F{background-color: #EAC100}
+    .label-O{background-color: #00DB00}
+    .label-Next{background-color: #BEBEBE}
+    .label-W{background-color: #00A600}
+    .label-Fi{background-color: #8080C0}
+    .label-SF{background-color: #EAC100}
+    .label-QF{background-color: #81C0C0}
+    .label-R{background-color: #C2C287}
+    .label-RD{background-color: #CF9E9E}
+    .label-Qy{background-color: #DEDEBE}
+    .label-Win{background-color: #FF69B4}
+    .label-Lose{background-color: #48D1CC}
+</style>
+{% endblock %}
+
+{# JavaScript块 #}
+{% block scripts %}
+    {{super()}}
+    <script src="./static/js_md5.min.js"></script>
+    <script>
+        function change_tab(sgn)
+        {
+            var ts = document.getElementById(sgn);
+            var ctype = ts.className;
+            if (ctype == 'active')
+            {
+                return 0;
+            }
+            else
+            {
+                if (sgn=='tail_tab')
+                {
+                    data = {{ tail|tojson }};
+                }
+                else if (sgn=='tie_tab')
+                {
+                    data = {{ tie|tojson }};
+                }
+                else
+                {
+                    data = {{ lead|tojson }};
+                }
+
+                con = "";
+                var ele = document.getElementById('tbl');
+                for(i=0;i<data.length;i++)
+                {
+                    item = data[i];
+                    con = con + '<tr><td><img src="'+item[12]+'" style="width:20px">&nbsp;&nbsp;'+item[0]+'</td><td>'+Math.round(item[1])+'</td><td>'+Math.round(item[2])+'</td><td style="background-color: rgb(250, '+(250-item[1]/(item[1]+item[2])*100)+', '+(50+item[1]/(item[1]+item[2])*100)+');opacity:0.9">'+Math.round((item[1]/(item[1]+item[2]))*1000)/10 +'% </td><td><label class="'+item[16]+'"> '+item[4]+'</label> <label class="'+item[14]+'">'+ item[7] +'</label> <label class="'+ item[15]+'"> '+item[11]+'</label>&nbsp;[&nbsp;'+ item[5]+'&nbsp;]&nbsp; at '+ item[8]+' </td><td><label class="label label-primary"><a href="/h2h_query%3FP1%3D'+'{{ name }}'+'%26P2%3D'+item[0]+'%26Court_type%3DAll%26Level%3DAll" style="color:white">H2H</a></label></td></tr>';
+                }
+                ele.innerHTML = con;
+
+                var tblist = ["lead_tab","tie_tab","tail_tab"];
+                for (i=0;i<3;i++)
+                {
+                    var ot = document.getElementById(tblist[i]);
+                    ot.className = 'default';
+                }
+                ts.className = 'active';
+            }
+        }
+    </script>
+{% endblock %}
+
+{# 块内容 #}
+{% block content %}
+<body>
+<img src="./static/123.jpg" style="opacity:0.2; width:100%; height:100%; position: fixed; top: 50px;" >
+    <div style="position:absolute;top:77px;left:6%;">
+        <img src="{{ country }}" style="width:25px"> &nbsp;<span style="font-size:14pt"><b><a href="/profile_detail%3FName%3D{{ name }}" style="color:black">{{ name }}</a></b></span>
+    </div>
+    <div style="position:absolute;top:127px;left:42%;">
+        <span style="font-size:14pt"><b>Rivalries Summary</b></span>
+    </div>
+    <div style="position:absolute;top:127.5px;left:4.95%;">
+        <ul class="nav nav-tabs">
+        {% if status == lock[0] %}
+          <li id="lead_tab" role="presentation" class="active"><a href="#" onclick="change_tab('lead_tab')">Lead</a></li>
+          <li id="tie_tab" role="presentation" class="default"><a href="#" onclick="change_tab('tie_tab')">Tie</a></li>
+          <li id="tail_tab" role="presentation" class="default"><a href="#" onclick="change_tab('tail_tab')">Tail</a></li>
+        {% elif status == lock[2] %}
+            <li id="lead_tab" role="presentation" class="default"><a href="#" onclick="change_tab('lead_tab')">Lead</a></li>
+            <li id="tie_tab" role="presentation" class="default"><a href="#" onclick="change_tab('tie_tab')">Tie</a></li>
+            <li id="tail_tab" role="presentation" class="active"><a href="#" onclick="change_tab('tail_tab')">Tail</a></li>
+        {% elif status == lock[1] %}
+          <li id="lead_tab" role="presentation" class="default"><a href="#" onclick="change_tab('lead_tab')">Lead</a></li>
+          <li id="tie_tab" role="presentation" class="active"><a href="#" onclick="change_tab('tie_tab')">Tie</a></li>
+          <li id="tail_tab" role="presentation" class="default"><a href="#" onclick="change_tab('tail_tab')">Tail</a></li>
+        {% endif %}
+        </ul>
+    </div>
+    <div style="position:absolute;top:170px;left:5%;width:90%;">
+        <table class="table table-condensed table-hover table-striped bootgrid-table">
+            <thead>
+                <tr bgcolor="white">
+                    <td><b>Opponent</b></td><td><b>Win</b></td><td><b>Loss</b></td><td><b>Win %</b></td><td><b>Last Meeting</b></td><td><b>H2H</b></td>
+                </tr>
+            </thead>
+            <tbody id="tbl">
+            {% if status == lock[0] %}
+                {% for item in lead %}
+                <tr>
+                    <td><img src="{{ item[12] }}" style="width:20px">&nbsp;&nbsp;{{ item[0] }}</td><td>{{ item[1]|int }}</td><td> {{ item[2]|int }} </td><td style="background-color: rgb(250, {{ 250 - item[1]/(item[1]+item[2])*100 }}, {{ 50 + item[1]/(item[1]+item[2])*100 }});opacity:0.9"> {{ ((item[1]/(item[1]+item[2]))|round(3)*1000)|int/10 }}% </td><td><label class="{{ item[16] }}"> {{ item[4] }}</label> <label class="{{ item[14] }}"> {{ item[7] }}</label> <label class="{{ item[15] }}"> {{ item[11] }}</label>&nbsp;[&nbsp;{{ item[5] }}&nbsp;]&nbsp; at {{ item[8] }} </td><td><label class="label label-primary"><a href="/h2h_query%3FP1%3D{{ name }}%26P2%3D{{ item[0] }}%26Court_type%3DAll%26Level%3DAll" style="color:white">H2H</a></label></td>
+                </tr>
+                {% endfor %}
+            {% elif status == lock[2] %}
+                {% for item in tail %}
+                <tr>
+                    <td><img src="{{ item[12] }}" style="width:20px">&nbsp;&nbsp;{{ item[0] }}</td><td>{{ item[1]|int }}</td><td> {{ item[2]|int }} </td><td style="background-color: rgb(250, {{ 250 - item[1]/(item[1]+item[2])*100 }}, {{ 50 + item[1]/(item[1]+item[2])*100 }});opacity:0.9"> {{ ((item[1]/(item[1]+item[2]))|round(3)*1000)|int/10 }}% </td><td><label class="{{ item[16] }}"> {{ item[4] }}</label> <label class="{{ item[14] }}"> {{ item[7] }}</label> <label class="{{ item[15] }}"> {{ item[11] }}</label>&nbsp;[&nbsp;{{ item[5] }}&nbsp;]&nbsp; at {{ item[8] }} </td><td><label class="label label-primary"><a href="/h2h_query%3FP1%3D{{ name }}%26P2%3D{{ item[0] }}%26Court_type%3DAll%26Level%3DAll" style="color:white">H2H</a></label></td>
+                </tr>
+                {% endfor %}
+            {% elif status == lock[1] %}
+                {% for item in tie %}
+                <tr>
+                    <td><img src="{{ item[12] }}" style="width:20px">&nbsp;&nbsp;{{ item[0] }}</td><td>{{ item[1]|int }}</td><td> {{ item[2]|int }} </td><td style="background-color: rgb(250, {{ 250 - item[1]/(item[1]+item[2])*100 }}, {{ 50 + item[1]/(item[1]+item[2])*100 }});opacity:0.9"> {{ ((item[1]/(item[1]+item[2]))|round(3)*1000)|int/10 }}% </td><td><label class="{{ item[16] }}"> {{ item[4] }}</label> <label class="{{ item[14] }}"> {{ item[7] }}</label> <label class="{{ item[15] }}"> {{ item[11] }}</label>&nbsp;[&nbsp;{{ item[5] }}&nbsp;]&nbsp; at {{ item[8] }} </td><td><label class="label label-primary"><a href="/h2h_query%3FP1%3D{{ name }}%26P2%3D{{ item[0] }}%26Court_type%3DAll%26Level%3DAll" style="color:white">H2H</a></label></td>
+                </tr>
+                {% endfor %}
+            {% endif %}
+            </tbody>
+        </table>
+    </div>
+</body>
+{% endblock %}

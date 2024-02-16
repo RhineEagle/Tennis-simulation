@@ -142,7 +142,7 @@
                 data: {'player1':player1, 'player2': player2, 'surface':surface, 'speed':speed},
                 dataType: 'text',
                 success:function(response,status,xhr){
-                    var con = "<table style='background:white;width:100%'><thead><tr><td><b>Possible Results</b></td><td><b>Possibility</b></td></tr></thead><tbody>";
+                    var con = "<table style='background:white;width:100%'><thead><tr><td><b>Possible Results</b></td><td><b>Probability</b></td></tr></thead><tbody>";
                     var response_list = response.split("*");
                     var w1 = 0;
                     var w2 = 0;
