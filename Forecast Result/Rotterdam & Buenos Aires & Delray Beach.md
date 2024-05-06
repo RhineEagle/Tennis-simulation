@@ -1,11 +1,134 @@
 # Rotterdam & Buenos Aires & Delray Beach
 
+#### Day 7
+
+
+**Rotterdam**
+
+Jannik Sinner  2:0  Alex De Minaur    ✔
+
+1.22    4.33
+
+Jannik Sinner 2:0 Alex De Minaur 0.3998
+Jannik Sinner 2:1 Alex De Minaur 0.2712
+Jannik Sinner 1:2 Alex De Minaur 0.1640
+Jannik Sinner 0:2 Alex De Minaur 0.1650
+
+
+
+
+**Buenos Aires**
+
+Nicolas Jarry  0:2  Facundo Diaz Acosta    ❗    ❌
+
+1.61    2.30
+
+Nicolas Jarry 2:0 Facundo Diaz Acosta 0.3562
+Nicolas Jarry 2:1 Facundo Diaz Acosta 0.2518
+Nicolas Jarry 1:2 Facundo Diaz Acosta 0.1824
+Nicolas Jarry 0:2 Facundo Diaz Acosta 0.2096
+
+
+
+
+**Delray Beach**
+
+Taylor Fritz  vs  Tommy Paul
+
+N/A    N/A
+
+Taylor Fritz 2:0 Tommy Paul 0.2368
+Taylor Fritz 2:1 Tommy Paul 0.2066
+Taylor Fritz 1:2 Tommy Paul 0.2520
+Taylor Fritz 0:2 Tommy Paul 0.3046
+
+
+
+
+#### Day 6
+
+
+**Rotterdam**
+
+Grigor Dimitrov  0:2  Alex De Minaur    ❌
+
+2.10    1.73
+
+Grigor Dimitrov 2:0 Alex De Minaur 0.2904
+Grigor Dimitrov 2:1 Alex De Minaur 0.2232
+Grigor Dimitrov 1:2 Alex De Minaur 0.2292
+Grigor Dimitrov 0:2 Alex De Minaur 0.2572
+
+
+
+Jannik Sinner  2:0  Tallon Griekspoor    ✔
+
+1.12    6.00
+
+Jannik Sinner 2:0 Tallon Griekspoor 0.5152
+Jannik Sinner 2:1 Tallon Griekspoor 0.2678
+Jannik Sinner 1:2 Tallon Griekspoor 0.1102
+Jannik Sinner 0:2 Tallon Griekspoor 0.1068
+
+
+
+
+**Buenos Aires**
+
+Facundo Diaz Acosta  2:0  Federico Coria    ❗    ✔
+
+2.00    1.80
+
+Facundo Diaz Acosta 2:0 Federico Coria 0.2884
+Facundo Diaz Acosta 2:1 Federico Coria 0.2122
+Facundo Diaz Acosta 1:2 Federico Coria 0.2120
+Facundo Diaz Acosta 0:2 Federico Coria 0.2874
+
+
+
+Carlos Alcaraz  0:2  Nicolas Jarry    ❗    ❌
+
+1.17    5.00
+
+Carlos Alcaraz 2:0 Nicolas Jarry 0.2791
+Carlos Alcaraz 2:1 Nicolas Jarry 0.2247
+Carlos Alcaraz 1:2 Nicolas Jarry 0.2243
+Carlos Alcaraz 0:2 Nicolas Jarry 0.2719
+
+
+
+
+**Delray Beach**
+
+Tommy Paul  2:0  Frances Tiafoe    ✔
+
+1.67    2.20
+
+Tommy Paul 2:0 Frances Tiafoe 0.3942
+Tommy Paul 2:1 Frances Tiafoe 0.2482
+Tommy Paul 1:2 Frances Tiafoe 0.1738
+Tommy Paul 0:2 Frances Tiafoe 0.1838
+
+
+
+Taylor Fritz  2:0  Marcos Giron    ❌
+
+1.40    3.00
+
+Taylor Fritz 2:0 Marcos Giron 0.2726
+Taylor Fritz 2:1 Marcos Giron 0.2152
+Taylor Fritz 1:2 Marcos Giron 0.2217
+Taylor Fritz 0:2 Marcos Giron 0.2905
+
+
+
+
 #### Day 5
 
 
 **Rotterdam**
 
-Grigor Dimitrov  vs  Alexander Shevchenko
+Grigor Dimitrov  2:1  Alexander Shevchenko    ✔
 
 1.20    4.50
 
@@ -16,7 +139,7 @@ Grigor Dimitrov 0:2 Alexander Shevchenko 0.0840
 
 
 
-Alex De Minaur  vs  Andrey Rublev
+Alex De Minaur  2:1  Andrey Rublev    ❗    ✔
 
 2.00    1.80
 
@@ -27,7 +150,7 @@ Alex De Minaur 0:2 Andrey Rublev 0.2614
 
 
 
-Tallon Griekspoor  vs  Emil Ruusuvuori
+Tallon Griekspoor  2:0  Emil Ruusuvuori    ❌
 
 1.61    2.30
 
@@ -38,7 +161,7 @@ Tallon Griekspoor 0:2 Emil Ruusuvuori 0.3114
 
 
 
-Jannik Sinner  vs  Milos Raonic
+Jannik Sinner  1:0  Milos Raonic    ✔
 
 1.08    8.00
 
@@ -52,9 +175,9 @@ Jannik Sinner 0:2 Milos Raonic 0.1558
 
 **Buenos Aires**
 
-Dusan Lajovic  vs  Facundo Diaz Acosta
+Dusan Lajovic  0:2  Facundo Diaz Acosta    ❗    ✔
 
-1.91    1.91
+1.80    2.00
 
 Dusan Lajovic 2:0 Facundo Diaz Acosta 0.2398
 Dusan Lajovic 2:1 Facundo Diaz Acosta 0.1996
@@ -63,7 +186,7 @@ Dusan Lajovic 0:2 Facundo Diaz Acosta 0.3106
 
 
 
-Sebastian Baez  vs  Federico Coria
+Sebastian Baez  0:2  Federico Coria    ❗    ❌
 
 1.44    2.75
 
@@ -74,7 +197,7 @@ Sebastian Baez 0:2 Federico Coria 0.1480
 
 
 
-Carlos Alcaraz  vs  Andrea Vavassori
+Carlos Alcaraz  2:0  Andrea Vavassori    ✔
 
 1.03    15.00
 
@@ -85,7 +208,7 @@ Carlos Alcaraz 0:2 Andrea Vavassori 0.1456
 
 
 
-Nicolas Jarry  vs  Tomas Martin Etcheverry
+Nicolas Jarry  1:1 (RET)  Tomas Martin Etcheverry    ❗    ✔
 
 2.30    1.61
 
@@ -99,7 +222,7 @@ Nicolas Jarry 0:2 Tomas Martin Etcheverry 0.2446
 
 **Delray Beach**
 
-Jordan Thompson  vs  Tommy Paul
+Jordan Thompson  0:2  Tommy Paul    ✔
 
 2.38    1.57
 
@@ -110,9 +233,9 @@ Jordan Thompson 0:2 Tommy Paul 0.2830
 
 
 
-Flavio Cobolli  vs  Frances Tiafoe
+Flavio Cobolli  0:2  Frances Tiafoe    ❌
 
-N/A    N/A
+3.20    1.36
 
 Flavio Cobolli 2:0 Frances Tiafoe 0.3072
 Flavio Cobolli 2:1 Frances Tiafoe 0.2403
@@ -121,7 +244,7 @@ Flavio Cobolli 0:2 Frances Tiafoe 0.2491
 
 
 
-Marcos Giron  vs  Patrick Kypson
+Marcos Giron  2:0  Patrick Kypson    ✔
 
 1.28    3.75
 
@@ -132,7 +255,7 @@ Marcos Giron 0:2 Patrick Kypson 0.2089
 
 
 
-Taylor Fritz  vs  Rinky Hijikata
+Taylor Fritz  2:0  Rinky Hijikata    ✔
 
 1.17    5.00
 
@@ -864,8 +987,10 @@ lack of data.
 
 
 
-
 1:0    accuracy: 87.5%    base: 72.73%    profit: 120.0%
 5:3    accuracy: 70.83%    base: 61.29%    profit: 28.75%
 7:3    accuracy: 73.68%    base: 61.7%    profit: 51.0%
 7:4    accuracy: 70.59%    base: 63.33%    profit: 37.27%
+10:6    accuracy: 71.43%    base: 63.89%    profit: 33.75%
+11:8    accuracy: 69.57%    base: 64.1%    profit: 23.16%
+11:8    accuracy: 69.01%    base: 63.75%    profit: 23.16%
